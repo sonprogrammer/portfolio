@@ -1,8 +1,5 @@
 
-import type {
-  Server,
-  Socket,
-} from 'socket.io';
+import type { Server, Socket } from 'socket.io';
 import { UpbitOrderbookManager } from './upbitOrderbookManger';
 import { VC_SOCKET_EVENTS } from '@/entities/vc/coin/model/socketEvents';
 import { VcOrderbookErrorPayload, VcOrderbookSubscribePayload } from '@/entities/vc/orderbook/model/orderbookTypes';
@@ -55,11 +52,11 @@ export function registerVcOrderbookEvents({
 
       if (!isValidMarket(market)) {
         const errorPayload: VcOrderbookErrorPayload =
-          {
-            market,
-            message:
-              '올바르지 않은 마켓 코드입니다.',
-          };
+        {
+          market,
+          message:
+            '올바르지 않은 마켓 코드입니다.',
+        };
 
         socket.emit(
           VC_SOCKET_EVENTS.orderbookError,

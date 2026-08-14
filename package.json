@@ -6,6 +6,7 @@
     "dev": "tsx watch server.ts",
     "build": "next build",
     "start": "cross-env NODE_ENV=production tsx server.ts",
+    "start:realtime": "cross-env NODE_ENV=production tsx realtime-server/server.ts",
     "lint": "eslint"
   },
   "dependencies": {
