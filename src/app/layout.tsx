@@ -8,8 +8,8 @@ import { SocketProvider } from "@/shared/providers/SocketProvider";
 export const metadata: Metadata = {
   metadataBase: new URL('https://portfolio-kohl-xi-20.vercel.app/'),
   title: "손영진 포트폴리오",
-  description: "복잡한 데이터 흐름을 구조화하고 사용자 경험으로 연결하는 프론트엔드 개발자, 손영진",
-   keywords: [
+  description: '구조적인 설계와 데이터 흐름 최적화로 서비스 성능을 개선하는 프론트엔드 개발자 손영진의 포트폴리오입니다.',
+  keywords: [
     '손영진',
     '프론트엔드 개발자',
     'Frontend Developer',
@@ -29,14 +29,22 @@ export const metadata: Metadata = {
     shortcut: '/favicon.png',
     apple: '/favicon.png',
   },
-   openGraph: {
+  openGraph: {
     title: '손영진 | Frontend Developer',
     description:
-      '구조적인 설계와 데이터 흐름 최적화로 서비스 성능을 개선하는 프론트엔드 개발자 손영진의 포트폴리오입니다.',
+    '구조적인 설계와 데이터 흐름 최적화로 서비스 성능을 개선하는 프론트엔드 개발자 손영진의 포트폴리오입니다.',
     url: '/',
     siteName: '손영진 포트폴리오',
     locale: 'ko_KR',
     type: 'website',
+    images: [
+      {
+        url: '/photo.png',
+        width: 1200,
+        height: 630,
+        alt: '프론트엔드 개발자 손영진 포트폴리오'
+      }
+    ]
   },
 };
 
@@ -57,7 +65,7 @@ export default function RootLayout({
             <SocketProvider>
               {children}
             </SocketProvider>
-            <Toaster 
+            <Toaster
               position='top-center'
               richColors
             />
