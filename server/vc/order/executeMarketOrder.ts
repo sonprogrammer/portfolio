@@ -214,8 +214,6 @@ export async function executeMarketOrder(
                   orderType: "market",
                   status: "filled",
 
-                  // 시장가 주문이지만 현재 스키마의
-                  // price 필드에도 실제 체결가를 기록한다.
                   price:
                     params.executedPrice,
                   quantity:
@@ -259,11 +257,6 @@ export async function executeMarketOrder(
 
           return;
         }
-
-        /*
-         * 여기부터 시장가 매도
-         */
-
         const sellQuantity =
           roundDownCoin(params.quantity);
 
@@ -326,10 +319,7 @@ export async function executeMarketOrder(
         holding.quantity =
           remainingQuantity;
 
-        /*
-         * 일부만 매도해도 기존 평균 매수가는
-         * 그대로 유지된다.
-         */
+
         if (remainingQuantity === 0) {
           holding.averagePrice = 0;
           holding.totalBuyAmount = 0;

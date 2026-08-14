@@ -31,8 +31,9 @@ const allowedOrigins = (
   .map(origin => origin.trim());
 
 async function startServer() {
+    await connectMongoDB()
   const httpServer = createServer((req, res) => {
-    // Railway 서버가 살아있는지 확인하기 위한 간단한 endpoint
+
     if (req.url === "/health") {
       res.writeHead(200, {
         "Content-Type": "application/json",
@@ -61,27 +62,14 @@ async function startServer() {
     },
   });
 
-  /**
-   * VC
-   * Upbit ticker stream
-   */
+  
   const vcTickerStream = startUpbitTickerStream(io);
 
-  /**
-   * VC
-   * Upbit orderbook manager
-   */
   const orderbookManager =
     new UpbitOrderbookManager(io);
 
   io.on("connection", socket => {
     console.log("소켓 연결:", socket.id);
-
-    /**
-     * =========================
-     * BNTY Chat
-     * =========================
-     */
 
     socket.on(
       "join-chat-room",
@@ -339,11 +327,7 @@ async function startServer() {
       },
     );
 
-    /**
-     * =========================
-     * VC Ticker
-     * =========================
-     */
+
 
     socket.on(
       "vc:ticker:subscribe",
@@ -364,11 +348,6 @@ async function startServer() {
       },
     );
 
-    /**
-     * =========================
-     * VC Orderbook
-     * =========================
-     */
 
     registerVcOrderbookEvents({
       io,
@@ -376,22 +355,12 @@ async function startServer() {
       orderbookManager,
     });
 
-    /**
-     * =========================
-     * VC Orders
-     * =========================
-     */
 
     registerVcOrderEvents({
       socket,
       orderbookManager,
     });
 
-    /**
-     * =========================
-     * Disconnect
-     * =========================
-     */
 
     socket.on("disconnect", () => {
       console.log(

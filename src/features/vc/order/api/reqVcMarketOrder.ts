@@ -2,7 +2,7 @@ import type { Socket } from "socket.io-client";
 
 import type { VcMarketOrderPayload, VcMarketOrderResponse, VcMarketOrderResult } from "@/features/vc/order/model/types";
 
-const ORDER_TIMEOUT = 5_000
+const ORDER_TIMEOUT = 10_000
 
 export function reqVcMarketOrder(socket: Socket, payload: VcMarketOrderPayload): Promise<VcMarketOrderResult> {
     return new Promise((resolve, reject) => {
