@@ -1,0 +1,1 @@
+export {MadminPages} from './MadminPages'

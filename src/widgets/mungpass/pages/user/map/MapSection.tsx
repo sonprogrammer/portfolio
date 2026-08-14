@@ -1,0 +1,77 @@
+'use client'
+
+
+import { LocateFixed, RefreshCw } from "lucide-react";
+import { memo, useMemo } from "react";
+import dynamic from "next/dynamic";
+
+import { useGetPartnerShops } from "@/features/mungpass/shop/model/useGetPartnerShops";
+import { Bound, Coords, KakaoPlace } from "@/entities/mungpass/shops/model/types";
+import { MapLoading } from "@/widgets/mungpass/pages/user/map/MapLoading";
+
+
+interface MapSectionProps {
+  center: Coords;
+  places: KakaoPlace[];
+  onMarkerClick: (place: KakaoPlace) => void;
+  showRefreshBtn: boolean;
+  onBoundChange: (bound: Bound) => void;
+  onRefresh: () => void;
+  onMyLocation: () => void;
+  keyword: string;
+}
+
+const MapContainer = dynamic(() => import('./MapContainer').then(mod => mod.MapContainer), {
+  ssr: false,
+  loading: () => (<MapLoading message="지도 로딩중" />)
+})
+
+function MapSection({ center, places, showRefreshBtn, onMarkerClick, onBoundChange, onRefresh, onMyLocation }: MapSectionProps) {
+
+  const { data: partners } = useGetPartnerShops(places)
+
+  const refinedPlaces = useMemo(() => {
+    const partnerIdSet = new Set(partners?.map(p => p.kakao_place_id))
+    return places.map(place => ({
+      ...place,
+      isPartner: partnerIdSet.has(place.id)
+    }))
+  }, [partners, places])
+  return (
+    <div className="relative">
+
+      <MapContainer
+        center={center}
+        places={refinedPlaces}
+        onMarkerClick={onMarkerClick}
+        onBoundChange={onBoundChange}
+      />
+
+      {showRefreshBtn && (
+        <>
+          <button
+            onClick={onMyLocation}
+            className='absolute top-10 right-10 z-10 bg-orange-400 p-1 rounded-lg cursor-pointer flex items-center justify-center'
+            aria-label='현재위치로 이동'
+          >
+            <LocateFixed />
+          </button>
+          <button
+            onClick={onRefresh}
+            className='absolute top-10 left-1/2 -translate-x-1/2 z-40 bg-white/90 
+                backdrop-blur-sm px-4 py-2 rounded-full shadow-xl border-2 border-orange-500
+                text-orange-600 font-black text-xs flex items-center gap-2 animate-in slide-in-from-top-2
+                hover:scale-105 active:scale-95 transition-all
+                '
+            aria-label='현 지도 지역내 검색'
+          >
+            <RefreshCw className="w-3 h-3" /> 이 지역 내 재검색
+          </button>
+        </>
+      )}
+
+    </div>
+  )
+}
+
+export default memo(MapSection)

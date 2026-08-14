@@ -1,0 +1,39 @@
+'use client'
+
+import { VC_NAV_ITEMS } from "@/shared/config/vc/vc-nav"
+import { useVcNavStore } from "@/features/vc/nav/model"
+import { useShallow } from "zustand/shallow"
+
+export function VcNav() {
+  const { activePage, setActivePage } = useVcNavStore(useShallow(
+    (state) => ({
+      activePage: state.activePage,
+      setActivePage: state.setActivePage
+    })
+  ))
+
+  return (
+    <nav className="flex rounded-xl border border-gray-700 bg-gray-900 p-1">
+      {VC_NAV_ITEMS.map((item) => {
+        const isActive = activePage === item.path;
+
+        return (
+
+          <button
+            key={item.path}
+            type="button"
+            onClick={() => setActivePage(item.path)}
+            className={`min-w-24 rounded-lg px-5 py-2 text-sm font-semibold transition ${isActive
+              ? 'bg-indigo-600 text-white'
+              : 'text-gray-400 hover:bg-gray-800 hover:text-white'
+              }`}
+          >
+            {item.label}
+          </button>
+
+        );
+      })}
+      
+    </nav>
+  )
+}

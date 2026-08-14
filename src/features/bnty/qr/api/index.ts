@@ -1,0 +1,2 @@
+
+export { QrCheckIn} from './QrCheckIn'

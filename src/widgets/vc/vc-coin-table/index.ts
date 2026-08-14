@@ -1,0 +1,1 @@
+export { CoinMarketTable} from './CoinMarketTable'

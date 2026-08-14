@@ -1,0 +1,1 @@
+export { RecommendFoodItem } from './RecommendFoodItem'

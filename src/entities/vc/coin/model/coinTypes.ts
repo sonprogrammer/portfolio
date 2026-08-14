@@ -1,0 +1,31 @@
+export interface VcTicker {
+  market: string;
+
+  koreanName: string;
+  englishName: string;
+
+  tradePrice: number; //현재가
+  openingPrice: number;
+  highPrice: number;
+  lowPrice: number;
+
+  signedChangePrice: number;
+  signedChangeRate: number;
+
+  accTradePrice24h: number;
+  accTradeVolume24h: number;
+
+  timestamp: number;
+}
+
+// ! 아래는 vc프로젝트에서 썻던 타입임
+export interface PriceData {
+    prev_closing_price: number;
+    trade_price: number; // 현재가
+    change_rate: number; // 전일 대비 퍼센트
+    acc_price: number; // 거래대금 - 원래이름 아닌데 내가 바꿔놈
+    change_price: number; // 전일 대비 가격 변동
+    trade_volume: number; // 거래량
+    high_price: number; // 고가
+    low_price: number; // 저가
+  }
