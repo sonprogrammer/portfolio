@@ -17,25 +17,25 @@ export function ProjectOverview() {
   return (
     <section
       id="projects"
-      className="bg-white px-6 py-20 dark:bg-zinc-950"
+      className="px-6 py-20 bg-zinc-950"
     >
       <div className="mx-auto w-full max-w-7xl">
         <div className="max-w-3xl">
 
-          <h2 className="mt-4 text-3xl font-black tracking-tight text-zinc-950 dark:text-white sm:text-4xl">
+          <h2 className="mt-4 text-3xl font-black tracking-tight text-white sm:text-4xl">
             기술 이름보다,
             <br />
             어떤 문제를 어떻게 해결했는지 보여드립니다.
           </h2>
 
-          <p className="mt-5 text-base leading-7 text-zinc-600 dark:text-zinc-400">
+          <p className="mt-5 text-base leading-7 text-zinc-400">
             각 프로젝트에서 실제 기능을 직접 체험하고 서비스 아키텍처,
             기술 선택과 트러블슈팅 과정을 확인할 수 있습니다.
           </p>
         </div>
 
         <article
-          className={`group relative mt-10 overflow-hidden rounded-3xl border border-zinc-200 bg-zinc-50 p-7 transition-all duration-300 hover:bg-white hover:shadow-xl dark:border-zinc-800 dark:bg-zinc-900/50 dark:hover:bg-zinc-900 ${featuredProject.theme.border}`}
+          className={`group relative mt-10 overflow-hidden rounded-3xl border  p-7 transition-all duration-300 hover:shadow-xl border-zinc-800 bg-zinc-900/50 hover:bg-zinc-900 ${featuredProject.theme.border}`}
         >
           <div
             aria-hidden="true"
@@ -64,15 +64,15 @@ export function ProjectOverview() {
                 </div>
               </div>
 
-              <h3 className="mt-7 text-4xl font-black tracking-tight text-zinc-950 dark:text-white">
+              <h3 className="mt-7 text-4xl font-black tracking-tight text-white">
                 {featuredProject.name}
               </h3>
 
-              <p className="mt-3 text-lg font-semibold text-zinc-700 dark:text-zinc-200">
+              <p className="mt-3 text-lg font-semibold  text-zinc-200">
                 {featuredProject.summary}
               </p>
 
-              <p className="mt-4 max-w-2xl text-sm leading-7 text-zinc-500 dark:text-zinc-400">
+              <p className="mt-4 max-w-2xl text-sm leading-7  text-zinc-400">
                 {featuredProject.description}
               </p>
 
@@ -80,7 +80,7 @@ export function ProjectOverview() {
                 {featuredProject.technologies.map(technology => (
                   <span
                     key={technology}
-                    className="rounded-full border border-zinc-200 bg-white px-3 py-1.5 text-xs font-semibold text-zinc-600 dark:border-zinc-700 dark:bg-zinc-950 dark:text-zinc-300"
+                    className="rounded-full border px-3 py-1.5 text-xs font-semibold border-zinc-700 bg-zinc-950 text-zinc-300"
                   >
                     {technology}
                   </span>
@@ -88,7 +88,7 @@ export function ProjectOverview() {
               </div>
             </div>
 
-            <div className="rounded-2xl border border-zinc-200 bg-white p-5 dark:border-zinc-800 dark:bg-zinc-950">
+            <div className="rounded-2xl border  p-5 border-zinc-800 bg-zinc-950">
               <p className="text-xs font-bold text-zinc-400">
                 KEY RESULT
               </p>
@@ -99,16 +99,16 @@ export function ProjectOverview() {
                 {featuredProject.metric}
               </strong>
 
-              <p className="mt-1 text-sm font-semibold text-zinc-700 dark:text-zinc-300">
+              <p className="mt-1 text-sm font-semibold text-zinc-300">
                 {featuredProject.metricLabel}
               </p>
 
-              <div className="mt-5 border-t border-zinc-200 pt-5 dark:border-zinc-800">
+              <div className="mt-5 border-t pt-5 border-zinc-800">
                 <ul className="space-y-2">
                   {featuredProject.highlights.map(highlight => (
                     <li
                       key={highlight}
-                      className="text-sm text-zinc-500 dark:text-zinc-400"
+                      className="text-sm text-zinc-400"
                     >
                       · {highlight}
                     </li>
@@ -118,7 +118,7 @@ export function ProjectOverview() {
 
               <Link
                 href={featuredProject.link}
-                className={`flex items-center justify-between border-t border-zinc-200 pt-5 text-sm font-black dark:border-zinc-800 ${featuredProject.theme.text}`}
+                className={`flex items-center justify-between border-t pt-5 text-sm font-black border-zinc-800 ${featuredProject.theme.text}`}
               >
                 <span>프로젝트 상세 보기</span>
 
@@ -138,7 +138,7 @@ export function ProjectOverview() {
             return (
               <article
                 key={project.id}
-                className={`group flex h-full flex-col rounded-3xl border border-zinc-200 bg-zinc-50 p-6 transition-all duration-300 hover:-translate-y-1 hover:bg-white hover:shadow-lg dark:border-zinc-800 dark:bg-zinc-900/50 dark:hover:bg-zinc-900 ${project.theme.border}`}
+                className={`group flex h-full flex-col rounded-3xl border p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg border-zinc-800 bg-zinc-900/50 hover:bg-zinc-900 ${project.theme.border}`}
               >
                 <div className="flex items-start justify-between gap-4">
                   <div
@@ -160,19 +160,19 @@ export function ProjectOverview() {
                   </div>
                 </div>
 
-                <h3 className="mt-6 text-2xl font-black text-zinc-950 dark:text-white">
+                <h3 className="mt-6 text-2xl font-black text-white">
                   {project.name}
                 </h3>
 
-                <p className="mt-2 min-h-12 text-sm font-semibold leading-6 text-zinc-700 dark:text-zinc-300">
+                <p className="mt-2 min-h-12 text-sm font-semibold leading-6 text-zinc-300">
                   {project.summary}
                 </p>
 
-                <p className="mt-4 text-sm leading-6 text-zinc-500 dark:text-zinc-400">
+                <p className="mt-4 text-sm leading-6 text-zinc-text-zinc-400">
                   {project.description}
                 </p>
 
-                <div className="mt-6 rounded-2xl border border-zinc-200 bg-white p-4 dark:border-zinc-800 dark:bg-zinc-950">
+                <div className="mt-6 rounded-2xl border p-4 border-zinc-800 bg-zinc-950">
                   <p className="text-[11px] font-bold uppercase tracking-wider text-zinc-400">
                     Key Result
                   </p>
@@ -192,7 +192,7 @@ export function ProjectOverview() {
                   {project.technologies.slice(0, 4).map(technology => (
                     <span
                       key={technology}
-                      className="rounded-full bg-white px-3 py-1 text-xs font-medium text-zinc-500 dark:bg-zinc-950 dark:text-zinc-400"
+                      className="rounded-full px-3 py-1 text-xs font-medium bg-zinc-950 text-zinc-400"
                     >
                       {technology}
                     </span>
@@ -202,7 +202,7 @@ export function ProjectOverview() {
                 <div className="mt-auto pt-7">
                   <Link
                     href={project.link}
-                    className={`flex items-center justify-between border-t border-zinc-200 pt-5 text-sm font-black dark:border-zinc-800 ${project.theme.text}`}
+                    className={`flex items-center justify-between border-t pt-5 text-sm font-black border-zinc-800 ${project.theme.text}`}
                   >
                     <span>프로젝트 상세 보기</span>
 

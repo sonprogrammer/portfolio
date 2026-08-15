@@ -7,8 +7,8 @@ export function Scroll({to}: {to: string}) {
             >
                 <span>Scroll</span>
 
-                <span className="relative h-10 w-px overflow-hidden bg-zinc-300 dark:bg-zinc-700">
-                    <span className="absolute left-0 top-0 h-4 w-px animate-[scrollDown_1.6s_ease-in-out_infinite] bg-zinc-950 dark:bg-white" />
+                <span className="relative h-10 w-px overflow-hidden bg-zinc-700">
+                    <span className="absolute left-0 top-0 h-4 w-px animate-[scrollDown_1.6s_ease-in-out_infinite] bg-white" />
                 </span>
             </a>
         </div>

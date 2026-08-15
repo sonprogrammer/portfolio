@@ -35,8 +35,8 @@ export function PortfolioTabs({
                 relative px-3 py-3 text-sm transition-colors
                 ${
                   isActive
-                    ? "font-bold text-zinc-950 dark:text-white"
-                    : "font-medium text-zinc-500 hover:text-zinc-950 dark:text-zinc-400 dark:hover:text-white"
+                    ? "font-bold text-white"
+                    : "font-medium text-zinc-400 hover:text-white"
                 }
               `}
             >
@@ -44,8 +44,8 @@ export function PortfolioTabs({
 
               <span
                 className={`
-                  absolute inset-x-3 bottom-1 h-0.5 bg-zinc-950 transition-transform duration-200
-                  dark:bg-white
+                  absolute inset-x-3 bottom-1 h-0.5  transition-transform duration-200
+                  bg-white
                   ${isActive ? "scale-x-100" : "scale-x-0"}
                 `}
               />

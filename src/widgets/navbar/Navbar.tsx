@@ -70,14 +70,14 @@ export function Navbar() {
         border-b px-6 transition-all duration-300 sm:px-10
         ${
           scrolled
-            ? "border-zinc-200/80 bg-white/85 backdrop-blur-md dark:border-zinc-800/80 dark:bg-zinc-950/85"
-            : "border-transparent bg-white dark:bg-zinc-950"
+            ? "backdrop-blur-md border-zinc-800/80 bg-zinc-950/85"
+            : "border-transparent bg-zinc-950"
         }
       `}
     >
       <div className="mx-auto flex w-full max-w-7xl items-center justify-between gap-10 py-4">
         <div className="shrink-0">
-          <p className="text-sm font-black tracking-tight text-zinc-950 dark:text-white">
+          <p className="text-sm font-black tracking-tight text-white">
             손영진
           </p>
 
