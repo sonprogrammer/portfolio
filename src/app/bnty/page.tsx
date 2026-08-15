@@ -34,6 +34,7 @@ export default function BntyPage() {
             title="BNTY 기능 체험"
             description="트레이너와 회원 역할을 전환하며 BNTY의 주요 기능과 데이터 흐름을 직접 체험해보세요."
             theme="blue"
+            coldStartNotice
           >
             <div className="border border-neutral-700 bg-neutral-900 rounded-[50px] p-8  shadow-2xl shadow-black/40">
 

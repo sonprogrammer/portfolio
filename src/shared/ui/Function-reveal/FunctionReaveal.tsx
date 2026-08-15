@@ -1,13 +1,9 @@
 'use client'
 
 import { ReactNode, useState } from 'react'
-import {
-    ChevronDown,
-    ChevronUp,
-    Play,
-    Sparkles
-} from 'lucide-react'
+import { ChevronDown, ChevronUp, Play, Sparkles } from 'lucide-react'
 import { themeMap } from '@/shared/config/all/themeMap'
+import { toast } from 'sonner'
 
 type FeatureRevealTheme =
     | 'orange'
@@ -21,6 +17,7 @@ interface FeatureRevealProps {
     description: string
     theme?: FeatureRevealTheme
     children: ReactNode
+    coldStartNotice?: boolean
 }
 
 
@@ -29,9 +26,17 @@ export function FunctionReveal({
     title,
     description,
     theme = 'orange',
-    children
+    children,
+    coldStartNotice
 }: FeatureRevealProps) {
     const [isOpen, setIsOpen] = useState(false)
+
+    const handleOpen = () => {
+        if(!isOpen && coldStartNotice){
+            toast.info('무료 서버의 Cold Start로 인해 첫 연결 시 잠시 시간이 걸릴 수 있습니다.')
+        }
+        setIsOpen(true)
+    }
 
     const styles = themeMap[theme]
 
@@ -83,7 +88,7 @@ export function FunctionReveal({
 
                     <button
                         type="button"
-                        onClick={() => setIsOpen(prev => !prev)}
+                        onClick={isOpen ? () => setIsOpen(false): handleOpen}
                         className={`group cursor-pointer flex shrink-0 items-center gap-2 rounded-xl px-4 py-2.5 text-sm font-bold transition-all duration-200 active:scale-95 ${isOpen
                             ? 'border border-gray-800 bg-gray-900 text-gray-300 hover:bg-gray-800'
                             : `${styles.button} text-white shadow-lg`
