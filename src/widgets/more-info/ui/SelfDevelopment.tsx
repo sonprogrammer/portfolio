@@ -25,7 +25,7 @@ export function SelfDevelopment() {
                 description="개발 역량 외에도 장기적인 성장을 위해 꾸준히 학습하고 있는 영역입니다."
             />
 
-            <div className="mt-5 px-4 grid gap-5 md:grid-cols-2 sm:px-10">
+            <div className="mt-5 px-1 grid gap-5 md:grid-cols-2 sm:px-10">
                 {learningItems.map(item => {
                     const Icon = item.icon;
 

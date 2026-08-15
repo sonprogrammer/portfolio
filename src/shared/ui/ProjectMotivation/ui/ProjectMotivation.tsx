@@ -14,7 +14,7 @@ export function ProjectMotivation({
     const style = themeMap[theme];
 
     return (
-        <section className="px-20 pb-10">
+        <section className="lg:px-20 pb-10">
             <div className="mx-auto w-full max-w-7xl">
                 <div
                     className={`rounded-3xl border border-zinc-800 bg-zinc-900/40 p-6 sm:p-8 ${style.border}`}

@@ -60,7 +60,7 @@ const sections = [
 
 export function LabHero() {
   return (
-    <section className="relative flex min-h-[calc(100svh-72px)] items-start px-6 sm:px-10">
+    <section className="relative flex min-h-[calc(100svh-72px)] items-start px-0 sm:px-10">
       <div className="mx-auto grid w-full max-w-7xl gap-14 lg:grid-cols-[1fr_0.8fr] lg:items-center lg:gap-20">
 
         <div>

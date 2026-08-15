@@ -31,7 +31,7 @@ export function TroubleshootingCard({
 
   const style = themeMap[theme];
   return (
-    <article className={`overflow-hidden rounded-[2.5rem] border ${style.border} bg-zinc-900/60 backdrop-blur-md shadow-xl transition-all duration-300 hover:border-zinc-700`}>
+    <article className="overflow-hidden rounded-[2.5rem] border border-zinc-800 bg-zinc-900/60 backdrop-blur-md shadow-xl transition-all duration-300 hover:border-zinc-700">
       <button
         type="button"
         onClick={() => setIsOpen(!isOpen)}
@@ -68,21 +68,22 @@ export function TroubleshootingCard({
                 icon={CircleAlert}
                 label="PROBLEM"
                 description={problem}
-                theme="red"
+                variant="red"
+
               />
 
               <TroubleshootingColumn
                 icon={Search}
                 label="REASON"
                 description={reason}
-                theme="blue"
+                variant="blue"
               />
 
               <TroubleshootingColumn
                 icon={Wrench}
                 label="SOLUTION"
                 description={solution}
-                theme="emerald"
+                variant="emerald"
               />
             </div>
           </div>

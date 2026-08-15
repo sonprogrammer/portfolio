@@ -6,7 +6,7 @@ import { ArchitectureCard } from "@/shared/ui/project-section-ui";
 
 export function MingleArchitecture() {
   return (
-    <div className="grid items-start gap-8 sm:px-20 lg:grid-cols-2">
+    <div className="grid items-start gap-8 sm:px-5 md:px-20 lg:px-10 lg:grid-cols-2">
       {mingleArchitecture.map(item => (
         <ArchitectureCard
           key={item.title}

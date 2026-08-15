@@ -29,7 +29,7 @@ export default function BntyPage() {
           description="*최소한의 기능 테스트를 위해 실제 서비스와 일부 다를 수있음을 미리 알려드립니다."
         />
 
-        <div className="px-10">
+        <div className="px-2">
           <FunctionReveal
             title="BNTY 기능 체험"
             description="트레이너와 회원 역할을 전환하며 BNTY의 주요 기능과 데이터 흐름을 직접 체험해보세요."
@@ -70,7 +70,7 @@ export default function BntyPage() {
           title="서비스 아키텍처 & 데이터 흐름"
           description="BNTY의 사용자 흐름부터 REST API, 실시간 통신, 데이터 저장까지 전체 서비스 구조를 정리했습니다."
         />
-        <div className="grid gap-8 px-10 lg:grid-cols-2 sm:px-20">
+        <div className="grid gap-8 px-5 lg:grid-cols-2 md:px-10 xl:px-20">
           <div className="overflow-hidden rounded-3xl border bg-card shadow-sm">
             <div className="border-b px-6 py-5">
               <h3 className="font-bold">
@@ -111,7 +111,7 @@ export default function BntyPage() {
           description="BNTY의 화면 구성, 데이터 관리, 백엔드와 실시간 통신에 사용한 기술을 역할별로 정리했습니다."
         />
 
-        <div className="grid gap-5 sm:grid-cols-2 xl:grid-cols-4 sm:px-20">
+        <div className="grid gap-5 sm:grid-cols-2 xl:grid-cols-4 px-5 md:px-10 lg:px-20">
           {technologyGroups.map((group) => (
             <TechnologyCard key={group.title} theme="blue" {...group} />
           ))}
@@ -127,7 +127,7 @@ export default function BntyPage() {
           description="채팅 개발 과정에서 발생한 문제 및 초기 로딩 속도 저하 문제를 분석하고 구조적으로 개선했습니다."
         />
 
-        <div className="space-y-6 sm:px-20">
+        <div className="space-y-6 px-5 md:px-10 lg:px-20">
           {troubleshootingItems.map((item, index) => (
             <TroubleshootingCard
               key={item.title}

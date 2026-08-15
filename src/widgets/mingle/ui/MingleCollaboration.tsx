@@ -34,71 +34,73 @@ const collaborationItems = [
 
 export function MingleCollaboration() {
   return (
-    <div className="px-4 sm:px-20">
-      <div className="overflow-hidden rounded-[2.5rem] border border-zinc-800 bg-zinc-900/60 backdrop-blur-md shadow-xl">
+    <div className="px-4 sm:px-5 md:px-20 lg:px-10">
+      <div className="overflow-hidden rounded-4xl border border-zinc-800 bg-zinc-900/60 shadow-xl backdrop-blur-md sm:rounded-[2.5rem]">
 
-        <div className="grid gap-px bg-zinc-800/80 md:grid-cols-3">
-          <div className="bg-zinc-950/40 p-6 sm:p-8 backdrop-blur-md">
+
+        <div className="grid gap-px bg-zinc-800/80 grid-cols-3">
+          <div className="bg-zinc-950/40 p-5 backdrop-blur-md sm:p-6 lg:p-8">
             <p className="text-xs font-black uppercase tracking-[0.14em] text-zinc-400">
               TEAM
             </p>
 
-            <strong className="mt-3 block text-3xl font-extrabold text-white tracking-tight">
+            <strong className="mt-3 block text-2xl font-extrabold tracking-tight text-white sm:text-3xl">
               5명
             </strong>
 
-            <p className="mt-1 text-sm font-medium text-zinc-400">
+            <p className="mt-1 text-xs font-medium text-zinc-400 sm:text-sm">
               최종 팀 구성
             </p>
           </div>
 
-          <div className="bg-zinc-950/40 p-6 sm:p-8 backdrop-blur-md">
+          <div className="bg-zinc-950/40 p-5 backdrop-blur-md sm:p-6 lg:p-8">
             <p className="text-xs font-black uppercase tracking-[0.14em] text-violet-400">
               FRONTEND
             </p>
 
-            <strong className="mt-3 block text-3xl font-extrabold text-white tracking-tight">
+            <strong className="mt-3 block text-2xl font-extrabold tracking-tight text-white sm:text-3xl">
               3명
             </strong>
 
-            <p className="mt-1 text-sm font-medium text-zinc-400">
+            <p className="mt-1 text-xs font-medium text-zinc-400 sm:text-sm">
               본인 포함
             </p>
           </div>
 
-          <div className="bg-zinc-950/40 p-6 sm:p-8 backdrop-blur-md">
+          <div className="bg-zinc-950/40 p-5 backdrop-blur-md sm:p-6 lg:p-8">
             <p className="text-xs font-black uppercase tracking-[0.14em] text-zinc-400">
               BACKEND
             </p>
 
-            <strong className="mt-3 block text-3xl font-extrabold text-white tracking-tight">
+            <strong className="mt-3 block text-2xl font-extrabold tracking-tight text-white sm:text-3xl">
               2명
             </strong>
 
-            <p className="mt-1 text-sm font-medium text-zinc-400">
+            <p className="mt-1 text-xs font-medium text-zinc-400 sm:text-sm">
               API 및 서버 개발
             </p>
           </div>
         </div>
 
-        <div className="grid gap-4 border-t border-zinc-800/80 p-6 md:grid-cols-2 lg:p-8">
+
+        <div className="grid gap-4 border-t border-zinc-800/80 p-5 sm:p-6 md:grid-cols-2 lg:p-8">
           {collaborationItems.map(item => {
             const Icon = item.icon;
 
             return (
               <div
                 key={item.title}
-                className="rounded-2xl border border-zinc-800/80 bg-zinc-950/40 p-6 backdrop-blur-md transition-colors hover:border-zinc-700"
+                className="rounded-2xl border border-zinc-800/80 bg-zinc-950/40 p-5 backdrop-blur-md transition-colors hover:border-zinc-700 sm:p-6"
               >
-                <div className="flex size-11 items-center justify-center rounded-xl border border-violet-500/20 bg-violet-500/10 text-violet-400 shadow-inner">
+                <div className="flex size-10 items-center justify-center rounded-xl border border-violet-500/20 bg-violet-500/10 text-violet-400 shadow-inner sm:size-11">
                   <Icon size={18} />
                 </div>
 
-                <h3 className="mt-5 text-base font-extrabold text-white tracking-tight">
+                <h3 className="mt-4 text-base font-extrabold tracking-tight text-white sm:mt-5">
                   {item.title}
                 </h3>
 
-                <p className="mt-2 text-xs sm:text-sm font-medium leading-6 text-zinc-300">
+                <p className="mt-2 text-xs font-medium leading-6 text-zinc-300 sm:text-sm">
                   {item.description}
                 </p>
               </div>
@@ -106,8 +108,9 @@ export function MingleCollaboration() {
           })}
         </div>
 
-        <div className="border-t border-zinc-800/80 bg-zinc-950/40 px-6 py-5 lg:px-8">
-          <p className="text-xs sm:text-sm font-medium leading-6 text-zinc-400">
+
+        <div className="border-t border-zinc-800/80 bg-zinc-950/40 px-5 py-5 sm:px-6 lg:px-8">
+          <p className="text-xs font-medium leading-6 text-zinc-400 sm:text-sm">
             프로젝트는 초기 6인으로 시작했으며 진행 중 팀 구성 변경 이후
             최종 5인이 개발을 이어가며 프로젝트를 완료했습니다.
           </p>

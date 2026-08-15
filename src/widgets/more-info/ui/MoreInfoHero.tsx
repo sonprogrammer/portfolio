@@ -1,8 +1,9 @@
+'use client'
 import { Scroll } from "@/shared/ui/animation";
 import { EmailCopyBtn } from "@/shared/ui/buttons";
 import { FileText } from "lucide-react";
 import { SiGithub } from 'react-icons/si';
-
+import Image from 'next/image'
 
 const quickProfile = [
     {
@@ -28,20 +29,35 @@ const quickProfile = [
 ];
 
 export function MoreInfoHero() {
-    
-    
-    
+
+
+
     return (
-        <section className="relative flex min-h-[calc(100svh-72px)] items-start mt-10 px-6 border-zinc-900 sm:px-10">
+        <section className="relative flex min-h-[calc(100svh-72px)] items-start mt-10 px-0 border-zinc-900 sm:px-10">
             <div className="mx-auto grid w-full max-w-7xl gap-14 lg:grid-cols-[1fr_0.72fr] lg:items-center lg:gap-20">
                 <div>
-                    <h1 className="mt-5 text-4xl font-black tracking-tight text-white sm:text-6xl">
-                        손영진
-                    </h1>
+                    <div className="flex gap-5">
 
-                    <p className="mt-3 text-lg font-semibold text-purple-400">
-                        Frontend Developer
-                    </p>
+                        <div className="relative size-28 overflow-hidden rounded-3xl border border-zinc-800 bg-zinc-900 shadow-xl sm:size-32">
+                            <Image
+                                src="/photo.png"
+                                alt="손영진 프로필"
+                                fill
+                                className="object-cover"
+                                priority
+                            />
+                        </div>
+                        <div className="flex flex-col items-start">
+
+                            <h1 className="mt-5 text-4xl font-black tracking-tight text-white sm:text-6xl">
+                                손영진
+                            </h1>
+
+                            <p className="mt-3 text-lg font-semibold text-purple-400">
+                                Frontend Developer
+                            </p>
+                        </div>
+                    </div>
 
                     <p className="mt-7 max-w-2xl text-base leading-8 text-zinc-300">
                         프론트엔드 개발을 중심으로 프로젝트를 직접 설계하고 구현하며,

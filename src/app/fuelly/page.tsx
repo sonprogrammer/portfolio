@@ -27,7 +27,7 @@ export default function FuellyPage() {
           title="핵심 기능"
           description="*최소한의 기능 테스트를 위해 실제 서비스와 일부 다를 수있음을 미리 알려드립니다."
         />
-        <div className="px-10">
+        <div className="px-2">
           <FunctionReveal
             title="Fuelly 기능 체험"
             description="식단을 기록하고 남은 영양 정보를 확인하며 AI 기반 식단 추천을 체험해보세요."
@@ -53,7 +53,7 @@ export default function FuellyPage() {
           title="서비스 아키텍처 & 데이터 흐름"
           description="AI 영양 정보 처리부터 상태 관리, 인증과 데이터 저장까지 Fuelly의 주요 데이터 흐름을 정리했습니다."
         />
-        <div className="grid gap-8 sm:px-20 lg:grid-cols-2">
+        <div className="grid gap-8 px-5 md:px-10 xl:px-20 lg:grid-cols-2">
           <div className="overflow-hidden rounded-3xl border bg-card shadow-sm">
             <div className="border-b px-6 py-5">
               <h3 className="font-bold">
@@ -94,7 +94,7 @@ export default function FuellyPage() {
           description="Fuelly의 영양 관리 UI, 상태 관리, 인증과 AI 기능에 사용한 기술을 역할별로 정리했습니다."
 
         />
-        <div className="grid gap-5 sm:px-20 sm:grid-cols-2 xl:grid-cols-4">
+        <div className="grid gap-5 px-5 md:px-10 xl:px-20 sm:grid-cols-2 xl:grid-cols-4">
           {fuellyTechnologyGroups.map(group => (
             <TechnologyCard
               key={group.title}
@@ -114,7 +114,7 @@ export default function FuellyPage() {
           description="AI 응답 처리와 인증 과정에서 발생한 데이터 안정성, 응답 지연 및 동시 요청 문제를 분석하고 개선했습니다."
         />
 
-        <div className="space-y-6 sm:px-20">
+        <div className="space-y-6 px-5 md:px-10 xl:px-20 ">
           {fuellyTroubleshooting.map((item, index) => (
             <TroubleshootingCard
               key={item.title}

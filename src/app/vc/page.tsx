@@ -28,7 +28,7 @@ export default function VcPage() {
           title="핵심 기능"
           description="*최소한의 기능 테스트를 위해 실제 서비스와 일부 다를 수있음을 미리 알려드립니다."
         />
-        <div className="px-10">
+        <div className="px-2">
           <FunctionReveal
             title="Virtual Coin 기능 체험"
             description="실시간 코인 시세를 기반으로 매수·매도와 포트폴리오 변화를 직접 체험해보세요."
@@ -58,7 +58,7 @@ export default function VcPage() {
           description="Upbit API에서 전달되는 시세 데이터가 서버를 거쳐 클라이언트와 차트에 반영되는 전체 흐름을 정리했습니다."
 
         />
-        <div className="grid gap-8 sm:px-20 lg:grid-cols-2">
+        <div className="grid gap-8 px-5 md:px-10 xl:px-20 lg:grid-cols-2">
           <div className="overflow-hidden rounded-3xl border bg-card shadow-sm">
             <div className="border-b px-6 py-5">
               <h3 className="font-bold">
@@ -97,7 +97,7 @@ export default function VcPage() {
           description="Virtual Coin의 실시간 시세 처리, 상태 관리, 백엔드와 데이터 시각화에 사용한 기술을 역할별로 정리했습니다."
 
         />
-        <div className="grid gap-5 sm:px-20 sm:grid-cols-2 xl:grid-cols-4">
+        <div className="grid gap-5 px-5 md:px-10 xl:px-20 sm:grid-cols-2 xl:grid-cols-4">
           {vcTechnologyGroup.map(group => (
             <TechnologyCard
               key={group.title}
@@ -117,9 +117,8 @@ export default function VcPage() {
           description="실시간 시세 처리 과정에서 발생한 초기 로딩 지연, 렌더링 부하 및 외부 API 연동 문제를 분석하고 개선했습니다."
 
         />
-        <div className="px-10">
 
-          <div className="space-y-6 sm:px-10">
+          <div className="space-y-6 px-5 md:px-10 lg:px-20">
             {vcTroubleShooting.map((item, index) => (
               <TroubleshootingCard
                 key={item.title}
@@ -130,7 +129,6 @@ export default function VcPage() {
             ))}
           </div>
 
-        </div>
       </section>
 
     </div>

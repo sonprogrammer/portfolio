@@ -11,9 +11,9 @@ export function SectionHeader({
     description,
 }: SectionHeaderProps) {
     return (
-        <div className="flex items-start gap-4 pb-5">
+        <div className="flex items-start gap-4 pb-5 ">
             {number && (
-                <span className="flex size-11 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-sm font-black text-primary">
+                <span className="flex size-11 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-sm font-black text-primary ">
                     {number}
                 </span>
             )}

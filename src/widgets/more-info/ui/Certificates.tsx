@@ -28,7 +28,7 @@ export function Certificates() {
                 description="개발과 디지털 활용 역량을 확장하며 취득한 자격입니다."
             />
 
-            <div className="mt-5 px-10 grid gap-4 sm:grid-cols-2 sm:px-10">
+            <div className="mt-5 px-1 grid gap-4 sm:grid-cols-2 sm:px-10">
                 {certificates.map(item => {
                     const Icon = item.icon
 

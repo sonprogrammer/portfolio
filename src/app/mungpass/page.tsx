@@ -27,7 +27,7 @@ export default function MungpassPage() {
           title="핵심 기능"
           description="*최소한의 기능 테스트를 위해 실제 서비스와 일부 다를 수있음을 미리 알려드립니다."
         />
-        <div className="px-10">
+        <div className="px-2">
           <FunctionReveal
             title="MungPass 기능 체험"
             description="일반 사용자, 사장님, 관리자 역할을 전환하며 역할별 주요 기능과 서비스 흐름을 직접 체험해보세요."
@@ -68,7 +68,7 @@ export default function MungpassPage() {
           description="O2O 서비스의 주요 사용자 흐름과 운영 기능을 실제 구현 단위로 정리했습니다."
         />
 
-        <div className="grid gap-6 sm:px-20 lg:grid-cols-2">
+        <div className="grid gap-6 px-5 md:px-10 xl:px-20 lg:grid-cols-2">
           {mungImplementation.map((item, index) => (
             <ImplementationCard
               key={item.title}
@@ -88,7 +88,7 @@ export default function MungpassPage() {
           title="사용 기술"
           description="MungPass의 역할별 UI, 상태 관리, 인증과 데이터 처리 및 실시간 기능에 사용한 기술을 역할별로 정리했습니다."
         />
-        <div className="grid gap-5 sm:px-20 sm:grid-cols-2 xl:grid-cols-4">
+        <div className="grid gap-5 px-5 md:px-10 xl:px-20  sm:grid-cols-2 xl:grid-cols-4">
           {mungTechnologyGroup.map(group => (
             <TechnologyCard
               key={group.title}
@@ -108,7 +108,7 @@ export default function MungpassPage() {
           description="서비스 확장 과정에서 발생한 코드 복잡도와 AI API 반복 호출 문제를 구조적으로 개선했습니다."
         />
 
-        <div className="space-y-6 sm:px-20">
+        <div className="space-y-6 px-5 md:px-10 xl:px-20 ">
           {mungTroubleshooting.map((item, index) => (
             <TroubleshootingCard
               key={item.title}

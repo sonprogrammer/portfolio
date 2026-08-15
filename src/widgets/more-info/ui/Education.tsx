@@ -28,15 +28,15 @@ const bootcampItems = [
 
 export function Education() {
     return (
-        <section id="education">
+        <section id="education" className="scroll-mt-24">
             <SectionHeader
                 number="01"
                 title="Education"
                 description="전공 교육과 개발 부트캠프를 통해 소프트웨어와 웹 개발의 기반을 쌓았습니다."
             />
 
-            <div className="mt-5 space-y-6 px-4 sm:px-10">
-                {/* 대학교 카드 */}
+            <div className="mt-5 space-y-6 px-1 sm:px-10">
+
                 <article className="rounded-[2.5rem] border border-zinc-800 bg-zinc-900/60 p-6 sm:p-8 backdrop-blur-md shadow-xl transition-all duration-300 hover:border-zinc-700">
                     <div className="flex flex-col justify-between gap-6 sm:flex-row sm:items-start">
                         <div className="flex items-start gap-4">
@@ -71,7 +71,7 @@ export function Education() {
                     </div>
                 </article>
 
-                {/* 부트캠프 카드 */}
+
                 <article className="rounded-[2.5rem] border border-zinc-800 bg-zinc-900/60 p-6 sm:p-8 backdrop-blur-md shadow-xl transition-all duration-300 hover:border-zinc-700">
                     <div className="flex flex-col justify-between gap-6 sm:flex-row sm:items-start">
                         <div>
