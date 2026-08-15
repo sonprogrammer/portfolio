@@ -38,7 +38,7 @@ export const projects = [
         id: "fuelly",
         name: "Fuelly",
         projectType: "Personal Project",
-        category: "AI · AUTH",
+        category: "AI · HEALTH",
         summary:
             "AI 기반 개인 맞춤 영양 관리 서비스",
         description:
