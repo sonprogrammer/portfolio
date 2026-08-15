@@ -1,5 +1,8 @@
-import { ArrowDown, Code2, Sparkles } from "lucide-react";
+'use client'
+
+import { ArrowUpRight, ArrowDown, Code2, Sparkles } from "lucide-react";
 import { AnimationNum } from '@/shared/ui/animation'
+import Link from "next/link";
 
 const metrics = [
   {
@@ -7,12 +10,14 @@ const metrics = [
     suffix: '%',
     label: "LCP 개선",
     project: "BNTY",
+    color: 'text-blue-400'
   },
   {
     value: 80,
     suffix: '%',
     label: "초기 시세 로딩 단축",
     project: "Virtual Coin",
+    color: 'text-red-400'
   },
 
   {
@@ -20,6 +25,7 @@ const metrics = [
     suffix: '%',
     label: "AI API 호출 절감",
     project: "Mungpass",
+    color: 'text-orange-400'
   },
 ];
 
@@ -96,12 +102,14 @@ export function HomeHero() {
                     {metric.label}
                   </p>
 
-                  <p className="mt-1 text-xs text-zinc-200">
+                  <p className={`mt-1 text-xs  ${metric.color}`}>
                     {metric.project}
                   </p>
                 </div>
 
-                <strong className="min-w-18 text-right text-3xl font-black tabular-nums tracking-tight text-white">
+                <strong
+                  className={`min-w-18 text-right text-3xl font-black tabular-nums tracking-tight ${metric.color}`}
+                >
                   <AnimationNum
                     value={metric.value}
                     suffix={metric.suffix}
@@ -110,6 +118,37 @@ export function HomeHero() {
                 </strong>
               </div>
             ))}
+          </div>
+        </div>
+      </div>
+      <div className="mx-auto mt-16 w-full max-w-7xl border-t border-zinc-800/80 pt-10 sm:mt-20">
+        <div className="group flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6 rounded-[2.5rem] border border-zinc-800 bg-zinc-900/60 p-6 sm:p-8 backdrop-blur-md shadow-xl transition-all duration-300 hover:border-zinc-700">
+          <div className="space-y-2">
+            <span className="text-xs font-black uppercase tracking-[0.16em] text-purple-400">
+              Perspective
+            </span>
+            <h3 className="text-lg sm:text-xl font-extrabold text-white tracking-tight">
+              AI를 바라보는 개발자의 관점
+            </h3>
+          </div>
+
+          <div className="flex flex-col sm:flex-row sm:items-center gap-6 lg:gap-8">
+            <p className="max-w-2xl text-xs sm:text-sm font-medium leading-7 text-zinc-300">
+              AI를 대체재가 아닌 설계와 구현 역량을 확장하는 도구로 활용합니다.
+              변화하는 AI 시대를 위협으로 보기보다 새로운 도구를 빠르게 학습하고
+              제 역량에 결합해 더 나은 결과를 만드는 기회로 바라봅니다.
+            </p>
+
+            <Link
+              href="/lab#ai-development"
+              className="inline-flex shrink-0 items-center gap-1.5 text-xs font-extrabold text-purple-400 transition-colors hover:text-purple-300"
+            >
+              AI 활용 방식 자세히 보기
+              <ArrowUpRight
+                size={17}
+                className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+              />
+            </Link>
           </div>
         </div>
       </div>

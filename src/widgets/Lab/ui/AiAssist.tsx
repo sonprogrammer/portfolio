@@ -5,7 +5,7 @@ import { Bot, CheckCircle2, Network, Terminal } from "lucide-react";
 
 const aiUsage = [
     "프로젝트 아이디어와 요구사항 구체화",
-    "빠른 MVP 확인을 위한 UI 디자인 보조",
+    "대략적인 UI 방향을 정한 뒤 AI를 활용해 빠르게 MVP 화면 구체화",
     "코드 분석 및 반복 구현 작업 보조",
     "문제가 발생했을 때 원인과 해결 방향 논의",
     "필요한 경우 새로운 구현 방법과 선택지 탐색",
@@ -15,26 +15,24 @@ const agentWorkflow = [
     {
         icon: Terminal,
         title: "Codex + tmux",
-        description:
-            "tmux 환경에서 Codex를 사용하며 여러 작업을 한 화면에서 확인하고 있습니다.",
+        description: "tmux 환경에서 Codex를 사용하며 여러 작업을 한 화면에서 확인하고 있습니다.",
     },
     {
         icon: Network,
         title: "Role-based Agents",
-        description:
-            "작업에 따라 에이전트의 역할을 나누고 필요한 작업을 각각 전달하는 방식을 실험하고 있습니다.",
+        description: "작업에 따라 에이전트의 역할을 나누고 필요한 작업을 각각 전달하는 방식을 실험하고 있습니다.",
     },
     {
         icon: Bot,
         title: "Context Management",
-        description:
-            "세션과 컨텍스트를 어떻게 나눌지 고민하며 불필요한 토큰 사용을 줄이는 방법을 학습하고 있습니다.",
+        description: "세션과 컨텍스트를 어떻게 나눌지 고민하며 불필요한 토큰 사용을 줄이는 방법을 학습하고 있습니다.",
     },
 ];
 
+
 export function AiAssit() {
     return (
-       <section
+        <section
             id="ai-development"
             className="scroll-mt-24"
         >
@@ -44,7 +42,7 @@ export function AiAssit() {
                 description="AI에게 개발을 맡기기보다 직접 정한 방향과 설계를 기준으로 개발 과정의 생산성을 높이는 도구로 활용하고 있습니다."
             />
 
-            <div className="mt-8 grid items-start gap-6 lg:grid-cols-2 sm:px-10">
+            <div className="mt-8 grid items-stretch gap-6 lg:grid-cols-2 sm:px-10">
 
                 <div className="rounded-[2.5rem] border border-zinc-800 bg-zinc-900/60 p-6 text-zinc-100 shadow-xl backdrop-blur-md sm:p-8 transition-all duration-300 hover:border-zinc-700">
                     <div className="flex size-12 items-center justify-center rounded-2xl border border-purple-500/20 bg-purple-500/10 text-purple-400 shadow-inner">
@@ -149,31 +147,49 @@ export function AiAssit() {
             </div>
 
             <div className="mt-6 sm:px-10">
-                <div className="rounded-[2.5rem] border border-zinc-800 bg-zinc-900/60 p-6 sm:p-8 backdrop-blur-md shadow-xl transition-all duration-300 hover:border-zinc-700">
-                    <p className="text-xs font-black uppercase tracking-[0.16em] text-purple-400">
-                        My Perspective on AI
-                    </p>
+                <div className="relative overflow-hidden rounded-[2.5rem] border border-zinc-800 bg-zinc-900/60 p-6 sm:p-10 backdrop-blur-md shadow-xl transition-all duration-300 hover:border-zinc-700">
+                    <div className="flex items-center gap-3">
+                        <p className="text-xs font-black uppercase tracking-[0.16em] text-purple-400">
+                            My Perspective on AI
+                        </p>
+                    </div>
 
-                    <h3 className="mt-3 text-xl font-extrabold tracking-tight text-white">
-                        AI를 대체재보다
+                    <h3 className="mt-4 text-xl sm:text-2xl font-extrabold tracking-tight text-white leading-snug">
+                        AI를 대체재가 아닌,
                         <br />
-                        개발 역량을 확장하는 도구로 봅니다.
+                        <span className="text-purple-300">개발 역량을 확장하는 도구</span>로 정의합니다.
                     </h3>
 
-                    <div className="mt-5 max-w-5xl space-y-4">
+                    <div className="mt-6 rounded-2xl border border-purple-500/20 bg-purple-500/4 p-5 sm:p-6 backdrop-blur-md shadow-inner">
+                        <p className="text-sm sm:text-base font-semibold leading-relaxed text-purple-200/90">
+                            &ldquo;변화하는 환경 속에서 AI는 개발자의 입지를 위협하는 존재가 아니라, 설계와 구현의 한계를 넓혀주는 강력한 확장 도구입니다.&rdquo;
+                        </p>
+                    </div>
+
+                    <div className="mt-6 max-w-5xl space-y-4">
                         <p className="text-sm font-medium leading-7 text-zinc-300">
-                            강의를 통해 여러 기업이 AI를 실제 개발 프로세스와 생산성 향상에
-                            활용하는 사례를 접하면서 앞으로는 AI를 단순히 사용할 줄 아는 것보다
-                            개발 과정에 어떻게 적용하고 통제할 수 있는지가 중요해질 것이라고
-                            생각했습니다.
+                            {'여러 기업이 AI를 실제 개발 프로세스와 생산성 향상에 활용하는 사례를 접하면서 앞으로는 AI를 단순히 사용할 줄 아는 것보다 '}
+                            <strong className="font-bold text-white">
+                                개발 과정에 어떻게 적용하고 통제할 수 있는지가 중요
+                            </strong>
+                            {' 해질 것이라고 생각했습니다.'}
                         </p>
 
                         <p className="text-sm font-medium leading-7 text-zinc-300">
-                            AI로 인해 개발자의 역량이 약해질 것을 걱정하기보다 오히려 기존의
-                            개발 역량을 확장할 수 있는 도구라고 생각합니다. 변화하는 환경에서
-                            기존 방식만 고수하기보다 새로운 도구를 빠르게 학습하고 제가 가진
-                            설계와 구현 역량에 결합해 더 나은 결과를 만드는 개발자가 되는 것을
-                            목표로 하고 있습니다.
+                            AI 도입으로 인해 개발자의 역량이 약화될 것을 우려하기보다
+                            새로운 도구를 빠르게 흡수하고 제가 가진 근본적인 아키텍처 설계 및 구현 역량과 결합하여
+                            <strong className="font-bold text-white">
+                                더 완성도 높은 가치를 만드는 개발자
+                            </strong>
+                            로 성장하는 것이 저의 핵심 목표입니다.
+                        </p>
+                    </div>
+
+                    <div className="mt-6 border-t border-zinc-800/80 pt-6">
+                        <p className="text-sm font-semibold leading-7 text-zinc-200">
+                            AI로 개발 속도와 구현 역량을 확장하되, 사용자가 서비스를
+                            이용하며 느끼는 감정과 맥락을 이해하고 이를 사용자 경험에
+                            녹여낼 수 있는 개발자가 되고 싶습니다.
                         </p>
                     </div>
                 </div>

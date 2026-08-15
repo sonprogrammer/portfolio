@@ -2,6 +2,7 @@
 
 import { PortfolioTabItem, PortfolioTabs } from "@/shared/ui/tabs";
 import { useEffect, useState } from "react";
+import Link from "next/link";
 
 const tabs: PortfolioTabItem[] = [
   {
@@ -76,7 +77,7 @@ export function Navbar() {
       `}
     >
       <div className="mx-auto flex w-full max-w-7xl items-center justify-between gap-10 py-4">
-        <div className="shrink-0">
+        <Link href={'/'} className="shrink-0">
           <p className="text-sm font-black tracking-tight text-white">
             손영진
           </p>
@@ -84,7 +85,7 @@ export function Navbar() {
           <p className="mt-0.5 text-xs font-medium text-zinc-400">
             Frontend Developer
           </p>
-        </div>
+        </Link>
 
         <PortfolioTabs items={tabs} />
       </div>
