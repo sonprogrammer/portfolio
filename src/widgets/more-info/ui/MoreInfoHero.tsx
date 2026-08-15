@@ -22,8 +22,8 @@ const quickProfile = [
     },
     {
         label: "Current Focus",
-        title: "Frontend Engineering",
-        description: "Architecture · Data Flow · Performance",
+        title: "Web Engineering & AI",
+        description: "Architecture · Data Flow · Performance · AI-assisted Development",
     },
 ];
 
