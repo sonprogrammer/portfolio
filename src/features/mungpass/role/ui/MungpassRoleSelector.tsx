@@ -41,7 +41,7 @@ export function MungpassRoleSelector({ role, onChange, noti }: MungpassRoleSelec
         <div className="flex flex-col items-center gap-2 justify-center pb-2">
 
 
-            <div className="grid grid-cols-3 gap-3">
+            <div className="grid w-full grid-cols-1  md:grid-cols-3 gap-2 md:gap-3">
                 {roleOptions.map(option => {
                     const isSelected = role === option.value
                     const notification = noti?.[option.value]
@@ -52,7 +52,7 @@ export function MungpassRoleSelector({ role, onChange, noti }: MungpassRoleSelec
                             key={option.value}
                             type="button"
                             onClick={() => handleRoleChange(option.value)}
-                            className={`group relative flex items-center justify-center rounded-2xl border p-4 text-sm font-semibold transition-all duration-300 ease-out cursor-pointer active:scale-[0.98]
+                            className={`group relative flex items-center justify-center rounded-2xl border p-2 md:p-4 text-[8px] sm:text-sm font-semibold transition-all duration-300 ease-out cursor-pointer active:scale-[0.98]
                             ${isSelected
                                     ? owner
                                         ? 'border-emerald-500 bg-emerald-500/15 text-emerald-400 shadow-lg shadow-emerald-500/10 ring-1 ring-emerald-500/50'

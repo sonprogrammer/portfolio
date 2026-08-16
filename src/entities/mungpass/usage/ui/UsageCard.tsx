@@ -17,10 +17,10 @@ export function UsageCard({
 }: UsageCardProps) {
   return (
     <div
-      className="group relative cursor-pointer bg-gray-900/60 backdrop-blur-md rounded-[2.5rem] p-6 border border-gray-800 shadow-xl transition-all duration-300 hover:border-orange-500/40 hover:bg-gray-900/90 hover:shadow-orange-500/5 active:scale-[0.98]"
+      className="group relative cursor-pointer bg-gray-900/60 backdrop-blur-md rounded-4xl p-6 border border-gray-800 shadow-xl transition-all duration-300 hover:border-orange-500/40 hover:bg-gray-900/90 hover:shadow-orange-500/5 active:scale-[0.98]"
     >
       <div className="flex items-start gap-4">
-        <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border border-orange-500/20 bg-orange-500/10 shadow-inner text-orange-400">
+        <div className="flex h-8 w-8 sm:h-12 sm:w-12 shrink-0 items-center justify-center rounded-2xl border border-orange-500/20 bg-orange-500/10 shadow-inner text-orange-400">
           {icon}
         </div>
 

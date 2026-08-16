@@ -52,7 +52,7 @@ export function UserFilters({
                     value={search}
                     onChange={event => onSearchChange(event.target.value)}
                     placeholder="회원 이름 검색"
-                    className="w-full rounded-xl border border-gray-800 bg-gray-900 py-3 pl-11 pr-4 text-sm font-semibold text-gray-200 outline-none transition placeholder:text-gray-600 focus:border-orange-500/50"
+                    className="w-full rounded-xl border border-gray-800 bg-gray-900 py-2 sm:py-3 pl-11 pr-4 text-sm font-semibold text-gray-200 outline-none transition placeholder:text-gray-600 focus:border-orange-500/50"
                 />
             </div>
 
@@ -62,7 +62,7 @@ export function UserFilters({
                         key={option.value}
                         type="button"
                         onClick={() => onUserTypeChange(option.value)}
-                        className={`rounded-xl px-4 py-2 text-sm font-bold transition ${
+                        className={`rounded-md sm:rounded-xl px-2 py-1 sm:px-4 sm:py-2 text-xs sm:text-sm font-bold transition ${
                             userType === option.value
                                 ? 'bg-orange-500 text-white'
                                 : 'bg-gray-900 text-gray-500 hover:text-gray-200'

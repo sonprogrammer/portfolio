@@ -16,7 +16,7 @@ export function RealtimeUsageTable({ items }: RealtimeUsageTableProps) {
                 <div className="flex items-center gap-2.5">
                     <div className="h-2 w-2 animate-pulse rounded-full bg-emerald-500 shadow-lg shadow-emerald-500/50" />
 
-                    <h3 className="font-extrabold text-gray-100 tracking-tight text-base">
+                    <h3 className="font-extrabold text-gray-100 tracking-tight text-sm sm:text-base">
                         현재 이용 현황
                     </h3>
                 </div>
@@ -44,7 +44,7 @@ export function RealtimeUsageTable({ items }: RealtimeUsageTableProps) {
                             className="flex items-center justify-between gap-4 px-6 py-4.5 transition-colors hover:bg-gray-800/30"
                         >
                             <div className="flex min-w-0 items-center gap-3.5">
-                                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl border border-orange-500/20 bg-orange-500/10 text-orange-400 shadow-inner">
+                                <div className="hidden sm:flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl border border-orange-500/20 bg-orange-500/10 text-orange-400 shadow-inner">
                                     <Dog className="h-5 w-5" />
                                 </div>
 

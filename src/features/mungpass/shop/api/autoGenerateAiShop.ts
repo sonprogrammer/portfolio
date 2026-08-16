@@ -17,7 +17,7 @@ export async function autoGenerateAiShop(): Promise<MAiShopRes> {
     }
 
     const res = await geminiAi.models.generateContent({
-        model: 'gemini-2.5-flash',
+        model: 'gemini-3.6-flash',
         contents: `
                 한국에 실제로 존재할 법한 가상의 애견카페 정보를 1개 생성해줘.
 

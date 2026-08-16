@@ -24,7 +24,7 @@ export function MuserUsages() {
             </header>
 
             <div className="flex-1 min-h-0 overflow-y-auto w-full mx-auto no-scrollbar">
-                <div className="p-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5  pb-24">
+                <div className="p-2 sm:p-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-5">
                     {isPending ? (
                         <div className="p-6 space-y-4">
                             <div className="animate-pulse bg-gray-900/60 border border-gray-800 rounded-3xl h-22 w-full backdrop-blur-md" />

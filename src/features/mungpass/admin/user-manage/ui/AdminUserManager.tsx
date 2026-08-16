@@ -3,11 +3,7 @@
 import { useMemo, useState } from 'react'
 import { Loader2 } from 'lucide-react'
 
-import {
-    MAdminShopStatusFilter,
-    MAdminUserTypeFilter,
-    useGetAllUsers
-} from '../model'
+import { MAdminShopStatusFilter, MAdminUserTypeFilter, useGetAllUsers } from '../model'
 
 import { UserFilters } from './UserFilters'
 import { AdminUserList } from './AdminUserList'
@@ -42,12 +38,7 @@ export function AdminUserManager() {
                 matchesShopStatus
             )
         })
-    }, [
-        users,
-        search,
-        userType,
-        shopStatus
-    ])
+    }, [users, search, userType, shopStatus])
 
     const handleUserTypeChange = (
         value: MAdminUserTypeFilter

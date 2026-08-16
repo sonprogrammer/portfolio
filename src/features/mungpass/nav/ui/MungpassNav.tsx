@@ -14,7 +14,7 @@ export function MungpassNav() {
         setRole: state.setRole
     })))
 
-    const { data: noti} = useGetRoleNotifications()
+    const { data: noti } = useGetRoleNotifications()
     useNotifRealtime()
 
     const owner = role === 'owner'
@@ -23,31 +23,38 @@ export function MungpassNav() {
 
     const navItems = mungpassNavItems[role]
     return (
-        <nav className="flex items-center justify-between border-b border-gray-800 px-5">
-            <div className="flex items-center gap-1">
-                {navItems.map((item) => {
-                    const isActive = activePage === item.id
+        <nav className="flex flex-col gap-3 border-b border-gray-800 px-3 sm:px-4 lg:flex-row lg:items-center lg:justify-between lg:gap-0 lg:px-5">
+            <div className="flex w-full items-center gap-1 overflow-x-auto lg:w-auto">
+                {navItems.map(item => {
+                    const isActive = activePage === item.id;
 
                     return (
                         <button
                             key={item.id}
                             type="button"
-                            onClick={() =>setActivePage(item.id)}
-                            className={`border-b-2 px-4 py-4 text-sm font-medium transition-colors 
-                                ${isActive
+                            onClick={() => setActivePage(item.id)}
+                            className={`shrink-0 border-b-2 px-3 py-3 text-xs font-medium transition-colors sm:px-4 sm:py-4 sm:text-sm
+            ${isActive
                                     ? owner
-                                        ? 'border-emerald-500 text-emerald-400'
-                                        : 'border-orange-500 text-orange-500'
-                                    : 'border-transparent text-gray-400 hover:text-white'
-                                }`}
+                                        ? "border-emerald-500 text-emerald-400"
+                                        : "border-orange-500 text-orange-500"
+                                    : "border-transparent text-gray-400 hover:text-white"
+                                }
+          `}
                         >
                             {item.label}
                         </button>
-                    )
+                    );
                 })}
             </div>
 
-            <MungpassRoleSelector role={role} noti={noti} onChange={setRole} />
+            <div className="w-full pb-3 lg:w-auto lg:pb-0">
+                <MungpassRoleSelector
+                    role={role}
+                    noti={noti}
+                    onChange={setRole}
+                />
+            </div>
         </nav>
     )
 }

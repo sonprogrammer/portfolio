@@ -13,14 +13,10 @@ export function MuserInquiry() {
 
     return (
         <>
-            <div>
+            <div className='pt-2'>
                 <h2 className="text-xl font-extrabold text-gray-100 tracking-tight">
                     관리자 문의 
                 </h2>
-
-                <p className="mt-1 text-xs text-gray-400">
-                    멍패스 이용 중 궁금한 내용을 문의해보세요.
-                </p>
 
                 <div className="mt-5 rounded-[2.5rem] border border-gray-800 bg-gray-900/60 p-6 shadow-xl backdrop-blur-md">
                     <div className="flex items-center gap-4">

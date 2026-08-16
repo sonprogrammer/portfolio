@@ -92,11 +92,11 @@ export function ProductManager({ shop }: ProductManagerProps) {
         <div className="space-y-5">
             <div className="flex items-center justify-between">
                 <div>
-                    <h2 className="text-xl font-extrabold text-gray-100">
+                    <h2 className="text-sm sm:text-xl font-extrabold text-gray-100">
                         상품 관리
                     </h2>
 
-                    <p className="mt-1 text-sm font-semibold text-gray-400">
+                    <p className="mt-1 text-xs sm:text-sm font-semibold text-gray-400">
                         회원이 이용할 수 있는 매장 상품을 관리합니다.
                     </p>
                 </div>
@@ -104,9 +104,9 @@ export function ProductManager({ shop }: ProductManagerProps) {
                     <button
                         type="button"
                         onClick={handleCreate}
-                        className="mt-5 cursor-pointer flex items-center gap-2 rounded-xl bg-emerald-500 px-4 py-2.5 text-sm font-bold text-white"
+                        className="flex items-center gap-2 rounded-xl bg-emerald-500 px-2 py-2 sm:px-4 sm:py-2.5 text-xs sm:text-sm font-bold text-white"
                     >
-                        <Plus className="h-4 w-4" />
+                        <Plus className="h-4 w-4 hidden sm:block" />
                         상품 등록
                     </button>
                 )}

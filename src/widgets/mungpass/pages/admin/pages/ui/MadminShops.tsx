@@ -2,7 +2,7 @@ import { ShopManageManager } from '@/features/mungpass/admin/shop-manage/ui'
 
 export function MadminShops() {
     return (
-        <div className="space-y-6">
+        <div className="space-y-6 pt-3">
             <div>
                 <h1 className="text-xl font-extrabold text-gray-100">
                     상점 관리

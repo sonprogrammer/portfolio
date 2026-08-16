@@ -36,7 +36,7 @@ export function MownerPages() {
   const page = activePage ?? 'dashboard'
 
   return (
-    <div className="p-5">
+    <div className="">
       {page === 'dashboard' && <MownerDashboard shop={shop}/>}
       {page === 'usage' && <MownerUsage shop={shop}/>}
       {page === 'sales' && <MownerChart shop={shop} />}

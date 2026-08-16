@@ -2,7 +2,7 @@ import { AdminUserManager } from '@/features/mungpass/admin/user-manage/ui'
 
 export function MadminUsers() {
     return (
-        <div className="space-y-6">
+        <div className="space-y-6 pt-3">
             <div>
                 <h1 className="text-xl font-extrabold text-gray-100">
                     회원 관리

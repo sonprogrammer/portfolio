@@ -58,7 +58,7 @@ export function SalesSummaryCard({ summary }: SalesSummaryCardProps) {
 
                     <p className="mt-1 text-lg font-extrabold text-gray-200">
                         {summary.topSalesDay
-                            ? `${summary.topSalesDay.label} · ${summary.topSalesDay.sales.toLocaleString()}원`
+                            ? `${summary.topSalesDay.label} - ${summary.topSalesDay.sales.toLocaleString()}원`
                             : '-'}
                     </p>
                 </div>

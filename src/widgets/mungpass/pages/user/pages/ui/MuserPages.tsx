@@ -14,10 +14,9 @@ export function MuserPages() {
   })))
 
   const page = activePage ?? 'home'
-  console.log('page', page)
 
   return (
-    <div className="p-5 ">
+    <div className="">
 
       {page === 'home' && <MuserHome />}
       {page === 'shops' && <MuserShops />}

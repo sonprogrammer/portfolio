@@ -15,7 +15,7 @@ export function MadminDashboard() {
 
     if (isPending) {
         return (
-            <div className="flex h-72 items-center justify-center">
+            <div className="flex h-72 items-center justify-center pt-3">
                 <Loader2 className="h-6 w-6 animate-spin text-orange-500" />
             </div>
         )
@@ -23,14 +23,14 @@ export function MadminDashboard() {
 
     if (isError || !data) {
         return (
-            <div className="rounded-2xl border border-red-500/20 bg-red-500/10 p-5 text-sm font-semibold text-red-400">
+            <div className="rounded-2xl border border-red-500/20 bg-red-500/10 p-5 text-sm font-semibold text-red-400 pt-3">
                 관리자 대시보드 정보를 불러오지 못했습니다.
             </div>
         )
     }
 
     return (
-        <div className="space-y-6">
+        <div className="space-y-6 pt-3">
             <div>
                 <h1 className="text-xl font-extrabold text-gray-100">
                     대시보드

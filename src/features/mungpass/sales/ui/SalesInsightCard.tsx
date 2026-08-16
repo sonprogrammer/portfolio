@@ -120,9 +120,7 @@ export function SalesInsightCard({ shopId, shopStatus, summary, isMockupMode }: 
             <button
                 type="button"
                 onClick={handleAnalyze}
-                disabled={
-                    insightMutation.isPending ||
-                    (!isMockupMode && !!todayInsight)
+                disabled={insightMutation.isPending ||(!isMockupMode && !!todayInsight)
                 }
                 className="mt-5 cursor-pointer flex w-full items-center justify-center gap-2 rounded-xl bg-violet-500 px-4 py-3 text-sm font-extrabold text-white transition hover:bg-violet-600 disabled:cursor-not-allowed disabled:opacity-50"
             >

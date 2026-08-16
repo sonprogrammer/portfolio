@@ -19,7 +19,7 @@ export async function generateAiProduct(): Promise<MAiProductRes> {
     }
 
     const res = await gemini.models.generateContent({
-        model: 'gemini-2.5-flash',
+        model: 'gemini-3.6-flash',
         contents: `
 멍패스라는 애견카페/반려견 시설 서비스의 가상 이용 상품을 1개 생성해줘.
 

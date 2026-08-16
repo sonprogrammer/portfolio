@@ -32,11 +32,11 @@ export function CoinItem({ coin, onSelectCoin }: CoinItemProps) {
                 />
                 <div>
 
-                    <p className="font-medium text-xs sm:text-md ">
+                    <p className="font-medium text-xs sm:text-base ">
                         {coin.koreanName}
                     </p>
 
-                    <p className="mt-1 text-xs text-zinc-500 sm:text-md ">
+                    <p className="mt-1 text-xs text-zinc-500 sm:text-base ">
                         {coin.market.replace(
                             'KRW-',
                             '',
@@ -44,18 +44,18 @@ export function CoinItem({ coin, onSelectCoin }: CoinItemProps) {
                     </p>
                 </div>
             </div>
-            <p className="text-right font-medium text-xs sm:text-md ">
+            <p className="text-right font-medium text-xs sm:text-base">
                 {(coin.tradePrice).toLocaleString()}
                 원
             </p>
             <p
-                className={`text-right ${changeClassName} text-xs sm:text-md ` }
+                className={`text-right ${changeClassName} text-xs sm:text-base ` }
             >
                 {changeRate > 0 ? '+' : ''}
                 {changeRate.toFixed(2)}%
             </p>
 
-            <p className="text-right text-sm text-zinc-400 sm:text-md ">
+            <p className="text-right text-sm text-zinc-400 sm:text-base ">
                 {formatTradePrice(coin.accTradePrice24h)}
             </p>
 

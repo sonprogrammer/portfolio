@@ -3,7 +3,7 @@ import { InquiryManageManager } from "@/features/mungpass/admin/inquiry-manage/u
 
 export function MadminInquiries() {
     return (
-        <div className="space-y-6">
+        <div className="space-y-6 pt-3">
             <div>
                 <h1 className="text-xl font-extrabold text-gray-100">
                     문의 관리

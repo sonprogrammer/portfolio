@@ -13,7 +13,7 @@ export function MadminPages() {
   const page = activePage ?? 'dashboard'
 
   return (
-    <div className="p-5">
+    <div className="">
       {page ==='dashboard' && <MadminDashboard/>}
       {page ==='shops' && <MadminShops />}
       {page ==='users' && <MadminUsers/>}

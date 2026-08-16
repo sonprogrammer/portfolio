@@ -148,10 +148,12 @@ export function InquiryChat({
                                 </div>
 
                                 <div
-                                    className={`flex max-w-[75%] flex-col ${isMe
+                                    className={`flex max-w-[75%] flex-col
+                                        ${isMe
                                             ? 'items-end'
                                             : 'items-start'
-                                        }`}
+                                        }
+                                        `}
                                 >
                                     <span className="mb-1 text-[10px] font-extrabold text-gray-400 px-1">
                                         {isMe

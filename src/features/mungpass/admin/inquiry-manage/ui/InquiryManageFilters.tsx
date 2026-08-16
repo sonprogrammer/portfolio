@@ -56,11 +56,11 @@ export function InquiryManageFilters({
                     value={search}
                     onChange={event => onSearchChange(event.target.value)}
                     placeholder="회원 이름 또는 문의 제목 검색"
-                    className="w-full rounded-xl border border-gray-800 bg-gray-900 py-3 pl-11 pr-4 text-sm font-semibold text-gray-200 outline-none transition placeholder:text-gray-600 focus:border-orange-500/50"
+                    className="w-full rounded-xl border border-gray-800 bg-gray-900 py-2 sm:py-3 pl-11 pr-4 text-sm font-semibold text-gray-200 outline-none transition placeholder:text-gray-600 focus:border-orange-500/50"
                 />
             </div>
 
-            <div className="flex flex-wrap gap-2">
+            <div className="grid grid-cols-2 sm:flex sm:flex-wrap gap-2">
                 {statusOptions.map(option => (
                     <button
                         key={option.value}

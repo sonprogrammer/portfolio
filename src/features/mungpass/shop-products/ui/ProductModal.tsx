@@ -47,7 +47,7 @@ export function ProductModal({ shopId, product, onClose }: ProductModalProps) {
                 toast.success('AI가 상품 정보를 생성했습니다.')
             },
             onError: error => {
-                toast.error(error instanceof Error ? error.message : 'AI 상품 생성에 실패했습니다.')
+                toast.error('AI 상품 생성에 실패했습니다. 다시 시도 혹은 수동 입력 부탁드립니다.')
             }
         })
     }
@@ -238,13 +238,13 @@ export function ProductModal({ shopId, product, onClose }: ProductModalProps) {
                         </p>
                     )}
 
-                    <div className="flex gap-3 pt-2">
+                    <div className="grid grid-cols-3 gap-3 pt-2">
 
                         <button
                             type="button"
                             onClick={onClose}
                             disabled={isPending}
-                            className="flex-1 cursor-pointer rounded-xl border border-gray-700 px-4 py-3 text-sm font-bold text-gray-300 transition hover:bg-gray-800"
+                            className="flex-1 cursor-pointer rounded-xl border border-gray-700 px-4 py-3  font-bold text-gray-300 transition hover:bg-gray-800"
                         >
                             취소
                         </button>
@@ -254,7 +254,7 @@ export function ProductModal({ shopId, product, onClose }: ProductModalProps) {
                                 type="button"
                                 onClick={handleGenerateAi}
                                 disabled={isGenerating || isPending}
-                                className="flex flex-1 cursor-pointer w-full items-center justify-center gap-2 rounded-xl border border-violet-500/20 bg-violet-500/10 px-4 py-3 text-sm font-extrabold text-violet-300 transition hover:bg-violet-500/20 disabled:cursor-not-allowed disabled:opacity-50"
+                                className="flex flex-1 cursor-pointer w-full items-center justify-center gap-2 rounded-xl border border-violet-500/20 bg-violet-500/10  py-3 text-sm font-extrabold text-violet-300 transition hover:bg-violet-500/20 disabled:cursor-not-allowed disabled:opacity-50"
                             >
                                 {isGenerating ? (
                                     <>

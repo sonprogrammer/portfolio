@@ -14,7 +14,6 @@ export function useGetTodaySalesInsight(shopId: string) {
             if (Array.isArray(data)) {
                 return (data[0] ?? null) as MSalesInsight | null
             }
-
             return data
         },
         enabled: !!shopId,

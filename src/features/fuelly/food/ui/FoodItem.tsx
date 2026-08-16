@@ -15,7 +15,7 @@ export function FoodItem({ food, isAdding, onAdd, isMine, onDelete, isDeleting }
     return (
         <div className="flex items-center justify-between rounded-xl border border-gray-700 bg-gray-900 p-4">
             <div>
-                <p className="font-semibold text-white text-xs sm:text-md">
+                <p className="font-semibold text-white text-xs sm:text-base">
                     {food.name}
                 </p>
 

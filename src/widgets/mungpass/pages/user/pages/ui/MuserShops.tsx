@@ -99,40 +99,55 @@ export function MuserShops() {
 
 
   return (
-    <MKakaoProvider fallback={<div className="h-96 animate-pulse rounded-2xl bg-gray-100" />}>
-      <AroundHeader
-        showMap={showMap}
-        toggle={toggleMap}
-        onSearch={setKeyword}
-        radius={radius}
-        setRadius={handleRadiusChange}
-        onMyLocation={handleMyLocation}
-      />
+    <MKakaoProvider
+      fallback={
+        <div className="h-64 w-full animate-pulse rounded-xl bg-gray-100 sm:h-80 sm:rounded-2xl md:h-96" />
+      }
+    >
+      <div className="w-full min-w-0 max-w-full">
+        <AroundHeader
+          showMap={showMap}
+          toggle={toggleMap}
+          onSearch={setKeyword}
+          radius={radius}
+          setRadius={handleRadiusChange}
+          onMyLocation={handleMyLocation}
+        />
+      </div>
 
-      <main className="flex-1 min-h-0 overflow-y-auto flex flex-col">
+      <main className="flex min-h-0 w-full min-w-0 max-w-full flex-1 flex-col overflow-y-auto">
         {showMap && displayCenter && (
-          <MapSection
-            center={displayCenter}
-            keyword={keyword}
-            places={displayShops}
-            showRefreshBtn={showRefreshBtn}
-            onBoundChange={handleCenterChange}
-            onRefresh={handleRefresh}
-            onMarkerClick={setSelectedPlace}
-            onMyLocation={handleMyLocation}
-          />
+          <div className="w-full min-w-0 max-w-full">
+            <MapSection
+              center={displayCenter}
+              keyword={keyword}
+              places={displayShops}
+              showRefreshBtn={showRefreshBtn}
+              onBoundChange={handleCenterChange}
+              onRefresh={handleRefresh}
+              onMarkerClick={setSelectedPlace}
+              onMyLocation={handleMyLocation}
+            />
+          </div>
         )}
 
-        <div className='p-6 flex-1'>
-          {displayShops.length !== 0 && <p className="text-orange-500 font-bold pb-4 pl-2">주변 애견카페</p>}
-          <PlaceListState
-            isPending={isLoading}
-            places={displayShops}
-            onPlaceClick={() => toast.success(`실제 프로젝트에서는 바텀시트 등장합니다.`)}
-          />
+        <div className="min-w-0 flex-1 p-0 sm:p-4 md:p-6">
+          {displayShops.length !== 0 && (
+            <p className="pb-3 pt-5 pl-1 text-sm font-bold text-orange-500 sm:pb-4 sm:pl-2">
+              주변 애견카페
+            </p>
+          )}
+
+          <div className="w-full min-w-0 max-w-full">
+            <PlaceListState
+              isPending={isLoading}
+              places={displayShops}
+              onPlaceClick={() =>
+                toast.success('실제 프로젝트에서는 바텀시트 등장합니다.')
+              }
+            />
+          </div>
         </div>
-
-
       </main>
     </MKakaoProvider>
   )

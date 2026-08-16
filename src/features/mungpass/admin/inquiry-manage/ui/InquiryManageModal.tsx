@@ -114,7 +114,7 @@ export function InquiryManageModal({
                     </button>
                 </div>
 
-                <div className="min-h-0 flex-1 overflow-y-auto p-5">
+                <div className="min-h-0 flex-1 overflow-y-auto scrollbar-none p-5">
                     {isPending ? (
                         <div className="flex h-full items-center justify-center">
                             <Loader2 className="h-5 w-5 animate-spin text-orange-500" />

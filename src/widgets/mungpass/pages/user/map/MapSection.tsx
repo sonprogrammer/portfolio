@@ -38,8 +38,7 @@ function MapSection({ center, places, showRefreshBtn, onMarkerClick, onBoundChan
     }))
   }, [partners, places])
   return (
-    <div className="relative">
-
+    <div className="relative w-full min-w-0">
       <MapContainer
         center={center}
         places={refinedPlaces}
@@ -51,25 +50,22 @@ function MapSection({ center, places, showRefreshBtn, onMarkerClick, onBoundChan
         <>
           <button
             onClick={onMyLocation}
-            className='absolute top-10 right-10 z-10 bg-orange-400 p-1 rounded-lg cursor-pointer flex items-center justify-center'
-            aria-label='현재위치로 이동'
+            className="absolute right-5 top-5 z-10 flex cursor-pointer items-center justify-center rounded-lg bg-orange-400 p-2 md:right-10 md:top-10"
+            aria-label="현재위치로 이동"
           >
-            <LocateFixed />
+            <LocateFixed className="h-4 w-4 sm:h-5 sm:w-5" />
           </button>
+
           <button
             onClick={onRefresh}
-            className='absolute top-10 left-1/2 -translate-x-1/2 z-40 bg-white/90 
-                backdrop-blur-sm px-4 py-2 rounded-full shadow-xl border-2 border-orange-500
-                text-orange-600 font-black text-xs flex items-center gap-2 animate-in slide-in-from-top-2
-                hover:scale-105 active:scale-95 transition-all
-                '
-            aria-label='현 지도 지역내 검색'
+            className="absolute left-1/2 top-5 z-40 flex -translate-x-1/2 items-center gap-1.5 whitespace-nowrap rounded-full border-2 border-orange-500 bg-white/90  py-2 font-black text-orange-600 shadow-xl backdrop-blur-sm transition-all hover:scale-105 active:scale-95sm:gap-2 px-2 sm:px-4 text-[8px] sm:text-xs md:top-10"
+            aria-label="현 지도 지역내 검색"
           >
-            <RefreshCw className="w-3 h-3" /> 이 지역 내 재검색
+            <RefreshCw className="h-3 w-3" />
+            이 지역 내 재검색
           </button>
         </>
       )}
-
     </div>
   )
 }

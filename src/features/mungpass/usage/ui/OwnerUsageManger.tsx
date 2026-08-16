@@ -14,7 +14,7 @@ export function OwnerUsageManager({ shopId, shopStatus }: OwnerUsageManagerProps
     const [activeTab, setActiveTab] = useState<'current' | 'completed'>('current')
 
     return (
-        <div className="space-y-6">
+        <div className="space-y-6 pt-3">
             <div>
                 <h2 className="text-xl font-extrabold text-gray-100">
                     이용 현황

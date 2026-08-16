@@ -74,7 +74,7 @@ export async function generateAiInsight({ shopId, summary, isMockupMode }: MGene
     const ai = new GoogleGenAI({ apiKey })
 
     const response = await ai.models.generateContent({
-        model: process.env.GEMINI_MODEL ?? 'gemini-2.5-flash',
+        model: 'gemini-3.6-flash',
         contents: `
 너는 반려동물 시설 매장의 매출 분석가야.
 

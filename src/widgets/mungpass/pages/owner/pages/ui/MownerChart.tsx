@@ -23,6 +23,7 @@ export function MownerChart({ shop }: MownerChardProps) {
 
     const { data: salesData = [], isPending, isError } = useGetSalesData(shopId)
 
+
     const summary = useMemo(() => {
         return buildSalesSummary(salesData ?? [])
     }, [salesData])
@@ -31,7 +32,7 @@ export function MownerChart({ shop }: MownerChardProps) {
 
     if (isPending) {
         return (
-            <div className="flex h-72 items-center justify-center">
+            <div className="flex h-72 items-center justify-center pt-3">
                 <Loader2 className="h-6 w-6 animate-spin text-orange-500" />
             </div>
         )
@@ -39,14 +40,14 @@ export function MownerChart({ shop }: MownerChardProps) {
 
     if (isError) {
         return (
-            <div className="rounded-2xl border border-red-500/20 bg-red-500/10 p-5 text-sm font-semibold text-red-400">
+            <div className="rounded-2xl border border-red-500/20 bg-red-500/10 p-5 text-sm font-semibold text-red-400 pt-3">
                 매출 데이터를 불러오지 못했습니다.
             </div>
         )
     }
 
     return (
-        <div className="space-y-6">
+        <div className="space-y-6 pt-3">
             <div>
                 <h1 className="text-xl font-extrabold text-gray-100">
                     매출 분석
