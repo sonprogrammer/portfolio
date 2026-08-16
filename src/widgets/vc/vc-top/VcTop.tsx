@@ -4,12 +4,13 @@ import { VcNav } from "@/features/vc/nav/ui";
 
 export function VcTop() {
     return (
-        <div className='relative w-full flex items-center'>
-            <div className="flex gap-5 w-full justify-center">
+        <div className="w-full relative flex flex-col lg:flex-row">
+            <div className="flex w-full justify-center gap-3 items-center">
                 <VcNav />
                 <CoinSearch />
             </div>
-            <div className="absolute right-5">
+
+            <div className="mt-4 flex w-full items-center justify-end lg:absolute lg:-top-1 lg:right-0">
                 <VcGuestBtn />
             </div>
         </div>

@@ -27,7 +27,7 @@ export function VcPages() {
     const page = activePage ?? 'home'
     
   return(
-    <div>
+    <div className="">
         {page === 'home' && <MainPage />}
         {page === 'asset' && <AssetPage />}
         {page === 'transactions' && <OrderHistoryPage />}

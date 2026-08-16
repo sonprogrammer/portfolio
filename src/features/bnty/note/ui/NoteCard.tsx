@@ -15,20 +15,21 @@ export function NoteCard({ note, canManage }: NoteCardProps) {
     const [isEditModalOpen, setIsEditModalOpen] = useState(false)
     const [deleteCheck, setDeletCheck] = useState(false)
 
+    const handleEditModal = () => {
+        if (canManage) {
+            setIsEditModalOpen(true)
+        }
+    }
+
     return (
         <>
             <article
                 className={[
                     'rounded-xl border border-gray-800 bg-gray-900 p-5',
                     canManage
-                        ? 'cursor-pointer transition hover:border-gray-600'
+                        ? 'transition hover:border-gray-600'
                         : '',
                 ].join(' ')}
-                onClick={() => {
-                    if (canManage) {
-                        setIsEditModalOpen(true)
-                    }
-                }}
             >
                 <div className="flex items-start justify-between gap-4">
                     <div>
@@ -51,7 +52,7 @@ export function NoteCard({ note, canManage }: NoteCardProps) {
                         <div className="flex gap-3">
                             <button
                                 type="button"
-                                onClick={() => setIsEditModalOpen(true)}
+                                onClick={() => handleEditModal()}
                                 className="text-xs text-gray-400 hover:text-white cursor-pointer"
                             >
                                 수정
@@ -85,7 +86,7 @@ export function NoteCard({ note, canManage }: NoteCardProps) {
                 <DeleteConfirmModal
                     isOpen={deleteCheck}
                     note={note}
-                    onClose={()=>setDeletCheck(false)}
+                    onClose={() => setDeletCheck(false)}
                 />
             }
         </>

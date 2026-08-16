@@ -29,23 +29,24 @@ export default function BntyPage() {
           description="*최소한의 기능 테스트를 위해 실제 서비스와 일부 다를 수있음을 미리 알려드립니다."
         />
 
-        <div className="px-2">
+        <div className="px-0 sm:px-2">
           <FunctionReveal
             title="BNTY 기능 체험"
             description="트레이너와 회원 역할을 전환하며 BNTY의 주요 기능과 데이터 흐름을 직접 체험해보세요."
             theme="blue"
             coldStartNotice
           >
-            <div className="border border-neutral-700 bg-neutral-900 rounded-[50px] p-8  shadow-2xl shadow-black/40">
+            <div className="w-full min-w-0 rounded-[28px] border border-neutral-700 bg-neutral-900 p-4 shadow-2xl shadow-black/40 sm:rounded-[36px] sm:p-6 md:rounded-[50px] md:p-8">
 
-              <div className="flex justify-center mb-2 mt-5">
+
+              <div className="mb-2 mt-3 flex justify-center sm:mt-5">
                 <RoleSelection />
               </div>
 
-              <div className="mb-10 flex justify-center">
+              <div className="mb-6 flex justify-center overflow-x-auto sm:mb-8 md:mb-10">
                 <BntyNav />
               </div>
-              <div>
+              <div className="min-w-0">
 
                 <BntyPages />
               </div>
@@ -56,7 +57,7 @@ export default function BntyPage() {
       </section>
 
       <div className="border mx-20 border-gray-500 my-10" />
-      
+
 
       <ProjectMotivation
         theme="blue"

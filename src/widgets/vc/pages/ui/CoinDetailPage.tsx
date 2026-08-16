@@ -28,7 +28,7 @@ export function CoinDetailPage({ market }: CoinDetailPageProps) {
 
     if (isLoading) {
         return (
-            <div className="flex min-h-125 animate-pulse items-center justify-center text-sm text-white/40">
+            <div className="flex min-h-80 animate-pulse items-center justify-center px-4 text-center text-xs text-white/40 sm:min-h-100 sm:text-sm md:min-h-125">
                 실시간 시세를 불러오는 중입니다.
             </div>
         );
@@ -36,15 +36,15 @@ export function CoinDetailPage({ market }: CoinDetailPageProps) {
 
     if (!coin) {
         return (
-            <div className="flex min-h-125 flex-col  items-center justify-center gap-4">
-                <p className="text-sm text-white/40">
+            <div className="flex min-h-80 flex-col items-center justify-center gap-4 px-4 text-center sm:min-h-100 md:min-h-125">
+                <p className="text-xs text-white/40 sm:text-sm">
                     코인 정보를 찾을 수 없습니다.
                 </p>
 
                 <button
                     type="button"
                     onClick={clearSelectedCoin}
-                    className="rounded-xl border border-white/10 px-4 py-2 text-sm text-white/70 transition hover:bg-white/10 hover:text-white"
+                    className="rounded-xl border border-white/10 px-3 py-2 text-xs text-white/70 transition hover:bg-white/10 hover:text-white sm:px-4 sm:text-sm"
                 >
                     목록으로 돌아가기
                 </button>
@@ -57,11 +57,11 @@ export function CoinDetailPage({ market }: CoinDetailPageProps) {
 
 
     return (
-        <main className="space-y-5">
+        <main className="min-w-0 space-y-4 sm:space-y-5">
             <button
                 type="button"
                 onClick={clearSelectedCoin}
-                className="flex items-center gap-2 text-sm text-white/45 transition hover:text-white"
+                className="flex items-center gap-2 text-xs text-white/45 transition hover:text-white sm:text-sm"
             >
                 <ArrowLeft size={18} />
                 코인 목록
@@ -72,15 +72,18 @@ export function CoinDetailPage({ market }: CoinDetailPageProps) {
                 coinLogo={coinLogo}
             />
 
-            <section className="grid gap-5 xl:grid-cols-[minmax(0,1fr)_360px]">
-                <div className="min-w-0 space-y-5">
+            <section className="grid min-w-0 gap-4 sm:gap-5 xl:grid-cols-[minmax(0,1fr)_360px]">
+                <div className="min-w-0 space-y-4 sm:space-y-5">
                     <CoinChart market={coin.market} />
 
                     <RecentTrade market={coin.market} />
                 </div>
 
-                <aside className="space-y-5">
-                    <CoinOrderbook currentPrice={coin.tradePrice} market={coin.market} />
+                <aside className="min-w-0 space-y-4 sm:space-y-5">
+                    <CoinOrderbook
+                        currentPrice={coin.tradePrice}
+                        market={coin.market}
+                    />
 
                     <CoinTradeForm market={coin.market} />
                 </aside>

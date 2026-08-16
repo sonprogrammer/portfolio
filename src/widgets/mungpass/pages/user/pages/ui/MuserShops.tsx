@@ -133,7 +133,6 @@ export function MuserShops() {
         </div>
 
 
-        {/* <StoreDetailBottomSheet /> */}
       </main>
     </MKakaoProvider>
   )

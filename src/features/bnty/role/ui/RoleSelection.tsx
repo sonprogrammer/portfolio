@@ -19,27 +19,29 @@ export function RoleSelection() {
     }
 
     return (
-        <section className="relative flex w-full justify-center items-center">
-            <div className="grid grid-cols-2 gap-20">
+        <section className="relative flex w-full flex-col items-center justify-center gap-4 lg:flex-row lg:gap-0">
+            <div className="grid w-full max-w-xs grid-cols-2 gap-3 sm:max-w-sm sm:gap-6 lg:w-auto lg:max-w-none lg:gap-20">
                 <NomalBtn
-                    onClick={() => handleRoleClick('trainer')}
-                    className={`bg-stone-100 text-stone-400 px-3 py-1 ${role === 'trainer' && 'bg-red-400! text-white!'}`}
+                    onClick={() => handleRoleClick("trainer")}
+                    className={`w-full bg-stone-100 px-3 py-1 text-stone-400 ${role === "trainer" && "bg-red-400! text-white!"
+                        }`}
                 >
                     trainer
                 </NomalBtn>
-                <NomalBtn type="button"
-                    onClick={() => handleRoleClick('member')}
-                    className={`bg-stone-100 text-stone-400 px-3 py-1 ${role === 'member' && 'bg-blue-500! text-white!'}`}
+
+                <NomalBtn
+                    type="button"
+                    onClick={() => handleRoleClick("member")}
+                    className={`w-full bg-stone-100 px-3 py-1 text-stone-400 ${role === "member" && "bg-blue-500! text-white!"
+                        }`}
                 >
                     Member
                 </NomalBtn>
             </div>
 
-            <section className='absolute right-0 '>
-
+            <section className="w-full text-center lg:absolute lg:right-0 lg:w-auto">
                 <UserLoginStatus />
             </section>
-
         </section>
     )
 }

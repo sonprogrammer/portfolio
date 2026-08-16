@@ -35,11 +35,15 @@ export default function VcPage() {
             theme="red"
             coldStartNotice
           >
-            <div className="mb-10 flex justify-center gap-5 items-center">
-              <VcTop />
-            </div>
+            <div className="w-full min-w-0 max-w-full overflow-hidden rounded-[28px] border border-neutral-700 bg-neutral-900 p-4 shadow-2xl shadow-black/40 sm:rounded-[36px] sm:p-6 md:rounded-[50px] md:p-8">
+              <div className="mb-6 w-full min-w-0 sm:mb-8 md:mb-10">
+                <VcTop />
+              </div>
 
-            <VcPages />
+              <div className="w-full min-w-0 max-w-full overflow-hidden">
+                <VcPages />
+              </div>
+            </div>
           </FunctionReveal>
         </div>
       </section>
@@ -118,16 +122,16 @@ export default function VcPage() {
 
         />
 
-          <div className="space-y-6 px-5 md:px-10 lg:px-20">
-            {vcTroubleShooting.map((item, index) => (
-              <TroubleshootingCard
-                key={item.title}
-                number={index + 1}
-                theme="red"
-                {...item}
-              />
-            ))}
-          </div>
+        <div className="space-y-6 px-5 md:px-10 lg:px-20">
+          {vcTroubleShooting.map((item, index) => (
+            <TroubleshootingCard
+              key={item.title}
+              number={index + 1}
+              theme="red"
+              {...item}
+            />
+          ))}
+        </div>
 
       </section>
 

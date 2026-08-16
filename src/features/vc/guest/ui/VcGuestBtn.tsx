@@ -10,52 +10,50 @@ export function VcGuestBtn() {
     const guest = data?.guest ?? null
 
     return (
-        <div className="flex items-center gap-3">
+        <div className="flex min-w-0 items-center justify-center gap-2 sm:gap-3">
             {isPending ? (
-                <div className="h-9 w-28 animate-pulse rounded-xl bg-white/10" />
+                <div className="h-9 w-24 animate-pulse rounded-xl bg-white/10 sm:w-28" />
             ) : guest ? (
-                <div className="flex items-center gap-3">
-                    <h1>{guest.nickname}</h1>
-                    <div className="text-right">
-                        <p className="text-xs text-white/40">
+                <div className="flex min-w-0 items-center gap-2 sm:gap-3">
+                    <h1 className="max-w-20 truncate text-xs sm:max-w-none sm:text-sm">
+                        {guest.nickname}
+                    </h1>
+
+                    <div className="shrink-0 text-right">
+                        <p className="text-[10px] text-white/40 sm:text-xs">
                             보유 원화
                         </p>
 
-                        <p className="text-sm font-medium text-white">
-                            {guest.krwBalance.toLocaleString()}
-                            원
+                        <p className="text-xs font-medium text-white sm:text-sm">
+                            {guest.krwBalance.toLocaleString()}원
                         </p>
                     </div>
 
                     <button
                         type="button"
-                        disabled={
-                            logoutMutation.isPending
-                        }
+                        disabled={logoutMutation.isPending}
                         onClick={() => {
                             logoutMutation.mutate();
                         }}
-                        className="rounded-xl cursor-pointer border border-white/10 px-4 py-2 text-sm text-white/60 transition hover:bg-white/10 hover:text-white disabled:cursor-not-allowed disabled:opacity-50"
+                        className="shrink-0 cursor-pointer rounded-xl border border-white/10 px-3 py-2 text-xs text-white/60 transition hover:bg-white/10 hover:text-white disabled:cursor-not-allowed disabled:opacity-50 sm:px-4 sm:text-sm"
                     >
                         {logoutMutation.isPending
-                            ? '로그아웃 중'
-                            : '로그아웃'}
+                            ? "로그아웃 중"
+                            : "로그아웃"}
                     </button>
                 </div>
             ) : (
                 <button
                     type="button"
-                    disabled={
-                        loginMutation.isPending
-                    }
+                    disabled={loginMutation.isPending}
                     onClick={() => {
                         loginMutation.mutate();
                     }}
-                    className="rounded-xl cursor-pointer bg-blue-500 px-4 py-2 text-sm font-medium text-white transition hover:bg-blue-400 disabled:cursor-not-allowed disabled:opacity-50"
+                    className="cursor-pointer rounded-xl bg-blue-500 px-3 py-2 text-xs font-medium text-white transition hover:bg-blue-400 disabled:cursor-not-allowed disabled:opacity-50 sm:px-4 sm:text-sm"
                 >
                     {loginMutation.isPending
-                        ? '생성 중'
-                        : '게스트 로그인'}
+                        ? "생성 중"
+                        : "게스트 로그인"}
                 </button>
             )}
         </div>

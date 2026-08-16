@@ -28,23 +28,25 @@ export function Login({ role }: LoginProps) {
     }
 
     return (
-        <form onSubmit={handleSubmit} className="flex gap-2 items-center">
-            <div className="flex flex-col gap-1">
-                
+        <form
+            onSubmit={handleSubmit}
+            className="flex min-w-0 items-center gap-1.5 sm:gap-2"
+        >
+            <div className="min-w-0">
                 <input
                     id="name-input"
                     type="text"
                     value={name}
-                    onChange={(e) => setName(e.target.value)}
+                    onChange={e => setName(e.target.value)}
                     placeholder="이름을 입력해주세요"
-                    className="w-full p-2 rounded-xl border border-gray-200 text-gray-100 placeholder:text-gray-400 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all"
+                    className="w-28 rounded-xl border border-gray-200 p-2 text-xs text-gray-100 placeholder:text-gray-400 transition-all focus:border-transparent focus:outline-none focus:ring-2 focus:ring-indigo-500 sm:w-40 sm:text-sm md:w-44"
                 />
             </div>
 
             <button
                 disabled={isPending}
                 type="submit"
-                className="py-3 px-4 rounded-xl bg-indigo-600 text-white font-medium text-sm hover:bg-indigo-700 active:bg-indigo-800 disabled:opacity-50 disabled:cursor-not-allowed transition-colors shadow-sm"
+                className="shrink-0 rounded-xl bg-indigo-600 px-3 py-2 text-xs font-medium text-white shadow-sm transition-colors hover:bg-indigo-700 active:bg-indigo-800 disabled:cursor-not-allowed disabled:opacity-50 sm:px-4 sm:py-2.5 sm:text-sm"
             >
                 {isPending ? "로그인 중..." : "로그인"}
             </button>

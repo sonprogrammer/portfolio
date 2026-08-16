@@ -38,7 +38,7 @@ export function QrCheckIn({ role, user }: { role: BntyRole, user: BntyUser }) {
         )
     }
     return (
-        <section className="flex flex-col md:flex-row justify-center items-stretch gap-6 p-6 border border-neutral-800 rounded-2xl shadow-2xl max-w-4xl mx-auto text-neutral-100">
+        <section className="flex flex-col md:flex-row justify-center items-stretch gap-6  rounded-2xl shadow-2xl max-w-4xl mx-auto text-neutral-100">
 
             <div className="flex flex-col items-center justify-center p-6 bg-neutral-900 border border-neutral-800 rounded-xl w-full md:w-1/2 shadow-inner">
                 <h3 className="text-xs font-semibold text-neutral-400 mb-4 tracking-wider uppercase">트레이너 QR 코드</h3>
