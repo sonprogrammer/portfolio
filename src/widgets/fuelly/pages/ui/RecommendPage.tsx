@@ -14,18 +14,9 @@ interface RecommendPageProps {
 export function RecommendPage({
     profile,
 }: RecommendPageProps) {
-    const {
-        remain,
-        isPending:
-            isNutritionPending,
-    } = useRemainNutrition(profile)
+    const { remain, isPending: isNutritionPending } = useRemainNutrition(profile)
 
-    const {
-        mutate: recommendMeals,
-        data,
-        isPending,
-        error,
-    } = useGetRecommendFood()
+    const { mutate: recommendMeals, data, isPending, error } = useGetRecommendFood()
 
     const handleRecommend = () => {
         recommendMeals({
@@ -44,13 +35,13 @@ export function RecommendPage({
                     AI 메뉴 추천
                 </h1>
 
-                <p className="mt-1 text-sm text-gray-400">
-                    오늘 부족한 영양량을 기준으로 메뉴를 추천합니다.
+                <p className="mt-1 text-xs sm:text-sm text-gray-400">
+                    사용자의 목표와 부족한 영양 정보를 기준으로 메뉴를 추천합니다.
                 </p>
             </div>
 
             {!isNutritionPending && (
-                <div className="grid gap-4 sm:grid-cols-2">
+                <div className="grid gap-2 sm:gap-4 grid-cols-2">
                     <div className="rounded-2xl border border-gray-700 bg-gray-800 p-5">
                         <p className="text-sm text-gray-400">
                             남은 칼로리
@@ -73,22 +64,18 @@ export function RecommendPage({
                 </div>
             )}
 
-            <button
-                type="button"
-                disabled={
-                    isPending ||
-                    isNutritionPending
-                }
-                onClick={
-                    handleRecommend
-                }
-                className="rounded-xl bg-emerald-500 px-5 py-3 text-sm font-semibold text-white disabled:opacity-50"
-            >
-                {isPending
-                    ? 'AI가 추천 중...'
-                    : '오늘 메뉴 추천받기'}
-            </button>
-
+            <div className='flex justify-center'>
+                <button
+                    type="button"
+                    disabled={isPending || isNutritionPending}
+                    onClick={handleRecommend}
+                    className="rounded-xl bg-emerald-500 px-5 py-3 text-sm font-semibold text-white disabled:opacity-50"
+                >
+                    {isPending
+                        ? 'AI가 추천 중...'
+                        : '오늘 메뉴 추천받기'}
+                </button>
+            </div>
             {error && (
                 <p className="text-sm text-red-400">
                     {error.message}

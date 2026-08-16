@@ -37,10 +37,6 @@ export function TodayMealList() {
                 <h2 className="text-lg font-semibold text-white">
                     오늘 먹은 음식
                 </h2>
-
-                <p className="mt-1 text-xs text-gray-500">
-                    오늘 식단에 추가한 음식입니다.
-                </p>
             </div>
 
             {isPending ? (
@@ -48,10 +44,9 @@ export function TodayMealList() {
                     식단을 불러오는 중입니다.
                 </p>
             ) : meals.length === 0 ? (
-                <div className="flex flex-col items-center justify-center py-10 text-center">
+                <div className="flex flex-col items-center justify-center py-2 text-center">
                     <UtensilsCrossed className="w-10 h-10 text-gray-700 mb-3" />
                     <p className="text-sm text-gray-500">아직 기록된 음식이 없어요</p>
-                    <p className="text-xs text-gray-700 mt-1">오른쪽에서 음식을 추가해보세요</p>
                 </div>
             ) : (
                 <div className="border border-gray-800 rounded-xl overflow-hidden">

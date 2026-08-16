@@ -85,7 +85,7 @@ export default function FuellyPage() {
 
       <div className="border mx-20 border-gray-500 my-10" />
 
-      
+
 
       <section>
         <SectionHeader

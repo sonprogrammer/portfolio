@@ -20,9 +20,6 @@ export function MealsPage({profile}: MealsPageProps) {
                     오늘 식단
                 </h1>
 
-                <p className="mt-1 text-sm text-gray-400">
-                    오늘 먹은 음식과 남은 영양량을 확인하세요.
-                </p>
             </div>
 
             {!isPending && (

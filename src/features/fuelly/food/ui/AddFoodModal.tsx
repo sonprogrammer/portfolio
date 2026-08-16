@@ -7,6 +7,7 @@ import { useAnalyzeFood } from '@/features/fuelly/food/model/useAnalyzeFood'
 import { useSaveFood } from '@/features/fuelly/food/model/useSaveFood'
 import { useAddDailyMeal } from '@/features/fuelly/meal/model/useAddDailyMeal'
 import { ModalPortal } from '@/shared/ui/modal'
+import { toast } from 'sonner'
 
 interface AddFoodModalProps {
   isOpen: boolean
@@ -22,23 +23,26 @@ export function AddFoodModal({
   const [protein, setProtein] = useState('')
   const [unit, setUnit] = useState('')
 
-  const {
-    mutate: analyzeFood,
-    isPending: isAnalyzing,
-  } = useAnalyzeFood()
+  const { mutate: analyzeFood, isPending: isAnalyzing } = useAnalyzeFood()
 
-  const {
-    mutate: saveFood,
-    isPending: isSaving,
-  } = useSaveFood()
+  const { mutate: saveFood, isPending: isSaving } = useSaveFood()
 
-  const {
-    mutate: addDailyMeal,
-    isPending: isAdding,
-  } = useAddDailyMeal()
+  const { mutate: addDailyMeal, isPending: isAdding } = useAddDailyMeal()
+
+  const parsedCalorie = Number(calorie)
+  const parsedProtein = Number(protein)
+
+  const isFormValid =
+    name.trim().length > 0 &&
+    calorie.trim().length > 0 &&
+    protein.trim().length > 0 &&
+    unit.trim().length > 0 &&
+    Number.isFinite(parsedCalorie) &&
+    Number.isFinite(parsedProtein)
 
   const handleAnalyze = () => {
-    if (!name.trim()) {
+    if (name.length === 0 || !name.trim()) {
+      toast.error('음식명을 입력해주세요')
       return
     }
 
@@ -196,13 +200,9 @@ export function AddFoodModal({
 
                 <button
                   type="button"
-                  disabled={
-                    isAnalyzing
-                  }
-                  onClick={
-                    handleAnalyze
-                  }
-                  className="shrink-0 rounded-xl border border-emerald-500 px-4 text-sm font-semibold text-emerald-400 transition-colors hover:bg-emerald-500/10 disabled:opacity-50"
+                  disabled={isAnalyzing || !name.trim()}
+                  onClick={handleAnalyze}
+                  className="shrink-0 cursor-pointer rounded-xl border border-emerald-500 px-4 text-sm font-semibold text-emerald-400 transition-colors hover:bg-emerald-500/10 disabled:opacity-50"
                 >
                   {isAnalyzing
                     ? '불러오는 중'
@@ -222,18 +222,8 @@ export function AddFoodModal({
                     type="number"
                     min={0}
                     step="0.1"
-                    value={
-                      calorie
-                    }
-                    onChange={(
-                      event,
-                    ) =>
-                      setCalorie(
-                        event
-                          .target
-                          .value,
-                      )
-                    }
+                    value={calorie}
+                    onChange={(event) =>setCalorie(event.target.value)}
                     className="h-11 min-w-0 flex-1 bg-transparent text-white outline-none"
                   />
 
@@ -253,18 +243,8 @@ export function AddFoodModal({
                     type="number"
                     min={0}
                     step="0.1"
-                    value={
-                      protein
-                    }
-                    onChange={(
-                      event,
-                    ) =>
-                      setProtein(
-                        event
-                          .target
-                          .value,
-                      )
-                    }
+                    value={protein}
+                    onChange={(event) =>setProtein(event.target.value)}
                     className="h-11 min-w-0 flex-1 bg-transparent text-white outline-none"
                   />
 
@@ -304,12 +284,8 @@ export function AddFoodModal({
           <div className="mt-6 flex gap-3">
             <button
               type="button"
-              disabled={
-                isAdding
-              }
-              onClick={
-                handleAddDailyMeal
-              }
+              disabled={isAdding || !isFormValid}
+              onClick={handleAddDailyMeal}
               className="h-11 flex-1 rounded-xl bg-emerald-500 text-sm font-semibold text-white transition-colors hover:bg-emerald-400 disabled:opacity-50"
             >
               {isAdding
@@ -319,12 +295,8 @@ export function AddFoodModal({
 
             <button
               type="button"
-              disabled={
-                isSaving
-              }
-              onClick={
-                handleSaveFood
-              }
+              disabled={isSaving || !isFormValid}
+              onClick={handleSaveFood}
               className="h-11 flex-1 rounded-xl border border-gray-600 text-sm font-semibold text-gray-200 transition-colors hover:bg-gray-700 disabled:opacity-50"
             >
               {isSaving
@@ -334,6 +306,6 @@ export function AddFoodModal({
           </div>
         </div>
       </div>
-      </ModalPortal>
-      )
+    </ModalPortal>
+  )
 }

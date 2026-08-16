@@ -42,7 +42,7 @@ export function FoodList({ foods }: FoodListProps) {
         )
     }
     return (
-        <div className="space-y-3">
+        <div className="space-y-1">
             {foods.map((food) => (
                 <FoodItem
                     key={food.id}

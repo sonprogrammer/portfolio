@@ -15,11 +15,11 @@ export function FoodItem({ food, isAdding, onAdd, isMine, onDelete, isDeleting }
     return (
         <div className="flex items-center justify-between rounded-xl border border-gray-700 bg-gray-900 p-4">
             <div>
-                <p className="font-semibold text-white">
+                <p className="font-semibold text-white text-xs sm:text-md">
                     {food.name}
                 </p>
 
-                <div className="mt-1 flex flex-wrap gap-3 text-xs text-gray-400">
+                <div className="mt-1 flex flex-wrap gap-3 text-xs sm:text-sm text-gray-400">
                     <span>
                         칼로리 {food.calorie} kcal
                     </span>
@@ -39,9 +39,7 @@ export function FoodItem({ food, isAdding, onAdd, isMine, onDelete, isDeleting }
                     type="button"
                     aria-label="오늘 식단 추가"
                     disabled={isAdding}
-                    onClick={() =>
-                        onAdd(food)
-                    }
+                    onClick={() =>onAdd(food)}
                     className="cursor-pointer rounded-lg p-2 transition-colors hover:bg-blue-400/50 disabled:opacity-50"
                 >
                     <Calendar className="h-5 w-5 text-blue-400" />
