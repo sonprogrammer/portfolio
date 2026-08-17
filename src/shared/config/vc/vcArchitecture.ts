@@ -46,9 +46,9 @@ export const vcArchitecture: ArchitectureItem[] = [
     icon: Layers3,
     title: '서버 상태와 클라이언트 상태 분리',
     description:
-      '서버에서 조회하는 데이터와 클라이언트에서 관리해야 하는 상태의 책임을 React Query와 Recoil로 분리했습니다.',
+      '서버에서 조회하는 데이터와 클라이언트에서 관리해야 하는 상태의 책임을 TanStack Query와 Recoil로 분리했습니다.',
     points: [
-      'React Query를 이용한 서버 데이터 조회 및 캐싱',
+      'TanStack Query를 이용한 서버 데이터 조회 및 캐싱',
       'Recoil을 이용한 클라이언트 전역 상태 관리',
       'Axios를 통한 REST API 요청 처리',
     ],

@@ -1,7 +1,7 @@
-import { mungImplementation, mungTechnologyGroup } from "@/shared/config/mungpass";
+import { mungImplementation, mungpassTechChoice, mungTechnologyGroup } from "@/shared/config/mungpass";
 import { mungTroubleshooting } from "@/shared/config/mungpass/mungTroubleShooting";
 import { FunctionReveal } from "@/shared/ui/Function-reveal";
-import { ImplementationCard, ProjectHero, SectionHeader, TechnologyCard, TroubleshootingCard } from "@/shared/ui/project-section-ui";
+import { ImplementationCard, ProjectHero, SectionHeader, TechChoiceCard, TechnologyCard, TroubleshootingCard } from "@/shared/ui/project-section-ui";
 import { ProjectMotivation } from "@/shared/ui/ProjectMotivation/ui";
 import { MungpassArchitecture } from "@/widgets/mungpass/architecture/ui";
 import { MungpassPages } from "@/widgets/mungpass/pages/all/ui";
@@ -97,6 +97,7 @@ export default function MungpassPage() {
             />
           ))}
         </div>
+        <TechChoiceCard data={mungpassTechChoice} colors="text-orange-500"/>
       </section>
 
       <div className="border mx-20 border-gray-500 my-10" />

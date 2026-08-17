@@ -10,12 +10,12 @@ import {
 export const mingleArchitecture: ArchitectureItem[] = [
   {
     icon: Database,
-    title: "React Query 기반 서버 데이터 관리",
+    title: "TanStack Query 기반 서버 데이터 관리",
     description:
-      "조회 빈도가 높은 서버 데이터를 React Query를 통해 관리하고 캐싱해 불필요한 네트워크 요청을 줄였습니다.",
+      "조회 빈도가 높은 서버 데이터를 TanStack Query를 통해 관리하고 캐싱해 불필요한 네트워크 요청을 줄였습니다.",
     points: [
       "플레이리스트 등 조회 데이터 서버 상태로 관리",
-      "React Query 캐시를 통한 반복 요청 최소화",
+      "TanStack Query 캐시를 통한 반복 요청 최소화",
       "데이터 변경 이후 필요한 상태를 UI에 동기화",
     ],
   },
@@ -26,7 +26,7 @@ export const mingleArchitecture: ArchitectureItem[] = [
       "서버에서 조회하는 데이터와 프론트엔드 내부에서 사용하는 상태를 구분해 관리했습니다.",
     points: [
       "Recoil을 이용한 클라이언트 상태 관리",
-      "React Query 서버 상태와 클라이언트 상태 역할 분리",
+      "TanStack Query 서버 상태와 클라이언트 상태 역할 분리",
       "상태 변경 결과를 사용자 화면에 반영",
     ],
   },

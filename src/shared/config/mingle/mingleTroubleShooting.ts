@@ -6,7 +6,7 @@ export const mingleTroubleShooting = [
     reason:
       "내부 API 인증을 위해 설정한 Axios 인터셉터가 외부 API 요청에도 적용되면서 Authorization 헤더가 OpenWeather 요청에 함께 포함되고 있었습니다.",
     solution:
-      "네트워크 요청 헤더를 확인해 Authorization 헤더 충돌을 파악하고, 인증이 필요하지 않은 외부 API 요청은 별도의 Axios 인스턴스로 분리했습니다.",
+      "네트워크 요청 헤더를 확인해 Authorization 헤더 충돌을 파악하고 인증이 필요하지 않은 외부 API 요청은 별도의 Axios 인스턴스로 분리했습니다.",
     results: [
       "OpenWeather API CORS 및 Preflight 문제 해결",
       "날씨별 플레이리스트 데이터 정상 수신",

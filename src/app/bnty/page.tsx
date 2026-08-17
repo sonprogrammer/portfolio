@@ -1,8 +1,8 @@
 import { BntyNav } from "@/features/bnty/nav/ui";
 import { RoleSelection } from "@/features/bnty/role/ui/RoleSelection";
-import { technologyGroups, troubleshootingItems } from "@/shared/config/bnty";
+import { techChoice, technologyGroups, troubleshootingItems } from "@/shared/config/bnty";
 import { FunctionReveal } from "@/shared/ui/Function-reveal";
-import { ProjectHero, SectionHeader, TechnologyCard, TroubleshootingCard } from "@/shared/ui/project-section-ui";
+import { ProjectHero, SectionHeader, TechChoiceCard, TechnologyCard, TroubleshootingCard } from "@/shared/ui/project-section-ui";
 import { ProjectMotivation } from "@/shared/ui/ProjectMotivation/ui";
 import { BntyArchitecture } from "@/widgets/bnty/architecture/ui";
 import { BntyPages } from "@/widgets/bnty/EachPage/ui";
@@ -112,11 +112,14 @@ export default function BntyPage() {
           description="BNTY의 화면 구성, 데이터 관리, 백엔드와 실시간 통신에 사용한 기술을 역할별로 정리했습니다."
         />
 
-        <div className="grid gap-5 sm:grid-cols-2 xl:grid-cols-4 px-5 md:px-10 lg:px-20">
+        <div className="grid gap-5 sm:grid-cols-2 xl:grid-cols-4 px-5 md:px-10 xl:px-20">
           {technologyGroups.map((group) => (
             <TechnologyCard key={group.title} theme="blue" {...group} />
           ))}
         </div>
+
+          <TechChoiceCard data={techChoice} colors="text-blue-500" />
+
       </section>
 
       <div className="border mx-20 border-gray-500 my-10" />

@@ -1,7 +1,7 @@
-import { fuellyTroubleshooting } from "@/shared/config/fuelly";
+import { fuellyTechChoice, fuellyTroubleshooting } from "@/shared/config/fuelly";
 import { fuellyTechnologyGroups } from "@/shared/config/fuelly/fuellyTechnologyGroup";
 import { FunctionReveal } from "@/shared/ui/Function-reveal";
-import { ProjectHero, SectionHeader, TechnologyCard, TroubleshootingCard } from "@/shared/ui/project-section-ui";
+import { ProjectHero, SectionHeader, TechChoiceCard, TechnologyCard, TroubleshootingCard } from "@/shared/ui/project-section-ui";
 import { ProjectMotivation } from "@/shared/ui/ProjectMotivation/ui";
 import { FuellyArchitecture } from "@/widgets/fuelly/architecture/ui";
 import { FuellyPages } from "@/widgets/fuelly/pages/ui";
@@ -103,6 +103,7 @@ export default function FuellyPage() {
             />
           ))}
         </div>
+        <TechChoiceCard data={fuellyTechChoice} colors="text-emerald-500"/>
       </section>
 
       <div className="border mx-20 border-gray-500 my-10" />

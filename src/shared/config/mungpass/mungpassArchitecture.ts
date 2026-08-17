@@ -40,7 +40,7 @@ export const mungArchitecture: ArchitectureItem[] = [
         description:
             "일반 사용자, 사장님, 관리자의 역할에 따라 화면과 기능을 분리해 하나의 서비스 안에서 서로 다른 사용자 흐름을 구성했습니다.",
         points: [
-            "일반 사용자·사장님·관리자 역할별 화면 및 기능 분리",
+            "일반 사용자, 사장님, 관리자 역할별 화면 및 기능 분리",
             "Zustand를 이용한 역할 및 클라이언트 UI 상태 관리",
             "역할에 따라 필요한 서비스 기능과 데이터 흐름 분리",
         ],
@@ -62,7 +62,7 @@ export const mungArchitecture: ArchitectureItem[] = [
         description:
             "사용자, 반려견, 매장, 상품, 이용 기록과 문의 데이터를 Supabase에서 관계형 데이터로 관리했습니다.",
         points: [
-            "사용자·반려견·매장·상품 데이터 관리",
+            "사용자, 반려견, 매장, 상품 데이터 관리",
             "매장과 사용자 관계를 기준으로 이용 기록 연결",
             "문의방과 메시지 데이터를 연결해 1:1 문의 구조 구성",
         ],
@@ -74,7 +74,7 @@ export const mungArchitecture: ArchitectureItem[] = [
             "즉시 반영이 필요한 데이터에는 Supabase Realtime을 적용해 새 데이터를 다시 요청하지 않고 화면에 동기화했습니다.",
         points: [
             "문의 메시지 INSERT 이벤트 실시간 수신",
-            "React Query 캐시와 Realtime 데이터 동기화",
+            "TanStack Query 캐시와 Realtime 데이터 동기화",
             "역할별 화면에서 변경된 데이터를 즉시 반영",
         ],
     },

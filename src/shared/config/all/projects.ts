@@ -73,12 +73,12 @@ export const projects = [
         category: "MUSIC SOCIAL",
         summary: "음악을 중심으로 사용자와 플레이리스트를 연결하는 서비스",
         description:
-            "5인 팀 프로젝트에서 프론트엔드 개발을 담당하며 React Query 기반 서버 데이터 관리, Recoil 상태 관리와 외부 API 연동을 경험했습니다.",
+            "5인 팀 프로젝트에서 프론트엔드 개발을 담당하며 TanStack Query 기반 서버 데이터 관리 Recoil 상태 관리와 외부 API 연동을 경험했습니다.",
         icon: Music2,
         technologies: [
             "React",
             "TypeScript",
-            "React Query",
+            "TanStack Query",
             "Recoil",
         ],
         highlights: [
@@ -109,7 +109,8 @@ export const projects = [
         technologies: [
             "React",
             "WebSocket",
-            "MongoDB",
+            "Recoil",
+            "TanStack Query",
             "Lightweight Charts",
         ],
         highlights: [
@@ -140,7 +141,7 @@ export const projects = [
             "React",
             "Socket.IO",
             "MongoDB",
-            "React Query",
+            "TanStack Query",
         ],
         highlights: [
             "QR 기반 PT 관리",

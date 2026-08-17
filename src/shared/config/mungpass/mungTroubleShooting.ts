@@ -48,13 +48,13 @@ export const mungTroubleshooting: TroubleshootingItem[] = [
   {
     title: "Refine QueryClient 분리로 인한 캐시 불일치",
     problem:
-      "매장 검색 요청은 정상적으로 실행됐지만 React Query Devtools에 쿼리가 표시되지 않거나 특정 상황에서 캐시 데이터와 실제 화면 상태가 일치하지 않는 문제가 발생했습니다.",
+      "매장 검색 요청은 정상적으로 실행됐지만 TanStack Query Devtools에 쿼리가 표시되지 않거나 특정 상황에서 캐시 데이터와 실제 화면 상태가 일치하지 않는 문제가 발생했습니다.",
     reason:
       "Refine 내부에서 별도의 QueryClient가 사용되면서 애플리케이션 최상단 Provider의 QueryClient와 캐시 저장소가 분리됐습니다. 이로 인해 데이터 훅과 Devtools가 서로 다른 캐시 인스턴스를 참조했습니다.",
     solution:
       "애플리케이션 최상단에서 생성한 QueryClient 인스턴스를 Refine 설정에도 명시적으로 주입해 모든 데이터 훅과 Devtools가 하나의 캐시 저장소를 공유하도록 구조를 수정했습니다.",
     results: [
-      "React Query 캐시 저장소 단일화",
+      "TanStack Query 캐시 저장소 단일화",
       "데이터 훅과 Devtools의 조회 상태 일치",
       "매장 검색 결과와 실제 UI 상태의 정합성 확보",
     ],

@@ -1,5 +1,3 @@
-
-
 export const fuellyTechnologyGroups= [
   {
     title: "Frontend",

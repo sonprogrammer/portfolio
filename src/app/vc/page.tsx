@@ -1,8 +1,8 @@
 
-import { vcTroubleShooting } from "@/shared/config/vc";
+import { vcTechChoice, vcTroubleShooting } from "@/shared/config/vc";
 import { vcTechnologyGroup } from "@/shared/config/vc/vcTechnoloyGroup";
 import { FunctionReveal } from "@/shared/ui/Function-reveal";
-import { ProjectHero, SectionHeader, TechnologyCard, TroubleshootingCard } from "@/shared/ui/project-section-ui";
+import { ProjectHero, SectionHeader, TechChoiceCard, TechnologyCard, TroubleshootingCard } from "@/shared/ui/project-section-ui";
 import { ProjectMotivation } from "@/shared/ui/ProjectMotivation/ui";
 import { VcArchitecture } from "@/widgets/vc/architecture/ui";
 import { VcPages } from "@/widgets/vc/pages/ui";
@@ -110,6 +110,7 @@ export default function VcPage() {
             />
           ))}
         </div>
+        <TechChoiceCard data={vcTechChoice} colors="text-red-500"/>
       </section>
 
       <div className="border mx-20 border-gray-500 my-10" />

@@ -16,7 +16,7 @@ export const vcTechnologyGroup = [
     title: "State & Data",
     description: "서버 데이터 요청과 클라이언트 상태를 분리하여 관리",
     items: [
-      "React Query",
+      "TanStack Query",
       "Recoil",
       "Axios",
     ],
