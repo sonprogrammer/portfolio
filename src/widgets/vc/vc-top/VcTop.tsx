@@ -10,7 +10,8 @@ export function VcTop() {
                 <CoinSearch />
             </div>
 
-            <div className="mt-4 flex w-full items-center justify-end lg:absolute lg:-top-1 lg:right-0">
+            <div className="mt-4 flex w-full items-center justify-end lg:absolute lg:-top-1 lg:right-0 lg:mt-0 lg:w-auto">
+
                 <VcGuestBtn />
             </div>
         </div>
