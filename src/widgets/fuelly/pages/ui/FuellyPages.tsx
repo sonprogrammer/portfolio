@@ -4,6 +4,7 @@ import { useGetFuellyUser } from "@/features/fuelly/auth/model/useGetFuellyUser"
 import { LoginForm } from "@/features/fuelly/auth/ui";
 import { useFuellyNavStore } from "@/features/fuelly/nav/model";
 import { ProfileForm } from "@/features/fuelly/profile/ui";
+import { Loader } from "@/shared/ui/Loader";
 import { FuellyNav } from "@/widgets/fuelly/nav/ui";
 import { MainPage } from "@/widgets/fuelly/pages/ui/MainPage";
 import { MealsPage } from "@/widgets/fuelly/pages/ui/MealsPage";
@@ -18,9 +19,7 @@ export function FuellyPages() {
 
     if (isPending) {
         return (
-            <div className="flex min-h-[70vh] items-center justify-center text-sm text-white/40">
-                사용자 정보를 확인하는 중입니다.
-            </div>
+             <Loader color="text-emerald-400"/>
         );
     }
     const user = userInfo?.user ?? null;

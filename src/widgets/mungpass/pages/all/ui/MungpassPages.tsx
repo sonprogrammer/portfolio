@@ -4,6 +4,7 @@ import { useGetMUser } from "@/features/mungpass/auth/model"
 import { useMungpassNavStore } from "@/features/mungpass/nav/model"
 import { MungpassNav } from "@/features/mungpass/nav/ui"
 import { MungpassRoleSelector } from "@/features/mungpass/role/ui"
+import { Loader } from "@/shared/ui/Loader"
 import { MadminPages } from "@/widgets/mungpass/pages/admin/pages/ui"
 import { MungpassLoginPage } from "@/widgets/mungpass/pages/all/ui/MungpassLoginPage"
 import { MownerPages } from "@/widgets/mungpass/pages/owner/pages/ui"
@@ -20,9 +21,7 @@ export function MungpassPages() {
 
     if (isPending) {
         return (
-            <div>
-                로딩 중...
-            </div>
+            <Loader color="text-orange-400"/>
         )
     }
 
