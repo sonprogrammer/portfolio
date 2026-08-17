@@ -42,4 +42,11 @@ export const mungTechnologyGroup = [
       "Recharts",
     ],
   },
+  {
+    title: "AI",
+    description: "매장 매출 기반 AI 기능 구현",
+    items: [
+      "Gemini API",
+    ],
+  },
 ];

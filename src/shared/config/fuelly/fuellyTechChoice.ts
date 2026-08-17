@@ -7,6 +7,7 @@ export const fuellyTechChoice = {
     'TanStack Query는 식단 기록과 사용자 정보처럼 서버에서 관리되는 데이터의 요청, 캐시를 담당하고 Zustand는 목표 설정과 같이 클라이언트에서 공유되는 상태를 분리해서 관리하기 위해 사용했습니다.',
     'MongoDB는 사용자별 식단 기록과 영양 데이터를 문서 형태로 유연하게 저장하고, 기존 JavaScript 기반 개발 환경과 자연스럽게 연결할 수 있어 선택했습니다.',
     'JWT를 HttpOnly Cookie에 저장해 클라이언트 JavaScript의 직접 접근을 제한했으며 Next.js의 다양한 서버 런타임과 호환되고 공식 인증 가이드에서도 사용되는 jose를 JWT 생성, 검증 라이브러리로 선택했습니다.',
-    'Groq API는 개발 당시 무료로 사용할 수 있어 비용 부담 없이 AI 영양 추천 기능을 구현하기 위해 선택했으며 응답을 JSON Object 형태로 제한해 일관된 데이터 구조로 처리했습니다.'
+    'Groq API는 개발 당시 무료로 사용할 수 있어 비용 부담 없이 AI 영양 추천 기능을 구현하기 위해 선택했으며 응답을 JSON Object 형태로 제한해 일관된 데이터 구조로 처리했습니다.',
+    '실제 Fuelly 프로젝트에서는 Groq API를 통해 Llama 3.3 70B Versatile 모델을 사용했으며 현재 포트폴리오 기능 체험에서는 동일한 Groq API 기반의 openai/gpt-oss-20b 모델을 사용하고 있습니다.'
   ],
 }

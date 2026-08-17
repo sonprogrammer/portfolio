@@ -10,3 +10,4 @@ export * from './ImplementationCard'
 export * from './ProjectHero'
 
 export { TechChoiceCard, type TechChoice} from './TechChoiceCard'
+export * from './ArchitectureImgCard'

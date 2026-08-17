@@ -34,7 +34,7 @@ export const fuellyTechnologyGroups= [
     title: "AI",
     description: "사용자 목표와 식단 데이터를 기반으로 AI 영양 정보를 제공",
     items: [
-      "Groq API",
+      "Groq API(Llama 3.3)",
       "JSON Object",
     ],
   },

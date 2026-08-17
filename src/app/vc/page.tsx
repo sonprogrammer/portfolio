@@ -2,12 +2,12 @@
 import { vcTechChoice, vcTroubleShooting } from "@/shared/config/vc";
 import { vcTechnologyGroup } from "@/shared/config/vc/vcTechnoloyGroup";
 import { FunctionReveal } from "@/shared/ui/Function-reveal";
-import { ProjectHero, SectionHeader, TechChoiceCard, TechnologyCard, TroubleshootingCard } from "@/shared/ui/project-section-ui";
+import { ArchitectureImgCard, ProjectHero, SectionHeader, TechChoiceCard, TechnologyCard, TroubleshootingCard } from "@/shared/ui/project-section-ui";
 import { ProjectMotivation } from "@/shared/ui/ProjectMotivation/ui";
 import { VcArchitecture } from "@/widgets/vc/architecture/ui";
 import { VcPages } from "@/widgets/vc/pages/ui";
 import { VcTop } from "@/widgets/vc/vc-top";
-import Image from 'next/image'
+
 
 export default function VcPage() {
   return (
@@ -45,6 +45,11 @@ export default function VcPage() {
               </div>
             </div>
           </FunctionReveal>
+          <p className="mt-3 text-center text-xs leading-5 text-white/40">
+            *포트폴리오 기능 체험에서는 별도의 회원가입 없이 사용할 수 있도록
+            세션 기반의 임시 로그인 방식을 사용합니다.
+            실제 프로젝트의 인증 방식과는 차이가 있습니다.
+          </p>
         </div>
       </section>
 
@@ -63,31 +68,12 @@ export default function VcPage() {
 
         />
         <div className="grid gap-8 px-5 md:px-10 xl:px-20 lg:grid-cols-2">
-          <div className="overflow-hidden rounded-3xl border bg-card shadow-sm">
-            <div className="border-b px-6 py-5">
-              <h3 className="font-bold">
-                BNTY 서비스 구조
-              </h3>
-
-              <p className="mt-1 text-sm text-muted-foreground">
-                트레이너와 회원의 상호작용부터 서버, 데이터베이스,
-                실시간 통신까지의 전체 흐름입니다.
-              </p>
-            </div>
-
-            <button
-              type="button"
-              className="group relative block w-full bg-[#090d18] p-3 sm:p-6"
-            >
-              <Image
-                src="/vcflow.png"
-                alt="vc 서비스 흐름 및 시스템 아키텍처"
-                width={600}
-                height={700}
-                className="mx-auto transition-transform duration-300 group-hover:scale-105"
-              />
-            </button>
-          </div>
+          <ArchitectureImgCard
+            title="Virtual Coin 서비스 구조"
+            description="Upbit의 실시간 시세 데이터를 서버에서 수신하고 클라이언트에 중계해 차트, 호가, 현재가에 반영하는 전체 데이터 흐름입니다."
+            src="/vcflow.png"
+            alt="Virtual Coin 실시간 시세 수신 및 서비스 아키텍처"
+          />
           <VcArchitecture />
         </div>
       </section>
@@ -110,7 +96,7 @@ export default function VcPage() {
             />
           ))}
         </div>
-        <TechChoiceCard data={vcTechChoice} colors="text-red-500"/>
+        <TechChoiceCard data={vcTechChoice} colors="text-red-500" />
       </section>
 
       <div className="border mx-20 border-gray-500 my-10" />

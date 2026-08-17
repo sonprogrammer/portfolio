@@ -35,7 +35,10 @@ export default function MungpassPage() {
           >
             <MungpassPages />
           </FunctionReveal>
-
+          <p className="mt-3 text-center text-xs leading-5 text-white/40">
+            *기능 체험에서는 별도의 회원가입 없이 사용할 수 있도록
+            Supabase Anonymous Sign-Ins를 적용했습니다.
+          </p>
         </div>
       </section>
 
@@ -97,7 +100,7 @@ export default function MungpassPage() {
             />
           ))}
         </div>
-        <TechChoiceCard data={mungpassTechChoice} colors="text-orange-500"/>
+        <TechChoiceCard data={mungpassTechChoice} colors="text-orange-500" />
       </section>
 
       <div className="border mx-20 border-gray-500 my-10" />

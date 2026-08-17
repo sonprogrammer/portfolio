@@ -1,11 +1,11 @@
 import { fuellyTechChoice, fuellyTroubleshooting } from "@/shared/config/fuelly";
 import { fuellyTechnologyGroups } from "@/shared/config/fuelly/fuellyTechnologyGroup";
 import { FunctionReveal } from "@/shared/ui/Function-reveal";
-import { ProjectHero, SectionHeader, TechChoiceCard, TechnologyCard, TroubleshootingCard } from "@/shared/ui/project-section-ui";
+import { ArchitectureImgCard, ProjectHero, SectionHeader, TechChoiceCard, TechnologyCard, TroubleshootingCard } from "@/shared/ui/project-section-ui";
 import { ProjectMotivation } from "@/shared/ui/ProjectMotivation/ui";
 import { FuellyArchitecture } from "@/widgets/fuelly/architecture/ui";
 import { FuellyPages } from "@/widgets/fuelly/pages/ui";
-import Image from 'next/image'
+
 
 export default function FuellyPage() {
   return (
@@ -36,7 +36,11 @@ export default function FuellyPage() {
 
             <FuellyPages />
           </FunctionReveal>
-
+          <p className="mt-3 text-center text-xs leading-5 text-white/40">
+            *포트폴리오 기능 체험에서는 별도의 회원가입 없이 사용할 수 있도록
+            세션 기반의 임시 로그인 방식을 사용합니다.
+            실제 프로젝트의 인증 방식과는 차이가 있습니다.
+          </p>
         </div>
       </section>
 
@@ -54,31 +58,12 @@ export default function FuellyPage() {
           description="AI 영양 정보 처리부터 상태 관리, 인증과 데이터 저장까지 Fuelly의 주요 데이터 흐름을 정리했습니다."
         />
         <div className="grid gap-8 px-5 md:px-10 xl:px-20 lg:grid-cols-2">
-          <div className="overflow-hidden rounded-3xl border bg-card shadow-sm">
-            <div className="border-b px-6 py-5">
-              <h3 className="font-bold">
-                Fuelly 서비스 구조
-              </h3>
-
-              <p className="mt-1 text-sm text-muted-foreground">
-                사용자 기능 흐름과 Next.js API Routes를 중심으로
-                Groq AI와 MongoDB가 연결되는 전체 구조입니다.
-              </p>
-            </div>
-
-            <button
-              type="button"
-              className="group relative block w-full bg-[#090d18] p-3 sm:p-6"
-            >
-              <Image
-                src="/fuellyflow.png"
-                alt="Fuelly 서비스 흐름 및 시스템 아키텍처"
-                width={600}
-                height={700}
-                className="mx-auto transition-transform duration-300 group-hover:scale-105"
-              />
-            </button>
-          </div>
+          <ArchitectureImgCard
+            title="Fuelly 서비스 구조"
+            description="사용자 요청부터 Next.js Route Handler, Groq AI, MongoDB로 이어지는 전체 데이터 흐름입니다."
+            src="/fuellyFlow.png"
+            alt="Fuelly 서비스 흐름 및 시스템 아키텍처"
+          />
           <FuellyArchitecture />
         </div>
       </section>
@@ -103,7 +88,7 @@ export default function FuellyPage() {
             />
           ))}
         </div>
-        <TechChoiceCard data={fuellyTechChoice} colors="text-emerald-500"/>
+        <TechChoiceCard data={fuellyTechChoice} colors="text-emerald-500" />
       </section>
 
       <div className="border mx-20 border-gray-500 my-10" />
