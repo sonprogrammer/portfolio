@@ -12,6 +12,7 @@ interface ProjectHeroProps {
     githubUrl: string;
     deployUrl?: string;
     role?: string;
+    period: string;
     accentClassName?: string;
     borderClassName?: string;
 }
@@ -24,6 +25,7 @@ export function ProjectHero({
     githubUrl,
     deployUrl,
     role,
+    period,
     accentClassName,
     borderClassName
 }: ProjectHeroProps) {
@@ -58,9 +60,15 @@ export function ProjectHero({
                             )}
                         </div>
 
-                        <h1 className="mt-2 text-3xl font-black tracking-tight text-white sm:text-4xl">
-                            {name}
-                        </h1>
+                        <div className="mt-2 flex flex-wrap items-end gap-x-3 gap-y-1">
+                            <h1 className="text-3xl font-black tracking-tight text-white sm:text-4xl">
+                                {name}
+                            </h1>
+
+                            <span className="pb-1 text-xs font-semibold text-gray-500 sm:text-sm">
+                                {period}
+                            </span>
+                        </div>
 
                         <p className="mt-2 max-w-2xl text-sm leading-6 text-gray-400">
                             {description}

@@ -12,6 +12,7 @@ export default function MinglePage() {
         description="플레이리스트 공유 SNS 서비스"
         logoSrc="/mingle.svg"
         githubUrl="https://github.com/sonprogrammer/mingle"
+        period='2023.11 ~ 2023.11'
         accentClassName="text-violet-400"
         borderClassName="border-violet-500/20"
       />

@@ -19,6 +19,7 @@ export default function VcPage() {
         logoSrc="/vc.svg"
         githubUrl="https://github.com/sonprogrammer/VirtualCoin"
         deployUrl="https://virtualcoinn.onrender.com/"
+        period="2025.03 ~ 2025.04"
         accentClassName="text-red-400"
         borderClassName="border-red-500/20"
       />

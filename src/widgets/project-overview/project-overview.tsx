@@ -61,12 +61,19 @@ export function ProjectOverview() {
                   <span className="rounded-full border border-zinc-700 px-2.5 py-1 text-[10px] font-bold text-zinc-400">
                     {featuredProject.projectType}
                   </span>
+
                 </div>
               </div>
 
-              <h3 className="mt-7 text-4xl font-black tracking-tight text-white">
-                {featuredProject.name}
-              </h3>
+              <div className="mt-7 flex flex-wrap items-end gap-x-3 gap-y-1">
+                <h3 className="text-4xl font-black tracking-tight text-white">
+                  {featuredProject.name}
+                </h3>
+
+                <span className="pb-1 text-sm font-semibold text-zinc-500">
+                  {featuredProject.period}
+                </span>
+              </div>
 
               <p className="mt-3 text-lg font-semibold  text-zinc-200">
                 {featuredProject.summary}
@@ -160,15 +167,21 @@ export function ProjectOverview() {
                   </div>
                 </div>
 
-                <h3 className="mt-6 text-2xl font-black text-white">
-                  {project.name}
-                </h3>
+                <div className="mt-6 flex items-end gap-3">
+                  <h3 className="text-2xl font-black text-white">
+                    {project.name}
+                  </h3>
+
+                  <span className="pb-1 text-xs font-semibold text-zinc-500">
+                    {project.period}
+                  </span>
+                </div>
 
                 <p className="mt-2 min-h-12 text-sm font-semibold leading-6 text-zinc-300">
                   {project.summary}
                 </p>
 
-                <p className="mt-4 text-sm leading-6 text-zinc-text-zinc-400">
+                <p className="mt-4 text-sm leading-6 text-zinc-400">
                   {project.description}
                 </p>
 

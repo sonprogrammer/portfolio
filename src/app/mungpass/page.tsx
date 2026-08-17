@@ -16,6 +16,7 @@ export default function MungpassPage() {
         logoSrc="/mungpass.png"
         githubUrl="https://github.com/sonprogrammer/Mungpass"
         deployUrl="https://mungpass.vercel.app"
+        period="2026.01 ~ 2026.05"
         accentClassName="text-orange-400"
         borderClassName="border-orange-500/20"
       />

@@ -5,6 +5,7 @@ export const projects = [
         id: "mungpass",
         name: "Mungpass",
         projectType: "Personal Project",
+        period: "2026.01 ~ 2026.05",
         category: "SIGNATURE PROJECT",
         summary:
             "회원·사장님·관리자를 연결하는 반려동물 시설 O2O · B2B 운영 플랫폼",
@@ -38,6 +39,7 @@ export const projects = [
         id: "fuelly",
         name: "Fuelly",
         projectType: "Personal Project",
+        period: "2025.12 ~ 2026.01",
         category: "AI · HEALTH",
         summary:
             "AI 기반 개인 맞춤 영양 관리 서비스",
@@ -70,6 +72,7 @@ export const projects = [
         id: "mingle",
         name: "Mingle",
         projectType: "Team Project",
+        period: "2023.11 ~ 2023.11",
         category: "MUSIC SOCIAL",
         summary: "음악을 중심으로 사용자와 플레이리스트를 연결하는 서비스",
         description:
@@ -100,6 +103,7 @@ export const projects = [
         id: "vc",
         name: "Virtual Coin",
         projectType: "Personal Project",
+        period: "2025.03 ~ 2025.04",
         category: "REALTIME DATA",
         summary:
             "Upbit API 기반 실시간 모의 코인 투자 서비스",
@@ -131,6 +135,7 @@ export const projects = [
         id: "bnty",
         name: "BNTY",
         projectType: "Personal Project",
+        period: "2024.09 ~ 2024.10",
         category: "REALTIME · O2O",
         summary:
             "트레이너와 회원을 연결하는 PT 관리 서비스",

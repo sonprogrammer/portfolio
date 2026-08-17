@@ -1,6 +1,6 @@
 'use client'
 
-import { ArrowUpRight, ArrowDown, Code2, Sparkles } from "lucide-react";
+import { ArrowUpRight, ArrowDown, Code2 } from "lucide-react";
 import { AnimationNum } from '@/shared/ui/animation'
 import Link from "next/link";
 
@@ -37,13 +37,7 @@ export function HomeHero() {
     >
       <div className="mx-auto grid w-full max-w-7xl gap-12 lg:grid-cols-[1.08fr_0.92fr] lg:items-center">
         <div className="max-w-4xl">
-          <p className="mb-6 inline-flex items-center gap-2 rounded-full border px-4 py-2 text-sm font-semibold  shadow-sm border-zinc-800  text-zinc-300">
-            <Sparkles
-              size={15}
-              aria-hidden="true"
-            />
-            Frontend Developer · 손영진
-          </p>
+          
 
           <h1 className="text-4xl font-black leading-[1.08] tracking-tight  text-white sm:text-6xl lg:text-7xl">
             복잡한 데이터 흐름을

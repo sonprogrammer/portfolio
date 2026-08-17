@@ -18,6 +18,7 @@ export default function BntyPage() {
         logoSrc="/bnty.svg"
         githubUrl="https://github.com/sonprogrammer/BNTYpt"
         deployUrl="https://bnty.netlify.app/"
+        period= "2024.09 ~ 2024.10"
         accentClassName="text-blue-400"
         borderClassName="border-blue-500/20"
       />

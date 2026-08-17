@@ -17,6 +17,7 @@ export default function FuellyPage() {
         logoSrc="/fuelly.png"
         githubUrl="https://github.com/sonprogrammer/fuelly"
         deployUrl="https://fuelly-mauve.vercel.app/"
+        period="2025.12 ~ 2026.01"
         accentClassName="text-emerald-400"
         borderClassName="border-emerald-500/20"
       />
