@@ -32,7 +32,7 @@ export async function POST(req: NextRequest) {
                     ],
                 },
 
-                접속시간: {
+                '접속 시간': {
                     date: {
                         start: new Date().toISOString(),
                     },
@@ -48,7 +48,7 @@ export async function POST(req: NextRequest) {
                     ],
                 },
 
-                유입경로: {
+                '유입 경로': {
                     rich_text: [
                         {
                             text: {
