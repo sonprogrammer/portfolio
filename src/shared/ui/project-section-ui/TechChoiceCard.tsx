@@ -56,7 +56,7 @@ export function TechChoiceCard({ data, colors }: TechChoiceCardProps) {
                                 className="flex items-start gap-3"
                             >
                                 <span
-                                    className={`mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-current ${colors}`}
+                                    className={`mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-current ${colors}`}
                                 />
 
                                 <p className="text-sm font-medium leading-7 text-white/70">
