@@ -20,7 +20,7 @@ export async function POST(req: NextRequest) {
         const { page, referrer, device } = body
 
         await notion.pages.create({
-            parent: { database_id: DATABASE_ID },
+            parent: { data_source_id: DATABASE_ID },
             properties: {
                 이름: {
                     title: [
