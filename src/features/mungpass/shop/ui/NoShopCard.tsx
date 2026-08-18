@@ -22,14 +22,14 @@ export function NoShopCard({setIsOpen, isOpen}: NoShopCardProps) {
                 <p className="mt-1.5 text-xs text-gray-400">
                     매장을 등록하고 멍패스 사장님 기능을 체험해보세요.
                 </p>
-                <p className="mt-1 text-xs  underline tracking-wide font-black">
+                <p className="mt-1 text-xs text-gray-200/40  underline tracking-wide font-black">
                     * 실제 프로젝트에서의 등록과정을 간단하게 구현하였습니다.
                 </p>
 
                 <button
                     type="button"
                     onClick={() => setIsOpen(true)}
-                    className="mt-6 inline-flex items-center justify-center rounded-2xl bg-emerald-500 px-6 py-3 text-xs font-extrabold text-white shadow-lg shadow-orange-500/20 transition-all duration-200 hover:bg-orange-600 cursor-pointer active:scale-[0.98]"
+                    className="mt-6 inline-flex items-center justify-center rounded-2xl bg-emerald-500 px-6 py-3 text-xs font-extrabold text-white shadow-lg shadow-emerald-500/20 transition-all duration-200 hover:bg-emerald-600 cursor-pointer active:scale-[0.98]"
                 >
                     빠르게 매장 등록하기
                 </button>

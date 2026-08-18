@@ -22,7 +22,7 @@ export function MownerPages() {
   if (shopPending) {
     return (
       <div className="flex h-64 items-center justify-center">
-        <Loader2 className="h-6 w-6 animate-spin text-orange-500" />
+        <Loader2 className="h-6 w-6 animate-spin text-emerald-500" />
       </div>
     )
   }

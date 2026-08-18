@@ -20,7 +20,7 @@ export function CoinMarketTable() {
         <section>
             <div className="mb-5 flex items-end justify-between">
                 <div>
-                    <h2 className="text-xl font-semibold">
+                    <h2 className="text-xl text-white font-semibold">
                         원화 마켓
                     </h2>
 

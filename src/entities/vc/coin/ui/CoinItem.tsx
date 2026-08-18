@@ -32,7 +32,7 @@ export function CoinItem({ coin, onSelectCoin }: CoinItemProps) {
                 />
                 <div>
 
-                    <p className="font-medium text-xs sm:text-base ">
+                    <p className="font-medium text-white text-xs sm:text-base ">
                         {coin.koreanName}
                     </p>
 
@@ -44,7 +44,7 @@ export function CoinItem({ coin, onSelectCoin }: CoinItemProps) {
                     </p>
                 </div>
             </div>
-            <p className="text-right font-medium text-xs sm:text-base">
+            <p className="text-right font-medium text-white text-xs sm:text-base">
                 {(coin.tradePrice).toLocaleString()}
                 원
             </p>

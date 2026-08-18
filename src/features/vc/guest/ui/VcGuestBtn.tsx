@@ -15,7 +15,7 @@ export function VcGuestBtn() {
                 <div className="h-9 w-24 animate-pulse rounded-xl bg-white/10 sm:w-28" />
             ) : guest ? (
                 <div className="flex min-w-0 items-center gap-2 sm:gap-3">
-                    <h1 className="max-w-20 truncate text-xs sm:max-w-none sm:text-sm">
+                    <h1 className="max-w-20 truncate text-xs text-white sm:max-w-none sm:text-sm">
                         {guest.nickname}
                     </h1>
 
