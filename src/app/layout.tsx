@@ -4,6 +4,7 @@ import { Navbar } from "@/widgets/navbar/Navbar";
 import { QueryProvider } from "@/shared/providers/query-provider";
 import { Toaster } from "sonner";
 import { SocketProvider } from "@/shared/providers/SocketProvider";
+import { VisitorTracker } from "@/shared/ui/visitor-tracking";
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://portfolio-kohl-xi-20.vercel.app/'),
@@ -56,6 +57,7 @@ export default function RootLayout({
   return (
     <html lang="ko" className="h-full antialiased scroll-smooth" data-scroll-behavior="smooth">
       <body className="min-h-full flex flex-col">
+        <VisitorTracker />
         <QueryProvider>
 
           <header className="sticky top-0 z-10000">
