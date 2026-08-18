@@ -103,9 +103,9 @@ export function OrderHistoryPage() {
                     <>
                         <div className="lg:hidden">
                             {orders.map(order => {
-                                const isBuy = order.type === 'buy';
-                                const symbol = order.market.split('-')[1];
-                                const koreanName = koreanNameOb[order.market] ?? symbol;
+                                const isBuy = order.type === 'buy'
+                                const symbol = order.market.split('-')[1]
+                                const koreanName = koreanNameOb[order.market] ?? symbol
 
                                 return (
                                     <div
@@ -206,8 +206,9 @@ export function OrderHistoryPage() {
 
                                 <ul>
                                     {orders.map(order => {
-                                        const isBuy = order.type === 'buy';
-                                        const symbol = order.market.split('-')[1];
+                                        const isBuy = order.type === 'buy'
+                                        const symbol = order.market.split('-')[1]
+                                        const koreanName = koreanNameOb[order.market] ?? symbol
 
                                         return (
                                             <li
@@ -226,7 +227,7 @@ export function OrderHistoryPage() {
 
                                                 <div>
                                                     <p className="font-medium text-white">
-                                                        {symbol}
+                                                        {koreanName}
                                                     </p>
 
                                                     <p className="mt-1 text-xs text-white/30">

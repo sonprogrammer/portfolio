@@ -176,7 +176,7 @@ export function VcHoldingList({
                             <ul>
                                 {holdings.map(holding => {
                                     const symbol = holding.market.split("-")[1];
-
+                                    const korea = koreanOb[holding.market] ?? symbol
                                     const isProfit = holding.profitLoss >= 0;
 
                                     const profitClassName = isProfit
@@ -190,7 +190,7 @@ export function VcHoldingList({
                                         >
                                             <div>
                                                 <p className="font-medium text-white">
-                                                    {symbol}
+                                                    {korea}
                                                 </p>
 
                                                 <p className="mt-1 text-xs text-white/30">
