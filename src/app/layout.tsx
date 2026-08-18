@@ -39,7 +39,7 @@ export const metadata: Metadata = {
     type: 'website',
     images: [
       {
-        url: '/photo.png',
+        url: '/portfolio-main.png',
         width: 1200,
         height: 630,
         alt: '프론트엔드 개발자 손영진 포트폴리오'
