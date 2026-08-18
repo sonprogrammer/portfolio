@@ -27,8 +27,8 @@ export function ArchitectureImgCard({
 
     return (
         <>
-            <div className="overflow-hidden rounded-3xl border bg-card shadow-sm">
-                <div className="border-b px-6 py-5">
+            <div className="overflow-hidden rounded-3xl border border-zinc-800 bg-card shadow-sm">
+                <div className="border-b px-6 py-5 text-white">
                     <h3 className="font-bold">
                         {title}
                     </h3>

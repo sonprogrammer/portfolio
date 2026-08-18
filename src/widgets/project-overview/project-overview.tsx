@@ -110,7 +110,7 @@ export function ProjectOverview() {
                 {featuredProject.metricLabel}
               </p>
 
-              <div className="mt-5 border-t pt-5 border-zinc-800">
+              <div className=" border-t py-5 border-zinc-800">
                 <ul className="space-y-2">
                   {featuredProject.highlights.map(highlight => (
                     <li
