@@ -26,7 +26,7 @@ export default function BntyPage() {
         <SectionHeader
           number="01"
           title="핵심 기능"
-          description="*최소한의 기능 테스트를 위해 실제 서비스와 일부 다를 수있음을 미리 알려드립니다."
+          description="*최소한의 기능 테스트를 위해 실제 서비스와 일부 다를 수 있음을 미리 알려드립니다."
         />
 
         <div className="px-0 sm:px-2">

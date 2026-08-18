@@ -13,7 +13,7 @@ export default function VcPage() {
   return (
     <div className="flex flex-col gap-10">
       <ProjectHero
-        name="Virtual Coin"
+        name="Virtual Coin(VC)"
         projectType="Personal Project"
         description="Upbit API를 기반으로 실시간 시세와 모의 투자 기능을 구현한 코인 투자 서비스"
         logoSrc="/vc.svg"
@@ -27,7 +27,7 @@ export default function VcPage() {
         <SectionHeader
           number="01"
           title="핵심 기능"
-          description="*최소한의 기능 테스트를 위해 실제 서비스와 일부 다를 수있음을 미리 알려드립니다."
+          description="*최소한의 기능 테스트를 위해 실제 서비스와 일부 다를 수 있음을 미리 알려드립니다."
         />
         <div className="px-2">
           <FunctionReveal

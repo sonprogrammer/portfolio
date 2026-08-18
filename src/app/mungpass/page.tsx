@@ -26,11 +26,11 @@ export default function MungpassPage() {
         <SectionHeader
           number="01"
           title="핵심 기능"
-          description="*최소한의 기능 테스트를 위해 실제 서비스와 일부 다를 수있음을 미리 알려드립니다."
+          description="*최소한의 기능 테스트를 위해 실제 서비스와 일부 다를 수 있음을 미리 알려드립니다."
         />
         <div className="px-2">
           <FunctionReveal
-            title="MungPass 기능 체험"
+            title="Mungpass 기능 체험"
             description="일반 사용자, 사장님, 관리자 역할을 전환하며 역할별 주요 기능과 서비스 흐름을 직접 체험해보세요."
             theme="orange"
           >
@@ -56,7 +56,7 @@ export default function MungpassPage() {
         <SectionHeader
           number="02"
           title="서비스 아키텍처 & 데이터 흐름"
-          description="역할별 사용자 흐름부터 인증, QR 이용 처리, 데이터 저장과 실시간 동기화까지 MungPass의 전체 서비스 구조를 정리했습니다."
+          description="역할별 사용자 흐름부터 인증, QR 이용 처리, 데이터 저장과 실시간 동기화까지 Mungpass의 전체 서비스 구조를 정리했습니다."
         />
 
         <MungpassArchitecture />
@@ -90,7 +90,7 @@ export default function MungpassPage() {
         <SectionHeader
           number="04"
           title="사용 기술"
-          description="MungPass의 역할별 UI, 상태 관리, 인증과 데이터 처리 및 실시간 기능에 사용한 기술을 역할별로 정리했습니다."
+          description="Mungpass의 역할별 UI, 상태 관리, 인증과 데이터 처리 및 실시간 기능에 사용한 기술을 역할별로 정리했습니다."
         />
         <div className="grid gap-5 px-5 md:px-10 xl:px-20  sm:grid-cols-2 xl:grid-cols-4">
           {mungTechnologyGroup.map(group => (

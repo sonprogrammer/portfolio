@@ -26,7 +26,7 @@ export default function FuellyPage() {
         <SectionHeader
           number="01"
           title="핵심 기능"
-          description="*최소한의 기능 테스트를 위해 실제 서비스와 일부 다를 수있음을 미리 알려드립니다."
+          description="*최소한의 기능 테스트를 위해 실제 서비스와 일부 다를 수 있음을 미리 알려드립니다."
         />
         <div className="px-2">
           <FunctionReveal
@@ -62,7 +62,7 @@ export default function FuellyPage() {
           <ArchitectureImgCard
             title="Fuelly 서비스 구조"
             description="사용자 요청부터 Next.js Route Handler, Groq AI, MongoDB로 이어지는 전체 데이터 흐름입니다."
-            src="/fuellyFlow.png"
+            src="/fuelly-flow.png"
             alt="Fuelly 서비스 흐름 및 시스템 아키텍처"
           />
           <FuellyArchitecture />

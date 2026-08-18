@@ -61,7 +61,7 @@ export default function RootLayout({
           <header className="sticky top-0 z-10000">
             <Navbar />
           </header>
-          <main className="flex-1">
+          <main className="flex-1 bg-zinc-950">
             <SocketProvider>
               {children}
             </SocketProvider>

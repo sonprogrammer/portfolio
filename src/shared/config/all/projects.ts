@@ -89,8 +89,8 @@ export const projects = [
             "플레이리스트 및 음악 인터랙션",
             "OpenWeather API 연동",
         ],
-        metric: "5명",
-        metricLabel: "최종 팀 구성",
+        metric: "CORS 해결",
+        metricLabel: "외부 API 헤더 충돌",
         theme: {
             icon: "bg-violet-500/10 text-violet-500",
             border: "hover:border-violet-500/40",
@@ -101,7 +101,7 @@ export const projects = [
     },
     {
         id: "vc",
-        name: "Virtual Coin",
+        name: "Virtual Coin(VC)",
         projectType: "Personal Project",
         period: "2025.03 ~ 2025.04",
         category: "REALTIME DATA",
