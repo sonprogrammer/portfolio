@@ -103,11 +103,7 @@ export function useVcOrderbook({ market }: UseVcOrderbookParams) {
         );
       }
     };
-  }, [
-    market,
-    socket,
-    subscribe,
-  ]);
+  }, [ market, socket, subscribe])
 
   const bestAskPrice =
     orderbook?.units[0]?.askPrice ??

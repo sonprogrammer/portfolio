@@ -29,7 +29,7 @@ export function ChatRoom({ selectedRoomId, user, role }: ChatRoomProps) {
             top: messageRef.current.scrollHeight,
             behavior: 'smooth'
         })
-    },[chat?.messages.length])
+    }, [chat?.messages.length])
 
 
     if (isPending) {
@@ -73,15 +73,12 @@ export function ChatRoom({ selectedRoomId, user, role }: ChatRoomProps) {
                 ) : (
                     <div className="flex flex-col gap-2">
                         {chat.messages.map((message, index) => {
-                            const previousMessage =
-                                chat.messages[index - 1];
+                            const previousMessage = chat.messages[index - 1]
 
-                            const isNewDate =
-                                !previousMessage ||
-                                !isSameDay(
-                                    new Date(previousMessage.sentAt),
-                                    new Date(message.sentAt),
-                                );
+                            const isNewDate = !previousMessage || !isSameDay(
+                                new Date(previousMessage.sentAt),
+                                new Date(message.sentAt)
+                            );
 
                             const isMine = message.senderId === user.id;
                             const isUnread = isMine && !message.readBy.some(
@@ -155,7 +152,7 @@ export function ChatRoom({ selectedRoomId, user, role }: ChatRoomProps) {
                                             </time>
                                         )}
                                     </div>
-                                    
+
                                 </div>
                             );
                         })}
