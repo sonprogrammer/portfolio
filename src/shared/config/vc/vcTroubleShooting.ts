@@ -31,14 +31,14 @@ export const vcTroubleShooting: TroubleshootingItem[] = [
     {
         title: "Upbit API CORS 및 요청 제한 문제",
         problem:
-            "Upbit API 연동 과정에서 CORS 오류와 Too Many Requests 요청 제한 문제가 발생했습니다.",
+            "브라우저에서 Upbit API를 직접 호출하는 과정에서 CORS 오류와 429 Too Many Requests 문제가 발생했습니다.",
         reason:
-            "외부 Upbit API 요청을 처리하는 과정에서 브라우저의 CORS 제약과 API 요청 제한의 영향을 받았습니다.",
+            "브라우저 요청에 Origin 헤더가 포함되면서 Upbit의 Origin 기반 요청 제한이 적용되었고 REST API와 WebSocket 모두 10초당 1회의 제한을 받았습니다.",
         solution:
-            "Node.js 백엔드에 중계 서버를 구축해 Upbit API 요청을 서버에서 처리하도록 구조를 변경했습니다.",
+            "기존 브라우저에서 직접 요청하는 방식 대신 Node.js 백엔드에 중계 서버를 구축해 Upbit REST API와 WebSocket 연결을 서버에서 처리하도록 변경했습니다. 이를 통해 브라우저의 CORS 제약을 해결하고 Origin 기반 요청 제한 문제를 해결했습니다.",
         results: [
-            "Upbit API CORS 문제 해결",
-            "Too Many Requests 요청 제한 문제 대응",
+            "Upbit API 요청 구조를 서버 중계 방식으로 개선",
+            "CORS 및 Origin 기반 요청 제한 문제 해결",
         ],
     },
 ]

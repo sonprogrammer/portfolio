@@ -108,16 +108,7 @@ export function CoinChart({ market }: CoinChartProps) {
 
   const loadPreviousCandlesRef = useRef<() => void>(() => { })
 
-  const {
-    data,
-    isLoading,
-    isError,
-    error,
-    hasNextPage,
-    isFetchingNextPage,
-    fetchNextPage,
-    refetch,
-  } = useInfiniteVcCandle({
+  const { data, isLoading, isError, error, hasNextPage, isFetchingNextPage, fetchNextPage, refetch } = useInfiniteVcCandle({
     market,
     unit
   })
@@ -163,9 +154,7 @@ export function CoinChart({ market }: CoinChartProps) {
     isFetchingNextPage,
   ]);
 
-  /*
-   * 차트 인스턴스 생성
-   */
+
   useEffect(() => {
     const container =
       chartContainerRef.current;
@@ -179,45 +168,32 @@ export function CoinChart({ market }: CoinChartProps) {
       {
         width: container.clientWidth,
         height: 420,
-
         layout: {
           background: {
             type: ColorType.Solid,
             color: '#111318',
           },
-
-          textColor:
-            'rgba(255, 255, 255, 0.45)',
-
-          /*
-           * TradingView 출처 표시.
-           * 라이선스 링크 요구사항 충족에 도움 된다.
-           */
+          textColor: 'rgba(255, 255, 255, 0.45)',
           attributionLogo: true,
         },
-
         grid: {
           vertLines: {
             color:
               'rgba(255, 255, 255, 0.04)',
           },
-
           horzLines: {
             color:
               'rgba(255, 255, 255, 0.04)',
           },
         },
-
         crosshair: {
           mode: CrosshairMode.Normal,
-
           vertLine: {
             color:
               'rgba(255, 255, 255, 0.22)',
             labelBackgroundColor:
               '#272a31',
           },
-
           horzLine: {
             color:
               'rgba(255, 255, 255, 0.22)',
@@ -225,54 +201,42 @@ export function CoinChart({ market }: CoinChartProps) {
               '#272a31',
           },
         },
-
         rightPriceScale: {
           borderColor:
             'rgba(255, 255, 255, 0.08)',
-
           scaleMargins: {
             top: 0.1,
             bottom: 0.1,
           },
         },
-
         timeScale: {
           borderColor:
             'rgba(255, 255, 255, 0.08)',
-
           timeVisible: true,
           secondsVisible: false,
-
           rightOffset: 5,
           barSpacing: 8,
           minBarSpacing: 2,
-
           lockVisibleTimeRangeOnResize:
             true,
         },
-
         handleScroll: {
           mouseWheel: true,
           pressedMouseMove: true,
           horzTouchDrag: true,
           vertTouchDrag: false,
         },
-
         handleScale: {
           axisPressedMouseMove: true,
           mouseWheel: true,
           pinch: true,
         },
-
         localization: {
           locale: 'ko-KR',
-
           priceFormatter:
             formatChartPrice,
-
-          timeFormatter: (time:Time) => {
+          timeFormatter: (time: Time) => {
             const timestamp = Number(time) * 1000;
-
             return new Intl.DateTimeFormat(
               'ko-KR',
               {
@@ -331,10 +295,7 @@ export function CoinChart({ market }: CoinChartProps) {
         return;
       }
 
-      /*
-       * 차트 왼쪽에 남은 데이터가
-       * 30개 이하가 되면 이전 데이터 조회
-       */
+
       if (
         logicalRange.from <
         LOAD_MORE_THRESHOLD
@@ -384,10 +345,6 @@ export function CoinChart({ market }: CoinChartProps) {
     };
   }, []);
 
-  /*
-   * 마켓 또는 분봉 단위가 바뀌면
-   * 이전 차트를 비우고 새 데이터로 초기화한다.
-   */
   useEffect(() => {
     hasInitializedRef.current =
       false;
@@ -397,10 +354,6 @@ export function CoinChart({ market }: CoinChartProps) {
     );
   }, [market, unit]);
 
-  /*
-   * React Query의 캔들 데이터를
-   * Lightweight Charts에 적용한다.
-   */
   useEffect(() => {
     const chart = chartRef.current;
     const candleSeries =
@@ -418,13 +371,6 @@ export function CoinChart({ market }: CoinChartProps) {
       createChartData(candles),
     );
 
-    /*
-     * 최초 조회 또는 분봉 변경 때만
-     * 최신 데이터 전체가 보이도록 맞춘다.
-     *
-     * 과거 데이터 추가 조회 때 fitContent를
-     * 호출하면 사용자의 스크롤 위치가 초기화된다.
-     */
     if (!hasInitializedRef.current) {
       chart.timeScale().fitContent();
 

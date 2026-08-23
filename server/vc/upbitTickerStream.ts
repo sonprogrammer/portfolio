@@ -77,25 +77,19 @@ export function startUpbitTickerStream(io: Server) {
 
             const ticker: VcTicker = {
                 market: message.code,
-                koreanName:
-                    marketInfo?.korean_name ?? message.code,
-                englishName:
-                    marketInfo?.english_name ?? message.code,
+                koreanName: marketInfo?.korean_name ?? message.code,
+                englishName: marketInfo?.english_name ?? message.code,
 
                 tradePrice: message.trade_price,
                 openingPrice: message.opening_price,
                 highPrice: message.high_price,
                 lowPrice: message.low_price,
 
-                signedChangePrice:
-                    message.signed_change_price,
-                signedChangeRate:
-                    message.signed_change_rate,
+                signedChangePrice: message.signed_change_price,
+                signedChangeRate: message.signed_change_rate,
 
-                accTradePrice24h:
-                    message.acc_trade_price_24h,
-                accTradeVolume24h:
-                    message.acc_trade_volume_24h,
+                accTradePrice24h: message.acc_trade_price_24h,
+                accTradeVolume24h: message.acc_trade_volume_24h,
 
                 timestamp: message.timestamp,
             };
@@ -125,9 +119,7 @@ export function startUpbitTickerStream(io: Server) {
                 ({ market }) => market,
             );
 
-            upbitSocket = new WebSocket(
-                UPBIT_WEBSOCKET_URL,
-            );
+            upbitSocket = new WebSocket(UPBIT_WEBSOCKET_URL);
 
             upbitSocket.on('open', () => {
                 console.log(
