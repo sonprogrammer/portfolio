@@ -66,10 +66,7 @@ export function registerVcOrderbookEvents({
         return;
       }
 
-      /*
-       * 같은 socket에서 같은 마켓을
-       * 중복 구독하지 않도록 방지
-       */
+
       if (
         subscribedMarkets.has(market)
       ) {
@@ -98,10 +95,7 @@ export function registerVcOrderbookEvents({
         market,
       );
 
-      /*
-       * 이미 다른 클라이언트가 해당 마켓을
-       * 구독 중이면 최신 캐시를 즉시 전송
-       */
+     
       const snapshot =
         orderbookManager.getSnapshot(
           market,

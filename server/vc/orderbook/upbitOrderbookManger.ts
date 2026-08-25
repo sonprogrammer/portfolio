@@ -1,7 +1,7 @@
 import { randomUUID } from "crypto";
 
-import WebSocket, {type RawData} from 'ws'
-import type{ Server} from 'socket.io'
+import WebSocket, { type RawData } from 'ws'
+import type { Server } from 'socket.io'
 import type { VcOrderbook } from "@/entities/vc/orderbook/model/orderbookTypes";
 import { VC_SOCKET_EVENTS } from "@/entities/vc/coin/model/socketEvents";
 
@@ -27,14 +27,11 @@ function createRoomName(market: string) {
 }
 
 function isUpbitOrderbookResponse(value: unknown): value is UpbitOrderbookResponse {
-  if (
-    typeof value !== 'object' ||
-    value === null
-  ) {
-    return false;
+  if (typeof value !== 'object' || value === null) {
+    return false
   }
 
-  const data = value as Partial<UpbitOrderbookResponse>;
+  const data = value as Partial<UpbitOrderbookResponse>
 
   return (
     data.type === 'orderbook' &&
@@ -44,30 +41,19 @@ function isUpbitOrderbookResponse(value: unknown): value is UpbitOrderbookRespon
 }
 
 export class UpbitOrderbookManager {
-  private readonly connections =
-    new Map<string, OrderbookConnection>();
+  private readonly connections = new Map<string, OrderbookConnection>();
 
-  constructor(
-    private readonly io: Server,
-  ) {}
+  constructor(private readonly io: Server) { }
 
-  subscribe(
-    marketValue: string,
-  ) {
-    const market =
-      marketValue.toUpperCase();
+  subscribe(marketValue: string) {
+    const market = marketValue.toUpperCase()
 
-    const existingConnection =
-      this.connections.get(market);
+    const existingConnection = this.connections.get(market);
 
     if (existingConnection) {
       existingConnection.subscriberCount += 1;
 
-      if (
-        !existingConnection.socket ||
-        existingConnection.socket.readyState ===
-          WebSocket.CLOSED
-      ) {
+      if (!existingConnection.socket || existingConnection.socket.readyState === WebSocket.CLOSED) {
         this.connect(existingConnection);
       }
 
@@ -84,42 +70,28 @@ export class UpbitOrderbookManager {
       latestOrderbook: null,
     };
 
-    this.connections.set(
-      market,
-      connection,
-    );
+    this.connections.set(market, connection);
 
     this.connect(connection);
   }
 
-  unsubscribe(
-    marketValue: string,
-  ) {
-    const market =
-      marketValue.toUpperCase();
+  unsubscribe(marketValue: string) {
+    const market = marketValue.toUpperCase();
 
-    const connection =
-      this.connections.get(market);
+    const connection = this.connections.get(market);
 
     if (!connection) {
       return;
     }
 
-    connection.subscriberCount = Math.max(
-      connection.subscriberCount - 1,
-      0,
-    );
+    connection.subscriberCount = Math.max(connection.subscriberCount - 1, 0);
 
-    if (
-      connection.subscriberCount > 0
-    ) {
+    if (connection.subscriberCount > 0) {
       return;
     }
 
     if (connection.reconnectTimer) {
-      clearTimeout(
-        connection.reconnectTimer,
-      );
+      clearTimeout(connection.reconnectTimer)
 
       connection.reconnectTimer = null;
     }
@@ -130,26 +102,18 @@ export class UpbitOrderbookManager {
     this.connections.delete(market);
   }
 
-  getSnapshot(
-    marketValue: string,
-  ) {
-    const market =
-      marketValue.toUpperCase();
+  getSnapshot(marketValue: string) {
+    const market = marketValue.toUpperCase();
 
     return (
-      this.connections.get(market)
-        ?.latestOrderbook ?? null
+      this.connections.get(market)?.latestOrderbook ?? null
     );
   }
 
   stopAll() {
     for (const connection of this.connections.values()) {
-      if (
-        connection.reconnectTimer
-      ) {
-        clearTimeout(
-          connection.reconnectTimer,
-        );
+      if (connection.reconnectTimer) {
+        clearTimeout(connection.reconnectTimer)
       }
 
       connection.socket?.close();
@@ -158,105 +122,66 @@ export class UpbitOrderbookManager {
     this.connections.clear();
   }
 
-  private connect(
-    connection: OrderbookConnection,
-  ) {
-    if (
-      connection.subscriberCount === 0
-    ) {
+  private connect(connection: OrderbookConnection) {
+    if (connection.subscriberCount === 0) {
       return;
     }
 
-    if (
-      connection.socket?.readyState ===
-        WebSocket.CONNECTING ||
-      connection.socket?.readyState ===
-        WebSocket.OPEN
-    ) {
+    if (connection.socket?.readyState === WebSocket.CONNECTING || connection.socket?.readyState === WebSocket.OPEN) {
       return;
     }
 
-    const socket = new WebSocket(
-      UPBIT_WEBSOCKET_URL,
-    );
+    const socket = new WebSocket(UPBIT_WEBSOCKET_URL)
 
     connection.socket = socket;
 
     socket.on('open', () => {
+
       const subscriptionMessage = [
         {
           ticket: randomUUID(),
         },
         {
           type: 'orderbook',
-          codes: [
-            `${connection.market}.${ORDERBOOK_UNIT_COUNT}`,
-          ],
+          codes: [`${connection.market}.${ORDERBOOK_UNIT_COUNT}`]
         },
         {
           format: 'DEFAULT',
         },
       ];
 
-      socket.send(
-        JSON.stringify(
-          subscriptionMessage,
-        ),
-      );
+      socket.send(JSON.stringify(subscriptionMessage))
+
     });
 
-    socket.on(
-      'message',
-      (rawData: RawData) => {
+    socket.on('message', (rawData: RawData) => {
         try {
-          const parsedData = JSON.parse(
-            rawData.toString(),
-          ) as unknown;
+          const parsedData = JSON.parse(rawData.toString()) as unknown;
 
-          if (
-            !isUpbitOrderbookResponse(
-              parsedData,
-            )
-          ) {
+          if (!isUpbitOrderbookResponse(parsedData)) {
             return;
           }
 
-          const orderbook =
-            normalizeUpbitOrderbook(
-              parsedData,
-            );
+          const orderbook = normalizeUpbitOrderbook(parsedData)
 
-          connection.latestOrderbook =
-            orderbook;
+          connection.latestOrderbook = orderbook;
 
-          this.io
-            .to(
-              createRoomName(
-                connection.market,
-              ),
-            )
-            .emit(
-              VC_SOCKET_EVENTS.orderbookUpdate,
-              orderbook,
-            );
+          this.io.to(createRoomName(connection.market))
+                  .emit(VC_SOCKET_EVENTS.orderbookUpdate, orderbook)
+
+
         } catch (error) {
-          console.error(
-            '[VC Orderbook] parse error',
-            error,
-          );
+          console.error('[VC Orderbook] parse error', error)
         }
       },
     );
 
     socket.on('error', (error) => {
-      console.error(
-        `[VC Orderbook] ${connection.market}`,
-        error,
-      );
+      console.error(`[VC Orderbook] ${connection.market}`, error)
     });
 
     socket.on('close', () => {
-      connection.socket = null;
+      connection.socket = null
 
       if (
         connection.subscriberCount === 0

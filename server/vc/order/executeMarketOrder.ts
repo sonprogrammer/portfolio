@@ -133,10 +133,7 @@ export async function executeMarketOrder(
             );
           }
 
-          /*
-           * 코인 수량을 소수점 8자리에서 내림했기 때문에
-           * 실제 체결 금액도 다시 계산한다.
-           */
+
           const executedAmount =
             Math.floor(
               executedQuantity *

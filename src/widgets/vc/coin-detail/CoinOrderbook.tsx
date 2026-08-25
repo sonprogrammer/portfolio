@@ -83,13 +83,6 @@ export function CoinOrderbook({ market, currentPrice }: { market: string, curren
         1,
     );
 
-    /*
-     * 업비트 asks:
-     * 최우선 매도부터 높은 가격 순서
-     *
-     * UI에서는 가장 비싼 매도를 위,
-     * 최우선 매도를 현재가 가까이에 두기 위해 reverse
-     */
     const asks: OrderbookItem[] = orderbook.units
         .map((unit: VcOrderbookUnit) => ({
             price: unit.askPrice,
@@ -259,7 +252,7 @@ function OrderbookContainer({
                 </h2>
 
                 <p className="mt-1 text-xs text-white/35">
-                    업비트 15호가 기준
+                    업비트 5호가 기준
                 </p>
             </div>
 

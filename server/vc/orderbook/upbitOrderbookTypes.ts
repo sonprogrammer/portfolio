@@ -21,9 +21,7 @@ export interface UpbitOrderbookResponse {
   level: number;
 }
 
-export function normalizeUpbitOrderbook(
-  orderbook: UpbitOrderbookResponse,
-): VcOrderbook {
+export function normalizeUpbitOrderbook(orderbook: UpbitOrderbookResponse): VcOrderbook {
   return {
     market: orderbook.code,
 

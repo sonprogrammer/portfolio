@@ -64,10 +64,7 @@ export function useVcOrderbook({ market }: UseVcOrderbookParams) {
       setError(payload.message);
     };
 
-    /*
-     * 서버가 구독 직후 snapshot을 보낼 수 있으므로
-     * listener를 먼저 등록한다.
-     */
+
     socket.on(VC_SOCKET_EVENTS.orderbookUpdate, handleOrderbookUpdate)
 
     socket.on(VC_SOCKET_EVENTS.orderbookError, handleOrderbookError)
