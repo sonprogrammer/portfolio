@@ -47,10 +47,13 @@ export default function VcPage() {
             </div>
           </FunctionReveal>
           <p className="mt-3 text-center text-xs leading-5 text-white/40">
-            *포트폴리오 기능 체험에서는 별도의 회원가입 없이 사용할 수 있도록
-            세션 기반의 임시 로그인 방식을 사용합니다.
-            실제 프로젝트의 인증 방식과는 차이가 있습니다.
+             *포트폴리오 기능 체험에서는 별도의 회원가입 없이 사용할 수 있도록 HttpOnly 쿠키의 세션 식별자를 
+            기반으로 데모 사용자를 구분합니다. 실제 프로젝트의 인증 방식과는 차이가 있습니다.
           </p>
+          <p className="mt-3 text-center text-xs leading-5 text-white/40">
+            * VC의 실시간 시세 데이터는 별도 중계 서버를 통해 제공되며 무료 호스팅의 월 사용량 한도 초과 시 기능 체험이 일시적으로 제한될 수 있습니다. 죄송합니다.
+          </p>
+
         </div>
       </section>
 

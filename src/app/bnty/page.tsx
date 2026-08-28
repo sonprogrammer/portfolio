@@ -18,7 +18,7 @@ export default function BntyPage() {
         logoSrc="/bnty.svg"
         githubUrl="https://github.com/sonprogrammer/BNTYpt"
         deployUrl="https://bnty.netlify.app/"
-        period= "2024.09 ~ 2024.10"
+        period="2024.09 ~ 2024.10"
         accentClassName="text-blue-400"
         borderClassName="border-blue-500/20"
       />
@@ -54,9 +54,11 @@ export default function BntyPage() {
 
           </FunctionReveal>
           <p className="mt-3 text-center text-xs leading-5 text-white/40">
-            *포트폴리오 기능 체험에서는 별도의 회원가입 없이 사용할 수 있도록
-            세션 기반의 임시 로그인 방식을 사용합니다.
-            실제 프로젝트의 인증 방식과는 차이가 있습니다.
+            *포트폴리오 기능 체험에서는 별도의 회원가입 없이 사용할 수 있도록 HttpOnly 쿠키의 세션 식별자를 
+            기반으로 데모 사용자를 구분합니다. 실제 프로젝트의 인증 방식과는 차이가 있습니다.
+          </p>
+          <p className="mt-3 text-center text-xs leading-5 text-white/40">
+            * 1:1 채팅 기능은 무료 실시간 서버의 월 사용량 한도에 따라 일시적으로 이용이 제한될 수 있습니다. 죄송합니다
           </p>
         </div>
       </section>
@@ -77,13 +79,13 @@ export default function BntyPage() {
           description="BNTY의 사용자 흐름부터 REST API, 실시간 통신, 데이터 저장까지 전체 서비스 구조를 정리했습니다."
         />
         <div className="grid gap-8 px-5 lg:grid-cols-2 md:px-10 xl:px-20">
-          <ArchitectureImgCard 
+          <ArchitectureImgCard
             title='BNTY 서비스 구조'
             description="트레이너와 회원의 상호작용부터 서버, 데이터베이스, 실시간 통신까지의 전체 흐름입니다."
             src="/Bntyflow.png"
             alt="BNTY 서비스 흐름 및 시스템 아키텍쳐"
           />
-        
+
 
           <BntyArchitecture />
         </div>
@@ -105,7 +107,7 @@ export default function BntyPage() {
           ))}
         </div>
 
-          <TechChoiceCard data={techChoice} colors="text-blue-500" />
+        <TechChoiceCard data={techChoice} colors="text-blue-500" />
 
       </section>
 
