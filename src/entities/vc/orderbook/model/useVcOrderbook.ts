@@ -42,9 +42,7 @@ export function useVcOrderbook({ market }: UseVcOrderbookParams) {
     setError(null)
 
     const handleOrderbookUpdate = (nextOrderbook: VcOrderbook) => {
-      if (
-        nextOrderbook.market !== market
-      ) {
+      if (nextOrderbook.market !== market) {
         return;
       }
 
@@ -54,9 +52,7 @@ export function useVcOrderbook({ market }: UseVcOrderbookParams) {
     }
 
     const handleOrderbookError = (payload: VcOrderbookErrorPayload) => {
-      if (
-        payload.market !== market
-      ) {
+      if (payload.market !== market) {
         return;
       }
 
@@ -102,13 +98,9 @@ export function useVcOrderbook({ market }: UseVcOrderbookParams) {
     };
   }, [ market, socket, subscribe])
 
-  const bestAskPrice =
-    orderbook?.units[0]?.askPrice ??
-    null;
+  const bestAskPrice = orderbook?.units[0]?.askPrice ?? null;
 
-  const bestBidPrice =
-    orderbook?.units[0]?.bidPrice ??
-    null;
+  const bestBidPrice = orderbook?.units[0]?.bidPrice ?? null;
 
   const retry = useCallback(() => {
     subscribe();

@@ -1,15 +1,19 @@
 import { BntyUserModel } from "@/entities/bnty/user/model/userSchema";
 import { connectMongoDB } from "@/shared/db/mongodb";
+import { cookies } from "next/headers";
 import { NextRequest, NextResponse } from "next/server";
+
+const COOKIE_NAME = 'bnty-demo-session'
 
 export async function GET(req: NextRequest){
     try {
         const searchParams = req.nextUrl.searchParams
+        const cookieStore = await cookies()
+        const sessionId = cookieStore.get(COOKIE_NAME)?.value
 
-        const demoSession = searchParams.get('demoSession')
         const role = searchParams.get('role')
 
-        if(!demoSession || !role){
+        if(!sessionId || !role){
             return NextResponse.json({message:'세션, 역할이 필요함'}, {status:400})
         }
 
@@ -20,7 +24,7 @@ export async function GET(req: NextRequest){
         await connectMongoDB()
 
         const user = await BntyUserModel.findOne({
-            demoSessionId: demoSession,
+            demoSessionId: sessionId,
             role
         })
 

@@ -22,7 +22,7 @@ export function UserLoginStatus() {
                 </div>
             ) : (
                 <div className="flex items-center gap-1">
-                    <h1 className="text-xs font-semibold sm:text-sm">
+                    <h1 className="text-xs font-semibold sm:text-sm text-white">
                         {user.name}
                     </h1>
 

@@ -194,14 +194,11 @@ interface OrderbookRowProps {
 
 function OrderbookRow({
     type,
-    price,
+    price, 
     size,
     maxSize,
 }: OrderbookRowProps) {
-    const ratio = Math.min(
-        (size / maxSize) * 100,
-        100,
-    );
+    const ratio = Math.min((size / maxSize) * 100, 100)
 
     const isAsk = type === 'ask';
 

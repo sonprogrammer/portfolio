@@ -1,5 +1,5 @@
 import { BntyUser } from './../model/userTypes';
-import { getDemoSession } from "@/shared/lib/bnty/bnty-session/demo";
+
 
 
 type GetBntyUserResponse = {
@@ -8,10 +8,7 @@ type GetBntyUserResponse = {
 
 
 export async function getBntyUser(role: 'member' | 'trainer'): Promise<BntyUser | null> {
-    const demoSession = getDemoSession()
-
     const params = new URLSearchParams({
-        demoSession,
         role
     })
 

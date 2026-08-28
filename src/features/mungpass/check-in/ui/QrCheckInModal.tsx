@@ -28,20 +28,11 @@ export function QrCheckInModal({ dogId, onClose }: QrCheckInModalProps) {
     const [selectedProduct, setSelectedProduct] = useState<MShopProduct | null>(null);
     const [isScanning, setIsScanning] = useState(false);
 
-    const {
-        data: shops = [],
-        isPending: shopsPending
-    } = useGetCheckInShops();
+    const { data: shops = [], isPending: shopsPending } = useGetCheckInShops();
 
-    const {
-        data: products = [],
-        isPending: productsPending
-    } = useGetShopProducts(selectedShop?.id ?? null);
+    const { data: products = [], isPending: productsPending } = useGetShopProducts(selectedShop?.id ?? null);
 
-    const {
-        mutateAsync: checkIn,
-        isPending: checkInPending
-    } = useCreateCheckIn();
+    const { mutateAsync: checkIn, isPending: checkInPending } = useCreateCheckIn();
 
     const handleBack = () => {
         if (selectedProduct) {

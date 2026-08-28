@@ -15,10 +15,7 @@ export function useCreateUser() {
     return useMutation({
         mutationFn: createUser,
         onSuccess: ({ user }) => {
-            queryClient.setQueryData(
-                bntyUserQueryKeys.role(user.role),
-                user,
-            );
+            queryClient.setQueryData(bntyUserQueryKeys.role(user.role), user)
         },
     });
 }

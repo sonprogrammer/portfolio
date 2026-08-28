@@ -12,7 +12,6 @@ export type BntyUser = {
 export type CreateBntyUserRequest = {
   name: string;
   role: BntyUserRole;
-  demoSession: string;
 };
 
 export type CreateBntyUserResponse = {
