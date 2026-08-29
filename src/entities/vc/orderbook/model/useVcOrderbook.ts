@@ -19,27 +19,36 @@ interface UseVcOrderbookParams {
 }
 
 export function useVcOrderbook({ market }: UseVcOrderbookParams) {
-  const socket = useSocket()
+  const { socket, realtimeUnavailable } = useSocket()
 
   const [orderbook, setOrderbook] = useState<VcOrderbook | null>(null)
   const [isLoading, setIsLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
 
   const subscribe = useCallback(() => {
+    if (realtimeUnavailable) {
+      setIsLoading(false)
+      setError('현재 실시간 서버를 사용할 수 없습니다.')
+      return
+    }
+
     setIsLoading(true);
     setError(null);
 
-    socket.emit(VC_SOCKET_EVENTS.orderbookSubscribe,
-      {
-        market
-      }
-    )
-  }, [market, socket])
+    socket.emit(VC_SOCKET_EVENTS.orderbookSubscribe, { market })
+  }, [market, realtimeUnavailable, socket])
 
   useEffect(() => {
     setOrderbook(null)
-    setIsLoading(true)
     setError(null)
+
+    if (realtimeUnavailable) {
+      setIsLoading(false)
+      setError('현재 실시간 서버를 사용할 수 없습니다.')
+      return
+    }
+
+    setIsLoading(true)
 
     const handleOrderbookUpdate = (nextOrderbook: VcOrderbook) => {
       if (nextOrderbook.market !== market) {
@@ -96,7 +105,7 @@ export function useVcOrderbook({ market }: UseVcOrderbookParams) {
         );
       }
     };
-  }, [ market, socket, subscribe])
+  }, [market, realtimeUnavailable, socket, subscribe])
 
   const bestAskPrice = orderbook?.units[0]?.askPrice ?? null;
 
@@ -111,19 +120,12 @@ export function useVcOrderbook({ market }: UseVcOrderbookParams) {
       orderbook,
       isLoading,
       error,
-
+      realtimeUnavailable,
       bestAskPrice,
       bestBidPrice,
 
       retry,
     }),
-    [
-      orderbook,
-      isLoading,
-      error,
-      bestAskPrice,
-      bestBidPrice,
-      retry,
-    ],
+    [orderbook, isLoading, error, realtimeUnavailable, bestAskPrice, bestBidPrice, retry],
   );
 }

@@ -1,4 +1,4 @@
-'use clint'
+'use client'
 
 
 import { useQueryClient } from "@tanstack/react-query"
@@ -15,23 +15,21 @@ type MessagesReadPayload = {
   messageIds: string[];
 };
 
-export function useChatSocket(
-  chatRoomId: string,
-  userId: string
-) {
-  const socket = useSocket();
+export function useChatSocket(chatRoomId: string,userId: string) {
+  const { socket, realtimeUnavailable } = useSocket();
   const queryClient = useQueryClient();
 
   useEffect(() => {
+    if(realtimeUnavailable){
+      return
+    }
     socket.emit('join-chat-room', chatRoomId);
     socket.emit('mark-messages-read', {
       chatRoomId,
       userId
     })
 
-    const handleNewMessage = (
-      newMessage: ChatMessage,
-    ) => {
+    const handleNewMessage = (newMessage: ChatMessage) => {
       queryClient.setQueryData<ChatRoomDetail>(
         chatQueryKeys.detail(chatRoomId),
         (previousChat) => {
@@ -118,5 +116,7 @@ export function useChatSocket(
       );
       socket.off('messages-read', handleMessagesRead)
     };
-  }, [chatRoomId, queryClient, socket, userId]);
+  }, [chatRoomId, queryClient, realtimeUnavailable, socket, userId]);
+
+  return { realtimeUnavailable}
 }

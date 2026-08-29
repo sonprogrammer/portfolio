@@ -10,6 +10,8 @@ import { useVcGuestSession } from '@/features/vc/guest/model';
 import { useVcOrderbook } from '@/entities/vc/orderbook/model';
 import { useMarketOrder } from '@/features/vc/order/model/useMarketOrder';
 import { useCoinHolding } from '@/features/vc/holding/model';
+import { RealtimeUnavailableModal } from '@/shared/ui/unavailable-modal';
+import { ModalPortal } from '@/shared/ui/modal';
 
 type OrderSide = 'buy' | 'sell';
 
@@ -34,39 +36,22 @@ function floorCoinQuantity(value: number) {
     return Math.floor(value * factor) / factor;
 }
 
-export function CoinTradeForm({
-    market,
-}: CoinTradeFormProps) {
+export function CoinTradeForm({ market }: CoinTradeFormProps) {
+    const [openModal, setOpenModal] = useState(true)
     const [type, setType] = useState<OrderSide>('buy');
     const [inputValue, setInputValue] = useState('');
 
-    const {
-        data: userInfo,
-        isPending: isGuestPending,
-    } = useVcGuestSession();
+    const { data: userInfo, isPending: isGuestPending } = useVcGuestSession();
 
     const user = userInfo?.guest
 
     const guestId = user?.id ?? '';
 
-    const {
-        data: holdingData,
-        isPending: isHoldingPending,
-    } = useCoinHolding({
-        guestId,
-        market,
-        enabled: !!user
-    });
+    const { data: holdingData, isPending: isHoldingPending, } = useCoinHolding({ guestId, market, enabled: !!user });
 
-    const {
-        orderbook,
-        isLoading: isOrderbookLoading,
-    } = useVcOrderbook({market});
+    const { orderbook, isLoading: isOrderbookLoading, realtimeUnavailable } = useVcOrderbook({ market });
 
-    const orderMutation = useMarketOrder({
-        guestId,
-        market,
-    });
+    const orderMutation = useMarketOrder({ guestId, market });
 
     const symbol = market.replace('KRW-', '');
 
@@ -204,6 +189,14 @@ export function CoinTradeForm({
         }
     };
 
+    if (realtimeUnavailable && openModal) {
+        return (
+            <ModalPortal isOpen={openModal}>
+                <RealtimeUnavailableModal onClose={() => setOpenModal(false)} />
+            </ModalPortal>
+        )
+    }
+
     return (
         <div className="overflow-hidden rounded-3xl border border-white/10 bg-[#111318]">
             <div className="grid grid-cols-2 border-b border-white/10">
@@ -271,8 +264,8 @@ export function CoinTradeForm({
                             <span className="font-medium text-white/80">
                                 {isBuy
                                     ? `${formatKrw(
-                                          krwBalance,
-                                      )} KRW`
+                                        krwBalance,
+                                    )} KRW`
                                     : `${holdingQuantity.toFixed(8)} ${symbol}`}
                             </span>
                         </div>
@@ -367,11 +360,11 @@ export function CoinTradeForm({
                                 <span className="text-white/70">
                                     {isBuy
                                         ? `${estimatedValue.toFixed(
-                                              8,
-                                          )} ${symbol}`
+                                            8,
+                                        )} ${symbol}`
                                         : `${formatKrw(
-                                              estimatedValue,
-                                          )} KRW`}
+                                            estimatedValue,
+                                        )} KRW`}
                                 </span>
                             </div>
                         </div>
@@ -395,7 +388,7 @@ export function CoinTradeForm({
                                 {orderMutation.error
                                     instanceof Error
                                     ? orderMutation.error
-                                          .message
+                                        .message
                                     : '주문 처리에 실패했습니다.'}
                             </p>
                         )}
@@ -434,15 +427,15 @@ export function CoinTradeForm({
                                 isSubmitDisabled
                                     ? 'cursor-not-allowed bg-white/10 text-white/30'
                                     : isBuy
-                                      ? 'bg-red-500 hover:bg-red-600'
-                                      : 'bg-blue-500 hover:bg-blue-600',
+                                        ? 'bg-red-500 hover:bg-red-600'
+                                        : 'bg-blue-500 hover:bg-blue-600',
                             ].join(' ')}
                         >
                             {orderMutation.isPending
                                 ? '주문 처리 중...'
                                 : isBuy
-                                  ? '시장가 매수'
-                                  : '시장가 매도'}
+                                    ? '시장가 매수'
+                                    : '시장가 매도'}
                         </button>
                     </form>
                 )}

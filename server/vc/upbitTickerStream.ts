@@ -9,11 +9,9 @@ import type {
     VcTicker,
 } from './upbitTypes';
 
-const UPBIT_MARKET_URL =
-    'https://api.upbit.com/v1/market/all?is_details=false';
+const UPBIT_MARKET_URL = 'https://api.upbit.com/v1/market/all?is_details=false';
 
-const UPBIT_WEBSOCKET_URL =
-    'wss://api.upbit.com/websocket/v1';
+const UPBIT_WEBSOCKET_URL = 'wss://api.upbit.com/websocket/v1';
 
 export const VC_TICKER_ROOM = 'vc:ticker';
 
@@ -153,7 +151,7 @@ export function startUpbitTickerStream(io: Server) {
             upbitSocket.on('error', (error) => {
                 console.error('업비트 소켓 오류:', error);
 
-                upbitSocket?.close(); //연결이닫히면 upbitsocket.on('close')가 실행됨
+                upbitSocket?.close(); 
             });
         } catch (error) {
             console.error(

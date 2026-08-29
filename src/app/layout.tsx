@@ -64,9 +64,9 @@ export default function RootLayout({
             <Navbar />
           </header>
           <main className="flex-1 bg-zinc-950">
-            <SocketProvider>
+            
               {children}
-            </SocketProvider>
+
             <Toaster
               position='top-center'
               richColors

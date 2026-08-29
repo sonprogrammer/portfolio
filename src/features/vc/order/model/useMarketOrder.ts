@@ -17,7 +17,7 @@ type MarketOrderInput = { type: 'buy'; orderAmount: number } | { type: 'sell'; q
 export function useMarketOrder({ guestId, market }: UseVcMarketOrderParams) {
     const queryClient = useQueryClient()
 
-    const socket = useSocket()
+    const {socket} = useSocket()
 
     return useMutation({
         mutationFn: (input: MarketOrderInput) => {

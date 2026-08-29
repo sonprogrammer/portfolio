@@ -4,9 +4,11 @@ import { BntyUser } from "@/entities/bnty/user/model/userTypes"
 import { useChatSocket, useGetChat } from "@/features/bnty/chat/model"
 import { ChatMsgForm } from "@/features/bnty/chat/ui/ChatMsgForm"
 import { LoadingBar } from "@/shared/ui/loadingbar"
+import { ModalPortal } from "@/shared/ui/modal"
+import { RealtimeUnavailableModal } from "@/shared/ui/unavailable-modal"
 import { format, isSameDay } from "date-fns"
 import { ko } from "date-fns/locale"
-import { useEffect, useRef } from "react"
+import { useEffect, useRef, useState } from "react"
 
 
 interface ChatRoomProps {
@@ -17,11 +19,12 @@ interface ChatRoomProps {
 
 
 export function ChatRoom({ selectedRoomId, user, role }: ChatRoomProps) {
+    const [openModal, setOpenModal] = useState(true)
     const { data: chat, isPending } = useGetChat(selectedRoomId)
     const messageRef = useRef<HTMLDivElement>(null)
 
 
-    useChatSocket(selectedRoomId, user.id)
+    const { realtimeUnavailable } = useChatSocket(selectedRoomId, user.id)
 
 
     useEffect(() => {
@@ -44,10 +47,15 @@ export function ChatRoom({ selectedRoomId, user, role }: ChatRoomProps) {
             </div>
         );
     }
-    const partnerName =
-        role === 'trainer'
-            ? chat.memberName
-            : chat.trainerName
+    const partnerName = role === 'trainer' ? chat.memberName : chat.trainerName
+
+    if (realtimeUnavailable && openModal) {
+        return (
+            <ModalPortal isOpen={openModal}>
+                <RealtimeUnavailableModal onClose={() => setOpenModal(false)} />
+            </ModalPortal>
+        )
+    }
     return (
         <div className="flex flex-col h-150">
             <header className="border-b border-gray-700 px-5 py-4">

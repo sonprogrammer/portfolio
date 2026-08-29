@@ -9,28 +9,31 @@ import { OrderHistoryPage } from "@/widgets/vc/pages/ui/OrderHistory"
 import { useShallow } from "zustand/shallow"
 
 export function VcPages() {
-    const {activePage, selectedMarket} = useVcNavStore(useShallow(
+
+    const { activePage, selectedMarket } = useVcNavStore(useShallow(
         (state) => ({
             activePage: state.activePage,
             selectedMarket: state.selectedMarket,
         })
     ))
 
-    if(selectedMarket){
+
+
+    if (selectedMarket) {
         return (
-            <CoinDetailPage 
+            <CoinDetailPage
                 market={selectedMarket}
             />
         )
     }
 
     const page = activePage ?? 'home'
-    
-  return(
-    <div className="">
-        {page === 'home' && <MainPage />}
-        {page === 'asset' && <AssetPage />}
-        {page === 'transactions' && <OrderHistoryPage />}
-    </div>
-  )
+
+    return (
+        <div className="">
+            {page === 'home' && <MainPage />}
+            {page === 'asset' && <AssetPage />}
+            {page === 'transactions' && <OrderHistoryPage />}
+        </div>
+    )
 }

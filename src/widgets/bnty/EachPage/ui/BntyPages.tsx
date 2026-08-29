@@ -5,6 +5,7 @@ import { useBntyNavStore } from "@/features/bnty/nav/model"
 import { useBntyRoleStore } from "@/features/bnty/role/model/RoleStore"
 import { useGetUser } from "@/features/bnty/user/model"
 import { RoleReqText } from "@/shared/Bnty/ui"
+import { SocketProvider } from "@/shared/providers/SocketProvider"
 import { LoadingBar } from "@/shared/ui/loadingbar"
 import { ChatPage, MainPage, NotePage } from "@/widgets/bnty/EachPage/ui"
 
@@ -60,7 +61,9 @@ export function BntyPages() {
     switch (activePage) {
         case 'chat':
             return (
-                <ChatPage />
+                <SocketProvider>
+                    <ChatPage />
+                </SocketProvider>
             )
         case 'note':
             return <NotePage user={user} role={role} />

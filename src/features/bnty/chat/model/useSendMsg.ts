@@ -8,7 +8,7 @@ import { useState } from 'react';
 export function useSendMsg() {
     const [isPending, setIsPending] = useState(false)
 
-    const socket = useSocket()
+    const {socket} = useSocket()
 
     const sendMsg = (payload: SendMessagePayload) => {
         return new Promise<void>((resolve,rej) => {

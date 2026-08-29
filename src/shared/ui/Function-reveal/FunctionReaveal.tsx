@@ -18,6 +18,8 @@ interface FeatureRevealProps {
     theme?: FeatureRevealTheme
     children: ReactNode
     coldStartNotice?: boolean
+
+    onBeforeOpen?: () => boolean
 }
 
 
@@ -27,12 +29,16 @@ export function FunctionReveal({
     description,
     theme = 'orange',
     children,
-    coldStartNotice
+    coldStartNotice,
+    onBeforeOpen
 }: FeatureRevealProps) {
     const [isOpen, setIsOpen] = useState(false)
 
     const handleOpen = () => {
-        if (!isOpen && coldStartNotice) {
+        if (onBeforeOpen && !onBeforeOpen()) {
+            return
+        }
+        if (coldStartNotice) {
             toast.info('무료 서버의 Cold Start로 인해 첫 연결 시 잠시 시간이 걸릴 수 있습니다.')
         }
         setIsOpen(true)
@@ -43,8 +49,8 @@ export function FunctionReveal({
     return (
         <section
             className={`relative rounded-2xl border bg-gray-950 transition-all duration-500 sm:rounded-3xl ${isOpen
-                    ? `overflow-visible ${styles.border}`
-                    : "overflow-hidden border-gray-800"
+                ? `overflow-visible ${styles.border}`
+                : "overflow-hidden border-gray-800"
                 }`}
         >
             <div
@@ -60,8 +66,8 @@ export function FunctionReveal({
                     <div className="flex min-w-0 items-start gap-3 sm:items-center sm:gap-4">
                         <div
                             className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl transition-all duration-500 sm:h-11 sm:w-11 sm:rounded-2xl ${isOpen
-                                    ? `${styles.icon} rotate-0 scale-100`
-                                    : "scale-95 bg-gray-900 text-gray-600"
+                                ? `${styles.icon} rotate-0 scale-100`
+                                : "scale-95 bg-gray-900 text-gray-600"
                                 }`}
                         >
                             <Sparkles className={`h-5 w-5 ${styles.text}`} />
@@ -92,8 +98,8 @@ export function FunctionReveal({
                         type="button"
                         onClick={isOpen ? () => setIsOpen(false) : handleOpen}
                         className={`group flex w-full shrink-0 cursor-pointer items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-sm font-bold transition-all duration-200 active:scale-95 sm:w-auto ${isOpen
-                                ? "border border-gray-800 bg-gray-900 text-gray-300 hover:bg-gray-800"
-                                : `${styles.button} text-white shadow-lg`
+                            ? "border border-gray-800 bg-gray-900 text-gray-300 hover:bg-gray-800"
+                            : `${styles.button} text-white shadow-lg`
                             }`}
                     >
                         {isOpen ? (
@@ -114,21 +120,18 @@ export function FunctionReveal({
                     </button>
                 </div>
 
-                <div
-                    className={`grid transition-all duration-700 ease-out ${isOpen
-                            ? "grid-rows-[1fr] opacity-100"
-                            : "grid-rows-[0fr] opacity-0"
-                        }`}
+                <div className={`grid transition-all duration-700 ease-out ${isOpen
+                    ? "grid-rows-[1fr] opacity-100"
+                    : "grid-rows-[0fr] opacity-0"
+                    }`}
                 >
-                    <div
-                        className={`min-h-0 ${isOpen ? "overflow-visible" : "overflow-hidden"
-                            }`}
+                    <div className={`min-h-0 ${isOpen ? "overflow-visible" : "overflow-hidden"
+                        }`}
                     >
-                        <div
-                            className={`transition-all duration-700 ease-out ${isOpen
-                                    ? "translate-y-0 scale-100 blur-0"
-                                    : "translate-y-6 scale-[0.98] blur-sm"
-                                }`}
+                        <div className={`transition-all duration-700 ease-out ${isOpen
+                            ? "translate-y-0 scale-100 blur-0"
+                            : "translate-y-6 scale-[0.98] blur-sm"
+                            }`}
                         >
                             <div className="mt-5 border-t border-gray-800 pt-5 sm:mt-6 sm:pt-6">
                                 {children}

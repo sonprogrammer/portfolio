@@ -1,7 +1,8 @@
 
 import { vcTechChoice, vcTroubleShooting } from "@/shared/config/vc";
 import { vcTechnologyGroup } from "@/shared/config/vc/vcTechnoloyGroup";
-import { FunctionReveal } from "@/shared/ui/Function-reveal";
+import { SocketProvider } from "@/shared/providers/SocketProvider";
+import { VcFunctionReveal } from "@/shared/ui/Function-reveal/VCFunctionReveal";
 import { ArchitectureImgCard, ProjectHero, SectionHeader, TechChoiceCard, TechnologyCard, TroubleshootingCard } from "@/shared/ui/project-section-ui";
 import { ProjectMotivation } from "@/shared/ui/ProjectMotivation/ui";
 import { VcArchitecture } from "@/widgets/vc/architecture/ui";
@@ -24,18 +25,14 @@ export default function VcPage() {
         borderClassName="border-red-500/20"
       />
       <section>
+        <SocketProvider>
         <SectionHeader
           number="01"
           title="핵심 기능"
           description="*최소한의 기능 테스트를 위해 실제 서비스와 일부 다를 수 있음을 미리 알려드립니다."
         />
         <div className="px-2">
-          <FunctionReveal
-            title="Virtual Coin 기능 체험"
-            description="실시간 코인 시세를 기반으로 매수·매도와 포트폴리오 변화를 직접 체험해보세요."
-            theme="red"
-            coldStartNotice
-          >
+          <VcFunctionReveal>
             <div className="w-full min-w-0 max-w-full overflow-hidden rounded-[28px] border border-neutral-700 bg-neutral-900 p-4 shadow-2xl shadow-black/40 sm:rounded-[36px] sm:p-6 md:rounded-[50px] md:p-8">
               <div className="mb-6 w-full min-w-0 sm:mb-8 md:mb-10">
                 <VcTop />
@@ -45,9 +42,10 @@ export default function VcPage() {
                 <VcPages />
               </div>
             </div>
-          </FunctionReveal>
+          </VcFunctionReveal>
+          
           <p className="mt-3 text-center text-xs leading-5 text-white/40">
-             *포트폴리오 기능 체험에서는 별도의 회원가입 없이 사용할 수 있도록 HttpOnly 쿠키의 세션 식별자를 
+            *포트폴리오 기능 체험에서는 별도의 회원가입 없이 사용할 수 있도록 HttpOnly 쿠키의 세션 식별자를
             기반으로 데모 사용자를 구분합니다. 실제 프로젝트의 인증 방식과는 차이가 있습니다.
           </p>
           <p className="mt-3 text-center text-xs leading-5 text-white/40">
@@ -55,6 +53,7 @@ export default function VcPage() {
           </p>
 
         </div>
+        </SocketProvider>
       </section>
 
       <div className="border mx-20 border-gray-500 my-10" />

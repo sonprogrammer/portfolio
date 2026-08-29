@@ -12,7 +12,7 @@ function sortTickers(tickers: VcTicker[]) {
 }
 
 export function useVcTickers() {
-    const socket = useSocket()
+    const {socket} = useSocket()
     const queryClient = useQueryClient()
 
     const { data : tickers = []} = useQuery<VcTicker[]>({
