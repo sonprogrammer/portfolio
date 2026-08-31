@@ -23,9 +23,9 @@ export function ProjectOverview() {
         <div className="max-w-3xl">
 
           <h2 className="mt-4 text-3xl font-black tracking-tight text-white sm:text-4xl">
-            기술 이름보다,
+            문제를 정의하고
             <br />
-            어떤 문제를 어떻게 해결했는지 보여드립니다.
+            해결 과정을 설계했습니다.
           </h2>
 
           <p className="mt-5 text-base leading-7 text-zinc-400">

@@ -8,7 +8,7 @@ export const projects = [
         period: "2026.01 ~ 2026.05",
         category: "SIGNATURE PROJECT",
         summary:
-            "회원·사장님·관리자를 연결하는 반려동물 시설 O2O · B2B 운영 플랫폼",
+            "회원·사장님·관리자를 연결하는 애견카페 O2O · B2B 운영 플랫폼",
         description:
             "QR 체크인부터 실시간 이용 현황, 매출 관리, 관리자 운영 환경과 AI 매출 분석까지 하나의 서비스 흐름으로 구현했습니다.",
         icon: PawPrint,
@@ -40,7 +40,7 @@ export const projects = [
         name: "Fuelly",
         projectType: "Personal Project",
         period: "2025.12 ~ 2026.01",
-        category: "AI · HEALTH",
+        category: "AI · Nutrition",
         summary:
             "AI 기반 개인 맞춤 영양 관리 서비스",
         description:
@@ -104,7 +104,7 @@ export const projects = [
         name: "Virtual Coin(VC)",
         projectType: "Personal Project",
         period: "2025.03 ~ 2025.04",
-        category: "REALTIME DATA",
+        category: "CRYPTO TRADING · REALTIME",
         summary:
             "Upbit API 기반 실시간 모의 코인 투자 서비스",
         description:
@@ -136,7 +136,7 @@ export const projects = [
         name: "BNTY",
         projectType: "Personal Project",
         period: "2024.09 ~ 2024.10",
-        category: "REALTIME · O2O",
+        category: "FITNESS · PT MANAGEMENT",
         summary:
             "트레이너와 회원을 연결하는 PT 관리 서비스",
         description:

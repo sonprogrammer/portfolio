@@ -76,7 +76,7 @@ export async function generateAiInsight({ shopId, summary, isMockupMode }: MGene
     const response = await ai.models.generateContent({
         model: 'gemini-3.6-flash',
         contents: `
-너는 반려동물 시설 매장의 매출 분석가야.
+너는 애견카페 매장의 매출 분석가야.
 
 아래는 "${shop.name}" 매장의 ${summary.month} 매출 데이터야.
 
