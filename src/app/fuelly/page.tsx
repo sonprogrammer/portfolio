@@ -61,7 +61,7 @@ export default function FuellyPage() {
           <ArchitectureImgCard
             title="Fuelly 서비스 구조"
             description="사용자 요청부터 Next.js Route Handler, Groq AI, MongoDB로 이어지는 전체 데이터 흐름입니다."
-            src="/fuelly-flow.png"
+            src="/fuellyFlow.png"
             alt="Fuelly 서비스 흐름 및 시스템 아키텍처"
           />
           <FuellyArchitecture />

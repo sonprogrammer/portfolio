@@ -82,7 +82,7 @@ export default function BntyPage() {
           <ArchitectureImgCard
             title='BNTY 서비스 구조'
             description="트레이너와 회원의 상호작용부터 서버, 데이터베이스, 실시간 통신까지의 전체 흐름입니다."
-            src="/Bntyflow.png"
+            src="/bntyFlow.png"
             alt="BNTY 서비스 흐름 및 시스템 아키텍쳐"
           />
 

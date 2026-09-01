@@ -1,7 +1,7 @@
 import { mungImplementation, mungpassTechChoice, mungTechnologyGroup } from "@/shared/config/mungpass";
 import { mungTroubleshooting } from "@/shared/config/mungpass/mungTroubleShooting";
 import { FunctionReveal } from "@/shared/ui/Function-reveal";
-import { ImplementationCard, ProjectHero, SectionHeader, TechChoiceCard, TechnologyCard, TroubleshootingCard } from "@/shared/ui/project-section-ui";
+import { ArchitectureImgCard, ImplementationCard, ProjectHero, SectionHeader, TechChoiceCard, TechnologyCard, TroubleshootingCard } from "@/shared/ui/project-section-ui";
 import { ProjectMotivation } from "@/shared/ui/ProjectMotivation/ui";
 import { MungpassArchitecture } from "@/widgets/mungpass/architecture/ui";
 import { MungpassPages } from "@/widgets/mungpass/pages/all/ui";
@@ -58,8 +58,16 @@ export default function MungpassPage() {
           title="서비스 아키텍처 & 데이터 흐름"
           description="역할별 사용자 흐름부터 인증, QR 이용 처리, 데이터 저장과 실시간 동기화까지 Mungpass의 전체 서비스 구조를 정리했습니다."
         />
+        <div className="grid gap-8 px-5 md:px-10 xl:px-20 lg:grid-cols-2">
+          <ArchitectureImgCard
+            title="Mungpass 서비스 구조"
+            description="Next.js와 Supabase를 중심으로 Auth, PostgreSQL, RLS, Realtime과 Gemini API가 연결되는 전체 서비스 흐름입니다."
+            src="/mungpassF.png"
+            alt="Mungpass 서비스 흐름 및 시스템 아키텍처"
+          />
 
-        <MungpassArchitecture />
+          <MungpassArchitecture />
+        </div>
       </section>
 
       <div className="border mx-20 border-gray-500 my-10" />

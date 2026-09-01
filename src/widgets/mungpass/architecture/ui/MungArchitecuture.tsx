@@ -6,7 +6,7 @@ import { ArchitectureCard } from "@/shared/ui/project-section-ui";
 
 export function MungpassArchitecture() {
   return (
-    <div className="grid items-start gap-8 px-5 md:px-10 xl:px-20  lg:grid-cols-2">
+    <div className="space-y-3 ">
       {mungArchitecture.map(item => (
         <ArchitectureCard
           key={item.title}
