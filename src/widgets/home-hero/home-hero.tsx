@@ -6,27 +6,34 @@ import Link from "next/link";
 
 const metrics = [
   {
+    value: 97,
+    suffix: '%',
+    label: "AI 분석 재조회 시간 단축",
+    project: "MungPass",
+    color: 'text-orange-400'
+  },
+  {
+    value: 17,
+    suffix: "개",
+    label: "API 훅 인증 로직 공통화",
+    project: "Fuelly",
+    color: 'text-emerald-500'
+  },
+  {
+    value: 81,
+    suffix: '%',
+    label: "초기 시세 로딩 단축",
+    project: "Virtual Coin",
+    color: 'text-red-400'
+  },
+  {
     value: 86,
     suffix: '%',
     label: "LCP 개선",
     project: "BNTY",
     color: 'text-blue-400'
   },
-  {
-    value: 80,
-    suffix: '%',
-    label: "초기 시세 로딩 단축",
-    project: "Virtual Coin",
-    color: 'text-red-400'
-  },
 
-  {
-    value: 67,
-    suffix: '%',
-    label: "AI API 호출 절감",
-    project: "MungPass",
-    color: 'text-orange-400'
-  },
 ];
 
 export function HomeHero() {
@@ -37,7 +44,7 @@ export function HomeHero() {
     >
       <div className="mx-auto grid w-full max-w-7xl gap-12 lg:grid-cols-[1.08fr_0.92fr] lg:items-center">
         <div className="max-w-4xl">
-          
+
 
           <h1 className="text-4xl font-black leading-[1.08] tracking-tight  text-white sm:text-6xl lg:text-7xl">
             복잡한 데이터 흐름을

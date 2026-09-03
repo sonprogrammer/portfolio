@@ -200,6 +200,16 @@ export function ProjectOverview() {
                     {project.metricLabel}
                   </span>
                 </div>
+                <ul className="mt-5 space-y-2">
+                  {project.highlights.map((highlight) => (
+                    <li
+                      key={highlight}
+                      className="text-sm leading-6 text-zinc-400"
+                    >
+                      · {highlight}
+                    </li>
+                  ))}
+                </ul>
 
                 <div className="mt-5 flex flex-wrap gap-2">
                   {project.technologies.slice(0, 4).map(technology => (

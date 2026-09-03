@@ -24,8 +24,8 @@ export const projects = [
             "B2B 운영 대시보드",
             "AI API 호출 약 67% 절감",
         ],
-        metric: "67%",
-        metricLabel: "AI API 호출 절감",
+        metric: "97%",
+        metricLabel: "AI 분석 재조회 시간 단축",
         theme: {
             icon: "bg-orange-500/10 text-orange-500",
             border: "hover:border-orange-500/40",
@@ -58,8 +58,8 @@ export const projects = [
             "Access / Refresh Token 인증",
             "Axios 재발급 Queue",
         ],
-        metric: "70%↓",
-        metricLabel: "인증 중복 코드",
+        metric: "17개",
+        metricLabel: "API 훅 공통 인증 적용",
         theme: {
             icon: "bg-emerald-500/10 text-emerald-500",
             border: "hover:border-emerald-500/40",
@@ -68,37 +68,7 @@ export const projects = [
         },
         link: '/fuelly'
     },
-    {
-        id: "mingle",
-        name: "Mingle",
-        projectType: "Team Project",
-        period: "2023.11 ~ 2023.11",
-        category: "MUSIC SOCIAL",
-        summary: "음악을 중심으로 사용자와 플레이리스트를 연결하는 서비스",
-        description:
-            "5인 팀 프로젝트에서 프론트엔드 개발을 담당하며 TanStack Query 기반 서버 데이터 관리 Recoil 상태 관리와 외부 API 연동을 경험했습니다.",
-        icon: Music2,
-        technologies: [
-            "React",
-            "TypeScript",
-            "TanStack Query",
-            "Recoil",
-        ],
-        highlights: [
-            "5인 팀 협업",
-            "플레이리스트 및 음악 인터랙션",
-            "OpenWeather API 연동",
-        ],
-        metric: "CORS 해결",
-        metricLabel: "외부 API 헤더 충돌",
-        theme: {
-            icon: "bg-violet-500/10 text-violet-500",
-            border: "hover:border-violet-500/40",
-            text: "text-violet-500",
-            glow: "bg-violet-500/10",
-        },
-        link: "/mingle",
-    },
+
     {
         id: "vc",
         name: "Virtual Coin(VC)",
@@ -121,7 +91,7 @@ export const projects = [
             "REST + WebSocket 하이브리드",
             "실시간 렌더링 부하 제어",
         ],
-        metric: "3.3s → 0.7s",
+        metric: "4.68s → 0.9s",
         metricLabel: "초기 시세 로딩",
         theme: {
             icon: "bg-red-500/10 text-red-500",
@@ -162,5 +132,35 @@ export const projects = [
             glow: "bg-blue-500/10",
         },
         link: '/bnty'
+    },
+    {
+        id: "mingle",
+        name: "Mingle",
+        projectType: "Team Project",
+        period: "2023.11 ~ 2023.11",
+        category: "MUSIC SOCIAL",
+        summary: "음악을 중심으로 사용자와 플레이리스트를 연결하는 서비스",
+        description:
+            "5인 팀 프로젝트에서 프론트엔드 개발을 담당하며 TanStack Query 기반 서버 데이터 관리 Recoil 상태 관리와 외부 API 연동을 경험했습니다.",
+        icon: Music2,
+        technologies: [
+            "React",
+            "TypeScript",
+            "TanStack Query",
+            "Recoil",
+        ],
+        highlights: [
+            "5인 팀 협업",
+            "OpenWeather API 연동",
+        ],
+        metric: "CORS 해결",
+        metricLabel: "외부 API 헤더 충돌",
+        theme: {
+            icon: "bg-violet-500/10 text-violet-500",
+            border: "hover:border-violet-500/40",
+            text: "text-violet-500",
+            glow: "bg-violet-500/10",
+        },
+        link: "/mingle",
     },
 ];

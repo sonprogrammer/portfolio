@@ -31,14 +31,15 @@ export const fuellyTroubleshooting: TroubleshootingItem[] = [
   {
     title: "동시 요청 환경에서의 토큰 재발급 중복",
     problem:
-      "Access Token이 만료된 상태에서 여러 API 요청이 동시에 발생하면 각각의 요청에서 토큰 재발급 로직이 실행될 수 있었습니다.",
+      "Access Token이 만료된 상태에서 여러 API 요청이 동시에 발생하면 각각의 요청에서 토큰 재발급 로직이 실행되었습니다.",
     reason:
       "인증 재발급 흐름이 각 요청 단위로 처리되면 동일한 시점에 여러 Refresh 요청이 중복으로 발생할 수 있었습니다.",
     solution:
-      "Axios Interceptor에 토큰 재발급 로직을 통합하고 Queue를 구성해 재발급이 진행되는 동안 발생한 요청은 대기한 뒤 새로운 Access Token으로 다시 처리하도록 구성했습니다.",
+      "Axios Instance와 Interceptor에 Access Token 주입 및 토큰 재발급 로직을 통합했습니다. 재발급 중에는 이후 요청을 Queue에서 대기시키고, 새로운 Access Token 발급이 완료되면 대기 중인 요청을 새 토큰으로 재시도하도록 구성했습니다.",
     results: [
-      "파편화된 인증 로직 통합으로 중복 코드 약 70% 감소",
-      "동시 요청 환경에서 불필요한 토큰 재발급 요청 감소",
+      "17개 API 훅의 인증 및 토큰 재발급 로직 공통화",
+      "동시 요청 환경에서 중복 Refresh 요청 방지",
+      "재발급 완료 후 대기 요청을 새로운 Access Token으로 일괄 재시도",
     ],
   },
 ];
