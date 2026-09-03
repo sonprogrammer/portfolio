@@ -74,7 +74,7 @@ export default function VcPage() {
           <ArchitectureImgCard
             title="Virtual Coin 서비스 구조"
             description="Upbit의 실시간 시세 데이터를 서버에서 수신하고 클라이언트에 중계해 차트, 호가, 현재가에 반영하는 전체 데이터 흐름입니다."
-            src="/vcF.png"
+            src="/vcFlow.png"
             alt="Virtual Coin 실시간 시세 수신 및 서비스 아키텍처"
           />
           <VcArchitecture />
