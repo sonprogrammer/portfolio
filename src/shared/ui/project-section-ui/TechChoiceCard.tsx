@@ -1,6 +1,7 @@
 'use client'
 
 import { ChevronDown, Lightbulb } from "lucide-react";
+import { useState } from "react";
 
 export interface TechChoice {
     title: string;
@@ -15,10 +16,15 @@ interface TechChoiceCardProps {
 }
 
 export function TechChoiceCard({ data, colors }: TechChoiceCardProps) {
+    const [isOpen, setIsOpen] = useState(false)
     return (
-        <div className='px-5 md:px-10 xl:px-20 pt-5'>
-            <details className="group rounded-3xl border border-white/10 bg-white/3">
-                <summary className="flex cursor-pointer list-none items-center justify-between gap-4 p-6 sm:p-7">
+        <div className="px-5 pt-5 md:px-10 xl:px-20">
+            <div className="overflow-hidden rounded-3xl border border-white/10 bg-white/3">
+                <button
+                    type="button"
+                    onClick={() => setIsOpen(!isOpen)}
+                    className="group flex w-full cursor-pointer items-center justify-between gap-4 p-6 text-left sm:p-7"
+                >
                     <div className="flex min-w-0 items-start gap-4">
                         <div
                             className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-white/5 ${colors}`}
@@ -44,29 +50,41 @@ export function TechChoiceCard({ data, colors }: TechChoiceCardProps) {
                     </div>
 
                     <ChevronDown
-                        className={`h-5 w-5 shrink-0 transition-transform duration-200 group-open:rotate-180 ${colors}`}
+                        className={`h-5 w-5 shrink-0 transition-transform duration-300 ${
+                            isOpen ? "rotate-180" : ""
+                        } ${colors}`}
                     />
-                </summary>
+                </button>
 
-                <div className="border-t border-white/10 px-6 pb-6 pt-5 sm:px-7 sm:pb-7">
-                    <div className="space-y-4">
-                        {data.points.map((point) => (
-                            <div
-                                key={point}
-                                className="flex items-start gap-3"
-                            >
-                                <span
-                                    className={`mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-current ${colors}`}
-                                />
+                <div
+                    className={`grid transition-all duration-300 ease-in-out ${
+                        isOpen
+                            ? "grid-rows-[1fr] opacity-100"
+                            : "grid-rows-[0fr] opacity-0"
+                    }`}
+                >
+                    <div className="overflow-hidden">
+                        <div className="border-t border-white/10 px-6 pb-6 pt-5 sm:px-7 sm:pb-7">
+                            <div className="space-y-4">
+                                {data.points.map((point) => (
+                                    <div
+                                        key={point}
+                                        className="flex items-start gap-3"
+                                    >
+                                        <span
+                                            className={`mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-current ${colors}`}
+                                        />
 
-                                <p className="text-sm font-medium leading-7 text-white/70">
-                                    {point}
-                                </p>
+                                        <p className="text-sm font-medium leading-7 text-white/70">
+                                            {point}
+                                        </p>
+                                    </div>
+                                ))}
                             </div>
-                        ))}
+                        </div>
                     </div>
                 </div>
-            </details>
+            </div>
         </div>
     )
 }
