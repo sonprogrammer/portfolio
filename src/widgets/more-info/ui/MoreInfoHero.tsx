@@ -76,7 +76,7 @@ export function MoreInfoHero() {
                         </a>
 
                         <a
-                            href="/resume.pdf"
+                            href="/resume1.pdf"
                             target="_blank"
                             rel="noreferrer"
                             className="inline-flex items-center gap-2 rounded-xl border px-5 py-3 text-sm font-semibold transition-all duration-200 hover:-translate-y-0.5 border-zinc-800 bg-zinc-950 text-zinc-300 hover:border-purple-500/50 hover:text-white shadow-lg cursor-pointer"
