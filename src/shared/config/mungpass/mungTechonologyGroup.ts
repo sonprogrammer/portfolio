@@ -13,10 +13,11 @@ export const mungTechnologyGroup = [
   },
   {
     title: "State & Data",
-    description: "서버 데이터와 클라이언트 UI 상태의 책임을 분리하여 관리",
+    description:  "Custom Hook을 활용해 서버 데이터와 클라이언트 UI 상태의 책임을 분리하여 관리",
     items: [
       "TanStack Query",
       "Zustand",
+      "Custom Hook",
     ],
   },
   {
@@ -33,20 +34,14 @@ export const mungTechnologyGroup = [
     ],
   },
   {
-    title: "Service & Realtime",
-    description: "실시간 데이터 동기화와 위치·QR 기반 서비스 기능 구현",
+    title: "Service & Realtime & AI",
+    description: "실시간 데이터 동기화와 위치·QR 기반 서비스 및 매출 기반 AI 기능 구현",
     items: [
       "Supabase Realtime",
       "Kakao Maps API",
       "qrcode.react",
       "Recharts",
+       "Gemini API",
     ],
-  },
-  {
-    title: "AI",
-    description: "매장 매출 기반 AI 기능 구현",
-    items: [
-      "Gemini API",
-    ],
-  },
+  }
 ];

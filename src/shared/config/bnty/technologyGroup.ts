@@ -13,12 +13,12 @@ export const technologyGroups = [
   },
   {
     title: "State & Data",
-    description: "서버 데이터 요청과 클라이언트 상태의 책임을 분리하여 관리",
-    items: ["TanStack Query", "Recoil", "Axios"],
+    description: "서버 데이터 요청과 클라이언트 상태를 분리하고 공통 로직을 재사용",
+    items: ["TanStack Query", "Custom Hook", "Recoil", "Axios"],
   },
   {
     title: "Backend",
-    description: "데모 데이터 저장과 REST API 구현",
+    description: "데이터 저장과 REST API 구현",
     items: [
       "Node.js",
       "Express",

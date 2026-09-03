@@ -14,10 +14,11 @@ export const vcTechnologyGroup = [
   },
   {
     title: "State & Data",
-    description: "서버 데이터 요청과 클라이언트 상태를 분리하여 관리",
+    description: "서버 데이터 요청과 클라이언트 상태를 분리하고 공통 데이터 로직을 재사용",
     items: [
       "TanStack Query",
       "Recoil",
+      "Custom Hook",
       "Axios",
     ],
   },

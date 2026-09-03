@@ -12,10 +12,11 @@ export const fuellyTechnologyGroups= [
   },
   {
     title: "State & Data",
-    description: "서버 데이터와 클라이언트 전역 상태의 책임을 분리하여 관리",
+    description:  "서버 데이터와 클라이언트 상태의 책임을 분리하고 공통 데이터 로직을 재사용",
     items: [
       "TanStack Query",
       "Zustand",
+      "Custom Hook",
       "Axios",
     ],
   },

@@ -3,7 +3,7 @@ import { Bitcoin, BrainCircuit, Dumbbell, Music2, PawPrint } from "lucide-react"
 export const projects = [
     {
         id: "mungpass",
-        name: "Mungpass",
+        name: "MungPass",
         projectType: "Personal Project",
         period: "2026.01 ~ 2026.05",
         category: "SIGNATURE PROJECT",
@@ -40,7 +40,7 @@ export const projects = [
         name: "Fuelly",
         projectType: "Personal Project",
         period: "2025.12 ~ 2026.01",
-        category: "AI · Nutrition",
+        category: "AI · NUTRITION",
         summary:
             "AI 기반 개인 맞춤 영양 관리 서비스",
         description:

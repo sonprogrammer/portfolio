@@ -10,7 +10,7 @@ export default function MungpassPage() {
   return (
     <div className="flex flex-col gap-10">
       <ProjectHero
-        name="Mungpass"
+        name="MungPass"
         projectType="Personal Project"
         description="회원·사장님·관리자를 연결하는 애견카페 O2O · B2B 운영 플랫폼"
         logoSrc="/mungpass.png"
@@ -30,7 +30,7 @@ export default function MungpassPage() {
         />
         <div className="px-2">
           <FunctionReveal
-            title="Mungpass 기능 체험"
+            title="MungPass 기능 체험"
             description="일반 사용자, 사장님, 관리자 역할을 전환하며 역할별 주요 기능과 서비스 흐름을 직접 체험해보세요."
             theme="orange"
           >
@@ -56,14 +56,14 @@ export default function MungpassPage() {
         <SectionHeader
           number="02"
           title="서비스 아키텍처 & 데이터 흐름"
-          description="역할별 사용자 흐름부터 인증, QR 이용 처리, 데이터 저장과 실시간 동기화까지 Mungpass의 전체 서비스 구조를 정리했습니다."
+          description="역할별 사용자 흐름부터 인증, QR 이용 처리, 데이터 저장과 실시간 동기화까지 MungPass의 전체 서비스 구조를 정리했습니다."
         />
         <div className="grid gap-8 px-5 md:px-10 xl:px-20 lg:grid-cols-2">
           <ArchitectureImgCard
-            title="Mungpass 서비스 구조"
+            title="MungPass 서비스 구조"
             description="Next.js와 Supabase를 중심으로 Auth, PostgreSQL, RLS, Realtime과 Gemini API가 연결되는 전체 서비스 흐름입니다."
             src="/mungpassF.png"
-            alt="Mungpass 서비스 흐름 및 시스템 아키텍처"
+            alt="MungPass 서비스 흐름 및 시스템 아키텍처"
           />
 
           <MungpassArchitecture />
@@ -98,7 +98,7 @@ export default function MungpassPage() {
         <SectionHeader
           number="04"
           title="사용 기술"
-          description="Mungpass의 역할별 UI, 상태 관리, 인증과 데이터 처리 및 실시간 기능에 사용한 기술을 역할별로 정리했습니다."
+          description="MungPass의 역할별 UI, 상태 관리, 인증과 데이터 처리 및 실시간 기능에 사용한 기술을 역할별로 정리했습니다."
         />
         <div className="grid gap-5 px-5 md:px-10 xl:px-20  sm:grid-cols-2 xl:grid-cols-4">
           {mungTechnologyGroup.map(group => (

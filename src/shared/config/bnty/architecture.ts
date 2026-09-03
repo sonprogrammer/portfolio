@@ -40,13 +40,13 @@ export const architectureItems: ArchitectureItem[] = [
   },
   {
     icon: Database,
-    title: "서비스 데이터 관리",
+    title: "서비스 데이터 및 상태 관리",
     description:
       "MongoDB로 트레이너·회원 관계, PT 횟수, 운동 기록, 채팅 내역을 관리하고, React Query와 Recoil을 활용해 서버 데이터 캐싱과 클라이언트 상태를 분리하여 관리했습니다.",
 
     points: [
       "Mongoose Schema를 이용한 서비스 데이터 구조 정의",
-      "React Query 기반 커스텀 훅으로 데이터 조회·변경 로직 분리 및 캐싱 관리",
+      "React Query Custom Hook으로 데이터 조회·변경 로직 분리 및 캐싱 관리",
       "Recoil을 활용한 사용자 역할 및 클라이언트 상태 관리",
       "트레이너·회원 관계를 기준으로 PT, 운동 기록, 채팅 데이터 연결",
     ],

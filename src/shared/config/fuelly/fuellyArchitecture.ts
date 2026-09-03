@@ -34,13 +34,15 @@ export const fuellyArchitecture: ArchitectureItem[] = [
   },
   {
     icon: Layers3,
-    title: "서버 상태와 클라이언트 상태 분리",
+    title: "서버 상태와 UI 로직의 책임 분리",
     description:
-      "서버에서 조회되는 데이터와 클라이언트 전역 상태의 책임을 TanStack Query와 Zustand로 분리했습니다.",
+      "서버에서 조회되는 데이터와 클라이언트 전역 상태의 책임을 TanStack Query와 Zustand로 분리하고 반복되는 데이터 처리 로직은 Custom Hook으로 구성했습니다.",
+
     points: [
-      "TanStack Query를 이용한 서버 데이터 조회 및 캐싱",
+      "TanStack Query 기반 Custom Hook으로 서버 데이터 조회·변경 및 캐싱 관리",
       "Zustand를 이용한 클라이언트 전역 상태 관리",
-      "서버 데이터와 UI 상태의 책임 분리",
+      "반복되는 상태와 비즈니스 로직을 Custom Hook으로 분리해 컴포넌트의 UI 책임과 데이터 처리 책임 구분",
+
     ],
   },
   {
@@ -63,7 +65,7 @@ export const fuellyArchitecture: ArchitectureItem[] = [
     points: [
       "MongoDB를 이용한 서비스 데이터 저장",
       "사용자와 식단 데이터를 서버를 통해 조회 및 변경",
-      "클라이언트에서 React Query를 통해 서버 데이터 동기화",
+       "클라이언트와 서버 간 식단·영양 데이터 동기화",
     ],
   },
 ];

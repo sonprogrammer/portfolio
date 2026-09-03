@@ -24,7 +24,7 @@ const metrics = [
     value: 67,
     suffix: '%',
     label: "AI API 호출 절감",
-    project: "Mungpass",
+    project: "MungPass",
     color: 'text-orange-400'
   },
 ];

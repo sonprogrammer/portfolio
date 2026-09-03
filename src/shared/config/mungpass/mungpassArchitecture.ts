@@ -26,8 +26,8 @@ export const mungArchitecture: ArchitectureItem[] = [
         points: [
             "비즈니스 기능 단위로 모듈과 슬라이스 분리",
             "레이어 간 단방향 의존성 구조 적용",
-            "UI와 비즈니스 로직의 책임 분리",
-            "기능 확장 시 기존 모듈을 재사용할 수 있는 구조 구성",
+            "반복되는 상태와 비즈니스 로직을 Custom Hook으로 분리",
+            "TanStack Query 기반 Custom Hook으로 서버 데이터 조회·변경 로직 관리",
         ],
     },
     {
