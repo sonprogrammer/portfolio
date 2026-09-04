@@ -11,7 +11,7 @@ export const vcTroubleShooting: TroubleshootingItem[] = [
         solution:
             "초기 시세는 REST API로 먼저 조회해 렌더링하고, 이후 WebSocket을 백그라운드에서 연결해 실시간 데이터로 동기화하는 하이브리드 방식으로 변경했습니다.",
         results: [
-            "Production 환경 5회 측정 기준 첫 화면 시세 로딩 4.68초 → 0.90초로 약 81% 단축",
+            "Production 환경 5회 측정 기준 첫 화면 시세 로딩 4.68초 → 0.9초로 약 81% 단축",
             "초기 데이터 표시와 실시간 시세 동기화의 역할 분리",
         ],
     },
