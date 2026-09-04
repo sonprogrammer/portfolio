@@ -123,7 +123,7 @@ export const projects = [
             "실시간 1:1 채팅",
             "한글 IME 중복 전송 대응",
         ],
-        metric: "8.0s → 1.14s",
+        metric: "8.0s → 1.1s",
         metricLabel: "LCP",
         theme: {
             icon: "bg-blue-500/10 text-blue-500",

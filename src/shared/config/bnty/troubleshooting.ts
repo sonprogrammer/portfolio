@@ -24,7 +24,7 @@ export const troubleshootingItems: TroubleshootingItem[] = [
     solution:
       "React.lazy와 Suspense를 이용해 초기 번들을 분리하고, 독립적인 요청을 Promise.all로 병렬 처리했습니다. 반복 렌더링이 발생하는 컴포넌트에는 메모이제이션을 적용했습니다.",
     results: [
-      "Lighthouse 5회 측정 기준 LCP 8.0초 → 1.14초로 약 86% 개선",
+      "Lighthouse 5회 측정 기준 LCP 8.0초 → 1.1초로 약 86% 개선",
       "네트워크 대기 시간 및 불필요한 렌더링 감소",
     ],
   },
