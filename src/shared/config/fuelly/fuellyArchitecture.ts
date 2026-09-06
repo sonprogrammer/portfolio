@@ -27,7 +27,7 @@ export const fuellyArchitecture: ArchitectureItem[] = [
       "Next.js Middleware에서도 인증 토큰을 검증할 수 있도록 jose를 사용하고 Access Token과 Refresh Token의 역할과 저장 위치를 분리했습니다.",
     points: [
       "jose를 이용한 JWT 생성 및 검증",
-      "Access Token을 클라이언트 메모리에서 관리",
+      "Access Token을 브라우저 영구 저장소가 아닌 메모리에서 관리",
       "Refresh Token을 HttpOnly Cookie로 관리",
       "Next.js Middleware에서 토큰을 검증해 보호 라우트 접근 제어",
     ],

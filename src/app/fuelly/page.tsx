@@ -38,7 +38,7 @@ export default function FuellyPage() {
             <FuellyPages />
           </FunctionReveal>
           <p className="mt-3 text-center text-xs leading-5 text-white/40">
-             *포트폴리오 기능 체험에서는 별도의 회원가입 없이 사용할 수 있도록 HttpOnly 쿠키의 세션 식별자를 
+             *포트폴리오 기능 체험에서는 별도의 회원가입 없이 HttpOnly 쿠키에 저장한 세션 식별자를 
             기반으로 데모 사용자를 구분합니다. 실제 프로젝트의 인증 방식과는 차이가 있습니다.
           </p>
         </div>
