@@ -11,7 +11,7 @@ export async function getBntyUser(role: 'member' | 'trainer'): Promise<BntyUser 
     const params = new URLSearchParams({
         role
     })
-
+ 
     const res = await fetch(`/api/bnty/userinfo?${params.toString()}`)
 
     const data = await res.json() as BntyUser | { message?: string }

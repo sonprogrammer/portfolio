@@ -6,7 +6,7 @@ export function MuserHome() {
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-8 lg:gap-10 pt-2">
             <section className="min-w-0">
                 <div>
-                    <h2 className="text-lg font-bold sm:text-xl">
+                    <h2 className="text-lg font-bold sm:text-xl text-white">
                         내 반려견
                     </h2>
 
@@ -22,7 +22,7 @@ export function MuserHome() {
 
             <section className="min-w-0">
                 <div>
-                    <h2 className="text-lg font-bold sm:text-xl">
+                    <h2 className="text-lg font-bold sm:text-xl text-white">
                         매장 이용
                     </h2>
 
