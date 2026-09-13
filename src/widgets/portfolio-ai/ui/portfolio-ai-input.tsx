@@ -89,18 +89,17 @@ export function PortfolioAiInput() {
     <section className="mx-auto w-full max-w-7xl px-6 py-16">
       <div className="overflow-hidden rounded-[28px] border border-white/10 bg-white/2.5 p-6 sm:p-8">
         <div className="mb-6">
-          <div className="mb-3 flex items-center gap-2 text-sm font-medium text-violet-400">
+          <div className="mb-3 flex items-center gap-2 text-sm font-black text-violet-400">
             <Sparkles size={16} />
-            Portfolio AI
+            Portfolio AI · RAG 기반
           </div>
 
           <h2 className="text-2xl font-bold text-white sm:text-3xl">
-            프로젝트를 직접 찾아보지 말고 질문해보세요.
+            궁금한 내용을 바로 질문해보세요.
           </h2>
 
           <p className="mt-3 text-sm leading-6 text-zinc-400 sm:text-base">
-            프로젝트 경험과 기술적 의사결정을 기반으로
-            답변합니다.
+            프로젝트 경험과 기술적 의사결정을 바탕으로 포트폴리오 내용을 답변합니다.
           </p>
         </div>
 

@@ -52,8 +52,7 @@ export function PortfolioAiPanel() {
     const messagesEndRef =
         useRef<HTMLDivElement | null>(null)
 
-    // SSR가 끝난 뒤 현재 탭의 sessionStorage에서
-    // 이전 메시지를 복원합니다.
+
     useEffect(() => {
         void usePortfolioAiStore.persist.rehydrate()
     }, [])
@@ -247,7 +246,7 @@ export function PortfolioAiPanel() {
                     }
                 `}
             >
-                <header className="flex items-center justify-between border-b border-white/10 px-5 py-4">
+                <header className="mt-19 border-t  flex items-center justify-between border-b border-white/10 px-5 py-4">
                     <div className="flex items-center gap-3">
                         <div className="flex size-10 items-center justify-center rounded-xl bg-violet-500/15 text-violet-400">
                             <Sparkles size={20} />
