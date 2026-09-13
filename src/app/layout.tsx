@@ -3,8 +3,9 @@ import "./globals.css";
 import { Navbar } from "@/widgets/navbar/Navbar";
 import { QueryProvider } from "@/shared/providers/query-provider";
 import { Toaster } from "sonner";
-import { SocketProvider } from "@/shared/providers/SocketProvider";
 import { VisitorTracker } from "@/shared/ui/visitor-tracking";
+import { PortfolioAiWidget } from "@/widgets/portfolio-ai";
+
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://portfolio-kohl-xi-20.vercel.app/'),
@@ -66,6 +67,8 @@ export default function RootLayout({
           <main className="flex-1 bg-zinc-950">
             
               {children}
+
+              <PortfolioAiWidget />
 
             <Toaster
               position='top-center'
