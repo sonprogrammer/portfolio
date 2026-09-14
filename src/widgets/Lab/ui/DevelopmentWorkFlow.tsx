@@ -18,7 +18,7 @@ const workflow = [
         icon: LayoutTemplate,
         step: "03",
         title: "MVP Design",
-        description: "화면의 방향과 필요한 사용자 경험을 먼저 정한 뒤 빠르게 MVP를 확인할 수 있도록 AI를 활용해 UI 디자인을 구체화합니다.",
+        description: "화면의 방향과 사용자 경험을 먼저 정한 뒤 AI로 MVP 디자인을 구체화하고 원하는 방향과 다르면 직접 수정해 디자인 의도를 명확히 반영합니다.",
     },
     {
         icon: Code2,

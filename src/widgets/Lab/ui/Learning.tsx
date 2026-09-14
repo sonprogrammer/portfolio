@@ -27,12 +27,13 @@ const learningItems = [
     {
         icon: Workflow,
         title: "Workflow Automation",
-        description: "n8n 강의를 통해 여러 서비스와 데이터를 연결하고 Trigger부터 다음 작업까지 이어지는 워크플로 기반 자동화의 기본 흐름을 학습했습니다.",
+        description: "n8n을 통해 자동화의 기본 흐름을 익힌 뒤 현재는 Codex를 활용해 Harness, Skill, RAG 등 AI 개발 워크플로우를 다양한 방식으로 학습하고 있습니다.",
+
         points: [
             "Trigger를 시작으로 이어지는 Workflow 구조 이해",
-            "서비스와 API를 연결하는 자동화 흐름 학습",
-            "조건에 따라 작업이 이어지는 처리 방식 이해",
-            "반복 작업을 워크플로 관점에서 바라보는 경험",
+            "Codex와 tmux를 활용한 멀티 에이전트 개발 워크플로 구성",
+            "Harness와 Skill 개념을 학습하고 역할별 개발 지침에 적용",
+            "RAG 구현을 통한 AI 기능 설계 및 데이터 활용 학습",
         ],
     },
 ];
