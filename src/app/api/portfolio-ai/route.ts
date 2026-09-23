@@ -77,9 +77,7 @@ export async function POST(request: Request) {
             )
         }
 
-        // 임베딩과 Gemini 호출 전에 요청 횟수를 검사합니다.
-        const rateLimit =
-            await consumePortfolioAiRateLimit(request)
+        const rateLimit = await consumePortfolioAiRateLimit(request)
 
         if (!rateLimit.allowed) {
             return NextResponse.json(
@@ -101,7 +99,7 @@ export async function POST(request: Request) {
         const ai = getGeminiClient()
         const supabase = supabaseAdmin()
 
-        // 질문을 검색용 벡터로 변환합니다.
+
         const embeddingResponse =
             await ai.models.embedContent({
                 model: EMBEDDING_MODEL,
@@ -111,26 +109,21 @@ export async function POST(request: Request) {
                 },
             })
 
-        const questionEmbedding =
-            embeddingResponse.embeddings?.[0]?.values
+        const questionEmbedding = embeddingResponse.embeddings?.[0]?.values
 
-        if (
-            !questionEmbedding ||
-            questionEmbedding.length !== 768
+        if (!questionEmbedding ||questionEmbedding.length !== 768
         ) {
-            throw new Error(
-                '질문 임베딩 생성에 실패했습니다.',
-            )
+            throw new Error('질문 임베딩 생성에 실패했습니다.')
         }
 
-        // 질문과 의미가 비슷한 포트폴리오 문서를 검색합니다.
+
         const { data, error } = await supabase.rpc(
             'match_portfolio_documents',
             {
                 query_embedding: questionEmbedding,
                 match_threshold: 0.45,
-                match_count: 5,
-            },
+                match_count: 5
+            }
         )
 
         if (error) {
@@ -141,16 +134,14 @@ export async function POST(request: Request) {
 
         if (matches.length === 0) {
             return NextResponse.json({
-                answer:
-                    '포트폴리오에서 해당 질문과 관련된 내용을 찾지 못했습니다.',
+                answer: '포트폴리오에서 해당 질문과 관련된 내용을 찾지 못했습니다.',
                 sources: [],
             })
         }
 
         const context = matches
-            .map(
-                (document, index) => `
-[자료 ${index + 1}]
+            .map((document, index) => 
+                `[자료 ${index + 1}]
 
 프로젝트: ${document.project ?? '공통'}
 제목: ${document.title}
@@ -185,9 +176,7 @@ ${document.content}
         const answer = interaction.output_text?.trim()
 
         if (!answer) {
-            throw new Error(
-                'AI 답변 생성에 실패했습니다.',
-            )
+            throw new Error('AI 답변 생성에 실패했습니다.')
         }
 
         const sources = matches.map(document => ({

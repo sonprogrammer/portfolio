@@ -22,10 +22,9 @@ export const projects = [
         highlights: [
             "QR 기반 O2O 이용 흐름",
             "B2B 운영 대시보드",
-            "AI API 호출 약 67% 절감",
         ],
         metric: "97%",
-        metricLabel: "AI 분석 재조회 시간 단축",
+        metricLabel: "AI 분석 결과 DB 재사용으로 재조회 시간 단축",
         theme: {
             icon: "bg-orange-500/10 text-orange-500",
             border: "hover:border-orange-500/40",

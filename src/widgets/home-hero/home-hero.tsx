@@ -8,7 +8,7 @@ const metrics = [
   {
     value: 97,
     suffix: '%',
-    label: "AI 분석 재조회 시간 단축",
+    label: "AI 분석 결과 DB 재사용으로 재조회 시간 단축",
     project: "MungPass",
     color: 'text-orange-400'
   },

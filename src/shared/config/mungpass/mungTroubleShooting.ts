@@ -3,7 +3,7 @@ import { TroubleshootingItem } from "@/shared/model/types";
 
 export const mungTroubleshooting: TroubleshootingItem[] = [
   {
-    title: "AI 매출 분석 중복 호출 및 응답 시간 최적화",
+    title: "AI 분석 결과 DB 저장·재사용으로 중복 호출 및 재조회 시간 단축",
     problem:
       "사장님이 같은 날 매출 현황을 확인할 때마다 Gemini API를 호출하면 동일한 분석이 반복 생성되고 불필요한 응답 대기 시간과 API 비용이 발생했습니다.",
 
