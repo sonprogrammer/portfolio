@@ -53,9 +53,9 @@ export async function POST(request: Request) {
 
         const question =
             typeof body === 'object' &&
-            body !== null &&
-            'question' in body &&
-            typeof body.question === 'string'
+                body !== null &&
+                'question' in body &&
+                typeof body.question === 'string'
                 ? body.question.trim()
                 : ''
 
@@ -111,7 +111,7 @@ export async function POST(request: Request) {
 
         const questionEmbedding = embeddingResponse.embeddings?.[0]?.values
 
-        if (!questionEmbedding ||questionEmbedding.length !== 768
+        if (!questionEmbedding || questionEmbedding.length !== 768
         ) {
             throw new Error('질문 임베딩 생성에 실패했습니다.')
         }
@@ -140,7 +140,7 @@ export async function POST(request: Request) {
         }
 
         const context = matches
-            .map((document, index) => 
+            .map((document, index) =>
                 `[자료 ${index + 1}]
 
 프로젝트: ${document.project ?? '공통'}
@@ -194,11 +194,23 @@ ${document.content}
     } catch (error) {
         console.error('Portfolio AI 오류:', error)
 
+        const statusCode =
+            typeof error === 'object' &&
+                error !== null &&
+                'status' in error &&
+                typeof error.status === 'number'
+                ? error.status
+                : 500
+
+        if (statusCode === 429) {
+            return NextResponse.json(
+                {message: '현재 AI 질문 사용량이 모두 소진되었습니다. 잠시 후 다시 이용해주세요.'},
+                { status: 429 },
+            )
+        }
+
         return NextResponse.json(
-            {
-                message:
-                    '답변을 생성하는 중 오류가 발생했습니다.',
-            },
+            {message: '답변을 생성하는 중 오류가 발생했습니다.'},
             { status: 500 },
         )
     }
