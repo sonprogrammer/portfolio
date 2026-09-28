@@ -57,8 +57,8 @@ export const projects = [
             "Access / Refresh Token 인증",
             "Axios 재발급 Queue",
         ],
-        metric: "17개",
-        metricLabel: "API 훅 공통 인증 적용",
+        metric: "11ms",
+        metricLabel: "AI 검색 결과 캐싱 · 평균 재조회 시간 867ms → 11ms",
         theme: {
             icon: "bg-emerald-500/10 text-emerald-500",
             border: "hover:border-emerald-500/40",

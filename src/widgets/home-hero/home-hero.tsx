@@ -13,9 +13,9 @@ const metrics = [
     color: 'text-orange-400'
   },
   {
-    value: 17,
-    suffix: "개",
-    label: "API 훅 인증 로직 공통화",
+    value: 11,
+    suffix: "ms",
+    label: "AI 검색 결과 캐싱으로 평균 재조회 시간 867ms → 11ms",
     project: "Fuelly",
     color: 'text-emerald-500'
   },
