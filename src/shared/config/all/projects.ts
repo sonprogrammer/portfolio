@@ -53,9 +53,9 @@ export const projects = [
             "Zustand",
         ],
         highlights: [
-            "AI JSON 응답 정형화",
+            "AI 응답 구조화 및 입력 검증",
+            "TanStack Query 기반 AI 검색 결과 캐싱",
             "Access / Refresh Token 인증",
-            "Axios 재발급 Queue",
         ],
         metric: "11ms",
         metricLabel: "AI 검색 결과 캐싱 · 평균 재조회 시간 867ms → 11ms",
