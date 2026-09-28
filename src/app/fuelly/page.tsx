@@ -14,7 +14,7 @@ export default function FuellyPage() {
         name="Fuelly"
         projectType="Personal Project"
         description="AI 기반 식단 추천과 영양 기록, 인증 흐름을 구현한 개인 맞춤 영양 관리 서비스"
-        logoSrc="/fuelly.png"
+        logoSrc="/fuelly-icon.png"
         githubUrl="https://github.com/sonprogrammer/fuelly"
         deployUrl="https://fuelly-mauve.vercel.app/"
         period="2025.12 ~ 2026.01"
