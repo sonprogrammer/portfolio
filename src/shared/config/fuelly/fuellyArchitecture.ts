@@ -14,7 +14,7 @@ export const fuellyArchitecture: ArchitectureItem[] = [
     description:
       "AI 응답의 형식 편차로 인해 발생하는 파싱 오류를 줄이기 위해 응답 형식을 구조화하고 서버에서 데이터를 가공하도록 구성했습니다.",
     points: [
-      "Groq AI API를 이용한 영양 정보 생성",
+      "Groq API 기반 LLM을 활용한 음식 영양 정보 자동 생성 기능 구현",
       "JSON Object 응답 형식을 이용한 응답 구조 통일",
       "서버에서 AI 응답을 파싱해 구조화된 영양 정보로 반환",
     ],
