@@ -77,7 +77,7 @@ export const projects = [
         summary:
             "Upbit API 기반 실시간 모의 코인 투자 서비스",
         description:
-            "REST와 WebSocket을 결합해 초기 시세 로딩과 실시간 데이터 동기화의 책임을 분리했습니다.",
+        "REST·WebSocket 하이브리드 구조로 초기 시세 로딩을 개선하고, 최신 데이터 동기화와 WebSocket 자동 재연결을 통해 실시간 시세의 정합성과 안정성을 강화했습니다.",
         icon: Bitcoin,
         technologies: [
             "React",
@@ -88,7 +88,7 @@ export const projects = [
         ],
         highlights: [
             "REST + WebSocket 하이브리드",
-            "실시간 렌더링 부하 제어",
+            "실시간 시세 정합성 및 장애 복구",
         ],
         metric: "4.68s → 0.9s",
         metricLabel: "초기 시세 로딩",
