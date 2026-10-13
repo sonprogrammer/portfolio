@@ -31,19 +31,23 @@ Upbit API에서 전달되는 시세 데이터가 서버를 거쳐 클라이언�
 
 ### REST와 WebSocket 하이브리드 시세 수신
 
-초기 시세는 Upbit REST API로 먼저 불러오고 이후 WebSocket 연결을 통해 실시간 데이터로 전환합니다.
+초기 시세는 Upbit REST API로 먼저 불러오고 이후 WebSocket 연결을 통해 실시간 데이터를 수신합니다. REST와 WebSocket의 비동기 응답 순서로 오래된 시세가 반영되지 않도록 각 데이터의 timestamp를 비교하고, 연결 복구 시 REST API로 시세를 다시 동기화합니다.
 
 - REST API를 이용한 초기 시세 데이터 조회
 - Upbit WebSocket을 통한 실시간 시세 수신
-- 초기 데이터 로딩과 실시간 업데이트의 역할 분리
+- timestamp 비교로 코인별 최신 시세만 반영
+- syncRequestId 검증으로 오래된 REST 응답 무효화
+- 연결 복구 시 REST API 재조회로 시세 동기화
 
 ### Node.js와 Express 기반 중계 서버
 
-클라이언트에서 Upbit API를 직접 호출하지 않고 Node.js 서버를 중간 계층으로 두어 외부 API 요청을 관리했습니다.
+클라이언트에서 Upbit API를 직접 호출하지 않고 Node.js 서버를 중간 계층으로 두어 외부 API 요청과 WebSocket 연결을 관리했습니다.
 
-- Node.js와 Express 기반 REST API 서버 구성
-- Upbit API 요청을 서버에서 중계
+- Node.js와 Express 기반 REST API 및 WebSocket 중계 서버 구성
+- Upbit REST API와 WebSocket 요청을 서버에서 중계
 - CORS와 Upbit API 요청 제한 문제를 중계 서버를 통해 해결
+- Ping/Pong Heartbeat로 Upbit WebSocket 연결 상태 확인
+- 연결 종료 시 최대 30초 간격의 지수 백오프로 자동 재연결
 
 ### 실시간 시세 데이터 시각화
 
@@ -53,13 +57,14 @@ Upbit API에서 전달되는 시세 데이터가 서버를 거쳐 클라이언�
 - Lightweight Charts 기반 캔들 차트 구현
 - 시세 변경에 따른 차트 데이터 업데이트
 
-### 서버 상태와 UI 로직의 책임 분리
+### 서버 데이터와 클라이언트 상태의 책임 분리
 
-서버 데이터와 클라이언트 상태의 책임을 TanStack Query와 Recoil로 분리했습니다. 반복되는 데이터 처리 로직은 Custom Hook으로 구성했습니다.
+서버 데이터와 클라이언트 상태의 책임을 TanStack Query와 Recoil로 분리했습니다. WebSocket 시세는 코인 코드를 키로 사용하는 Map에 모은 뒤 기존 throttle(300ms) 주기에 맞춰 전역 상태에 반영하고, 반복되는 REST 조회와 WebSocket 수신 로직은 Custom Hook으로 구성했습니다.
 
 - TanStack Query를 이용한 서버 데이터 조회 및 캐싱
-- 서버 데이터 조회·변경 및 반복되는 데이터 처리 로직을 Custom Hook으로 분리
-- Recoil을 이용한 클라이언트 전역 상태 관리
+- Recoil을 이용한 코인별 실시간 시세 전역 상태 관리
+- Map을 이용한 코인별 최신 시세 수집과 기존 throttle(300ms) 기반 배치 반영
+- Custom Hook을 통한 REST 조회 및 WebSocket 수신 로직 분리
 - Axios를 통한 REST API 요청 처리
 
 ### MongoDB 기반 데이터 및 인증 관리
@@ -120,20 +125,23 @@ Upbit WebSocket, ws
 
 ### 문제
 
-Upbit WebSocket에서 실시간 시세 데이터가 지속적으로 전달되면서 상태 업데이트가 빈번하게 발생했습니다.
+Upbit WebSocket에서 실시간 시세가 지속적으로 수신되면서 빈번한 전역 상태 업데이트가 발생할 수 있었습니다. 기존 throttle은 업데이트 횟수를 줄였지만, throttle 대기 구간에 여러 코인의 데이터가 들어오면 마지막 호출만 남아 중간 코인의 시세가 누락될 수 있었습니다.
 
 ### 원인
 
-수신되는 WebSocket 데이터를 그대로 상태에 반영하면서 짧은 시간 동안 많은 업데이트가 발생했습니다.
+WebSocket 메시지를 수신할 때마다 Recoil 상태를 변경하면 불필요한 렌더링 부담이 커집니다. 반대로 개별 메시지 자체를 throttle 함수의 인자로 전달하면 같은 대기 구간에 수신된 서로 다른 코인의 업데이트를 함께 보존할 수 없었습니다.
 
 ### 해결
 
-lodash의 throttle을 적용해 실시간 데이터 처리 주기를 제어하고 상태 업데이트 빈도를 제한했습니다.
+기존에 사용하던 lodash throttle(300ms)은 상태 반영 주기를 제한하는 역할로 유지했습니다. 최근에는 코인 코드를 키로 사용하는 Map에 대기 중인 시세를 모으고, 같은 코인의 데이터는 timestamp를 비교해 최신 값만 남긴 뒤 throttle 실행 시 한 번에 Recoil 상태에 병합하도록 보완했습니다. REST 요청 중 들어온 WebSocket 시세도 별도 Map에 보관해 REST 응답과 함께 최신 값을 선택하도록 구성했습니다.
 
 ### 결과
 
-- 과도한 상태 업데이트 방지
-- 실시간 데이터 업데이트 주기 제어
+- 기존 throttle(300ms)을 통한 Recoil 상태 업데이트 빈도 제한 유지
+- Map 기반 배치 처리로 throttle 구간에 수신된 여러 코인의 최신 시세를 함께 반영
+- timestamp 비교로 순서가 뒤바뀐 시세가 최신 값을 덮어쓰는 문제 방지
+- REST 요청 중 수신한 WebSocket 데이터를 보관한 뒤 최신 시세로 병합
+- Map 처리 비교 테스트 2개와 최신 시세 선택 단위 테스트 4개로 동작 확인
 
 ## 트러블슈팅: Upbit API CORS와 요청 제한
 
@@ -155,3 +163,25 @@ lodash의 throttle을 적용해 실시간 데이터 처리 주기를 제어하�
 - 브라우저의 CORS 제약 해결
 - Origin 기반 요청 제한 문제 해결
 
+## 트러블슈팅: WebSocket 연결 장애 복구와 REST·실시간 시세 동기화
+
+### 문제
+
+REST 초기 조회와 WebSocket 실시간 수신이 동시에 진행되면서 응답 도착 순서에 따라 오래된 시세가 최신 데이터를 덮어쓸 수 있었습니다. 또한 WebSocket 연결이 비정상적으로 유지되거나 끊어지면 장애 구간의 시세가 누락될 수 있었습니다.
+
+### 원인
+
+REST 응답과 WebSocket 메시지의 도착 순서는 실제 시세 생성 순서와 일치하지 않을 수 있습니다. 연결이 끊어진 뒤 WebSocket만 다시 연결해서는 장애 중 누락된 시세를 복구할 수 없고, close 이벤트가 발생하지 않는 반쪽 연결은 일반적인 재연결 처리만으로 감지하기 어려웠습니다.
+
+### 해결
+
+모든 시세를 timestamp로 비교해 최신 데이터만 선택하고, REST 요청마다 증가하는 syncRequestId를 부여해 이후 동기화가 시작된 뒤 도착한 오래된 REST 응답은 무효화했습니다. REST 요청 중 수신한 WebSocket 데이터는 별도 Map에 보관한 뒤 REST 응답과 병합했습니다. 서버는 10초 주기의 Ping/Pong Heartbeat로 Upbit 연결 상태를 확인하고 Pong이 없으면 연결을 종료하도록 구성했습니다. 연결 종료 후에는 1초부터 최대 30초까지 증가하는 지수 백오프로 자동 재연결하며, 연결이 복구되면 REST API를 다시 호출해 누락 가능성이 있는 시세를 재동기화했습니다.
+
+### 결과
+
+- 요청 ID와 timestamp 검증으로 오래된 REST 응답과 시세의 덮어쓰기 방지
+- REST 요청 중 수신한 WebSocket 시세 보존 및 최신 데이터 병합
+- Ping/Pong 미응답 감지와 최대 30초 지수 백오프 기반 자동 재연결
+- 연결 복구 후 REST 재동기화로 장애 구간의 시세 누락 보완
+- Vitest 최신 시세 선택 단위 테스트 4개와 useWebSocket 훅 통합 테스트 7개 통과
+- WebSocket 강제 종료, Pong 미응답, 재연결 간격 증가 및 연결 복구 후 REST 재조회 시나리오를 수동 검증

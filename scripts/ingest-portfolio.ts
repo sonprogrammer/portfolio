@@ -10,6 +10,11 @@ import {
   createPortfolioChunks,
   type PortfolioChunk,
 } from './portfolio-chunker'
+import {
+  findStaleChunkKeys,
+  parsePortfolioIngestArguments,
+  selectMarkdownFiles,
+} from './portfolio-ingest-scope'
 
 loadEnvConfig(process.cwd())
 
@@ -111,8 +116,16 @@ async function createEmbedding(chunk: PortfolioChunk) {
 }
 
 async function main() {
-  const markdownFiles = await findMarkdownFiles(
+  const options = parsePortfolioIngestArguments(
+    process.argv.slice(2),
+  )
+  const discoveredMarkdownFiles = await findMarkdownFiles(
     DATA_DIRECTORY,
+  )
+  const markdownFiles = selectMarkdownFiles(
+    DATA_DIRECTORY,
+    discoveredMarkdownFiles,
+    options.filePath,
   )
 
   const chunks: PortfolioChunk[] = []
@@ -129,10 +142,19 @@ async function main() {
     )
   }
 
-  const { data: existingRows, error: selectError } =
-    await supabase
-      .from('portfolio_documents')
-      .select('chunk_key, content_hash')
+  const existingRowsResult = options.filePath
+    ? await supabase
+        .from('portfolio_documents')
+        .select('chunk_key, content_hash, file_path')
+        .eq('file_path', options.filePath)
+    : await supabase
+        .from('portfolio_documents')
+        .select('chunk_key, content_hash, file_path')
+
+  const {
+    data: existingRows,
+    error: selectError,
+  } = existingRowsResult
 
   if (selectError) {
     throw selectError
@@ -157,6 +179,30 @@ async function main() {
 
   console.log(`전체 청크: ${chunks.length}개`)
   console.log(`추가 또는 변경: ${changedChunks.length}개`)
+
+  const currentKeys = new Set(
+    chunks.map(chunk => chunk.chunkKey),
+  )
+
+  const staleKeys = findStaleChunkKeys(
+    existingRows ?? [],
+    currentKeys,
+    options.filePath,
+  )
+
+  if (options.dryRun) {
+    console.log('dry-run: Supabase 변경 및 임베딩 생성을 실행하지 않습니다.')
+
+    for (const { chunk } of changedChunks) {
+      console.log(`[추가 또는 변경 예정] ${chunk.chunkKey}`)
+    }
+
+    for (const chunkKey of staleKeys) {
+      console.log(`[삭제 예정] ${chunkKey}`)
+    }
+
+    return
+  }
 
   for (const [
     index,
@@ -194,19 +240,20 @@ async function main() {
     }
   }
 
-  const currentKeys = new Set(
-    chunks.map(chunk => chunk.chunkKey),
-  )
-
-  const staleKeys = (existingRows ?? [])
-    .map(row => row.chunk_key)
-    .filter(chunkKey => !currentKeys.has(chunkKey))
-
   if (staleKeys.length > 0) {
-    const { error: deleteError } = await supabase
+    let deleteQuery = supabase
       .from('portfolio_documents')
       .delete()
       .in('chunk_key', staleKeys)
+
+    if (options.filePath) {
+      deleteQuery = deleteQuery.eq(
+        'file_path',
+        options.filePath,
+      )
+    }
+
+    const { error: deleteError } = await deleteQuery
 
     if (deleteError) {
       throw deleteError

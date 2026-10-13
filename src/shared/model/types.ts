@@ -15,4 +15,6 @@ export type TroubleshootingItem = {
   reason: string;
   solution: string;
   results: string[];
+  updatedAt?: string;
+  tested?: boolean
 };

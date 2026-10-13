@@ -25,6 +25,8 @@ export function TroubleshootingCard({
   reason,
   solution,
   results,
+  updatedAt,
+  tested,
   theme = 'blue'
 }: TroubleshootingCardProps) {
   const [isOpen, setIsOpen] = useState(false)
@@ -38,11 +40,28 @@ export function TroubleshootingCard({
         className="flex w-full items-center justify-between gap-4 px-6 py-6 text-left sm:px-8 cursor-pointer group"
       >
         <div className="space-y-2">
-          <div className="flex items-center gap-3">
+
+          <div className="flex flex-wrap items-center gap-x-2.5 gap-y-2">
             <span className={`text-xs font-black uppercase tracking-[0.16em] ${style.text}`}>
               TROUBLESHOOTING {String(number).padStart(2, "0")}
             </span>
+
+            {updatedAt && (
+              <span className="inline-flex items-center gap-1.5 rounded-full border border-emerald-500/25 bg-emerald-500/10 px-2.5 py-1 text-[10px] font-semibold text-emerald-400">
+                <span className="size-1.5 rounded-full bg-emerald-400" />
+                Recent Update
+                <span className="text-emerald-500/70">{updatedAt}</span>
+              </span>
+            )}
+
+            {tested && (
+              <span className="inline-flex items-center gap-1 rounded-full border border-zinc-700 bg-zinc-800/70 px-2.5 py-1 text-[10px] font-semibold text-zinc-300">
+                <CheckCircle2 className="size-3" />
+                Tested
+              </span>
+            )}
           </div>
+
 
           <h3 className="text-lg sm:text-xl font-extrabold text-white tracking-tight group-hover:text-zinc-200 transition-colors">
             {title}

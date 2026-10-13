@@ -17,15 +17,19 @@ export const vcTroubleShooting: TroubleshootingItem[] = [
     },
     {
         title: "실시간 시세 수신으로 인한 과도한 상태 업데이트",
+        updatedAt: "2026.10",
+        tested: true,
         problem:
-            "Upbit WebSocket에서 실시간 시세 데이터가 지속적으로 전달되면서 상태 업데이트가 빈번하게 발생했습니다.",
+            "Upbit WebSocket에서 실시간 시세가 지속적으로 수신되면서 빈번한 전역 상태 업데이트가 발생할 수 있었습니다.",
         reason:
-            "수신되는 WebSocket 데이터를 그대로 상태에 반영하면서 짧은 시간 동안 많은 업데이트가 발생했습니다.",
+            "실시간 데이터를 수신할 때마다 Recoil 상태를 변경하면 불필요한 렌더링 부담이 증가할 수 있기 때문입니다.",
         solution:
-            "lodash의 throttle을 적용해 실시간 데이터 처리 주기를 제어하고 상태 업데이트 빈도를 제한했습니다.",
+            "기존 lodash throttle(300ms)을 통한 상태 업데이트 빈도 제한을 유지하면서, 최근에는 Map에 저장된 코인별 시세를 timestamp 기준으로 비교해 최신 데이터만 반영하도록 보완했습니다. 또한 REST 요청 중 수신되는 WebSocket 데이터도 별도로 관리해 시세 동기화의 정확성을 개선했습니다.",
         results: [
-            "과도한 상태 업데이트 방지",
-            "실시간 데이터 업데이트 주기 제어",
+            "기존 throttle(300ms)을 통한 Recoil 상태 업데이트 빈도 제한 유지",
+            "timestamp 비교로 순서가 뒤바뀐 시세의 덮어쓰기 방지",
+            "REST 요청 중 수신한 WebSocket 데이터를 별도로 관리해 최신 시세 동기화",
+            "실시간 시세 처리 관련 자동화 테스트 수행",
         ],
     },
     {
@@ -41,4 +45,24 @@ export const vcTroubleShooting: TroubleshootingItem[] = [
             "CORS 및 Origin 기반 요청 제한 문제 해결",
         ],
     },
+    {
+        title: "WebSocket 연결 장애 복구 및 REST·실시간 시세 동기화",
+        updatedAt: "2026.10",
+        tested: true,
+        problem:
+            "REST 초기 조회와 WebSocket 실시간 수신이 동시에 진행되면서 오래된 시세가 최신 데이터를 덮어쓸 가능성이 있었고, WebSocket 연결 장애 발생 시 누락된 시세를 복구할 필요가 있었습니다.",
+        reason:
+            "REST 응답과 WebSocket 메시지의 도착 순서가 시세 생성 순서와 일치하지 않을 수 있으며, 재연결만으로는 연결이 끊긴 동안의 데이터 누락을 해소할 수 없었습니다.",
+        solution:
+            "REST 요청 중 수신한 WebSocket 시세를 Map에 임시 저장하고 timestamp를 비교해 최신 데이터만 반영하도록 구성했습니다. syncRequestId로 오래된 REST 응답을 무효화하고, Ping/Pong Heartbeat 및 최대 30초 지수 백오프 재연결을 구현했습니다. 또한 연결 복구 후 REST 재조회로 시세를 다시 동기화하도록 개선했습니다.",
+        results: [
+            "timestamp 기반 비교 및 요청 ID 검증으로 오래된 시세 반영 방지",
+            "Ping/Pong 미응답 감지와 지수 백오프 기반 자동 재연결 구현",
+            "연결 복구 후 REST 재동기화 처리",
+            "Vitest 단위 테스트 6개 및 훅 통합 테스트 7개 통과",
+            "WebSocket 강제 종료, Pong 미응답 및 재연결 간격 시나리오 검증",
+        ],
+    },
+
+
 ]

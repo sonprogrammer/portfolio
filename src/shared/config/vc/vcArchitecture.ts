@@ -13,22 +13,24 @@ export const vcArchitecture: ArchitectureItem[] = [
     icon: Wifi,
     title: 'REST + WebSocket 하이브리드 시세 수신',
     description:
-      '초기 시세는 Upbit REST API로 먼저 불러오고 이후 WebSocket 연결을 통해 실시간 데이터로 전환하는 구조로 구성했습니다.',
+      'REST API로 초기 시세를 조회하고 WebSocket으로 실시간 데이터를 수신합니다. 비동기 응답 순서로 인한 데이터 불일치를 방지하고, 연결 복구 시 시세를 재동기화하도록 구성했습니다.',
     points: [
       'REST API를 이용한 초기 시세 데이터 조회',
       'Upbit WebSocket을 통한 실시간 시세 수신',
-      '초기 데이터 로딩과 실시간 업데이트의 역할 분리',
+      'timestamp 비교 및 요청 ID 검증으로 오래된 시세 반영 방지',
+      '연결 복구 시 REST API 재조회로 시세 동기화',
     ],
   },
   {
     icon: Server,
     title: 'Node.js · Express 기반 중계 서버',
     description:
-      '클라이언트에서 Upbit API를 직접 호출하지 않고 Node.js 서버를 중간 계층으로 두어 외부 API 요청을 관리했습니다.',
+      'Node.js 중계 서버에서 Upbit REST API 및 WebSocket 연결을 관리하고, 실시간 시세를 클라이언트에 전달하도록 구성했습니다.',
     points: [
-      'Node.js · Express 기반 REST API 서버 구성',
-      'Upbit API 요청을 서버에서 중계하도록 구성',
-      'CORS 및 Upbit API 요청 제한 문제를 중계 서버를 통해 해결',
+      'Node.js · Express 기반 REST API 및 WebSocket 중계 서버 구성',
+      'CORS 및 Upbit Origin 기반 요청 제한 문제 해결',
+      'Ping/Pong Heartbeat를 통한 연결 상태 감지',
+      '지수 백오프 기반 자동 재연결 및 최대 30초 재시도 간격 적용',
     ],
   },
   {
@@ -44,14 +46,14 @@ export const vcArchitecture: ArchitectureItem[] = [
   },
   {
     icon: Layers3,
-    title: '서버 상태와 UI 로직의 책임 분리',
+    title: '서버 데이터와 클라이언트 상태의 책임 분리',
     description:
-      '서버 데이터와 클라이언트 상태의 책임을 TanStack Query와 Recoil로 분리하고 반복되는 데이터 처리 로직은 Custom Hook으로 구성했습니다.',
-
+      'TanStack Query와 Recoil로 데이터 관리 책임을 분리하고, WebSocket 시세는 Map 기반 배치 처리와 throttle을 적용해 전역 상태에 반영하도록 구성했습니다.',
     points: [
       'TanStack Query를 이용한 서버 데이터 조회 및 캐싱',
-      '서버 데이터 조회·변경 및 반복되는 데이터 처리 로직을 Custom Hook으로 분리',
-      'Recoil을 이용한 클라이언트 전역 상태 관리',
+      'Recoil을 이용한 코인별 실시간 시세 전역 상태 관리',
+      'Map 기반 최신 시세 수집 및 throttle(300ms) 적용',
+      'Custom Hook을 통한 REST 조회 및 WebSocket 수신 로직 분리',
       'Axios를 통한 REST API 요청 처리',
     ],
   },
