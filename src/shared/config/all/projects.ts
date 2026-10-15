@@ -43,19 +43,19 @@ export const projects = [
         summary:
             "AI 기반 개인 맞춤 영양 관리 서비스",
         description:
-            "AI 응답 정형화와 JWT 인증, 토큰 재발급 동시성 제어를 중심으로 안정적인 데이터 흐름을 설계했습니다.",
+            "사용자 식습관과 영양 목표를 AI 추천에 반영하고, 구조화 응답 검증·조건부 재시도·검색 기록 관리로 AI 기능의 안정성과 사용성을 개선했습니다.",
         icon: BrainCircuit,
         technologies: [
             "Next.js",
             "Groq",
-            "jose",
+            "MongoDB",
             "TanStack Query",
             "Zustand",
         ],
         highlights: [
-            "AI 응답 구조화 및 입력 검증",
-            "TanStack Query 기반 AI 검색 결과 캐싱",
-            "Access / Refresh Token 인증",
+            "AI 개인화 추천 및 구조화 응답 검증",
+            "Timeout · 조건부 Retry 기반 AI 요청 안정화",
+            "AI 검색 기록 저장 및 TanStack Query 동기화",
         ],
         metric: "11ms",
         metricLabel: "AI 검색 결과 캐싱 · 평균 재조회 시간 867ms → 11ms",
@@ -77,7 +77,7 @@ export const projects = [
         summary:
             "Upbit API 기반 실시간 모의 코인 투자 서비스",
         description:
-        "REST·WebSocket 하이브리드 구조로 초기 시세 로딩을 개선하고, 최신 데이터 동기화와 WebSocket 자동 재연결을 통해 실시간 시세의 정합성과 안정성을 강화했습니다.",
+            "REST·WebSocket 하이브리드 구조로 초기 시세 로딩을 개선하고, 최신 데이터 동기화와 WebSocket 자동 재연결을 통해 실시간 시세의 정합성과 안정성을 강화했습니다.",
         icon: Bitcoin,
         technologies: [
             "React",

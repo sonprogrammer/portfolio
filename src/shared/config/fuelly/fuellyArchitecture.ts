@@ -4,21 +4,37 @@ import {
   Database,
   Layers3,
   RefreshCcw,
+  ShieldAlert,
   ShieldCheck,
 } from "lucide-react";
 
 export const fuellyArchitecture: ArchitectureItem[] = [
   {
     icon: BrainCircuit,
-    title: "AI 기반 영양 정보 처리 흐름",
+    title: "개인화 AI 추천 및 구조화 응답",
     description:
-      "AI 응답의 형식 편차로 인해 발생하는 파싱 오류를 줄이기 위해 응답 형식을 구조화하고 서버에서 데이터를 가공하도록 구성했습니다.",
+      "사용자의 신체 정보와 영양 목표뿐 아니라 알레르기, 비선호, 선호 음식, 추가 요청사항까지 AI 컨텍스트에 반영하고 구조화 응답과 런타임 검증으로 응답 안정성을 높였습니다.",
     points: [
-      "Groq API 기반 LLM을 활용한 음식 영양 정보 자동 생성 기능 구현",
-      "JSON Object 응답 형식을 이용한 응답 구조 통일",
-      "서버에서 AI 응답을 파싱해 구조화된 영양 정보로 반환",
+      "사용자 설정과 영양 정보를 서버에서 AI 추천 컨텍스트로 구성",
+      "고정 역할 및 규칙은 system, 사용자 정보·질문은 user 메시지로 분리",
+      "JSON Schema 기반 구조화 응답 적용",
+      "AI 응답을 서버에서 런타임 검증한 뒤 클라이언트에 반환",
     ],
+    update: '개선',
 
+  },
+  {
+    icon: ShieldAlert,
+    title: "외부 AI API 요청 안정화",
+    description:
+      "외부 AI API의 응답 지연과 일시적 장애에 대응하기 위해 공통 timeout 및 조건부 retry 로직을 구성했습니다.",
+    points: [
+      "AI 요청에 공통 timeout 로직 적용",
+      "timeout, 429, 5xx 오류에 대해서만 조건부 재시도",
+      "400, 401, 403 등 재시도로 해결되지 않는 오류는 즉시 실패 처리",
+      "Vitest로 최초 성공, timeout 재시도 및 비재시도 오류 흐름 검증",
+    ],
+    update: '신규',
   },
   {
     icon: ShieldCheck,
@@ -30,6 +46,18 @@ export const fuellyArchitecture: ArchitectureItem[] = [
       "Access Token을 브라우저 영구 저장소가 아닌 메모리에서 관리",
       "Refresh Token을 HttpOnly Cookie로 관리",
       "Next.js Middleware에서 토큰을 검증해 보호 라우트 접근 제어",
+    ],
+  },
+  {
+    icon: RefreshCcw,
+    title: "Axios Interceptor 기반 토큰 재발급",
+    description:
+      "Access Token 만료 시 Refresh Token을 이용해 토큰을 재발급하고 여러 요청이 동시에 실패하는 상황을 Queue로 제어했습니다.",
+    points: [
+      "Axios Interceptor를 이용한 인증 요청 처리",
+      "Access Token 만료 시 Refresh Token 기반 재발급",
+      "토큰 재발급 로직을 공통 인증 흐름으로 통합",
+      "Queue를 이용한 동시 재발급 요청 제어",
     ],
   },
   {
@@ -46,26 +74,16 @@ export const fuellyArchitecture: ArchitectureItem[] = [
     ],
   },
   {
-    icon: RefreshCcw,
-    title: "Axios Interceptor 기반 토큰 재발급",
-    description:
-      "Access Token 만료 시 Refresh Token을 이용해 토큰을 재발급하고 여러 요청이 동시에 실패하는 상황을 Queue로 제어했습니다.",
-    points: [
-      "Axios Interceptor를 이용한 인증 요청 처리",
-      "Access Token 만료 시 Refresh Token 기반 재발급",
-      "토큰 재발급 로직을 공통 인증 흐름으로 통합",
-      "Queue를 이용한 동시 재발급 요청 제어",
-    ],
-  },
-  {
     icon: Database,
-    title: "MongoDB 기반 서비스 데이터 관리",
+    title: "MongoDB 기반 사용자, 식단, AI 데이터 관리",
     description:
-      "사용자와 식단 관련 데이터를 MongoDB에 저장하고 서버를 통해 조회, 변경하도록 구성했습니다.",
+      "사용자와 식단 데이터뿐 아니라 AI 개인화 설정과 검색 기록을 사용자 계정 기준으로 저장하고 서버를 통해 관리하도록 구성했습니다.",
     points: [
-      "MongoDB를 이용한 서비스 데이터 저장",
-      "사용자와 식단 데이터를 서버를 통해 조회 및 변경",
-       "클라이언트와 서버 간 식단·영양 데이터 동기화",
+      "사용자와 식단, AI 개인화 설정을 MongoDB에 저장",
+      "AI 검색 결과를 사용자별 검색 기록으로 저장",
+      "검색 기록 조회 및 삭제 API 구현",
+      "TanStack Query 캐시 무효화를 통해 서버 상태와 UI 동기화",
     ],
+    update: '개선',
   },
 ];

@@ -25,8 +25,8 @@ export function TroubleshootingCard({
   reason,
   solution,
   results,
-  updatedAt,
   tested,
+  update,
   theme = 'blue'
 }: TroubleshootingCardProps) {
   const [isOpen, setIsOpen] = useState(false)
@@ -46,16 +46,19 @@ export function TroubleshootingCard({
               TROUBLESHOOTING {String(number).padStart(2, "0")}
             </span>
 
-            {updatedAt && (
-              <span className="inline-flex items-center gap-1.5 rounded-full border border-emerald-500/25 bg-emerald-500/10 px-2.5 py-1 text-[10px] font-semibold text-emerald-400">
-                <span className="size-1.5 rounded-full bg-emerald-400" />
-                Recent Update
-                <span className="text-emerald-500/70">{updatedAt}</span>
+            {update && (
+              <span
+                className={`inline-flex items-center rounded-full border px-2.5 py-1 text-[10px] font-semibold ${update === '신규'
+                  ? 'border-violet-500/25 bg-violet-500/10 text-violet-400'
+                  : 'border-cyan-500/25 bg-cyan-500/10 text-cyan-400'
+                  }`}
+              >
+                {update}
               </span>
             )}
 
             {tested && (
-              <span className="inline-flex items-center gap-1 rounded-full border border-zinc-700 bg-zinc-800/70 px-2.5 py-1 text-[10px] font-semibold text-zinc-300">
+              <span className="inline-flex items-center gap-1 rounded-full border border-amber-500/25 bg-amber-500/10 px-2.5 py-1 text-[10px] font-semibold text-amber-400">
                 <CheckCircle2 className="size-3" />
                 Tested
               </span>

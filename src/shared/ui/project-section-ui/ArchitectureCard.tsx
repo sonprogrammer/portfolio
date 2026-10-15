@@ -12,16 +12,21 @@ export function ArchitectureCard({
   title,
   description,
   points,
+  update,
   theme = 'blue'
 }: ArchitectureItem) {
   const [isOpen, setIsOpen] = useState(false)
+
+  const updateStyle = update === '신규'
+    ? 'border-emerald-500/20 bg-emerald-500/10 text-emerald-400'
+    : 'border-blue-500/20 bg-blue-500/10 text-blue-400'
 
   const style = themeMap[theme]
   return (
     <article
       className={`overflow-hidden rounded-[2.5rem] border backdrop-blur-md shadow-xl transition-all duration-300 ${isOpen
-          ? `border-zinc-700 bg-zinc-900/80 shadow-2xl`
-          : 'border-zinc-800 bg-zinc-900/60 hover:border-zinc-700'
+        ? `border-zinc-700 bg-zinc-900/80 shadow-2xl`
+        : 'border-zinc-800 bg-zinc-900/60 hover:border-zinc-700'
         }`}
     >
       <button
@@ -32,19 +37,28 @@ export function ArchitectureCard({
         <div className="flex items-center gap-4">
           <div
             className={`flex size-12 shrink-0 items-center justify-center rounded-2xl border transition-all duration-300 shadow-inner ${isOpen
-                ? `${style.border} ${style.glow} ${style.text}`
-                : 'border-zinc-800 bg-zinc-950/60 text-zinc-400 group-hover:border-zinc-700 group-hover:text-zinc-300'
+              ? `${style.border} ${style.glow} ${style.text}`
+              : 'border-zinc-800 bg-zinc-950/60 text-zinc-400 group-hover:border-zinc-700 group-hover:text-zinc-300'
               }`}
           >
             <Icon className="size-5" />
           </div>
 
-          <h3
-            className={`text-base sm:text-lg font-extrabold tracking-tight transition-colors duration-300 ${isOpen ? 'text-white' : 'text-zinc-200 group-hover:text-white'
+          <div className="flex min-w-0 flex-wrap items-center gap-2">
+            <h3
+              className={`text-base font-extrabold tracking-tight transition-colors duration-300 sm:text-lg ${
+                isOpen ? 'text-white' : 'text-zinc-200 group-hover:text-white'
               }`}
-          >
-            {title}
-          </h3>
+            >
+              {title}
+            </h3>
+
+            {update && (
+              <span className={`shrink-0 rounded-full border px-2 py-0.5 text-[10px] font-semibold ${updateStyle}`}>
+                {update}
+              </span>
+            )}
+          </div>
         </div>
 
         <div className="flex size-10 shrink-0 items-center justify-center rounded-2xl border border-zinc-800 bg-zinc-950/60 text-zinc-400 transition-transform duration-300">

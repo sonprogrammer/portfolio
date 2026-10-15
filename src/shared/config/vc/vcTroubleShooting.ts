@@ -17,7 +17,7 @@ export const vcTroubleShooting: TroubleshootingItem[] = [
     },
     {
         title: "실시간 시세 수신으로 인한 과도한 상태 업데이트",
-        updatedAt: "2026.10",
+        update: "개선",
         tested: true,
         problem:
             "Upbit WebSocket에서 실시간 시세가 지속적으로 수신되면서 빈번한 전역 상태 업데이트가 발생할 수 있었습니다.",
@@ -47,7 +47,7 @@ export const vcTroubleShooting: TroubleshootingItem[] = [
     },
     {
         title: "WebSocket 연결 장애 복구 및 REST·실시간 시세 동기화",
-        updatedAt: "2026.10",
+        update: "신규",
         tested: true,
         problem:
             "REST 초기 조회와 WebSocket 실시간 수신이 동시에 진행되면서 오래된 시세가 최신 데이터를 덮어쓸 가능성이 있었고, WebSocket 연결 장애 발생 시 누락된 시세를 복구할 필요가 있었습니다.",

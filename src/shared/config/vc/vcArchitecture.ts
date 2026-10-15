@@ -20,6 +20,7 @@ export const vcArchitecture: ArchitectureItem[] = [
       'timestamp 비교 및 요청 ID 검증으로 오래된 시세 반영 방지',
       '연결 복구 시 REST API 재조회로 시세 동기화',
     ],
+    update:'개선'
   },
   {
     icon: Server,
@@ -27,11 +28,12 @@ export const vcArchitecture: ArchitectureItem[] = [
     description:
       'Node.js 중계 서버에서 Upbit REST API 및 WebSocket 연결을 관리하고, 실시간 시세를 클라이언트에 전달하도록 구성했습니다.',
     points: [
-      'Node.js · Express 기반 REST API 및 WebSocket 중계 서버 구성',
+      'Node.js, Express 기반 REST API 및 WebSocket 중계 서버 구성',
       'CORS 및 Upbit Origin 기반 요청 제한 문제 해결',
       'Ping/Pong Heartbeat를 통한 연결 상태 감지',
       '지수 백오프 기반 자동 재연결 및 최대 30초 재시도 간격 적용',
     ],
+    update:'개선'
   },
   {
     icon: Activity,
@@ -56,6 +58,7 @@ export const vcArchitecture: ArchitectureItem[] = [
       'Custom Hook을 통한 REST 조회 및 WebSocket 수신 로직 분리',
       'Axios를 통한 REST API 요청 처리',
     ],
+    update:'개선'
   },
   {
     icon: Database,

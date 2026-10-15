@@ -7,6 +7,7 @@ export type ArchitectureItem = {
   description: string;
   points: string[];
   theme?: ThemeType;
+  update? : string
 };
 
 export type TroubleshootingItem = {
@@ -17,4 +18,5 @@ export type TroubleshootingItem = {
   results: string[];
   updatedAt?: string;
   tested?: boolean
+  update?: string
 };

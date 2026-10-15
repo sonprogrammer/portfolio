@@ -33,10 +33,14 @@ export const fuellyTechnologyGroups= [
   },
   {
     title: "AI",
-    description: "사용자 목표와 식단 데이터를 기반으로 AI 영양 정보를 제공",
+    description: "사용자 설정과 영양 데이터를 기반으로 개인화된 AI 추천 흐름을 구성",
     items: [
-      "Groq API · GPT-OSS 20B",
-      "JSON Object",
+      "Groq API",
+      "GPT-OSS 20B",
+      "JSON Schema",
+      "Runtime Validation",
+      "Timeout & Retry",
+      "Vitest",
     ],
   },
 ];
