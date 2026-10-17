@@ -1,66 +1,87 @@
 
 import { ArchitectureItem } from "@/shared/model/types";
-import { Database, MessageSquareText, QrCode, Server, Workflow } from "lucide-react";
+import { Database, MessageSquareText, QrCode, Server, ShieldCheck, Workflow } from "lucide-react";
 
 
 
 export const architectureItems: ArchitectureItem[] = [
   {
     icon: Workflow,
-    title: "트레이너 · 회원 역할 기반 서비스 흐름",
+    title: "트레이너와 회원의 역할별 서비스 흐름",
     description:
-      "트레이너와 회원의 역할을 분리하고 동일한 브라우저에서 역할을 전환하며 전체 서비스 흐름을 체험할 수 있도록 구성했습니다.",
+     "트레이너는 담당 회원의 PT 횟수와 운동 일지를 관리하고, 회원은 QR 체크인과 자신의 기록 조회 기능을 이용하도록 구성했습니다.",
     points: [
       "트레이너와 회원 역할별 기능 및 화면 분리",
-      "트레이너와 회원 간 1:1 연결 관계 관리",
-      "연결된 회원을 기준으로 PT·운동 기록·채팅 데이터 관리",
+      "트레이너와 담당 회원의 연결 관계 관리",
+      "회원별 운동 일지 조회와 작성 화면 분리"
     ],
   },
   {
     icon: QrCode,
-    title: "QR 기반 출석 및 PT 관리 흐름",
+    title: "QR 기반 회원 연결과 PT 차감",
     description:
-      "오프라인 PT 수업에서 발생하는 출석과 잔여 수강 횟수 관리를 QR 기반 데이터 흐름으로 자동화했습니다.",
+      "회원이 트레이너의 QR을 스캔하면 연결 관계를 확인하고, 서버에서 회원의 잔여 PT 횟수를 차감하도록 구성했습니다.",
     points: [
-      "트레이너 QR을 회원이 스캔해 출석 처리",
-      "출석 처리와 동시에 잔여 PT 횟수 차감",
-      "변경된 PT 정보를 트레이너와 회원 화면에 반영",
+      "QR에 담긴 트레이너 ID와 인증된 회원 ID로 연결 처리",
+      "트레이너의 PT 추가 API와 회원의 PT 차감 API 분리",
+      "서버에서 차감량을 1회로 고정하고 잔여 횟수 조건과 $inc로 차감",
+      "useRef 기반 잠금으로 카메라의 연속 인식에 따른 중복 요청 방지"
     ],
+    update: '개선'
+  },
+  {
+    icon: ShieldCheck,
+    title: "JWT 기반 인증과 접근 권한 검증",
+    description: "사용자 식별은 검증된 JWT를 기준으로 처리하고, 화면 접근에 필요한 인증 상태 복구와 데이터별 권한 검사를 구성했습니다.",
+    points: [
+      "Access Token은 메모리, Refresh Token은 HttpOnly 쿠키로 관리",
+      "새로고침 시 토큰 재발급과 사용자 정보 조회로 인증 상태 복구",
+      "동시 401 요청의 토큰 재발급 요청 공유와 기존 요청 재시도",
+      "게시물 삭제 시 소유권 확인 및 역할별 데이터 접근 제한",
+      "Socket.IO 연결 시 JWT 검증과 채팅방 참여 권한 검사"
+    ],
+    update: "개선"
   },
   {
     icon: Server,
-    title: "React · Node.js 기반 Client / Server 구조",
+    title: "React와 Node.js 기반 Client / Server 구조",
     description:
-      "사용자 인터페이스와 비즈니스 로직을 분리하고 REST API를 통해 클라이언트와 서버가 데이터를 주고받도록 구성했습니다.",
+      "React 클라이언트는 화면과 사용자 상호작용을 담당하고, Express 서버는 인증 검증과 데이터 조회 및 변경을 처리하도록 분리했습니다.",
     points: [
-      "React · TypeScript 기반 클라이언트 구현",
-      "Node.js · Express 기반 REST API 서버 구축",
-      "사용자·PT·운동 기록·채팅·앨범 데이터 API 분리",
+      "React와 TypeScript 기반 클라이언트 구현",
+      "Node.js와 Express 기반 REST API 서버 구성",
+      "클라이언트가 전달한 사용자 정보 대신 검증된 JWT로 요청 사용자 식별",
+      "조회 대상 회원과 채팅방 ID는 요청으로 받고 서버에서 접근 권한 확인"
     ],
   },
   {
     icon: Database,
-    title: "서비스 데이터 및 상태 관리",
+    title: "서비스 데이터와 상태 관리",
     description:
-      "MongoDB로 트레이너·회원 관계, PT 횟수, 운동 기록, 채팅 내역을 관리하고, React Query와 Recoil을 활용해 서버 데이터 캐싱과 클라이언트 상태를 분리하여 관리했습니다.",
-
+     "MongoDB에 서비스 데이터를 저장하고, TanStack Query의 서버 데이터 캐시와 Recoil의 인증 및 클라이언트 상태를 구분해 관리했습니다.",
     points: [
       "Mongoose Schema를 이용한 서비스 데이터 구조 정의",
-      "React Query Custom Hook으로 데이터 조회·변경 로직 분리 및 캐싱 관리",
+      "React Query Custom Hook으로 API 요청과 공통 처리 로직 분리",
+      "계정과 조회 대상별로 캐시를 구분해 데이터 혼용 방지",
+      "데이터 변경 성공 시 관련 쿼리 무효화로 화면 갱신",
       "Recoil을 활용한 사용자 역할 및 클라이언트 상태 관리",
       "트레이너·회원 관계를 기준으로 PT, 운동 기록, 채팅 데이터 연결",
     ],
+    update: '개선'
   },
   {
     icon: MessageSquareText,
     title: "REST + Socket.IO 실시간 통신",
     description:
-      "저장된 데이터 조회와 실시간 이벤트의 책임을 즉시성이 필요한 채팅은 Socket.IO로 일반적 조회와 저장은 REST API로 처리했습니다.",
+      "채팅 내역 조회와 메시지 저장은 REST API로 처리하고, 새 메시지 전달과 읽음 상태 변경은 Socket.IO 이벤트로 처리했습니다.",
 
     points: [
-      "REST API를 통한 기존 채팅 내역 조회",
+      "REST API를 통한 기존 채팅 내역 조회 및 신규 저장",
       "Socket.IO Room 기반 1:1 메시지 실시간 전달",
-      "메시지 전송과 읽음 상태 이벤트를 분리하여 처리",
+      "서버 인증 정보로 메시지 작성자와 읽음 처리 사용자 지정",
+      "소켓 재연결 시 채팅방 재입장과 메시지 목록 재조회",
+      "화면 이탈 시 이벤트 리스너 해제와 채팅방 퇴장"
     ],
+    update: '개선'
   },
 ];

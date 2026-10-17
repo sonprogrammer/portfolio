@@ -58,21 +58,23 @@ export function ProjectOverview() {
                     {featuredProject.category}
                   </span>
 
-                  <span className="rounded-full border border-zinc-700 px-2.5 py-1 text-[10px] font-bold text-zinc-400">
+                  <span className={`rounded-full border border-zinc-700 px-2.5 py-1 text-[10px] font-bold text-zinc-400`}>
                     {featuredProject.projectType}
                   </span>
 
                 </div>
               </div>
 
-              <div className="mt-7 flex flex-wrap items-end gap-x-3 gap-y-1">
-                <h3 className="text-4xl font-black tracking-tight text-white">
-                  {featuredProject.name}
-                </h3>
-
-                <span className="pb-1 text-sm font-semibold text-zinc-500">
-                  {featuredProject.period}
-                </span>
+              <div className="mt-7">
+                <div className="flex flex-wrap items-center gap-3">
+                  <h3 className="text-4xl font-black tracking-tight text-white">{featuredProject.name}</h3>
+                  {featuredProject.recentUpdate && (
+                    <span className={`rounded-full border ${featuredProject.theme.border} ${featuredProject.theme.glow} px-2.5 py-1 text-[10px] font-semibold ${featuredProject.theme.text}`}>
+                      최근 업데이트
+                    </span>
+                  )}
+                </div>
+                <p className="mt-2 text-sm font-semibold text-zinc-500">{featuredProject.period}</p>
               </div>
 
               <p className="mt-3 text-lg font-semibold  text-zinc-200">
@@ -167,14 +169,16 @@ export function ProjectOverview() {
                   </div>
                 </div>
 
-                <div className="mt-6 flex items-end gap-3">
-                  <h3 className="text-2xl font-black text-white">
-                    {project.name}
-                  </h3>
-
-                  <span className="pb-1 text-xs font-semibold text-zinc-500">
-                    {project.period}
-                  </span>
+                <div className="mt-6">
+                  <div className="flex flex-wrap items-center gap-2">
+                    <h3 className="text-2xl font-black text-white">{project.name}</h3>
+                    {project.recentUpdate && (
+                      <span className={`rounded-full border ${project.theme.border} ${project.theme.glow} px-2 py-0.5 text-[10px] font-semibold ${project.theme.text}`}>
+                        최근 업데이트
+                      </span>
+                    )}
+                  </div>
+                  <p className="mt-2 text-xs font-semibold text-zinc-500">{project.period}</p>
                 </div>
 
                 <p className="mt-2 min-h-12 text-sm font-semibold leading-6 text-zinc-300">
@@ -212,7 +216,7 @@ export function ProjectOverview() {
                 </ul>
 
                 <div className="mt-5 flex flex-wrap gap-2">
-                  {project.technologies.slice(0, 4).map(technology => (
+                  {project.technologies.map(technology => (
                     <span
                       key={technology}
                       className="rounded-full px-3 py-1 text-xs font-medium bg-zinc-950 text-zinc-400"

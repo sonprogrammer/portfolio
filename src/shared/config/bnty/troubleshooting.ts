@@ -27,5 +27,7 @@ export const troubleshootingItems: TroubleshootingItem[] = [
       "Lighthouse 5회 측정 기준 LCP 8.0초 → 1.1초로 약 86% 개선",
       "네트워크 대기 시간 및 불필요한 렌더링 감소",
     ],
+
   },
+  
 ];

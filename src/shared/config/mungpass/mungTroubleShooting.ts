@@ -60,5 +60,21 @@ export const mungTroubleshooting: TroubleshootingItem[] = [
       "매장 검색 결과와 실제 UI 상태의 정합성 확보",
     ],
   },
+  {
+    title: "iPhone QR 인식 오류 해결 및 스캐너 라이브러리 교체",
+    update: "개선",
+    problem:
+      "iPhone에서 QR 스캔을 실행할 때 인식 오류가 발생해 QR 인증 기능을 정상적으로 이용할 수 없었습니다.",
+    reason:
+        "기존 html5-qrcode 기반 구현에서 iPhone의 QR 인식 오류가 발생했습니다. 라이브러리 관련 문제 사례를 참고해 대체 라이브러리 적용을 검토했습니다.",
+
+    solution:
+      "QR 스캐너를 html5-qrcode에서 @zxing/browser로 교체했습니다. ngrok으로 테스트 서버를 터널링한 뒤 실제 iPhone에서 QR 인식과 인증 흐름이 정상 동작하는지 검증했습니다.",
+    results: [
+      "실제 iPhone에서 QR 인식 및 인증 정상 동작 확인",
+      "QR 디코더 및 스캐너 영역 참조 오류 해소",
+      "ngrok을 활용한 HTTPS 테스트 환경에서 모바일 동작 검증"
+    ]
+  },
 
 ];

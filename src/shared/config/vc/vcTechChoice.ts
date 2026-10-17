@@ -9,5 +9,6 @@ export const vcTechChoice = {
         'MongoDB는 사용자, 주문, 자산 등 모의투자 데이터를 저장하고 Node.js 기반 서버와 동일한 JavaScript 생태계에서 빠르게 개발하기 위해 선택했습니다.',
         'jsonwebtoken은 로그인 후 발급되는 JWT를 생성하고 검증해 사용자 인증 상태를 서버에서 확인하기 위해 사용했습니다.',
         'Upbit가 실시간 시세를 표준 WebSocket API로 제공하기 때문에 서버에서 ws를 사용해 데이터를 수신했습니다. 서버에서 클라이언트로 시세를 중계할 때도 채팅방이나 Room 관리 같은 Socket.IO의 추가 기능이 필요하지 않아 동일하게 WebSocket을 사용했습니다.',
+        'Axios는 공통 요청 설정과 Interceptor를 통해 Access Token 첨부, 만료 시 재발급 및 실패한 요청의 재시도를 일관되게 처리하기 위해 선택했습니다.',
     ],
 }

@@ -20,11 +20,11 @@ export const vcArchitecture: ArchitectureItem[] = [
       'timestamp 비교 및 요청 ID 검증으로 오래된 시세 반영 방지',
       '연결 복구 시 REST API 재조회로 시세 동기화',
     ],
-    update:'개선'
+    update: '개선'
   },
   {
     icon: Server,
-    title: 'Node.js · Express 기반 중계 서버',
+    title: 'Node.js, Express 기반 중계 서버',
     description:
       'Node.js 중계 서버에서 Upbit REST API 및 WebSocket 연결을 관리하고, 실시간 시세를 클라이언트에 전달하도록 구성했습니다.',
     points: [
@@ -33,7 +33,7 @@ export const vcArchitecture: ArchitectureItem[] = [
       'Ping/Pong Heartbeat를 통한 연결 상태 감지',
       '지수 백오프 기반 자동 재연결 및 최대 30초 재시도 간격 적용',
     ],
-    update:'개선'
+    update: '개선'
   },
   {
     icon: Activity,
@@ -54,21 +54,26 @@ export const vcArchitecture: ArchitectureItem[] = [
     points: [
       'TanStack Query를 이용한 서버 데이터 조회 및 캐싱',
       'Recoil을 이용한 코인별 실시간 시세 전역 상태 관리',
-      'Map 기반 최신 시세 수집 및 throttle(300ms) 적용',
+      'Map 기반 코인별 최신 시세 수집 및 throttle(300ms) 적용',
+      'localStorage 기반 사용자 정보 저장 제거 및 /me API를 통한 상태 복원',
       'Custom Hook을 통한 REST 조회 및 WebSocket 수신 로직 분리',
-      'Axios를 통한 REST API 요청 처리',
     ],
-    update:'개선'
+    update: '개선'
   },
   {
     icon: Database,
-    title: 'MongoDB 기반 데이터 및 인증 관리',
+    title: 'MongoDB 기반 데이터 및 JWT 인증 관리',
     description:
-      'MongoDB를 서비스 데이터 저장소로 사용하고 jsonwebtoken을 이용해 인증 토큰을 처리했습니다.',
+      'MongoDB에 게스트와 카카오 사용자 데이터를 저장하고, JWT 기반 인증 구조를 통일했습니다. 서버에서 검증한 사용자 ID를 기준으로 데이터 접근을 처리하고 Refresh Token을 이용해 인증 상태를 복구하도록 개선했습니다.',
     points: [
-      'MongoDB 기반 서비스 데이터 저장',
-      'Node.js 서버에서 데이터 조회 및 변경 처리',
-      'jsonwebtoken을 이용한 인증 토큰 처리',
+      'MongoDB 기반 사용자 자산, 주문 및 관심 코인 데이터 관리',
+      '게스트·카카오 로그인 공통 JWT 인증 구조',
+      'Access Token 메모리 관리 및 Refresh Token의 HttpOnly Cookie 저장',
+      'Axios Interceptor 기반 토큰 재발급 및 기존 요청 재시도',
+      'JWT 사용자 ID 기반 서버 데이터 조회 및 변경 처리',
+      'Refresh Token 재발급 및 API를 통한 사용자 정보 복원',
+      '게스트, 카카오 공통 로그아웃 및 인증 상태 초기화',
     ],
+    update: '개선'
   },
 ]

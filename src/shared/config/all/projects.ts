@@ -32,7 +32,8 @@ export const projects = [
             glow: "bg-orange-500/10",
         },
         featured: true,
-        link: '/mungpass'
+        link: '/mungpass',
+        recentUpdate: true
     },
     {
         id: "fuelly",
@@ -65,7 +66,8 @@ export const projects = [
             text: "text-emerald-500",
             glow: "bg-emerald-500/10",
         },
-        link: '/fuelly'
+        link: '/fuelly',
+        recentUpdate: true
     },
 
     {
@@ -81,6 +83,8 @@ export const projects = [
         icon: Bitcoin,
         technologies: [
             "React",
+            "TypeScript",
+            "Node.js",
             "WebSocket",
             "Recoil",
             "TanStack Query",
@@ -98,7 +102,8 @@ export const projects = [
             text: "text-red-500",
             glow: "bg-red-500/10",
         },
-        link: '/vc'
+        link: '/vc',
+        recentUpdate: true
     },
     {
         id: "bnty",
@@ -109,10 +114,12 @@ export const projects = [
         summary:
             "트레이너와 회원을 연결하는 PT 관리 서비스",
         description:
-            "QR 기반 출석과 PT 관리, Socket.IO 1:1 채팅을 구현하고 초기 렌더링 성능을 개선했습니다.",
+            "QR 기반 PT 관리와 실시간 채팅을 구현하고, 초기 렌더링 성능과 JWT 기반 인증 및 접근 권한 처리를 개선했습니다.",
         icon: Dumbbell,
         technologies: [
             "React",
+            "TypeScript",
+            "Node.js",
             "Socket.IO",
             "MongoDB",
             "TanStack Query",
@@ -120,7 +127,7 @@ export const projects = [
         highlights: [
             "QR 기반 PT 관리",
             "실시간 1:1 채팅",
-            "한글 IME 중복 전송 대응",
+            "JWT 인증과 채팅방 접근 권한 검증"
         ],
         metric: "8.0s → 1.1s",
         metricLabel: "LCP",
@@ -130,7 +137,8 @@ export const projects = [
             text: "text-blue-500",
             glow: "bg-blue-500/10",
         },
-        link: '/bnty'
+        link: '/bnty',
+        recentUpdate: true
     },
     {
         id: "mingle",

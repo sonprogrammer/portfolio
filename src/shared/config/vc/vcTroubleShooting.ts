@@ -24,12 +24,12 @@ export const vcTroubleShooting: TroubleshootingItem[] = [
         reason:
             "실시간 데이터를 수신할 때마다 Recoil 상태를 변경하면 불필요한 렌더링 부담이 증가할 수 있기 때문입니다.",
         solution:
-            "기존 lodash throttle(300ms)을 통한 상태 업데이트 빈도 제한을 유지하면서, 최근에는 Map에 저장된 코인별 시세를 timestamp 기준으로 비교해 최신 데이터만 반영하도록 보완했습니다. 또한 REST 요청 중 수신되는 WebSocket 데이터도 별도로 관리해 시세 동기화의 정확성을 개선했습니다.",
+            "기존 lodash throttle(300ms)을 유지하면서 코인별 WebSocket 시세를 Map에 누적하고, 주기적으로 Recoil 상태에 일괄 반영하도록 개선했습니다. 동일 코인의 시세는 timestamp를 비교해 최신 데이터만 유지하도록 구성했습니다.",
         results: [
             "기존 throttle(300ms)을 통한 Recoil 상태 업데이트 빈도 제한 유지",
+            "Map을 이용한 코인별 시세 누적 및 일괄 상태 업데이트",
             "timestamp 비교로 순서가 뒤바뀐 시세의 덮어쓰기 방지",
-            "REST 요청 중 수신한 WebSocket 데이터를 별도로 관리해 최신 시세 동기화",
-            "실시간 시세 처리 관련 자동화 테스트 수행",
+            "시세 처리 로직에 대한 자동화 테스트 검증",
         ],
     },
     {
@@ -63,6 +63,5 @@ export const vcTroubleShooting: TroubleshootingItem[] = [
             "WebSocket 강제 종료, Pong 미응답 및 재연결 간격 시나리오 검증",
         ],
     },
-
 
 ]
