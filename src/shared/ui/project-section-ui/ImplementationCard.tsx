@@ -8,6 +8,7 @@ type ImplementationCardProps = {
   description: string;
   points: readonly string[];
   theme: ThemeType
+  update?: string
 };
 
 export function ImplementationCard({
@@ -15,6 +16,7 @@ export function ImplementationCard({
   title,
   description,
   points,
+  update,
   theme
 }: ImplementationCardProps) {
 
@@ -29,6 +31,11 @@ export function ImplementationCard({
         >
           {String(number).padStart(2, "0")}
         </span>
+        {update && (
+          <span className={`inline-flex shrink-0 items-center gap-1.5 rounded-full border border-current/20 px-3 py-1 text-[11px] font-bold tracking-wide ${style.icon}`}>
+            {update}
+          </span>
+        )}
       </div>
 
       <div className="mt-6">

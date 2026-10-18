@@ -11,13 +11,15 @@ export const mungArchitecture: ArchitectureItem[] = [
     {
         icon: Network,
         title: "QR 기반 O2O 서비스 데이터 흐름",
-        description: "QR 체크인으로 생성된 오프라인 이용 데이터를 온라인 서비스와 연결하고 실시간 운영 화면까지 이어지도록 구성했습니다.",
+        description: "매장 QR을 통해 오프라인 입실을 온라인 이용 기록으로 연결하고, 실시간 운영 화면에 반영하도록 구성했습니다.",
 
         points: [
-            "키오스크를 통한 QR 체크인으로 시설 이용 데이터 생성",
-            "이용 기록을 Supabase에 저장",
-            "Supabase Realtime으로 사장님과 회원 화면에 이용 현황 즉시 반영",
+            "매장 QR을 서비스 내 스캐너 또는 스마트폰 기본 카메라로 스캔해 입실",
+            "외부 카메라 진입 시 URL의 매장, 상품 정보를 읽어 강아지 선택 화면 연결",
+            "비로그인 사용자의 체크인 주소를 보존해 로그인 후 기존 흐름으로 복귀",
+            "입실 기록을 Supabase에 저장하고 Realtime으로 사장님과 회원 화면에 이용 현황 반영"
         ],
+        update: '개선'
     },
     {
         icon: Layers3,
@@ -32,13 +34,15 @@ export const mungArchitecture: ArchitectureItem[] = [
     },
     {
         icon: ShieldCheck,
-        title: "역할 기반 인증과 접근 제어",
-        description: "Supabase Auth를 이용해 사용자를 식별하고 역할에 따라 접근할 수 있는 데이터와 기능을 분리했습니다.",
+        title: "서버 기반 역할 검증과 데이터 접근 제어",
+        description: "Supabase Auth를 이용해 사용자를 식별하고, 서버의 역할검증과 RLS로 접근할 수 있는 데이터와 기능을 분리했습니다.",
         points: [
-            "Supabase Auth 기반 로그인 및 사용자 식별",
-            "인증 사용자 정보를 서비스 데이터와 연결",
-            "RLS를 이용한 데이터 접근 권한 제어",
+            "서버 layout에서 인증 여부와 DB 역할 검증",
+            "비허용 역할의 페이지 접근 시 해당 역할의 기본 화면으로 리다이렉트",
+            "RLS 정책을 적용해 사용자별 데이터 접근 권한 제어",
+            "Vitest 단위 테스트 16개와 배포 환경 수동 테스트로 역할별 접근 분기 검증"
         ],
+        update: '개선'
     },
     {
         icon: Database,
@@ -47,7 +51,8 @@ export const mungArchitecture: ArchitectureItem[] = [
         points: [
             "사용자, 반려견, 매장, 상품, 이용 기록 관계형 데이터 관리",
             "문의방과 메시지를 연결한 1:1 문의 구조 구성",
-      "Realtime 이벤트와 TanStack Query 캐시 동기화",
+            "Realtime 이벤트와 TanStack Query 캐시 동기화",
         ],
+        update: '개선'
     }
 ];
