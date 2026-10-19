@@ -4,7 +4,7 @@ const nextConfig: NextConfig = {
   /* config options here */
   compiler: {
     removeConsole: process.env.NODE_ENV === 'production'
-    //  ? {exclude : ['error']} : false
+     ? {exclude : ['error']} : false
   },
   images: {
     remotePatterns: [

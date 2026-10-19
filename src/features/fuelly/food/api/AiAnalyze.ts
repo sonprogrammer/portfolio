@@ -9,11 +9,13 @@ export async function AiAnalyze(name: string){
 
     const data = await res.json()
 
+    console.log('data',data)
+
     if(!res.ok){
         throw new Error(data.message ?? 'ai failed')
     }
 
-    if(!data.isFood){
+    if(!data.food.isFood){
         throw new Error('정확한 음식명을 입력해주세요')
     }
 
