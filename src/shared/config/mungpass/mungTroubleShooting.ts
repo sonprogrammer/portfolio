@@ -72,7 +72,6 @@ export const mungTroubleshooting: TroubleshootingItem[] = [
       "QR 스캐너를 html5-qrcode에서 @zxing/browser로 교체했습니다. ngrok으로 테스트 서버를 터널링한 뒤 실제 iPhone에서 QR 인식과 인증 흐름이 정상 동작하는지 검증했습니다.",
     results: [
       "실제 iPhone에서 QR 인식 및 인증 정상 동작 확인",
-      "QR 디코더 및 스캐너 영역 참조 오류 해소",
       "ngrok을 활용한 HTTPS 테스트 환경에서 모바일 동작 검증"
     ]
   },

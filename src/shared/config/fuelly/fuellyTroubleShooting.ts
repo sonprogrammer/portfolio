@@ -19,7 +19,7 @@ export const fuellyTroubleshooting: TroubleshootingItem[] = [
     tested: true,
   },
   {
-    title: "AI 응답 지연에 및 일시적 장애 대응",
+    title: "AI 응답 지연 및 일시적 장애 대응",
     problem:
       "AI 요청은 일반 API보다 응답 시간이 길고 외부 API 상태에 따라 timeout이나 일시적인 요청 실패가 발생할 수 있었습니다.",
     reason:

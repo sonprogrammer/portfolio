@@ -12,6 +12,7 @@ export interface PortfolioMatch {
 }
 
 const DEFAULT_MATCH_COUNT = 5
+const PROJECT_MATCH_COUNT = 10
 const MAX_UPDATE_MATCHES_PER_PROJECT = 2
 const PROJECT_ORDER = [
     'bnty',
@@ -22,14 +23,38 @@ const PROJECT_ORDER = [
 
 const UPDATE_QUESTION_PATTERN =
     /최근\s*(업데이트|개선|변경)|업데이트\s*(내용|사항|내역)?|새로\s*(추가|구현)|신규\s*(구현|검증)/i
-const PROJECT_NAME_PATTERN =
-    /\b(bnty|fuelly|mungpass|virtual[\s_-]?coin)\b|비엔티|퓨얼리|멍패스|버추얼\s*코인/i
 const UPDATE_MARKER_PATTERN = /최근 개선|신규 구현|신규 검증/
+const PROJECTS = [
+    {
+        project: 'bnty',
+        canonicalName: 'BNTY',
+        pattern: /\bbnty\b|비엔티/i,
+    },
+    {
+        project: 'fuelly',
+        canonicalName: 'Fuelly',
+        pattern: /\bfuelly\b|퓨얼리/i,
+    },
+    {
+        project: 'mungpass',
+        canonicalName: 'MungPass',
+        pattern: /\bmungpass\b|멍패스/i,
+    },
+    {
+        project: 'virtual_coin',
+        canonicalName: 'Virtual Coin',
+        pattern: /\bvirtual[\s_-]?coin\b|버추얼\s*코인/i,
+    },
+] as const
+
+function getRequestedProject(question: string) {
+    return PROJECTS.find(({ pattern }) => pattern.test(question))
+}
 
 function isPortfolioWideUpdateQuestion(question: string) {
     return (
         UPDATE_QUESTION_PATTERN.test(question) &&
-        !PROJECT_NAME_PATTERN.test(question)
+        !getRequestedProject(question)
     )
 }
 
@@ -39,12 +64,38 @@ export function getPortfolioRetrievalMode(question: string) {
         : 'semantic'
 }
 
+export function getPortfolioSearchPlan(question: string) {
+    const requestedProject = getRequestedProject(question)
+
+    if (!requestedProject) {
+        return {
+            query: question,
+            matchCount: DEFAULT_MATCH_COUNT,
+            project: null,
+        }
+    }
+
+    return {
+        query: question.replace(
+            requestedProject.pattern,
+            requestedProject.canonicalName,
+        ),
+        matchCount: PROJECT_MATCH_COUNT,
+        project: requestedProject.project,
+    }
+}
+
 export function selectPortfolioMatches(
     question: string,
     matches: PortfolioMatch[],
 ) {
     if (!isPortfolioWideUpdateQuestion(question)) {
-        return matches.slice(0, DEFAULT_MATCH_COUNT)
+        const { project } = getPortfolioSearchPlan(question)
+        const projectMatches = project
+            ? matches.filter(match => match.project === project)
+            : matches
+
+        return projectMatches.slice(0, DEFAULT_MATCH_COUNT)
     }
 
     const updateMatches = matches.filter(

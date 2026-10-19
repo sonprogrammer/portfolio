@@ -6,6 +6,7 @@ import { consumePortfolioAiRateLimit } from '@/shared/lib/rate-limit/portfolio-a
 
 import {
     getPortfolioRetrievalMode,
+    getPortfolioSearchPlan,
     selectPortfolioMatches,
     type PortfolioMatch,
 } from './portfolio-retrieval'
@@ -122,9 +123,10 @@ export async function POST(request: Request) {
                 similarity: 1,
             })) as PortfolioMatch[]
         } else {
+            const searchPlan = getPortfolioSearchPlan(question)
             const embeddingResponse = await ai.models.embedContent({
                 model: EMBEDDING_MODEL,
-                contents: `task: question answering | query: ${question}`,
+                contents: `task: question answering | query: ${searchPlan.query}`,
                 config: {
                     outputDimensionality: 768,
                 },
@@ -145,7 +147,7 @@ export async function POST(request: Request) {
                 {
                     query_embedding: questionEmbedding,
                     match_threshold: 0.45,
-                    match_count: 5,
+                    match_count: searchPlan.matchCount,
                 },
             )
 
