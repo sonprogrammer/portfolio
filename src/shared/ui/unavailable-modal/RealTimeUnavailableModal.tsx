@@ -6,9 +6,7 @@ interface RealtimeUnavailableModalProps {
   onClose: () => void
 }
 
-export function RealtimeUnavailableModal({
-  onClose
-}: RealtimeUnavailableModalProps) {
+export function RealtimeUnavailableModal({onClose}: RealtimeUnavailableModalProps) {
   return (
     <div 
         onClick={onClose}

@@ -4,6 +4,7 @@ import { FunctionReveal } from "@/shared/ui/Function-reveal";
 import { ArchitectureImgCard, ProjectHero, SectionHeader, TechChoiceCard, TechnologyCard, TroubleshootingCard } from "@/shared/ui/project-section-ui";
 import { ProjectMotivation } from "@/shared/ui/ProjectMotivation/ui";
 import { FuellyArchitecture } from "@/widgets/fuelly/architecture/ui";
+import { FuellyFeatures } from "@/widgets/fuelly/features";
 import { FuellyPages } from "@/widgets/fuelly/pages/ui";
 
 
@@ -38,7 +39,7 @@ export default function FuellyPage() {
             <FuellyPages />
           </FunctionReveal>
           <p className="mt-3 text-center text-xs leading-5 text-white/40">
-             *포트폴리오 기능 체험에서는 별도의 회원가입 없이 HttpOnly 쿠키에 저장한 세션 식별자를 
+            *포트폴리오 기능 체험에서는 별도의 회원가입 없이 HttpOnly 쿠키에 저장한 세션 식별자를
             기반으로 데모 사용자를 구분합니다. 실제 프로젝트의 인증 방식과는 차이가 있습니다.
           </p>
         </div>
@@ -54,6 +55,19 @@ export default function FuellyPage() {
       <section>
         <SectionHeader
           number="02"
+          title="주요 기능"
+          description="기능을 선택하면 상세 내용을 확인할 수 있습니다."
+        />
+        <div className='px-5 md:px-10 xl:px-20'>
+          <FuellyFeatures />
+        </div>
+      </section>
+
+      <div className="border mx-20 border-gray-500 my-10" />
+
+      <section>
+        <SectionHeader
+          number="03"
           title="서비스 아키텍처 & 데이터 흐름"
           description="AI 영양 정보 처리부터 상태 관리, 인증과 데이터 저장까지 Fuelly의 주요 데이터 흐름을 정리했습니다."
         />
@@ -74,7 +88,7 @@ export default function FuellyPage() {
 
       <section>
         <SectionHeader
-          number="03"
+          number="04"
           title="사용 기술"
           description="Fuelly의 영양 관리 UI, 상태 관리, 인증과 AI 기능에 사용한 기술을 역할별로 정리했습니다."
 
@@ -95,7 +109,7 @@ export default function FuellyPage() {
 
       <section className="space-y-8 pb-12">
         <SectionHeader
-          number="04"
+          number="05"
           title="트러블슈팅"
           description="AI 응답 처리와 인증 과정에서 발생한 데이터 안정성, 응답 지연 및 동시 요청 문제를 분석하고 개선했습니다."
         />

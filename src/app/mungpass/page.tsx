@@ -4,6 +4,7 @@ import { FunctionReveal } from "@/shared/ui/Function-reveal";
 import { ArchitectureImgCard, ImplementationCard, ProjectHero, SectionHeader, TechChoiceCard, TechnologyCard, TroubleshootingCard } from "@/shared/ui/project-section-ui";
 import { ProjectMotivation } from "@/shared/ui/ProjectMotivation/ui";
 import { MungpassArchitecture } from "@/widgets/mungpass/architecture/ui";
+import { MungpassFeatures } from "@/widgets/mungpass/features";
 import { MungpassPages } from "@/widgets/mungpass/pages/all/ui";
 
 export default function MungpassPage() {
@@ -50,11 +51,26 @@ export default function MungpassPage() {
         description="애견카페를 운영하는 지인이 수기 관리와 고객 이용 시간 관리에서 겪는 불편을 듣고 오프라인에서 이루어지던 이용 과정을 디지털화하기 위해 시작했습니다."
       />
 
-
+      
 
       <section>
         <SectionHeader
           number="02"
+          title="주요 기능"
+          description="기능을 선택하면 상세 내용을 확인할 수 있습니다."
+        />
+        <div className='px-5 md:px-10 xl:px-20'>
+          <MungpassFeatures />
+        </div>
+      </section>
+
+      <div className="border mx-20 border-gray-500 my-10" />
+
+
+
+      <section>
+        <SectionHeader
+          number="03"
           title="서비스 아키텍처 & 데이터 흐름"
           description="역할별 사용자 흐름부터 인증, QR 이용 처리, 데이터 저장과 실시간 동기화까지 MungPass의 전체 서비스 구조를 정리했습니다."
         />
@@ -73,7 +89,7 @@ export default function MungpassPage() {
       <div className="border mx-20 border-gray-500 my-10" />
 
 
-      <section className="space-y-8">
+      {/* <section className="space-y-8">
         <SectionHeader
           number="03"
           title="핵심 구현"
@@ -92,7 +108,7 @@ export default function MungpassPage() {
         </div>
       </section>
 
-      <div className="border mx-20 border-gray-500 my-10" />
+      <div className="border mx-20 border-gray-500 my-10" /> */}
 
       <section>
         <SectionHeader

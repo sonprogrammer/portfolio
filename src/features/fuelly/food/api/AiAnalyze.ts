@@ -13,5 +13,9 @@ export async function AiAnalyze(name: string){
         throw new Error(data.message ?? 'ai failed')
     }
 
+    if(!data.isFood){
+        throw new Error('정확한 음식명을 입력해주세요')
+    }
+
     return data.food
 }

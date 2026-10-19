@@ -6,6 +6,7 @@ import { VcFunctionReveal } from "@/shared/ui/Function-reveal/VCFunctionReveal";
 import { ArchitectureImgCard, ProjectHero, SectionHeader, TechChoiceCard, TechnologyCard, TroubleshootingCard } from "@/shared/ui/project-section-ui";
 import { ProjectMotivation } from "@/shared/ui/ProjectMotivation/ui";
 import { VcArchitecture } from "@/widgets/vc/architecture/ui";
+import { VcFeatures } from "@/widgets/vc/features/ui/VcFeatures";
 import { VcPages } from "@/widgets/vc/pages/ui";
 import { VcTop } from "@/widgets/vc/vc-top";
 
@@ -13,48 +14,49 @@ import { VcTop } from "@/widgets/vc/vc-top";
 export default function VcPage() {
   return (
     <div className="flex flex-col gap-10">
-      <ProjectHero
-        name="Virtual Coin(VC)"
-        projectType="Personal Project"
-        description="Upbit API를 기반으로 실시간 시세와 모의 투자 기능을 구현한 코인 투자 서비스"
-        logoSrc="/vc.svg"
-        githubUrl="https://github.com/sonprogrammer/VirtualCoin"
-        deployUrl="https://virtualcoinn.onrender.com/"
-        period="2025.03 ~ 2025.04"
-        accentClassName="text-red-400"
-        borderClassName="border-red-500/20"
-      />
-      <section>
-        <SocketProvider>
-        <SectionHeader
-          number="01"
-          title="핵심 기능"
-          description="*최소한의 기능 테스트를 위해 실제 서비스와 일부 다를 수 있음을 미리 알려드립니다."
+      <SocketProvider>
+        <ProjectHero
+          name="Virtual Coin(VC)"
+          projectType="Personal Project"
+          description="Upbit API를 기반으로 실시간 시세와 모의 투자 기능을 구현한 코인 투자 서비스"
+          logoSrc="/vc.svg"
+          githubUrl="https://github.com/sonprogrammer/VirtualCoin"
+          deployUrl="https://virtualcoinn.onrender.com/"
+          period="2025.03 ~ 2025.04"
+          accentClassName="text-red-400"
+          borderClassName="border-red-500/20"
         />
-        <div className="px-2">
-          <VcFunctionReveal>
-            <div className="w-full min-w-0 max-w-full overflow-hidden rounded-[28px] border border-neutral-700 bg-neutral-900 p-4 shadow-2xl shadow-black/40 sm:rounded-[36px] sm:p-6 md:rounded-[50px] md:p-8">
-              <div className="mb-6 w-full min-w-0 sm:mb-8 md:mb-10">
-                <VcTop />
-              </div>
+        <section>
 
-              <div className="w-full min-w-0 max-w-full overflow-hidden">
-                <VcPages />
-              </div>
-            </div>
-          </VcFunctionReveal>
-          
-          <p className="mt-3 text-center text-xs leading-5 text-white/40">
-            *포트폴리오 기능 체험에서는 별도의 회원가입 없이 HttpOnly 쿠키에 저장한 세션 식별자를 
-            기반으로 데모 사용자를 구분합니다. 실제 프로젝트의 인증 방식과는 차이가 있습니다.
-          </p>
-          <p className="mt-3 text-center text-xs leading-5 text-white/40">
-            * VC의 실시간 시세 데이터는 별도 중계 서버를 통해 제공되며 무료 호스팅의 월 사용량 한도 초과 시 기능 체험이 일시적으로 제한될 수 있습니다. 죄송합니다.
-          </p>
+          <SectionHeader
+            number="01"
+            title="핵심 기능"
+            description="*최소한의 기능 테스트를 위해 실제 서비스와 일부 다를 수 있음을 미리 알려드립니다."
+          />
+          <div className="px-2">
+            <VcFunctionReveal>
+              <div className="w-full min-w-0 max-w-full overflow-hidden rounded-[28px] border border-neutral-700 bg-neutral-900 p-4 shadow-2xl shadow-black/40 sm:rounded-[36px] sm:p-6 md:rounded-[50px] md:p-8">
+                <div className="mb-6 w-full min-w-0 sm:mb-8 md:mb-10">
+                  <VcTop />
+                </div>
 
-        </div>
-        </SocketProvider>
-      </section>
+                <div className="w-full min-w-0 max-w-full overflow-hidden">
+                  <VcPages />
+                </div>
+              </div>
+            </VcFunctionReveal>
+
+            <p className="mt-3 text-center text-xs leading-5 text-white/40">
+              *포트폴리오 기능 체험에서는 별도의 회원가입 없이 HttpOnly 쿠키에 저장한 세션 식별자를
+              기반으로 데모 사용자를 구분합니다. 실제 프로젝트의 인증 방식과는 차이가 있습니다.
+            </p>
+            <p className="mt-3 text-center text-xs leading-5 text-white/40">
+              * VC의 실시간 시세 데이터는 별도 중계 서버를 통해 제공되며 무료 호스팅의 월 사용량 한도 초과 시 기능 체험이 일시적으로 제한될 수 있습니다. 죄송합니다.
+            </p>
+
+          </div>
+        </section>
+      </SocketProvider>
 
       <div className="border mx-20 border-gray-500 my-10" />
 
@@ -62,6 +64,20 @@ export default function VcPage() {
         theme="red"
         description="코인 투자를 공부하려면 실제 자금이 필요하지만 충분한 자금 없이도 시세 흐름과 투자 과정을 경험할 수 있는 방법이 필요하다고 생각했습니다. 실제 돈 없이 투자 과정을 연습할 수 있도록 모의 코인 투자 서비스를 만들었습니다."
       />
+
+
+      <section>
+        <SectionHeader
+          number="02"
+          title="주요 기능"
+          description="기능을 선택하면 상세 내용을 확인할 수 있습니다."
+        />
+        <div className='px-5 md:px-10 xl:px-20'>
+          <VcFeatures />
+        </div>
+      </section>
+
+      <div className="border mx-20 border-gray-500 my-10" />
 
       <section>
         <SectionHeader

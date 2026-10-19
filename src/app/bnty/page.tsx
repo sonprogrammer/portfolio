@@ -1,17 +1,16 @@
-import { BntyNav } from "@/features/bnty/nav/ui";
-import { RoleSelection } from "@/features/bnty/role/ui/RoleSelection";
+
 import { techChoice, technologyGroups, troubleshootingItems } from "@/shared/config/bnty";
-import { FunctionReveal } from "@/shared/ui/Function-reveal";
-import { ArchitectureImgCard, ProjectHero, SectionHeader, TechChoiceCard, TechnologyCard, TroubleshootingCard } from "@/shared/ui/project-section-ui";
+import { ArchitectureImgCard, SectionHeader, TechChoiceCard, TechnologyCard, TroubleshootingCard } from "@/shared/ui/project-section-ui";
 import { ProjectMotivation } from "@/shared/ui/ProjectMotivation/ui";
 import { BntyArchitecture } from "@/widgets/bnty/architecture/ui";
-import { BntyPages } from "@/widgets/bnty/EachPage/ui";
+import { BntyFeatures } from "@/widgets/bnty/features/ui/BntyFeatures";
+import { ProjectTestSection } from "@/widgets/bnty/ProjectTest/ProjectTestSection";
 
 
 export default function BntyPage() {
   return (
     <div className="flex flex-col gap-10">
-      <ProjectHero
+      {/* <ProjectHero
         name="BNTY"
         projectType="Personal Project"
         description="트레이너와 회원을 연결해 QR 출석, PT 관리와 실시간 소통을 지원하는 PT 관리 서비스"
@@ -61,7 +60,8 @@ export default function BntyPage() {
             * 1:1 채팅 기능은 무료 실시간 서버의 월 사용량 한도에 따라 일시적으로 이용이 제한될 수 있습니다. 죄송합니다
           </p>
         </div>
-      </section>
+      </section> */}
+      <ProjectTestSection />
 
       <div className="border mx-20 border-gray-500 my-10" />
 
@@ -70,6 +70,19 @@ export default function BntyPage() {
         theme="blue"
         description="트레이너로 근무하며 PT 횟수를 수기로 관리하는 과정에서 회원과 트레이너 모두 잔여 횟수를 명확하게 확인하기 어렵고 개인정보 및 수기 관리의 불편을 경험했습니다. 이러한 관리 과정을 개선하기 위해 시작했습니다."
       />
+
+      <section>
+        <SectionHeader
+          number="02"
+          title="주요 기능"
+          description="기능을 선택하면 상세 내용을 확인할 수 있습니다."
+        />
+        <div className='px-5 md:px-10 xl:px-20'>
+          <BntyFeatures />
+        </div>
+      </section>
+
+      <div className="border mx-20 border-gray-500 my-10" />
 
 
       <section className="">

@@ -14,10 +14,7 @@ interface AddFoodModalProps {
   onClose: () => void
 }
 
-export function AddFoodModal({
-  isOpen,
-  onClose,
-}: AddFoodModalProps) {
+export function AddFoodModal({ isOpen, onClose }: AddFoodModalProps) {
   const [name, setName] = useState('')
   const [calorie, setCalorie] = useState('')
   const [protein, setProtein] = useState('')
@@ -49,49 +46,23 @@ export function AddFoodModal({
     analyzeFood(name.trim(), {
       onSuccess: (food) => {
         setName(food.name)
-
-        setCalorie(
-          String(
-            food.calorie,
-          ),
-        )
-
-        setProtein(
-          String(
-            food.protein,
-          ),
-        )
-
-        setUnit(
-          food.unit,
-        )
+        setCalorie(String(food.calorie))
+        setProtein(String(food.protein))
+        setUnit(food.unit)
       },
     })
   }
 
-  const handleAddDailyMeal =
-    () => {
-      const parsedCalorie =
-        Number(calorie)
+  const handleAddDailyMeal =() => {
+      const parsedCalorie = Number(calorie)
 
-      const parsedProtein =
-        Number(protein)
+      const parsedProtein = Number(protein)
 
-      if (
-        !name.trim() ||
-        !unit.trim() ||
-        !Number.isFinite(
-          parsedCalorie,
-        ) ||
-        !Number.isFinite(
-          parsedProtein,
-        )
-      ) {
+      if (!name.trim() || !unit.trim() || !Number.isFinite(parsedCalorie) || !Number.isFinite(parsedProtein)) {
         return
       }
 
-      addDailyMeal(
-        {
+      addDailyMeal({
           foodName: name.trim(),
           calories: parsedCalorie,
           protein: parsedProtein,
@@ -105,37 +76,22 @@ export function AddFoodModal({
 
   const handleSaveFood =
     () => {
-      const parsedCalorie =
-        Number(calorie)
+      const parsedCalorie = Number(calorie)
 
-      const parsedProtein =
-        Number(protein)
+      const parsedProtein = Number(protein)
 
-      if (
-        !name.trim() ||
-        !unit.trim() ||
-        !Number.isFinite(
-          parsedCalorie,
-        ) ||
-        !Number.isFinite(
-          parsedProtein,
-        )
-      ) {
+      if (!name.trim() || !unit.trim() || !Number.isFinite(parsedCalorie,) || !Number.isFinite(parsedProtein,)) {
         return
       }
 
-      saveFood(
+      saveFood({
+        name: name.trim(),
+        calorie: parsedCalorie,
+        protein: parsedProtein,
+        unit: unit.trim(),
+      },
         {
-          name: name.trim(),
-          calorie:
-            parsedCalorie,
-          protein:
-            parsedProtein,
-          unit: unit.trim(),
-        },
-        {
-          onSuccess:
-            onClose,
+          onSuccess: onClose
         },
       )
     }
@@ -147,9 +103,7 @@ export function AddFoodModal({
         className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4"
       >
         <div
-          onClick={(event) =>
-            event.stopPropagation()
-          }
+          onClick={(event) => event.stopPropagation()}
           className="w-full max-w-lg rounded-2xl border border-gray-700 bg-gray-800 p-6"
         >
           <div className="flex items-center justify-between">
@@ -182,18 +136,8 @@ export function AddFoodModal({
               <div className="flex gap-2">
                 <input
                   type="text"
-                  value={
-                    name
-                  }
-                  onChange={(
-                    event,
-                  ) =>
-                    setName(
-                      event
-                        .target
-                        .value,
-                    )
-                  }
+                  value={name}
+                  onChange={(event) => setName(event.target.value)}
                   placeholder="예: 닭가슴살 샐러드"
                   className="h-11 min-w-0 flex-1 rounded-xl border border-gray-600 bg-gray-900 px-4 text-sm text-white outline-none focus:border-emerald-500"
                 />
@@ -204,9 +148,7 @@ export function AddFoodModal({
                   onClick={handleAnalyze}
                   className="shrink-0 cursor-pointer rounded-xl border border-emerald-500 px-4 text-sm font-semibold text-emerald-400 transition-colors hover:bg-emerald-500/10 disabled:opacity-50"
                 >
-                  {isAnalyzing
-                    ? '불러오는 중'
-                    : 'AI로 불러오기'}
+                  {isAnalyzing ? '불러오는 중' : 'AI로 불러오기'}
                 </button>
               </div>
             </label>
@@ -223,7 +165,7 @@ export function AddFoodModal({
                     min={0}
                     step="0.1"
                     value={calorie}
-                    onChange={(event) =>setCalorie(event.target.value)}
+                    onChange={(event) => setCalorie(event.target.value)}
                     className="h-11 min-w-0 flex-1 bg-transparent text-white outline-none"
                   />
 
@@ -244,7 +186,7 @@ export function AddFoodModal({
                     min={0}
                     step="0.1"
                     value={protein}
-                    onChange={(event) =>setProtein(event.target.value)}
+                    onChange={(event) => setProtein(event.target.value)}
                     className="h-11 min-w-0 flex-1 bg-transparent text-white outline-none"
                   />
 
@@ -263,14 +205,7 @@ export function AddFoodModal({
               <input
                 type="text"
                 value={unit}
-                onChange={(
-                  event,
-                ) =>
-                  setUnit(
-                    event.target
-                      .value,
-                  )
-                }
+                onChange={(event) => setUnit(event.target.value)}
                 placeholder="예: 100g, 1개, 1잔"
                 className="h-11 w-full rounded-xl border border-gray-600 bg-gray-900 px-4 text-sm text-white outline-none focus:border-emerald-500"
               />
@@ -288,9 +223,7 @@ export function AddFoodModal({
               onClick={handleAddDailyMeal}
               className="h-11 flex-1 rounded-xl bg-emerald-500 text-sm font-semibold text-white transition-colors hover:bg-emerald-400 disabled:opacity-50"
             >
-              {isAdding
-                ? '추가 중...'
-                : '오늘 식단 추가'}
+              {isAdding ? '추가 중...' : '오늘 식단 추가'}
             </button>
 
             <button
@@ -299,9 +232,7 @@ export function AddFoodModal({
               onClick={handleSaveFood}
               className="h-11 flex-1 rounded-xl border border-gray-600 text-sm font-semibold text-gray-200 transition-colors hover:bg-gray-700 disabled:opacity-50"
             >
-              {isSaving
-                ? '저장 중...'
-                : '내 음식으로 저장'}
+              {isSaving ? '저장 중...' : '내 음식으로 저장'}
             </button>
           </div>
         </div>

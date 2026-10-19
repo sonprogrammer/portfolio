@@ -1,8 +1,8 @@
 'use client'
 
 import Image from "next/image";
-import { ExternalLink } from "lucide-react";
 import { SiGithub } from "react-icons/si";
+import { LiveDemoButton } from "@/shared/ui/project-section-ui/LiveDemoBtn";
 
 interface ProjectHeroProps {
     name: string;
@@ -29,6 +29,7 @@ export function ProjectHero({
     accentClassName,
     borderClassName
 }: ProjectHeroProps) {
+    
     return (
         <section className="px-4 pt-12 sm:px-2 sm:pt-16 md:px-3 lg:px-5">
             <div
@@ -88,15 +89,16 @@ export function ProjectHero({
                     </a>
 
                     {deployUrl && (
-                        <a
-                            href={deployUrl}
-                            target="_blank"
-                            rel="noreferrer"
-                            className="flex flex-1 items-center justify-center gap-2 rounded-xl border border-gray-800 bg-gray-900 px-5 py-3 text-sm font-bold text-gray-300 transition-all hover:-translate-y-0.5 hover:border-gray-600 hover:text-white md:flex-none"
-                        >
-                            <ExternalLink size={17} />
-                            Live Demo
-                        </a>
+                        <LiveDemoButton name={name} deployUrl={deployUrl} />
+                        // <a
+                        //     href={deployUrl}
+                        //     target="_blank"
+                        //     rel="noreferrer"
+                        //     className="flex flex-1 items-center justify-center gap-2 rounded-xl border border-gray-800 bg-gray-900 px-5 py-3 text-sm font-bold text-gray-300 transition-all hover:-translate-y-0.5 hover:border-gray-600 hover:text-white md:flex-none"
+                        // >
+                        //     <ExternalLink size={17} />
+                        //     Live Demo
+                        // </a>
                     )}
                 </div>
             </div>

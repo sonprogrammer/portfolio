@@ -12,11 +12,8 @@ interface VcFunctionRevealProps {
     children: ReactNode
 }
 
-export function VcFunctionReveal({
-    children
-}: VcFunctionRevealProps) {
+export function VcFunctionReveal({children}: VcFunctionRevealProps) {
     const { realtimeUnavailable } = useSocket()
-    console.log('vc render', realtimeUnavailable)
 
     const [openModal, setopenModal] = useState(false)
 

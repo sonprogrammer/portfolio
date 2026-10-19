@@ -12,32 +12,18 @@ type FoodTab = 'system' | 'saved'
 export function FoodAddSection() {
     const [activeTab, setActiveTab] = useState<FoodTab>('system')
 
-    const [
-        isAddModalOpen,
-        setIsAddModalOpen,
-    ] = useState(false)
+    const [isAddModalOpen, setIsAddModalOpen] = useState(false)
 
     const { data, isPending } = useGetFoods()
 
 
     const foods = data?.foods ?? []
 
-    const systemFoods = foods.filter(
-        (food) =>
-            food.createdBy ===
-            'system',
-    )
+    const systemFoods = foods.filter((food) => food.createdBy === 'system')
 
-    const savedFoods =
-        foods.filter((food) =>
-            food.createdBy !==
-            'system',
-        )
+    const savedFoods = foods.filter((food) => food.createdBy !== 'system')
 
-    const displayedFoods =
-        activeTab === 'system'
-            ? systemFoods
-            : savedFoods
+    const displayedFoods = activeTab === 'system' ? systemFoods : savedFoods
 
 
 
@@ -53,11 +39,7 @@ export function FoodAddSection() {
 
                     <button
                         type="button"
-                        onClick={() =>
-                            setIsAddModalOpen(
-                                true,
-                            )
-                        }
+                        onClick={() =>setIsAddModalOpen(true)}
                         className="flex items-center gap-1.5 rounded-xl border border-gray-600 px-3 py-2 text-xs sm:text-sm font-medium text-gray-200 transition-colors hover:border-gray-500 hover:bg-gray-700"
                     >
                         <Plus className="size-4" />
@@ -69,11 +51,7 @@ export function FoodAddSection() {
                 <div className="mt-5 flex gap-2 border-b border-gray-700">
                     <button
                         type="button"
-                        onClick={() =>
-                            setActiveTab(
-                                'system',
-                            )
-                        }
+                        onClick={() =>setActiveTab('system')}
                         className={`border-b-2 px-4 py-3 text-sm font-medium transition-colors ${activeTab ===
                             'system'
                             ? 'border-emerald-500 text-emerald-400'
@@ -85,11 +63,7 @@ export function FoodAddSection() {
 
                     <button
                         type="button"
-                        onClick={() =>
-                            setActiveTab(
-                                'saved',
-                            )
-                        }
+                        onClick={() =>setActiveTab('saved')}
                         className={`border-b-2 px-4 py-3 text-sm font-medium transition-colors ${activeTab ===
                             'saved'
                             ? 'border-emerald-500 text-emerald-400'
@@ -114,11 +88,7 @@ export function FoodAddSection() {
             {isAddModalOpen && (
                 <AddFoodModal
                     isOpen={isAddModalOpen}
-                    onClose={() =>
-                        setIsAddModalOpen(
-                            false,
-                        )
-                    }
+                    onClose={() =>setIsAddModalOpen(false)}
                 />
             )}
         </>

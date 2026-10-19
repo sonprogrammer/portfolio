@@ -1,3 +1,5 @@
+export { bntyFeatures } from '@/shared/config/bnty/bntyFeatures'
+
 export { BNTY_NAV_ITEMS} from './bnty-nav'
 export {architectureItems} from './architecture'
 export { troubleshootingItems} from './troubleshooting'
