@@ -14,6 +14,8 @@ export const fuellyTroubleshooting: TroubleshootingItem[] = [
       "AI 응답 형식 편차로 인한 파싱 오류 가능성 감소",
       "잘못된 응답 구조가 클라이언트까지 전달되는 흐름 방지",
       "클라이언트에서 일관된 영양 데이터 처리",
+      "Vitest로 AI 검색 응답 유효성, 검색 요청값 및 식단 추천 프롬프트 생성 검증",
+      "실제 실행 환경에서 알레르기, 비선호 및 선호 음식, 추가 요청과 충돌 조건을 포함한 AI 응답 평가 6개 시나리오를 직접 검증하고 모두 통과"
     ],
     update: "개선",
     tested: true,
@@ -30,6 +32,7 @@ export const fuellyTroubleshooting: TroubleshootingItem[] = [
       "AI 처리 중 사용자에게 명확한 진행 UI 제공",
       "일시적인 AI API 장애 발생 시 자동 재시도",
       "재시도로 해결되지 않는 오류의 불필요한 AI 호출 방지",
+      "Vitest로 AI 요청 실패 시 재시도 처리 3개 테스트 통과"
     ],
     update: "신규",
     tested: true,
@@ -45,6 +48,8 @@ export const fuellyTroubleshooting: TroubleshootingItem[] = [
     results: [
       "동일 음식 재검색 시 불필요한 AI API 및 네트워크 요청 제거",
       "동일 환경 5회 평균 기준 결과 표시 시간 867.1ms → 10.9ms로 약 98.7% 단축",
+      "Chrome DevTools Network 탭에서 동일 음식 재검색 시 추가 네트워크 요청 없이 캐시가 재사용되는 동작을 수동 검증",
+
     ],
     update: "신규",
     tested: true,

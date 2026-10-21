@@ -63,15 +63,11 @@ export function EditGoalModal({
         >
             <div className="mb-5 flex items-center justify-between">
                 <h2 className="text-lg font-semibold text-white">
-                    {type === 'goal' &&
-                        '목표 수정'}
+                    {type === 'goal' && '목표 수정'}
 
-                    {type === 'weight' &&
-                        '체중 수정'}
+                    {type === 'weight' && '체중 수정'}
 
-                    {type ===
-                        'activity' &&
-                        '운동량 수정'}
+                    {type === 'activity' && '운동량 수정'}
                 </h2>
 
                 <button
@@ -93,23 +89,13 @@ export function EditGoalModal({
                     <select
                         value={goal}
                         onChange={(event) =>
-                            setGoal(
-                                event.target
-                                    .value as FuellyGoal,
-                            )
-                        }
+                            setGoal(event.target.value as FuellyGoal)}
                         className="h-12 w-full rounded-xl border border-gray-600 bg-gray-900 px-4 text-white outline-none"
                     >
                         {goals.map(
                             (item) => (
                                 <option
-                                    key={
-                                        item.label
-                                    }
-                                    value={
-                                        item.label
-                                    }
-                                >
+                                    key={item.label} value={item.label}>
                                     {item.name}
                                 </option>
                             ),
@@ -132,15 +118,7 @@ export function EditGoalModal({
                             max={300}
                             step="0.1"
                             value={weight}
-                            onChange={(
-                                event,
-                            ) =>
-                                setWeight(
-                                    event
-                                        .target
-                                        .value,
-                                )
-                            }
+                            onChange={(event) => setWeight(event.target.value)}
                             className="h-12 w-full bg-transparent text-white outline-none"
                         />
 
@@ -159,24 +137,12 @@ export function EditGoalModal({
 
                     <select
                         value={activity}
-                        onChange={(event) =>
-                            setActivity(
-                                event.target
-                                    .value as FuellyActivityLevel,
-                            )
-                        }
+                        onChange={(event) => setActivity(event.target.value as FuellyActivityLevel)}
                         className="h-12 w-full rounded-xl border border-gray-600 bg-gray-900 px-4 text-white outline-none"
                     >
                         {activityLevels.map(
                             (item) => (
-                                <option
-                                    key={
-                                        item.label
-                                    }
-                                    value={
-                                        item.label
-                                    }
-                                >
+                                <option key={item.label} value={item.label}>
                                     {item.name}
                                 </option>
                             ),
@@ -207,9 +173,7 @@ export function EditGoalModal({
                     disabled={isPending}
                     className="h-11 flex-1 rounded-xl bg-emerald-500 text-sm font-semibold text-white disabled:opacity-50"
                 >
-                    {isPending
-                        ? '저장 중...'
-                        : '저장하기'}
+                    {isPending ? '저장 중...' : '저장하기'}
                 </button>
             </div>
         </form>

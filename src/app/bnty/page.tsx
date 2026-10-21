@@ -87,7 +87,7 @@ export default function BntyPage() {
 
       <section className="">
         <SectionHeader
-          number="02"
+          number="03"
           title="서비스 아키텍처 & 데이터 흐름"
           description="BNTY의 사용자 흐름부터 REST API, 실시간 통신, 데이터 저장까지 전체 서비스 구조를 정리했습니다."
         />
@@ -109,7 +109,7 @@ export default function BntyPage() {
 
       <section >
         <SectionHeader
-          number="03"
+          number="04"
           title="사용 기술"
           description="BNTY의 화면 구성, 데이터 관리, 백엔드와 실시간 통신에 사용한 기술을 역할별로 정리했습니다."
         />
@@ -128,7 +128,7 @@ export default function BntyPage() {
 
       <section className="space-y-8 pb-12">
         <SectionHeader
-          number="04"
+          number="05"
           title="트러블슈팅"
           description="채팅 개발 과정에서 발생한 문제 및 초기 로딩 속도 저하 문제를 분석하고 구조적으로 개선했습니다."
         />

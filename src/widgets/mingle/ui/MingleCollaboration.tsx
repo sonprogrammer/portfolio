@@ -16,7 +16,7 @@ const collaborationItems = [
     icon: UsersRound,
     title: "API Sync",
     description:
-      "백엔드 팀원과 API 명세 및 요청·응답 데이터 변경사항을 지속적으로 공유하며 프론트엔드 연동 범위를 조율했습니다.",
+      "백엔드 팀원과 API 명세 및 요청 및 응답 데이터 변경사항을 지속적으로 공유하며 프론트엔드 연동 범위를 조율했습니다.",
   },
   {
     icon: GitCommitHorizontal,

@@ -43,9 +43,7 @@ export function FuellyPages() {
             </div>
 
             {activePage === 'nutrition' && (
-                <MainPage
-                    user={user}
-                />
+                <MainPage user={user}/>
             )}
 
             {activePage === 'diet' && (

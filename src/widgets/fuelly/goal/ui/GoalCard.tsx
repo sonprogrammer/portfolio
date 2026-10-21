@@ -57,8 +57,7 @@ export function GoalCard({
 
                     <GoalItem
                         label="체중"
-                        value={
-                            weight !== undefined
+                        value={weight !== undefined
                                 ? `${weight}kg`
                                 : '설정 필요'
                         }

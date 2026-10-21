@@ -38,7 +38,7 @@ export const mungpassFeatures: Record<Role, Feature[]> = {
         {
             id: "support",
             title: "관리자 1:1 문의",
-            description: "서비스 이용 중 궁금한 사항을 관리자에게 1:1 채팅으로 문의합니다."
+            description: "서비스 이용 중 문의 사항을 관리자에게 1:1 채팅으로 문의합니다."
         }
     ],
     owner: [

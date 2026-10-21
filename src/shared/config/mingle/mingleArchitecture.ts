@@ -32,20 +32,20 @@ export const mingleArchitecture: ArchitectureItem[] = [
   },
   {
     icon: Split,
-    title: "API 성격에 따른 Axios 요청 분리",
+    title: "API 인증 요구사항에 따른 Axios 요청 분리",
     description:
       "내부 API와 외부 API의 인증 요구사항이 다른 점을 고려해 Axios 요청 구조를 분리했습니다.",
     points: [
       "내부 API 요청에 Authorization 인증 헤더 적용",
       "외부 API 요청에는 인증 헤더가 포함되지 않도록 분리",
-      "API 성격에 따라 요청 책임을 명확하게 구성",
+      "API 인증 요구사항에 따라 요청 책임을 명확하게 구성",
     ],
   },
   {
     icon: CloudSun,
     title: "OpenWeather API 기반 외부 데이터 연동",
     description:
-      "외부 날씨 데이터를 서비스의 플레이리스트 데이터와 연결해 날씨에 따른 음악 큐레이션 기능을 구현했습니다.",
+      "외부 날씨 데이터를 서비스의 플레이리스트 데이터와 연결해 날씨에 따른 플레이리스트를 제공하는 기능을 구현했습니다.",
     points: [
       "OpenWeather API를 통한 날씨 데이터 조회",
       "날씨 데이터를 플레이리스트 조회 조건에 활용",

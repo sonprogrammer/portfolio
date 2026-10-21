@@ -81,7 +81,7 @@ export default function VcPage() {
 
       <section>
         <SectionHeader
-          number="02"
+          number="03"
           title="서비스 아키텍처 & 데이터 흐름"
           description="Upbit API에서 전달되는 시세 데이터가 서버를 거쳐 클라이언트와 차트에 반영되는 전체 흐름을 정리했습니다."
 
@@ -101,7 +101,7 @@ export default function VcPage() {
 
       <section>
         <SectionHeader
-          number="03"
+          number="04"
           title="사용 기술"
           description="Virtual Coin의 실시간 시세 처리, 상태 관리, 백엔드와 데이터 시각화에 사용한 기술을 역할별로 정리했습니다."
 
@@ -122,7 +122,7 @@ export default function VcPage() {
 
       <section>
         <SectionHeader
-          number="04"
+          number="05"
           title="트러블슈팅"
           description="실시간 시세 처리 과정에서 발생한 초기 로딩 지연, 렌더링 부하 및 외부 API 연동 문제를 분석하고 개선했습니다."
 
