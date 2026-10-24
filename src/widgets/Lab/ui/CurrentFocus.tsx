@@ -3,7 +3,7 @@ import { SectionHeader } from "@/shared/ui/project-section-ui";
 const focusItems = [
     {
         title: "AI-assisted Development",
-        description: "Codex와 tmux를 활용하며 에이전트 역할 분리, 세션과 컨텍스트 관리 등 더 효율적인 AI 개발 방식을 실험하고 있습니다.",
+        description: "Codex 에이전트의 역할과 작업 범위를 나누고, 컨텍스트 관리와 CI, QA검증을 통해 생성 코드를 검토하고 통합하는 방식을 개선하고 있습니다.",
         status: "Active",
     },
     {

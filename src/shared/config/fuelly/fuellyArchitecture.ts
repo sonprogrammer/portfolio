@@ -74,6 +74,18 @@ export const fuellyArchitecture: ArchitectureItem[] = [
     ],
   },
   {
+    icon: ShieldCheck,
+    title: "Zod 기반 API 요청및 응답 검증",
+    description:
+      "TypeScript 타입만으로 보장할 수 없는 실제 요청·응답 데이터를 Zod로 검증하고, 검증된 데이터를 저장과 화면 처리에 사용하도록 구성했습니다.",
+    points: [
+      "서버에서 요청 데이터를 검증한 뒤 DB 저장, 수정에 사용",
+      "클라이언트에서 API 응답을 검증한 뒤 상태, 캐시, 화면에 반영",
+      "응답 스키마와 클라이언트 타입의 선택 필드 및 null 허용 여부 정리",
+    ],
+    update: "신규"
+  },
+  {
     icon: Database,
     title: "MongoDB 기반 사용자, 식단, AI 데이터 관리",
     description:

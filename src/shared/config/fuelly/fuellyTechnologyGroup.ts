@@ -1,4 +1,4 @@
-export const fuellyTechnologyGroups= [
+export const fuellyTechnologyGroups = [
   {
     title: "Frontend",
     description: "영양 관리 화면과 식단 데이터를 시각적으로 구성",
@@ -12,12 +12,13 @@ export const fuellyTechnologyGroups= [
   },
   {
     title: "State & Data",
-    description:  "서버 데이터와 클라이언트 상태의 책임을 분리하고 공통 데이터 로직을 재사용",
+    description: "서버 데이터와 클라이언트 상태의 책임을 분리하고 공통 데이터 로직을 재사용",
     items: [
       "TanStack Query",
       "Zustand",
       "Custom Hook",
       "Axios",
+      "Zod"
     ],
   },
   {
@@ -43,4 +44,14 @@ export const fuellyTechnologyGroups= [
       "Vitest",
     ],
   },
+  {
+    title: "CI",
+    description:
+      "GitHub Actions에서 자동 검사를 실행하고 Husky, lint-staged로 커밋 전 변경 파일을 검사",
+    items: [
+      "GitHub Actions",
+      "Husky",
+      "lint-staged"
+    ]
+  }
 ];

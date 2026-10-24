@@ -49,6 +49,17 @@ source_url: https://portfolio-kohl-xi-20.vercel.app/fuelly
 - 재시도로 해결되지 않는 400, 401, 403 등의 오류는 즉시 실패 처리
 - Vitest로 최초 성공, timeout 재시도, 비재시도 오류 흐름 검증
 
+### Zod 기반 API 요청 및 응답 검증
+
+> 구현 구분: **신규 구현**
+
+TypeScript 타입만으로 보장할 수 없는 실제 요청·응답 데이터를 Zod로 검증하고, 검증된 데이터만 저장과 화면 처리에 사용하도록 구성했습니다.
+
+- Route Handler에서 요청 데이터를 `safeParse`한 뒤 검증된 값만 DB 저장·수정에 사용
+- 서버 응답과 외부 API 데이터를 `safeParse`로 검증한 뒤 클라이언트에 반환
+- 클라이언트 API 훅에서 응답을 `parse`한 뒤 TanStack Query 캐시와 화면에 반영
+- 서버 응답 스키마와 클라이언트 타입의 선택 필드 및 `null` 허용 여부 정리
+
 ### jose 기반 JWT 인증
 
 Next.js Middleware에서도 인증 토큰을 검증할 수 있도록 jose를 사용하고 Access Token과 Refresh Token의 역할과 저장 위치를 분리했습니다.
@@ -93,7 +104,7 @@ Next.js, React, TypeScript, Tailwind CSS, Recharts
 
 ### State and Data
 
-TanStack Query, Zustand, Custom Hook, Axios
+TanStack Query, Zustand, Custom Hook, Axios, Zod
 
 ### Backend and Auth
 
@@ -102,6 +113,10 @@ Route Handler, MongoDB, jose, JWT, HttpOnly Cookie
 ### AI
 
 Groq API, GPT OSS 20B, JSON Schema
+
+### CI
+
+GitHub Actions, Husky, lint-staged
 
 ## 기술 선택 배경
 
@@ -115,6 +130,9 @@ Groq API, GPT OSS 20B, JSON Schema
 - Groq API는 개발 당시 무료로 사용할 수 있어 비용 부담 없이 AI 영양 추천 기능을 구현하기 위해 선택했습니다.
 - 고정 규칙은 system 메시지로, 사용자 정보와 질문은 user 메시지로 분리했습니다.
 - JSON Schema 기반 구조화 응답과 서버 런타임 검증으로 AI 응답을 일관된 데이터 구조로 처리했습니다.
+- Zod는 컴파일 이후 들어오는 요청과 응답의 실제 구조를 런타임에서 검증하고, 검증된 데이터만 저장·캐시·화면 처리에 사용하기 위해 도입했습니다.
+- GitHub Actions는 Pull Request마다 type check, lint, Vitest, production build를 자동 실행하도록 구성했습니다.
+- Husky와 lint-staged는 커밋 전에 변경 파일을 검사해 기본적인 코드 품질 문제를 사전에 확인하도록 구성했습니다.
 
 ## 트러블슈팅: AI 응답 형식 편차로 인한 파싱 오류
 

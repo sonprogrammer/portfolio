@@ -13,22 +13,21 @@ const aiUsage = [
 
 const agentWorkflow = [
     {
-        icon: Terminal,
-        title: "Codex + tmux",
-        description: "tmux 환경에서 Codex를 사용하며 여러 작업을 한 화면에서 확인하고 있습니다.",
-    },
-    {
         icon: Network,
-        title: "Role-based Agents",
-        description: "작업에 따라 에이전트의 역할을 나누고 필요한 작업을 각각 전달하는 방식을 실험하고 있습니다.",
+        title: "Role & Scope",
+        description: "GitHub Issue에 기획, 백엔드, 프론트엔드, QA 역할별 요구사항, 작업 범위와 완료 조건을 정의하고, 운영 환경 변경 제한과 작업 간 의존성을 명시했습니다."
     },
     {
-        icon: Bot,
-        title: "Context Management",
-        description: "세션과 컨텍스트를 어떻게 나눌지 고민하며 불필요한 토큰 사용을 줄이는 방법을 학습하고 있습니다.",
+        icon: Terminal,
+        title: "Workspace & Context",
+        description: "tmux 세션과 Git Worktree로 작업 환경을 분리하고, Skill과 프로젝트 문서를 통해 역할별 지침과 참고 정보를 제공했습니다."
     },
-];
-
+    {
+        icon: CheckCircle2,
+        title: "Verification & Integration",
+        description: "생성 코드를 요구사항과 API 계약에 맞춰 검토하고, 최종 커밋에 대한 GitHub Actions CI 검사와 QA 결과를 확인한 뒤 PR 단위로 통합했습니다."
+    }
+]
 
 export function AiAssit() {
     return (
@@ -98,20 +97,21 @@ export function AiAssit() {
                     </div>
 
                     <p className="mt-6 text-xs font-black uppercase tracking-[0.14em] text-purple-400">
-                        Agent Workflow Experiment
+                        AI Agent Workflow & Quality Integration
                     </p>
 
                     <h3 className="mt-3 text-xl font-extrabold tracking-tight text-white">
-                        AI를 사용하는 방법 자체도
+                        에이전트 작업을 역할별로 나누고
                         <br />
-                        하나의 개발 역량으로 학습하고 있습니다.
+                        검증 결과를 확인해 통합합니다.
                     </h3>
 
                     <p className="mt-4 text-sm font-medium leading-7 text-zinc-300">
-                        현재 사이드 프로젝트에서 직접 코드를 일부 수정하며 Codex와 역할별
-                        에이전트 활용 방식을 실험하고 있습니다. 작업을 어디까지 AI에게 맡길지,
-                        세션과 컨텍스트를 어떻게 나눌지, 토큰 낭비를 어떻게 줄일지를 고민하며
-                        더 효율적인 AI 개발 방식을 학습하고 있습니다.
+                        Codex 기반 사이드 프로젝트에서 기획, 백엔드, 프론트엔드, QA 에이전트의
+                        작업 범위와 완료 조건을 정의했습니다. 생성된 코드는 요구사항과 API 계약에
+                        맞춰 검토하고, 최종 변경 사항에 대한 CI와 QA 결과를 확인한 뒤 PR 단위로
+                        통합했습니다.
+
                     </p>
 
                     <div className="mt-7 space-y-3">
@@ -148,6 +148,7 @@ export function AiAssit() {
 
             <div className="mt-6 sm:px-10">
                 <div className="relative overflow-hidden rounded-[2.5rem] border border-zinc-800 bg-zinc-900/60 p-6 sm:p-10 backdrop-blur-md shadow-xl transition-all duration-300 hover:border-zinc-700">
+                
                     <div className="flex items-center gap-3">
                         <p className="text-xs font-black uppercase tracking-[0.16em] text-purple-400">
                             My Perspective on AI
