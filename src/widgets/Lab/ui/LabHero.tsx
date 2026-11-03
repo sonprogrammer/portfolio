@@ -1,5 +1,5 @@
 
-import { ArrowDownRight, BrainCircuit, ChartNoAxesCombined, Eye, Layers3, Lightbulb, RefreshCw } from "lucide-react";
+import { ArrowDownRight, BrainCircuit, ChartNoAxesCombined, Eye, Layers3, Lightbulb, RefreshCw, Sparkles } from "lucide-react";
 
 
 const learning = [
@@ -65,31 +65,33 @@ export function LabHero() {
 
         <div>
           <h1 className="max-w-4xl text-4xl font-black leading-tight tracking-tight text-white sm:text-6xl">
-            How I Learn,
+            How I Build,
             <br />
 
             <span className="text-zinc-400">
-              Build and Improve.
+              Verify and Improve.
             </span>
           </h1>
 
           <p className="mt-7 max-w-2xl text-base leading-8 text-zinc-300 sm:text-lg font-medium">
             새로운 기술을 배우는 데서 끝내지 않고,
             어떻게 개발 과정에 적용하고 더 나은 구조와 생산성으로
-            연결할 수 있을지 고민하고 있습니다.
+            연결할 수 있을지 고민하고 있습니다. <br />AI를 실제 프로젝트에
+            적용하고, 사용자 확인과 서버 검증을 포함한 안전한 변경 흐름까지
+            직접 설계하고 검증합니다.
           </p>
 
           <div className="mt-10 flex flex-wrap gap-3">
             <a
-              href="#principles"
+              href="#teumsae"
               className="flex items-center gap-2 rounded-2xl border border-zinc-800 bg-zinc-950/80 px-4.5 py-2.5 text-sm font-extrabold text-zinc-300 transition-all hover:-translate-y-0.5 hover:border-purple-500/50 hover:text-white backdrop-blur-md shadow-md"
             >
-              <Layers3 size={16} className="text-purple-400" />
-              Architecture
+              <Sparkles size={16} className="text-teal-400" />
+              Teumsae AI Project
             </a>
 
             <a
-              href="#development"
+              href="#ai-development"
               className="flex items-center gap-2 rounded-2xl border border-zinc-800 bg-zinc-950/80 px-4.5 py-2.5 text-sm font-extrabold text-zinc-300 transition-all hover:-translate-y-0.5 hover:border-purple-500/50 hover:text-white backdrop-blur-md shadow-md"
             >
               <BrainCircuit size={16} className="text-purple-400" />
@@ -162,6 +164,30 @@ export function LabHero() {
               <p className="mb-3 text-[10px] font-black uppercase tracking-[0.16em] text-purple-400">
                 Explore Lab
               </p>
+
+              <a
+                href="#teumsae"
+                className="group mb-2 flex items-center justify-between rounded-2xl border border-teal-800/70 bg-teal-950/30 px-4 py-3.5 transition-all duration-200 hover:border-teal-600 hover:bg-teal-950/50"
+              >
+                <div className="flex items-center gap-3">
+                  <span className="flex size-8 items-center justify-center rounded-xl border border-teal-800/70 bg-teal-950/60 text-teal-300">
+                    <Sparkles size={14} aria-hidden="true" />
+                  </span>
+                  <div>
+                    <span className="block text-[9px] font-black uppercase tracking-[0.14em] text-teal-400">
+                      Featured Project
+                    </span>
+                    <span className="mt-0.5 block text-xs font-extrabold text-zinc-200 group-hover:text-white">
+                      Teumsae AI Project
+                    </span>
+                  </div>
+                </div>
+
+                <ArrowDownRight
+                  size={14}
+                  className="text-teal-500 transition-transform group-hover:translate-x-0.5 group-hover:translate-y-0.5 group-hover:text-teal-300"
+                />
+              </a>
 
               <div className="grid gap-2 sm:grid-cols-2">
                 {sections.map(item => (

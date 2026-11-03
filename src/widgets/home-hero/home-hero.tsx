@@ -123,31 +123,32 @@ export function HomeHero() {
         </div>
       </div>
       <div className="mx-auto mt-16 w-full max-w-7xl border-t border-zinc-800/80 pt-10 sm:mt-20">
-        <div className="group flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6 rounded-[2.5rem] border border-zinc-800 bg-zinc-900/60 p-6 sm:p-8 backdrop-blur-md shadow-xl transition-all duration-300 hover:border-zinc-700">
-          <div className="space-y-2">
-            <span className="text-xs font-black uppercase tracking-[0.16em] text-purple-400">
-              Perspective
-            </span>
-            <h3 className="text-lg sm:text-xl font-extrabold text-white tracking-tight">
-              AI를 바라보는 개발자의 관점
-            </h3>
-          </div>
+        <div className="group relative overflow-hidden rounded-[2.5rem] border border-zinc-800 bg-zinc-900/60 p-6 shadow-xl backdrop-blur-md transition-all duration-300 hover:border-teal-500/40 sm:p-8 lg:p-10">
 
-          <div className="flex flex-col sm:flex-row sm:items-center gap-6 lg:gap-8">
-            <p className="max-w-2xl text-xs sm:text-sm font-medium leading-7 text-zinc-300">
-              AI를 대체재가 아닌 설계와 구현 역량을 확장하는 도구로 활용합니다.
-              변화하는 AI 시대를 위협으로 보기보다 새로운 도구를 빠르게 학습하고
-              제 역량에 결합해 더 나은 결과를 만드는 기회로 바라봅니다.
-            </p>
+          <div className="relative grid gap-7 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-center lg:gap-12">
+            <div>
+              <span className="inline-flex rounded-full border border-teal-500/20 bg-teal-500/10 px-3 py-1.5 text-[11px] font-black uppercase tracking-[0.16em] text-teal-300">
+                AI Project
+              </span>
+
+              <h3 className="mt-4 text-2xl font-extrabold tracking-tight text-white sm:text-3xl">
+                틈새(Teumsae)
+              </h3>
+
+              <p className="mt-3 max-w-3xl text-sm font-medium leading-7 text-zinc-300 sm:text-base sm:leading-8">
+                개인 일정에서 빈 시간을 찾고, AI가 제안한 일정 후보를
+                사용자가 확인한 뒤 저장하는 개인용 AI 스케줄러입니다.
+              </p>
+            </div>
 
             <Link
-              href="/lab#ai-development"
-              className="inline-flex shrink-0 items-center gap-1.5 text-xs font-extrabold text-purple-400 transition-colors hover:text-purple-300"
+              href="/lab#teumsae" //TODO 링크는 Lab페이지의 틈새 설명 페이지로 이동하게 
+              className="group/cta inline-flex w-fit shrink-0 items-center justify-center gap-2 rounded-xl border border-teal-700/60 bg-teal-700/10 px-4 py-3 text-sm font-extrabold text-teal-300 transition-all duration-300 hover:-translate-y-0.5 hover:border-teal-600 hover:bg-teal-700/20 hover:text-teal-200 sm:px-5"
             >
-              AI 활용 방식 자세히 보기
+              프로젝트 상세 보기
               <ArrowUpRight
                 size={17}
-                className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                className="transition-transform duration-300 group-hover/cta:translate-x-0.5 group-hover/cta:-translate-y-0.5"
               />
             </Link>
           </div>
