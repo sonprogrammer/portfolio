@@ -123,12 +123,12 @@ export function TeumsaeCaseStudy() {
                                 rel="noreferrer"
                                 className="group inline-flex items-center justify-center gap-2 rounded-2xl bg-teal-700 px-5 py-3 text-sm font-extrabold text-white transition-colors hover:bg-teal-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-400"
                             >
-                                서비스 체험
                                 <ExternalLink
                                     size={15}
                                     aria-hidden="true"
                                     className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
                                 />
+                                Live Demo
                             </a>
                             <a
                                 href="https://github.com/sonprogrammer/teumsae"
