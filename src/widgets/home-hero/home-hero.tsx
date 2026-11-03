@@ -132,17 +132,19 @@ export function HomeHero() {
               </span>
 
               <h3 className="mt-4 text-2xl font-extrabold tracking-tight text-white sm:text-3xl">
-                틈새(Teumsae)
+                AI 활용 개발 사례 | <span className="text-teal-500">틈새(Teumsae)</span>
               </h3>
 
               <p className="mt-3 max-w-3xl text-sm font-medium leading-7 text-zinc-300 sm:text-base sm:leading-8">
-                개인 일정에서 빈 시간을 찾고, AI가 제안한 일정 후보를
-                사용자가 확인한 뒤 저장하는 개인용 AI 스케줄러입니다.
+                자연어로 빈 시간을 찾고 일정을 관리하는 개인 AI 스케줄러입니다. 
+                AI의 변경 제안을 사용자 확인과 서버 검증을 거쳐 실행하도록 구성했으며, 
+                Codex를 활용한 개발 과정에서 요구사항 정의, 코드 검토, 사용자 흐름 검증, CI 및 PR 통합을 수행했습니다.
+
               </p>
             </div>
 
             <Link
-              href="/lab#teumsae" //TODO 링크는 Lab페이지의 틈새 설명 페이지로 이동하게 
+              href="/lab#teumsae" 
               className="group/cta inline-flex w-fit shrink-0 items-center justify-center gap-2 rounded-xl border border-teal-700/60 bg-teal-700/10 px-4 py-3 text-sm font-extrabold text-teal-300 transition-all duration-300 hover:-translate-y-0.5 hover:border-teal-600 hover:bg-teal-700/20 hover:text-teal-200 sm:px-5"
             >
               프로젝트 상세 보기
