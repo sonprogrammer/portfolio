@@ -63,7 +63,6 @@ const validationItems = ["자동화 테스트 199개(11.03기준)", "타입 검�
 export function TeumsaeCaseStudy() {
     return (
         <section id="teumsae" className="scroll-mt-24 sm:px-10">
-            <div className="relative overflow-hidden rounded-[2.5rem] border border-teal-800/50 bg-zinc-900/70 shadow-2xl shadow-teal-950/20 backdrop-blur-md">
                 <div
                     aria-hidden="true"
                     className="pointer-events-none absolute -right-24 -top-24 size-72 rounded-full bg-teal-700/15 blur-3xl"
@@ -346,7 +345,6 @@ export function TeumsaeCaseStudy() {
                         </TeumsaeCollapsibleDetails>
                     </div>
                 </div>
-            </div>
         </section>
     );
 }
