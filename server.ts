@@ -38,6 +38,7 @@ async function startServer() {
 
   io.on('connection', (socket) => {
     console.log('소켓 연결:', socket.id)
+    let tickerSubscribed = false
 
     socket.on('join-chat-room', (chatRoomId: string) => {
       if (!Types.ObjectId.isValid(chatRoomId)) {
@@ -46,11 +47,21 @@ async function startServer() {
       socket.join(chatRoomId)
     })
     socket.on('vc:ticker:subscribe', () => {
+      if (!tickerSubscribed) {
+        tickerSubscribed = true
+        vcTickerStream.addSubscriber()
+      }
+
       socket.join(VC_TICKER_ROOM)
       socket.emit('vc:ticker:snapshot', vcTickerStream.getSnapshot())
     })
 
     socket.on('vc:ticker:unsubscribe', () => {
+      if (tickerSubscribed) {
+        tickerSubscribed = false
+        vcTickerStream.removeSubscriber()
+      }
+
       socket.leave(VC_TICKER_ROOM)
     })
 
@@ -245,6 +256,11 @@ async function startServer() {
     })
 
     socket.on('disconnect', () => {
+      if (tickerSubscribed) {
+        tickerSubscribed = false
+        vcTickerStream.removeSubscriber()
+      }
+
       console.log('소켓 연결 해제:', socket.id);
     })
   });

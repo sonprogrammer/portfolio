@@ -7,7 +7,7 @@ import type { ChatRoomDetail, ChatMessage } from '@/entities/bnty/chat/model/cha
 import { chatQueryKeys } from "@/features/bnty/chat/model/useGetChat"
 
 import { chatRoomQueryKeys } from "@/features/bnty/chat/model"
-import { useSocket } from "@/shared/providers/SocketProvider"
+import { useSocket, useSocketConnection } from "@/shared/providers/SocketProvider"
 
 type MessagesReadPayload = {
   chatRoomId: string;
@@ -19,15 +19,20 @@ export function useChatSocket(chatRoomId: string,userId: string) {
   const { socket, realtimeUnavailable } = useSocket();
   const queryClient = useQueryClient();
 
+  useSocketConnection(Boolean(chatRoomId && userId))
+
   useEffect(() => {
     if(realtimeUnavailable){
       return
     }
-    socket.emit('join-chat-room', chatRoomId);
-    socket.emit('mark-messages-read', {
-      chatRoomId,
-      userId
-    })
+
+    const joinChatRoom = () => {
+      socket.emit('join-chat-room', chatRoomId);
+      socket.emit('mark-messages-read', {
+        chatRoomId,
+        userId
+      })
+    }
 
     const handleNewMessage = (newMessage: ChatMessage) => {
       queryClient.setQueryData<ChatRoomDetail>(
@@ -107,14 +112,22 @@ export function useChatSocket(chatRoomId: string,userId: string) {
 
     socket.on('new-message', handleNewMessage);
     socket.on('messages-read', handleMessagesRead)
+    socket.on('connect', joinChatRoom)
+
+    if (socket.connected) {
+      joinChatRoom()
+    }
 
     return () => {
-      socket.emit('leave-chat-room', chatRoomId);
+      if (socket.connected) {
+        socket.emit('leave-chat-room', chatRoomId);
+      }
       socket.off(
         'new-message',
         handleNewMessage,
       );
       socket.off('messages-read', handleMessagesRead)
+      socket.off('connect', joinChatRoom)
     };
   }, [chatRoomId, queryClient, realtimeUnavailable, socket, userId]);
 

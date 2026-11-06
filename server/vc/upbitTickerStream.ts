@@ -8,6 +8,7 @@ import type {
     UpbitTickerMessage,
     VcTicker,
 } from './upbitTypes';
+import { createIdleSubscriptionController } from './idleSubscriptionController';
 
 const UPBIT_MARKET_URL = 'https://api.upbit.com/v1/market/all?is_details=false';
 
@@ -38,6 +39,7 @@ export function startUpbitTickerStream(io: Server) {
     let marketMap = new Map<string, UpbitMarket>();
     let upbitSocket: WebSocket | null = null;
     let reconnectTimer: NodeJS.Timeout | null = null;
+    let connectionGeneration = 0;
 
     const flushTimer = setInterval(() => {
         if (pendingTickers.size === 0) {
@@ -55,7 +57,10 @@ export function startUpbitTickerStream(io: Server) {
     }, 250);
 
     function scheduleReconnect() {
-        if (reconnectTimer) {
+        if (
+            reconnectTimer ||
+            subscriptionController.getSubscriberCount() === 0
+        ) {
             return;
         }
 
@@ -103,8 +108,25 @@ export function startUpbitTickerStream(io: Server) {
     }
 
     async function connect() {
+        if (
+            subscriptionController.getSubscriberCount() === 0 ||
+            upbitSocket?.readyState === WebSocket.CONNECTING ||
+            upbitSocket?.readyState === WebSocket.OPEN
+        ) {
+            return;
+        }
+
+        const generation = connectionGeneration;
+
         try {
             const markets = await getUpbitKrwMarkets();
+
+            if (
+                generation !== connectionGeneration ||
+                subscriptionController.getSubscriberCount() === 0
+            ) {
+                return;
+            }
 
             marketMap = new Map(
                 markets.map((market) => [
@@ -117,14 +139,16 @@ export function startUpbitTickerStream(io: Server) {
                 ({ market }) => market,
             );
 
-            upbitSocket = new WebSocket(UPBIT_WEBSOCKET_URL);
+            const socket = new WebSocket(UPBIT_WEBSOCKET_URL);
 
-            upbitSocket.on('open', () => {
+            upbitSocket = socket;
+
+            socket.on('open', () => {
                 console.log(
                     `업비트 KRW 마켓 ${marketCodes.length}개 구독 시작`,
                 );
 
-                upbitSocket?.send(
+                socket.send(
                     JSON.stringify([
                         {
                             ticket: randomUUID(),
@@ -140,18 +164,26 @@ export function startUpbitTickerStream(io: Server) {
                 );
             });
 
-            upbitSocket.on('message', handleMessage);
+            socket.on('message', handleMessage);
 
-            upbitSocket.on('close', () => {
+            socket.on('close', () => {
+                if (upbitSocket === socket) {
+                    upbitSocket = null;
+                }
+
+                if (subscriptionController.getSubscriberCount() === 0) {
+                    return;
+                }
+
                 console.log('업비트 연결 종료, 재연결 시도');
 
                 scheduleReconnect();
             });
 
-            upbitSocket.on('error', (error) => {
+            socket.on('error', (error) => {
                 console.error('업비트 소켓 오류:', error);
 
-                upbitSocket?.close(); 
+                socket.close();
             });
         } catch (error) {
             console.error(
@@ -159,13 +191,47 @@ export function startUpbitTickerStream(io: Server) {
                 error,
             );
 
-            scheduleReconnect();
+            if (generation === connectionGeneration) {
+                scheduleReconnect();
+            }
         }
     }
 
-    void connect();
+    function stopConnection() {
+        connectionGeneration += 1;
+
+        if (reconnectTimer) {
+            clearTimeout(reconnectTimer);
+            reconnectTimer = null;
+        }
+
+        const socket = upbitSocket;
+
+        upbitSocket = null;
+        latestTickers.clear();
+        pendingTickers.clear();
+        socket?.close();
+    }
+
+    const subscriptionController = createIdleSubscriptionController({
+        idleDelayMs: 30_000,
+        start: () => {
+            void connect();
+        },
+        stop: stopConnection,
+        schedule: (callback, delayMs) => setTimeout(callback, delayMs),
+        cancel: clearTimeout,
+    });
 
     return {
+        addSubscriber() {
+            subscriptionController.addSubscriber();
+        },
+
+        removeSubscriber() {
+            subscriptionController.removeSubscriber();
+        },
+
         getSnapshot(): VcTicker[] {
             return Array.from(latestTickers.values()).sort(
                 (a, b) =>
@@ -176,12 +242,7 @@ export function startUpbitTickerStream(io: Server) {
 
         stop() {
             clearInterval(flushTimer);
-
-            if (reconnectTimer) {
-                clearTimeout(reconnectTimer);
-            }
-
-            upbitSocket?.close();
+            subscriptionController.shutdown();
         },
     };
 }

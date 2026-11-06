@@ -20,6 +20,7 @@ interface FeatureRevealProps {
     coldStartNotice?: boolean
 
     onBeforeOpen?: () => boolean
+    onOpenChange?: (isOpen: boolean) => void
 }
 
 
@@ -30,7 +31,8 @@ export function FunctionReveal({
     theme = 'orange',
     children,
     coldStartNotice,
-    onBeforeOpen
+    onBeforeOpen,
+    onOpenChange,
 }: FeatureRevealProps) {
     const [isOpen, setIsOpen] = useState(false)
 
@@ -42,6 +44,12 @@ export function FunctionReveal({
             toast.info('무료 서버의 Cold Start로 인해 첫 연결 시 잠시 시간이 걸릴 수 있습니다.')
         }
         setIsOpen(true)
+        onOpenChange?.(true)
+    }
+
+    const handleClose = () => {
+        setIsOpen(false)
+        onOpenChange?.(false)
     }
 
     const styles = themeMap[theme]
@@ -96,7 +104,7 @@ export function FunctionReveal({
 
                     <button
                         type="button"
-                        onClick={isOpen ? () => setIsOpen(false) : handleOpen}
+                        onClick={isOpen ? handleClose : handleOpen}
                         className={`group flex w-full shrink-0 cursor-pointer items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-sm font-bold transition-all duration-200 active:scale-95 sm:w-auto ${isOpen
                             ? "border border-gray-800 bg-gray-900 text-gray-300 hover:bg-gray-800"
                             : `${styles.button} text-white shadow-lg`
