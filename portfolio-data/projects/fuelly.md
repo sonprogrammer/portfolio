@@ -69,6 +69,18 @@ Next.js Middleware에서도 인증 토큰을 검증할 수 있도록 jose를 사
 - Refresh Token을 HttpOnly Cookie로 관리
 - Next.js Middleware에서 토큰을 검증해 보호 라우트 접근 제어
 
+### Redis 기반 Refresh Token 세션과 Rotation
+
+> 구현 구분: **최근 개선**
+
+JWT 검증에 Redis 세션 검증을 추가하고 Refresh Token을 재발급할 때마다 기존 토큰을 교체하도록 구성했습니다. JWT의 유효기간이 남아 있더라도 Redis 세션이 삭제되거나 저장된 해시와 일치하지 않으면 재발급을 거부합니다.
+
+- 로그인마다 별도의 세션 ID를 생성하고 사용자 ID와 Refresh Token의 SHA-256 해시를 Redis에 7일간 저장
+- 로그아웃 시 Refresh Token의 `jti`로 현재 세션을 찾아 삭제해 서버에서 토큰 무효화
+- 재발급할 때 기존 Refresh Token A를 새로운 B로 교체하고 A의 재사용 거부
+- Redis Lua Script로 세션 확인, 사용자·토큰 해시 검증, 토큰 교체와 복구 기록 저장을 원자적으로 처리
+- 여러 기기에서 로그인한 경우 전체 계정이 아닌 로그아웃한 세션만 무효화
+
 ### 서버 상태와 UI 로직의 책임 분리
 
 서버에서 조회되는 데이터와 클라이언트 전역 상태의 책임을 TanStack Query와 Zustand로 분리했습니다. 반복되는 데이터 처리 로직은 Custom Hook으로 구성했습니다.
@@ -78,14 +90,18 @@ Next.js Middleware에서도 인증 토큰을 검증할 수 있도록 jose를 사
 - 반복되는 상태와 비즈니스 로직을 Custom Hook으로 분리
 - 컴포넌트의 UI 책임과 데이터 처리 책임 구분
 
-### Axios Interceptor 기반 토큰 재발급
+### Axios Interceptor와 Promise 공유 기반 토큰 재발급
 
-Access Token 만료 시 Refresh Token을 이용해 토큰을 재발급하고 여러 요청이 동시에 실패하는 상황을 Queue로 제어했습니다.
+> 구현 구분: **최근 개선**
+
+Access Token 만료 시 Refresh Token을 이용해 토큰을 재발급하고, 여러 요청이 동시에 실패하는 상황은 하나의 `refreshPromise`를 공유하는 방식으로 제어했습니다.
 
 - Axios Interceptor를 이용한 인증 요청 처리
 - Access Token 만료 시 Refresh Token 기반 재발급
 - 토큰 재발급 로직을 공통 인증 흐름으로 통합
-- Queue를 이용한 동시 재발급 요청 제어
+- 재발급 진행 중인 요청은 새로운 요청을 만들지 않고 기존 `refreshPromise`의 결과를 공유
+- 재발급 성공 후 Access Token을 Zustand에 저장하고 대기 중인 요청을 새 토큰으로 재실행
+- 재발급 종료 시 `refreshPromise`를 `null`로 초기화해 다음 재발급 허용
 
 ### MongoDB 기반 서비스 데이터와 AI 검색 기록 관리
 
@@ -108,7 +124,7 @@ TanStack Query, Zustand, Custom Hook, Axios, Zod
 
 ### Backend and Auth
 
-Route Handler, MongoDB, jose, JWT, HttpOnly Cookie
+Route Handler, MongoDB, jose, JWT, HttpOnly Cookie, Upstash Redis, Redis Lua Script, SHA-256, AES-256-GCM
 
 ### AI
 
@@ -125,8 +141,11 @@ GitHub Actions, Husky, lint-staged
 - Zustand는 전역 UI와 클라이언트 상태를 관리하도록 책임을 분리했습니다.
 - 서버 데이터 조회·변경과 반복되는 비즈니스 로직은 Custom Hook으로 분리해 컴포넌트가 UI 표현에 집중하도록 했습니다.
 - MongoDB는 사용자별 식단 기록과 영양 데이터를 문서 형태로 유연하게 저장하고 JavaScript 기반 개발 환경과 자연스럽게 연결할 수 있어 선택했습니다.
-- JWT를 HttpOnly Cookie에 저장해 클라이언트 JavaScript의 직접 접근을 제한했습니다.
+- Refresh Token을 HttpOnly Cookie에 저장해 클라이언트 JavaScript의 직접 접근을 제한했습니다.
 - Next.js의 다양한 서버 런타임과 호환되고 공식 인증 가이드에서도 사용되는 jose를 JWT 생성과 검증 라이브러리로 선택했습니다.
+- Redis는 Refresh Token의 유효성을 서버에서 직접 제어하고 로그인 세션별 로그아웃과 토큰 교체 상태를 관리하기 위해 도입했습니다.
+- Redis Lua Script는 Refresh Token 검증과 교체, 복구 결과 기록을 하나의 원자적 작업으로 처리해 동시 재발급 요청의 상태 불일치를 방지하기 위해 사용했습니다.
+- Idempotency-Key와 30초간 유지되는 복구 기록을 이용해 Rotation 성공 후 네트워크 응답이 유실된 경우에도 동일한 발급 결과를 복구하도록 구성했습니다.
 - Groq API는 개발 당시 무료로 사용할 수 있어 비용 부담 없이 AI 영양 추천 기능을 구현하기 위해 선택했습니다.
 - 고정 규칙은 system 메시지로, 사용자 정보와 질문은 user 메시지로 분리했습니다.
 - JSON Schema 기반 구조화 응답과 서버 런타임 검증으로 AI 응답을 일관된 데이터 구조로 처리했습니다.
@@ -211,6 +230,8 @@ AI 처리 중에는 Skeleton UI와 로딩 인터랙션을 표시했습니다. �
 
 ## 트러블슈팅: 동시 요청 환경에서 토큰 재발급 중복
 
+> 구현 구분: **최근 개선**
+
 ### 문제
 
 Access Token이 만료된 상태에서 여러 API 요청이 동시에 발생하면 각각의 요청에서 토큰 재발급 로직이 실행됐습니다.
@@ -221,10 +242,89 @@ Access Token이 만료된 상태에서 여러 API 요청이 동시에 발생하�
 
 ### 해결
 
-Axios Instance와 Interceptor에 Access Token 주입과 토큰 재발급 로직을 통합했습니다. 재발급 중에는 이후 요청을 Queue에서 대기시키고 새 Access Token 발급이 완료되면 대기 중인 요청을 새 토큰으로 재시도하도록 구성했습니다.
+Axios Instance와 Interceptor에 Access Token 주입과 토큰 재발급 로직을 통합했습니다. 별도의 Queue 대신 진행 중인 `refreshPromise`를 공유해 동시에 실패한 요청들이 하나의 재발급 결과를 기다리도록 구성했습니다. 재발급 성공 후에는 새 Access Token을 Zustand에 저장하고 각 요청을 다시 실행합니다.
 
 ### 결과
 
 - 17개 API 훅의 인증 및 토큰 재발급 로직 공통화
 - 동시 요청 환경에서 중복 Refresh 요청 방지
 - 재발급 완료 후 대기 요청을 새 Access Token으로 일괄 재시도
+
+## 트러블슈팅: 로그아웃 이후 Refresh Token 재사용 위험
+
+> 구현 구분: **최근 개선**
+
+### 문제
+
+로그아웃할 때 브라우저의 Refresh Token 쿠키만 삭제하면 미리 탈취된 토큰은 만료 전까지 재사용될 수 있었습니다.
+
+### 원인
+
+JWT의 서명과 만료 시간만 검증하면 서버에서 특정 로그인 세션의 Refresh Token을 즉시 무효화할 수 없기 때문입니다.
+
+### 해결
+
+로그인마다 세션 ID를 생성하고 사용자 ID와 Refresh Token의 SHA-256 해시를 Redis에 저장했습니다. 로그아웃 API에서는 Refresh Token의 `jti`로 해당 세션을 찾아 삭제하고, 재발급 시 JWT 검증과 함께 Redis 세션 및 토큰 해시 일치 여부를 확인하도록 변경했습니다.
+
+### 결과
+
+- 로그아웃한 세션의 Refresh Token을 서버에서 즉시 무효화
+- 여러 기기 중 로그아웃한 세션만 선택적으로 종료
+- JWT 유효기간이 남아 있어도 Redis 세션이 없으면 재발급 거부
+
+## 트러블슈팅: Refresh Token Rotation의 동시성 및 응답 유실
+
+> 구현 구분: **최근 개선**
+
+### 문제
+
+동일한 Refresh Token으로 재발급 요청이 동시에 실행되면 새로운 토큰이 중복 발급될 수 있었습니다. 또한 서버에서 토큰 A를 B로 교체한 뒤 네트워크 응답이 유실되면 브라우저에는 이미 무효화된 A만 남는 문제가 발생할 수 있었습니다.
+
+### 원인
+
+토큰 조회와 교체가 분리되어 있으면 여러 요청이 동일한 기존 토큰을 동시에 유효하다고 판단할 수 있습니다. Rotation은 서버 상태를 먼저 변경하므로 응답 유실 이후 같은 토큰을 단순 재사용하면 Redis에 저장된 최신 해시와 일치하지 않습니다.
+
+### 해결
+
+Redis Lua Script에서 세션 확인, 사용자 ID와 기존 토큰 해시 검증, 새로운 토큰 해시 교체, 복구 기록 저장을 원자적으로 실행했습니다. 클라이언트는 재발급 시작 시 `crypto.randomUUID()`로 Idempotency-Key를 만들고 재시도에서도 같은 값을 유지합니다. 서버는 기존·신규 토큰 해시와 AES-256-GCM으로 암호화한 신규 Refresh Token을 30초간 저장하고, Redis의 현재 해시가 해당 발급 결과와 일치할 때만 이전 결과를 반환합니다.
+
+### 결과
+
+- 동일한 기존 토큰을 이용한 중복 Rotation 제어
+- 동일한 Idempotency-Key 재요청 시 새 토큰을 다시 만들지 않고 기존 발급 결과 복구
+- A에서 B, B에서 C로 교체된 뒤 A 요청의 과거 복구 결과가 반환되는 흐름 차단
+- 복구 기록 만료 후 이전 Refresh Token 재사용 거부
+
+## 트러블슈팅: 재발급 장애 반복과 인증 복구 실패 처리
+
+> 구현 구분: **최근 개선**
+
+### 문제
+
+재발급 요청 중 네트워크 또는 서버 장애가 발생하면 곧바로 로그아웃되거나, 새로고침과 자동 재시도로 인증 오류가 반복될 수 있었습니다.
+
+### 원인
+
+일시적 장애와 실제 인증 만료를 구분하지 않으면 복구 가능한 요청을 종료하거나, Rotation 결과가 불확실한 상태에서 새로운 요청 ID로 재발급을 반복할 수 있기 때문입니다.
+
+### 해결
+
+네트워크 오류와 429, 502, 503, 504 응답은 동일한 Idempotency-Key로 최초 요청 이후 최대 4번 지수 백오프 재시도하고, 401은 재시도하지 않고 인증 만료로 처리했습니다. 복구에 실패하면 `refreshRecoveryFailed`를 Zustand와 `sessionStorage`에 기록해 새로고침 후 자동 재발급을 차단합니다. 재로그인 버튼을 누르면 서버 API로 HttpOnly Cookie를 삭제하고 클라이언트 인증 상태와 실패 기록을 초기화한 뒤 로그인 페이지로 이동합니다.
+
+### 결과
+
+- 일시적인 네트워크·서버 장애와 인증 만료 처리 분리
+- 응답 유실 가능성이 있는 상태에서 새로운 요청 ID를 이용한 자동 Rotation 제한
+- 복구 실패 이후 새로고침 시 불필요한 재발급 요청 차단
+- 인증 확인 실패 시 보호 화면 대신 오류 및 재로그인 흐름 제공
+
+## 인증 시스템 검증
+
+> 검증 구분: **최근 검증**
+
+- 동일·상이 토큰의 SHA-256 해시 비교와 AES-256-GCM 암복호화 및 무작위 IV 검증
+- Refresh Token A→B 정상 교체, 동일 Idempotency-Key 재요청 복구, 다른 요청 ID의 A 재사용 거부 검증
+- A→B→C 교체 이후 과거 복구 결과 반환 거부와 복구 기록 만료 후 이전 토큰 재사용 거부 검증
+- 재발급 성공 시 Access Token 저장과 동시 요청의 단일 `refreshPromise` 공유 검증
+- 네트워크 오류 재시도, 401 즉시 종료, 503 재시도 실패 시 복구 실패 기록 저장 검증
+- 브라우저에서 지속적인 503 오류 화면, 새로고침 후 재발급 차단, 재로그인 시 쿠키·상태·실패 기록 초기화 및 로그인 페이지 이동 검증
