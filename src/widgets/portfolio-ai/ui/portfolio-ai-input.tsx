@@ -91,7 +91,7 @@ export function PortfolioAiInput() {
         <div className="mb-6">
           <div className="mb-3 flex items-center gap-2 text-sm font-black text-violet-400">
             <Sparkles size={16} />
-            Portfolio AI · RAG 기반
+            Portfolio AI | RAG 기반
           </div>
 
           <h2 className="text-2xl font-bold text-white sm:text-3xl">

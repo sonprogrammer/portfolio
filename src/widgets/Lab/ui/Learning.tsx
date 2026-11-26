@@ -31,7 +31,7 @@ const learningItems = [
 
         points: [
             "Trigger와 작업 단계로 이어지는 자동화 흐름 이해",
-            "Harness의 실행 환경과 도구·검증 흐름 학습",
+            "Harness의 실행 환경과 도구, 검증 흐름 학습",
             "반복되는 작업 절차를 Skill로 정리해 적용",
         ],
     },

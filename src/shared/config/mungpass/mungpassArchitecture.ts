@@ -29,7 +29,7 @@ export const mungArchitecture: ArchitectureItem[] = [
             "비즈니스 기능 단위로 모듈과 슬라이스 분리",
             "레이어 간 단방향 의존성 구조 적용",
             "반복되는 상태와 비즈니스 로직을 Custom Hook으로 분리",
-            "TanStack Query 기반 Custom Hook으로 서버 데이터 조회·변경 로직 관리",
+            "TanStack Query 기반 Custom Hook으로 서버 데이터 조회 및 변경 로직 관리",
         ],
     },
     {

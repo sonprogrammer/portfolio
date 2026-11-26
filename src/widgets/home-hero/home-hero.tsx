@@ -73,7 +73,7 @@ export function HomeHero() {
 
             <div className="inline-flex items-center gap-2 rounded-xl border px-5 py-3 text-sm font-semibold border-zinc-800 bg-zinc-950 text-zinc-300">
               <Code2 size={16} />
-              5개의 서비스 직접 설계 · 구현
+              5개의 서비스 직접 설계 및 구현
             </div>
           </div>
         </div>

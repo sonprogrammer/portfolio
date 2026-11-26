@@ -45,13 +45,13 @@ const tabs: PortfolioTabItem[] = [
     id: "lab",
     label: "Lab",
     href: "/lab",
-    description: '개발 방식 · AI 활용'
+    description: '개발 방식 및 AI 활용'
   },
   {
     id: "more-info",
     label: "More Info",
     href: "/more-info",
-    description: '교육 · 자격 · 자기계발'
+    description: '교육, 자격, 자기계발'
 
   },
 ];

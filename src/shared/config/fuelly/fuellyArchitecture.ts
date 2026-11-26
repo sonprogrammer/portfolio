@@ -67,7 +67,7 @@ export const fuellyArchitecture: ArchitectureItem[] = [
       "서버에서 조회되는 데이터와 클라이언트 전역 상태의 책임을 TanStack Query와 Zustand로 분리하고 반복되는 데이터 처리 로직은 Custom Hook으로 구성했습니다.",
 
     points: [
-      "TanStack Query 기반 Custom Hook으로 서버 데이터 조회·변경 및 캐싱 관리",
+      "TanStack Query 기반 Custom Hook으로 서버 데이터 조회 및 변경 및 캐싱 관리",
       "Zustand를 이용한 클라이언트 전역 상태 관리",
       "반복되는 상태와 비즈니스 로직을 Custom Hook으로 분리해 컴포넌트의 UI 책임과 데이터 처리 책임 구분",
 
@@ -77,7 +77,7 @@ export const fuellyArchitecture: ArchitectureItem[] = [
     icon: ShieldCheck,
     title: "Zod 기반 API 요청및 응답 검증",
     description:
-      "TypeScript 타입만으로 보장할 수 없는 실제 요청·응답 데이터를 Zod로 검증하고, 검증된 데이터를 저장과 화면 처리에 사용하도록 구성했습니다.",
+      "TypeScript 타입만으로 보장할 수 없는 실제 요청 및 응답 데이터를 Zod로 검증하고, 검증된 데이터를 저장과 화면 처리에 사용하도록 구성했습니다.",
     points: [
       "서버에서 요청 데이터를 검증한 뒤 DB 저장, 수정에 사용",
       "클라이언트에서 API 응답을 검증한 뒤 상태, 캐시, 화면에 반영",

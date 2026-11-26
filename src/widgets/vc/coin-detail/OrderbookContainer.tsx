@@ -13,7 +13,7 @@ export function OrderbookContainer({
         </h2>
 
         <p className="mt-1 text-xs text-white/35">
-          {market} · 업비트 15호가 기준
+          {market} | 업비트 15호가 기준
         </p>
       </div>
 

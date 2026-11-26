@@ -45,7 +45,7 @@ export const mungImplementation = [
       "반복되는 로직과 서버 상태 처리를 Custom Hook으로 분리해 컴포넌트가 UI 표현에 집중할 수 있도록 구조화했습니다.",
     points: [
       "여러 컴포넌트에서 반복되는 상태 및 비즈니스 로직을 Custom Hook으로 분리",
-      "TanStack Query 기반 Custom Hook으로 데이터 조회·변경 로직 관리",
+      "TanStack Query 기반 Custom Hook으로 데이터 조회 및 변경 로직 관리",
       "서버 상태와 컴포넌트 UI 로직의 책임 분리",
       "공통 로직 재사용을 통해 컴포넌트별 중복 코드 최소화",
     ],

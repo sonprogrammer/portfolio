@@ -18,7 +18,7 @@ const quickProfile = [
     },
     {
         label: "Certificates",
-        title: "정보처리기사 · GTQ 1급",
+        title: "정보처리기사 | GTQ 1급",
         description: "자격 취득",
     },
     {

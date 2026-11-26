@@ -51,7 +51,7 @@ export function CurrentUsageList({ shopId, shopStatus }: CurrentUsageListProps) 
             usageId: selectedUsage.id
         }, {
             onSuccess: result => {
-                toast.success(`체크아웃 완료 · ${result.totalPrice.toLocaleString()}원`)
+                toast.success(`체크아웃 완료 / ${result.totalPrice.toLocaleString()}원`)
                 setCheckModalOpen(false)
                 setSelectedUsage(null)
             },

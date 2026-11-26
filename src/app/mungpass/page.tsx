@@ -13,7 +13,7 @@ export default function MungpassPage() {
       <ProjectHero
         name="MungPass"
         projectType="Personal Project"
-        description="회원·사장님·관리자를 연결하는 애견카페 O2O · B2B 운영 플랫폼"
+        description="회원, 사장님, 관리자를 연결하는 애견카페 O2O 운영 플랫폼"
         logoSrc="/mungpass.png"
         githubUrl="https://github.com/sonprogrammer/Mungpass"
         deployUrl="https://mungpass.vercel.app"

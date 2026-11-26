@@ -11,7 +11,7 @@ const bootcampItems = [
         icon: Server,
         title: "Web & Backend Fundamentals",
         description:
-            "Node.js와 Express를 사용하며 HTTP 요청·응답, REST API, CRUD와 서버 애플리케이션의 기본 흐름을 학습했습니다.",
+            "Node.js와 Express를 사용하며 HTTP 요청 및 응답, REST API, CRUD와 서버 애플리케이션의 기본 흐름을 학습했습니다.",
     },
     {
         icon: Database,
@@ -88,7 +88,7 @@ export function Education() {
                             </p>
 
                             <p className="mt-2 text-xs font-semibold text-zinc-500">
-                                2023.08 – 2023.12 · 수료
+                                2023.08 – 2023.12 | 수료
                             </p>
                         </div>
                     </div>

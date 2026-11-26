@@ -408,7 +408,7 @@ export function CoinTradeForm({ market }: CoinTradeFormProps) {
                                         orderMutation.data
                                             .executedPrice,
                                     )}
-                                    원 ·{' '}
+                                    원 /{' '}
                                     {orderMutation.data.executedQuantity.toFixed(
                                         8,
                                     )}{' '}

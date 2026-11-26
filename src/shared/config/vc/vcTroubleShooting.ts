@@ -46,7 +46,7 @@ export const vcTroubleShooting: TroubleshootingItem[] = [
         ],
     },
     {
-        title: "WebSocket 연결 장애 복구 및 REST·실시간 시세 동기화",
+        title: "WebSocket 연결 장애 복구 및 REST, 실시간 시세 동기화",
         update: "신규",
         tested: true,
         problem:

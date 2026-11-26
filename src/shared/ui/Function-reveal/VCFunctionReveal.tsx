@@ -32,7 +32,7 @@ export function VcFunctionReveal({children}: VcFunctionRevealProps) {
         <>
             <FunctionReveal
                 title="Virtual Coin 기능 체험"
-                description="실시간 코인 시세를 기반으로 매수·매도와 포트폴리오 변화를 직접 체험해보세요."
+                description="실시간 코인 시세를 기반으로 매수,매도와 포트폴리오 변화를 직접 체험해보세요."
                 theme="red"
                 coldStartNotice
                 onOpenChange={handleOpenChange}

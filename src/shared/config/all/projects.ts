@@ -8,7 +8,7 @@ export const projects = [
         period: "2026.01 ~ 2026.05",
         category: "SIGNATURE PROJECT",
         summary:
-            "회원·사장님·관리자를 연결하는 애견카페 O2O · B2B 운영 플랫폼",
+            "회원, 사장님, 관리자를 연결하는 애견카페 O2O 운영 플랫폼",
         description:
             "QR 체크인부터 실시간 이용 현황, 매출 관리, 관리자 운영 환경과 AI 매출 분석까지 하나의 서비스 흐름으로 구현했습니다.",
         icon: PawPrint,
@@ -44,22 +44,23 @@ export const projects = [
         summary:
             "AI 기반 개인 맞춤 영양 관리 서비스",
         description:
-            "사용자 식습관과 영양 목표를 AI 추천에 반영하고, 구조화 응답 검증·조건부 재시도·검색 기록 관리로 AI 기능의 안정성과 사용성을 개선했습니다.",
+            "사용자 식습관과 영양 목표를  반영한 AI 추천에 구조화 응답 검증과 조건부 재시도를 적용하고 Redis 기반 Refresh Token Rotation과 서버 측 무효화로 인증 안정성을 강화했습니다.",
         icon: BrainCircuit,
         technologies: [
             "Next.js",
             "Groq",
             "MongoDB",
+            "Redis",
             "TanStack Query",
             "Zustand",
         ],
         highlights: [
             "AI 개인화 추천 및 구조화 응답 검증",
-            "Timeout · 조건부 Retry 기반 AI 요청 안정화",
-            "AI 검색 기록 저장 및 TanStack Query 동기화",
+            "Timeout 및 조건부 Retry 기반 AI 요청 안정화",
+            "Redis 기반 Refresh Token Rotation 및 서버 측 무효화",
         ],
         metric: "11ms",
-        metricLabel: "AI 검색 결과 캐싱 · 평균 재조회 시간 867ms → 11ms",
+        metricLabel: "AI 검색 결과 캐싱. 평균 재조회 시간 867ms → 11ms",
         theme: {
             icon: "bg-emerald-500/10 text-emerald-500",
             border: "hover:border-emerald-500/40",
@@ -79,7 +80,7 @@ export const projects = [
         summary:
             "Upbit API 기반 실시간 모의 코인 투자 서비스",
         description:
-            "REST·WebSocket 하이브리드 구조로 초기 시세 로딩을 개선하고, 최신 데이터 동기화와 WebSocket 자동 재연결을 통해 실시간 시세의 정합성과 안정성을 강화했습니다.",
+            "REST, WebSocket 하이브리드 구조로 초기 시세 로딩을 개선하고, 최신 데이터 동기화와 WebSocket 자동 재연결을 통해 실시간 시세의 정합성과 안정성을 강화했습니다.",
         icon: Bitcoin,
         technologies: [
             "React",

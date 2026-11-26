@@ -67,7 +67,7 @@ export const vcArchitecture: ArchitectureItem[] = [
       'MongoDB에 게스트와 카카오 사용자 데이터를 저장하고, JWT 기반 인증 구조를 통일했습니다. 서버에서 검증한 사용자 ID를 기준으로 데이터 접근을 처리하고 Refresh Token을 이용해 인증 상태를 복구하도록 개선했습니다.',
     points: [
       'MongoDB 기반 사용자 자산, 주문 및 관심 코인 데이터 관리',
-      '게스트·카카오 로그인 공통 JWT 인증 구조',
+      '게스트, 카카오 로그인 공통 JWT 인증 구조',
       'Access Token 메모리 관리 및 Refresh Token의 HttpOnly Cookie 저장',
       'Axios Interceptor 기반 토큰 재발급 및 기존 요청 재시도',
       'JWT 사용자 ID 기반 서버 데이터 조회 및 변경 처리',

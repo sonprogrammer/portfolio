@@ -58,7 +58,7 @@ export function ProductCard({ product, isDeleting, onEdit, onDelete }: ProductCa
                     기본 {product.duration_minutes}분
                 </span>
 
-                <span className="text-gray-700">·</span>
+                <span className="text-gray-700"> / </span>
 
                 <span>
                     초과 {product.overtime_unit_mins}분당 {product.overtime_unit_price.toLocaleString()}원
