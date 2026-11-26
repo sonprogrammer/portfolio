@@ -10,7 +10,6 @@ export async function createUser(payload: CreateBntyUserRequest):Promise<CreateB
     })
 
     const data = await res.json() as CreateBntyUserResponse | {message?: string}
-    console.log('data', data)
 
     if(!res.ok){
         throw new Error('message' in data && data.message ? data.message : '유저 생성 실패')
