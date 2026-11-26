@@ -2,6 +2,7 @@ import { ArchitectureItem } from "@/shared/model/types";
 import {
   BrainCircuit,
   Database,
+  KeyRound,
   Layers3,
   RefreshCcw,
   ShieldAlert,
@@ -49,16 +50,30 @@ export const fuellyArchitecture: ArchitectureItem[] = [
     ],
   },
   {
-    icon: RefreshCcw,
-    title: "Axios Interceptor 기반 토큰 재발급",
+    icon: KeyRound,
+    title: "Redis 기반 Refresh Token Rotation 및 세션 무효화",
     description:
-      "Access Token 만료 시 Refresh Token을 이용해 토큰을 재발급하고 여러 요청이 동시에 실패하는 상황을 Queue로 제어했습니다.",
+      "Refresh Token 해시를 Redis 세션으로 관리하고, 재발급마다 토큰을 교체하며 로그아웃 시 해당 세션을 삭제해 기존 토큰을 서버에서 무효화했습니다.",
+    points: [
+      "로그인 세션별 Refresh Token SHA-256 해시를 Redis에 저장",
+      "Redis Lua Script로 토큰 검증과 Rotation을 원자적으로 처리",
+      "로그아웃 시 jti에 해당하는 Redis 세션을 삭제해 기존 토큰 무효화",
+      "Idempotency-Key로 응답 유실 시 30초간 기존 발급 결과 복구",
+    ],
+    update: "신규",
+  },
+  {
+    icon: RefreshCcw,
+    title: "Axios Interceptor와 Promise 공유 기반 토큰 재발급",
+    description:
+      "Access Token 만료 시 Refresh Token을 이용해 토큰을 재발급하고, 여러 요청이 동시에 실패하면 진행 중인 refreshPromise를 공유하도록 구성했습니다.",
     points: [
       "Axios Interceptor를 이용한 인증 요청 처리",
       "Access Token 만료 시 Refresh Token 기반 재발급",
-      "토큰 재발급 로직을 공통 인증 흐름으로 통합",
-      "Queue를 이용한 동시 재발급 요청 제어",
+      "진행 중인 refreshPromise를 공유해 중복 재발급 요청 방지",
+      "재발급 성공 후 새 Access Token으로 대기 중인 요청 재실행",
     ],
+    update: "개선",
   },
   {
     icon: Layers3,

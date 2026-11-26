@@ -23,13 +23,13 @@ export const fuellyTechnologyGroups = [
   },
   {
     title: "Backend & Auth",
-    description: "서버 API와 데이터 저장 및 JWT 기반 인증 흐름 구현",
+    description: "서버 API와 데이터 저장, Redis 기반 인증 세션 및 토큰 Rotation 구현",
     items: [
       "Route Handler",
       "MongoDB",
       "jose",
       "JWT",
-      "HttpOnly Cookie",
+      "Redis"
     ],
   },
   {
