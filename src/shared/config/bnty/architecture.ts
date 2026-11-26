@@ -78,7 +78,7 @@ export const architectureItems: ArchitectureItem[] = [
     points: [
       "REST API를 통한 기존 채팅 내역 조회 및 신규 저장",
       "Socket.IO Room 기반 1:1 메시지 실시간 전달",
-      "서버 인증 정보로 메시지 작성자와 읽음 처리 사용자 지정",
+      "JWT로 검증한 사용자 기준 메시지 전송, 읽음 처리 및 채팅방 권한 확인",
       "소켓 재연결 시 채팅방 재입장과 메시지 목록 재조회",
       "화면 이탈 시 이벤트 리스너 해제와 채팅방 퇴장"
     ],
